@@ -1,0 +1,1 @@
+export function WorkVisual({ type }: { type: string }) { return <div className="visual">{type === "bars" ? <div className="mini-bars"><i/><i/><i/><i/><i/></div> : type === "lines" ? <div className="code-lines"><i/><i/><i/><i/><i/></div> : <div className="node-map"><b/><b/><b/><b/></div>}</div>; }

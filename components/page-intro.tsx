@@ -1,0 +1,1 @@
+export function PageIntro({eyebrow,title,children}:{eyebrow?:string;title:string;children:React.ReactNode}){return <div className="container page-intro">{eyebrow&&<div className="eyebrow">{eyebrow}</div>}<h1>{title}</h1><div>{children}</div></div>}
