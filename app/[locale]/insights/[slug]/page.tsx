@@ -3,10 +3,14 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 
-import { cases } from "../../../../data/site";
-import { WorkVisual } from "../../../../components/visual";
+import { insights } from "../../../../data/site";
 import { Link } from "../../../../i18n/navigation";
-const slugs = ["nexus-analytics", "globalfreight", "stripe-erp"] as const;
+
+const slugs = insights.map((item) => item.slug);
+
+/* =========================================================
+   STATIC PARAMS
+========================================================= */
 
 export function generateStaticParams() {
   return slugs.map((slug) => ({
@@ -26,28 +30,21 @@ export async function generateMetadata({
     locale: string;
   };
 }): Promise<Metadata> {
-  const index = slugs.indexOf(params.slug as (typeof slugs)[number]);
+  const item = insights.find((entry) => entry.slug === params.slug);
 
-  if (index < 0) {
+  if (!item) {
     return {};
   }
-
-  const item = cases[index];
 
   const site = await getTranslations({
     locale: params.locale,
     namespace: "Site",
   });
 
-  const projectTitle = site(`cases.${item.key}.title`);
-  const description = site(`cases.${item.key}.summary`);
+  const title = site(`insights.${item.key}.title`);
+  const description = site(`insights.${item.key}.summary`);
 
-  const title =
-    params.locale === "id"
-      ? `${projectTitle} — Studi Kasus`
-      : `${projectTitle} — Case Study`;
-
-  const path = `/${params.locale}/work/${params.slug}`;
+  const path = `/${params.locale}/insights/${item.slug}`;
 
   return {
     title,
@@ -57,9 +54,9 @@ export async function generateMetadata({
       canonical: path,
 
       languages: {
-        en: `/en/work/${params.slug}`,
-        id: `/id/work/${params.slug}`,
-        "x-default": `/en/work/${params.slug}`,
+        en: `/en/insights/${item.slug}`,
+        id: `/id/insights/${item.slug}`,
+        "x-default": `/en/insights/${item.slug}`,
       },
     },
 
@@ -83,7 +80,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function CaseStudy({
+/* =========================================================
+   ARTICLE
+========================================================= */
+
+export default async function InsightArticle({
   params,
 }: {
   params: {
@@ -91,13 +92,11 @@ export default async function CaseStudy({
     locale: string;
   };
 }) {
-  const index = slugs.indexOf(params.slug as (typeof slugs)[number]);
+  const item = insights.find((entry) => entry.slug === params.slug);
 
-  if (index < 0) {
+  if (!item) {
     notFound();
   }
-
-  const item = cases[index];
 
   const site = await getTranslations({
     locale: params.locale,
@@ -106,143 +105,13 @@ export default async function CaseStudy({
 
   const t = await getTranslations({
     locale: params.locale,
-    namespace: "CaseStudyPage",
+    namespace: "InsightDetailPage",
   });
 
   return (
     <main className="min-w-0 overflow-x-clip">
       {/* =====================================================
-          HERO
-      ====================================================== */}
-
-      <section
-        className="
-          mx-auto
-          w-full
-          max-w-[1200px]
-
-          px-4
-          pb-14
-          pt-[120px]
-
-          min-[375px]:pt-[128px]
-
-          sm:px-6
-          sm:pb-20
-          sm:pt-[145px]
-
-          md:pb-24
-          md:pt-[155px]
-
-          lg:px-8
-          lg:pb-28
-          lg:pt-[170px]
-        "
-      >
-        {/* META */}
-
-        <div
-          className="
-            flex
-            flex-wrap
-            items-center
-
-            gap-x-2
-            gap-y-1
-
-            text-[10px]
-            font-semibold
-
-            uppercase
-            tracking-[0.11em]
-
-            text-accent
-
-            sm:text-xs
-          "
-        >
-          <span>{site(`cases.${item.key}.category`)}</span>
-
-          <span className="text-muted">/</span>
-
-          <span>{t("label")}</span>
-        </div>
-
-        {/* TITLE */}
-
-        <h1
-          className="
-            mt-4
-
-            max-w-[900px]
-
-            break-words
-
-            font-heading
-            text-[clamp(38px,11vw,50px)]
-            font-bold
-
-            leading-[1.06]
-            tracking-[-0.04em]
-
-            text-ink
-
-            sm:mt-[18px]
-            sm:text-[56px]
-
-            md:text-[64px]
-
-            lg:text-[72px]
-          "
-        >
-          {site(`cases.${item.key}.title`)}
-        </h1>
-
-        {/* DESCRIPTION */}
-
-        <p
-          className="
-            mt-5
-
-            max-w-[700px]
-
-            text-base
-            leading-[1.75]
-
-            text-grey
-
-            sm:text-lg
-            sm:leading-[1.7]
-          "
-        >
-          {site(`cases.${item.key}.summary`)}
-        </p>
-
-        {/* VISUAL */}
-
-        <div
-          className="
-            mt-8
-
-            aspect-[16/10]
-
-            w-full
-            min-w-0
-
-            overflow-hidden
-
-            sm:mt-12
-            sm:aspect-video
-
-            lg:mt-14
-          "
-        >
-          <WorkVisual type={item.visual} />
-        </div>
-      </section>
-
-      {/* =====================================================
-          CASE BODY
+          ARTICLE HERO
       ====================================================== */}
 
       <section
@@ -250,6 +119,103 @@ export default async function CaseStudy({
           mx-auto
           w-full
           max-w-[900px]
+
+          px-4
+          pb-12
+          pt-[120px]
+
+          min-[375px]:pt-[128px]
+
+          sm:px-6
+          sm:pb-16
+          sm:pt-[145px]
+
+          md:pt-[155px]
+
+          lg:px-8
+          lg:pb-20
+          lg:pt-[170px]
+        "
+      >
+        <div
+          className="
+            flex
+            flex-wrap
+            items-center
+
+            gap-x-3
+            gap-y-2
+
+            text-[10px]
+            font-semibold
+
+            uppercase
+            tracking-[0.1em]
+
+            text-accent
+
+            sm:text-xs
+          "
+        >
+          <span>{site(`insights.${item.key}.tag`)}</span>
+
+          <span className="text-muted">/</span>
+
+          <span className="text-muted">{item.date}</span>
+        </div>
+
+        <h1
+          className="
+            mt-5
+
+            max-w-[860px]
+
+            break-words
+
+            font-heading
+            text-[clamp(36px,10vw,50px)]
+            font-bold
+
+            leading-[1.08]
+            tracking-[-0.04em]
+
+            text-ink
+
+            sm:text-[56px]
+
+            md:text-[62px]
+          "
+        >
+          {site(`insights.${item.key}.title`)}
+        </h1>
+
+        <p
+          className="
+            mt-6
+
+            max-w-[720px]
+
+            text-base
+            leading-[1.8]
+
+            text-grey
+
+            sm:text-lg
+          "
+        >
+          {site(`insights.${item.key}.summary`)}
+        </p>
+      </section>
+
+      {/* =====================================================
+          ARTICLE BODY
+      ====================================================== */}
+
+      <article
+        className="
+          mx-auto
+          w-full
+          max-w-[760px]
 
           px-4
           pb-20
@@ -261,50 +227,30 @@ export default async function CaseStudy({
           lg:pb-28
         "
       >
-        {/* ===================================================
-            01 — CONTEXT
-        ==================================================== */}
-
-        <CaseSection
+        <ArticleSection
           number="01"
-          label={t("sections.context")}
-          title={t(`projects.${item.key}.context.title`)}
-          text={t(`projects.${item.key}.context.text`)}
+          title={t(`articles.${item.key}.sections.1.title`)}
+          text={t(`articles.${item.key}.sections.1.text`)}
         />
 
-        {/* ===================================================
-            02 — SOLUTION
-        ==================================================== */}
-
-        <CaseSection
+        <ArticleSection
           number="02"
-          label={t("sections.solution")}
-          title={t(`projects.${item.key}.solution.title`)}
-          text={t(`projects.${item.key}.solution.text`)}
+          title={t(`articles.${item.key}.sections.2.title`)}
+          text={t(`articles.${item.key}.sections.2.text`)}
         />
 
-        {/* ===================================================
-            03 — ENGINEERING
-        ==================================================== */}
-
-        <CaseSection
+        <ArticleSection
           number="03"
-          label={t("sections.engineering")}
-          title={t(`projects.${item.key}.engineering.title`)}
-          text={t(`projects.${item.key}.engineering.text`)}
+          title={t(`articles.${item.key}.sections.3.title`)}
+          text={t(`articles.${item.key}.sections.3.text`)}
         />
 
-        {/* ===================================================
-            04 — RESULT
-        ==================================================== */}
-
-        <CaseSection
+        <ArticleSection
           number="04"
-          label={t("sections.result")}
-          title={t(`projects.${item.key}.result.title`)}
-          text={t(`projects.${item.key}.result.text`)}
+          title={t(`articles.${item.key}.sections.4.title`)}
+          text={t(`articles.${item.key}.sections.4.text`)}
         />
-      </section>
+      </article>
 
       {/* =====================================================
           CLOSING CTA
@@ -312,27 +258,29 @@ export default async function CaseStudy({
 
       <section
         className="
-          bg-ink
+          border-t
+          border-border
 
-          py-16
+          bg-alt
 
-          sm:py-20
+          py-14
 
-          lg:py-[88px]
+          sm:py-16
+
+          lg:py-20
         "
       >
         <div
           className="
             mx-auto
-
             flex
             w-full
-            max-w-[1200px]
+            max-w-[900px]
 
             flex-col
             items-start
 
-            gap-7
+            gap-5
 
             px-4
 
@@ -341,41 +289,55 @@ export default async function CaseStudy({
             md:flex-row
             md:items-center
             md:justify-between
-            md:gap-10
+            md:gap-8
 
             lg:px-8
           "
         >
-          <h2
-            className="
-              max-w-[650px]
+          <div>
+            <p
+              className="
+                text-[10px]
+                font-semibold
 
-              break-words
+                uppercase
+                tracking-[0.11em]
 
-              font-heading
-              text-[28px]
-              font-semibold
+                text-accent
 
-              leading-[1.2]
-              tracking-[-0.025em]
+                sm:text-xs
+              "
+            >
+              {t("cta.eyebrow")}
+            </p>
 
-              text-white
+            <h2
+              className="
+                mt-2
 
-              sm:text-[34px]
+                max-w-[560px]
 
-              lg:text-4xl
-            "
-          >
-            {t("cta.title")}
-          </h2>
+                font-heading
+                text-[26px]
+                font-semibold
+
+                leading-[1.25]
+                tracking-[-0.02em]
+
+                text-ink
+
+                sm:text-[30px]
+              "
+            >
+              {t("cta.title")}
+            </h2>
+          </div>
 
           <Link
             href="/contact"
             className="
               inline-flex
-
               min-h-12
-
               w-full
               shrink-0
 
@@ -416,17 +378,15 @@ export default async function CaseStudy({
 }
 
 /* =========================================================
-   CASE SECTION
+   ARTICLE SECTION
 ========================================================= */
 
-function CaseSection({
+function ArticleSection({
   number,
-  label,
   title,
   text,
 }: {
   number: string;
-  label: string;
   title: string;
   text: string;
 }) {
@@ -438,21 +398,13 @@ function CaseSection({
 
         py-10
 
-        sm:py-14
+        sm:py-12
 
-        lg:py-16
+        lg:py-14
       "
     >
-      {/* META */}
-
       <div
         className="
-          flex
-          flex-wrap
-          items-center
-
-          gap-1.5
-
           text-[10px]
           font-semibold
 
@@ -464,55 +416,42 @@ function CaseSection({
           sm:text-xs
         "
       >
-        <span>{number}</span>
-
-        <span className="text-muted">/</span>
-
-        <span>{label}</span>
+        {number}
       </div>
-
-      {/* TITLE */}
 
       <h2
         className="
           mt-4
 
-          max-w-[740px]
-
           break-words
 
           font-heading
-          text-[26px]
+          text-[24px]
           font-semibold
 
-          leading-[1.25]
+          leading-[1.3]
           tracking-[-0.02em]
 
           text-ink
 
-          sm:text-[32px]
-
-          lg:text-[36px]
+          sm:text-[30px]
         "
       >
         {title}
       </h2>
 
-      {/* DESCRIPTION */}
-
       <p
         className="
           mt-5
 
-          max-w-[650px]
+          whitespace-pre-line
 
           text-sm
-          leading-[1.8]
+          leading-[1.9]
 
           text-grey
 
           sm:text-base
-          sm:leading-relaxed
         "
       >
         {text}

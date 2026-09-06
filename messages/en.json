@@ -1,8 +1,200 @@
 {
+  "InsightDetailPage": {
+    "cta": {
+      "eyebrow": "Need help with your product?",
+      "title": "Turn technical decisions into reliable software.",
+      "button": "Start a Project"
+    },
+    "articles": {
+      "overEngineering": {
+        "sections": {
+          "1": {
+            "title": "Complexity is not the same as quality",
+            "text": "Software teams often associate sophisticated architecture with better engineering. In practice, every abstraction, service, dependency, and infrastructure component introduces a cost.\n\nGood engineering is not about using the most advanced architecture available. It is about choosing the simplest architecture that can reliably support the actual problem."
+          },
+          "2": {
+            "title": "Design for the problem you have today",
+            "text": "A product with hundreds of users does not automatically need the same architecture as a global platform serving millions of requests.\n\nStart with clear boundaries, reliable data models, maintainable application logic, and predictable deployment. Architecture can evolve when real constraints appear."
+          },
+          "3": {
+            "title": "Every abstraction should earn its place",
+            "text": "Service layers, queues, event systems, microservices, caching, and distributed infrastructure can all be useful. But they should exist because they solve a concrete problem.\n\nBefore introducing another layer, ask what failure, bottleneck, maintenance issue, or business requirement it actually addresses."
+          },
+          "4": {
+            "title": "Simple systems are easier to improve",
+            "text": "A system that developers can understand quickly is easier to debug, test, deploy, and extend.\n\nThe goal is not to avoid complexity completely. The goal is to keep complexity proportional to the value it provides."
+          }
+        }
+      },
+
+      "professionalInterface": {
+        "sections": {
+          "1": {
+            "title": "Professional does not mean visually busy",
+            "text": "Many business interfaces try to look advanced by displaying as much information as possible. The result is often the opposite: users have to work harder to understand what matters.\n\nA professional interface gives information structure, hierarchy, and predictable behavior."
+          },
+          "2": {
+            "title": "Reduce the number of decisions",
+            "text": "Every screen asks the user to make decisions. Navigation, labels, buttons, filters, tables, and forms all compete for attention.\n\nGood interface design reduces unnecessary choices and makes the next meaningful action obvious."
+          },
+          "3": {
+            "title": "Consistency builds confidence",
+            "text": "Consistent spacing, typography, terminology, interaction patterns, and component behavior help users understand a system without relearning it on every page.\n\nThis becomes especially important in operational software that people use repeatedly throughout the day."
+          },
+          "4": {
+            "title": "Calm interfaces support real work",
+            "text": "Business software should help users finish tasks rather than constantly demand attention.\n\nA calm interface uses hierarchy and feedback carefully so that important states are visible without turning every screen into an alert."
+          }
+        }
+      },
+
+      "legacyMonolith": {
+        "sections": {
+          "1": {
+            "title": "A rewrite is not automatically a migration strategy",
+            "text": "Legacy applications often contain years of operational knowledge hidden inside code, database structures, workflows, and exceptions.\n\nReplacing the entire application at once can introduce more business risk than technical benefit."
+          },
+          "2": {
+            "title": "Understand the existing system first",
+            "text": "Before changing architecture, identify which modules are stable, which areas create operational problems, where data ownership lives, and which integrations cannot break.\n\nThe goal is to separate genuine technical constraints from assumptions."
+          },
+          "3": {
+            "title": "Move one boundary at a time",
+            "text": "A safer modernization approach is usually incremental. Extract a clear module, define its contract, validate behavior, and move traffic gradually.\n\nThis allows the team to improve architecture without losing visibility over the existing system."
+          },
+          "4": {
+            "title": "Modernization should reduce business risk",
+            "text": "Technical improvement is valuable when it makes a system easier to maintain, operate, scale, or change.\n\nThe success of a migration should therefore be measured not only by newer technology, but also by lower operational risk and better development velocity."
+          }
+        }
+      }
+    }
+  },
+  "CaseStudyPage": {
+    "label": "Case study",
+    "sections": {
+      "context": "Business context",
+      "solution": "Solution",
+      "engineering": "Engineering",
+      "result": "Result"
+    },
+    "projects": {
+      "nexus": {
+        "context": {
+          "title": "Business data was scattered across too many tools.",
+          "text": "The team needed a dependable way to bring operational information together, understand performance, and make decisions without repeatedly reconciling data from different sources."
+        },
+        "solution": {
+          "title": "A focused analytics system built around daily decisions.",
+          "text": "We designed a centralized interface that transformed fragmented operational data into clear dashboards, structured reporting, and information the team could actually use."
+        },
+        "engineering": {
+          "title": "A scalable foundation for growing data needs.",
+          "text": "The system was structured around clear data boundaries, reusable modules, and an architecture that could evolve as reporting requirements and business operations expanded."
+        },
+        "result": {
+          "title": "Less time collecting data. More time understanding it.",
+          "text": "The finished platform gave the team a clearer view of business performance and reduced the manual effort required to turn operational data into useful information."
+        }
+      },
+      "globalFreight": {
+        "context": {
+          "title": "Operational workflows were difficult to track consistently.",
+          "text": "Freight activities involved multiple processes, status updates, and operational records. The team needed a clearer way to follow work from one stage to the next without relying on fragmented manual tracking."
+        },
+        "solution": {
+          "title": "One operational workflow with clearer visibility.",
+          "text": "We designed a custom application around the team's actual process, bringing important activities, records, and status information into one structured system."
+        },
+        "engineering": {
+          "title": "Built around workflows that can continue to evolve.",
+          "text": "The application was separated into focused modules with clear responsibilities, making the system easier to maintain and allowing additional operational features to be introduced over time."
+        },
+        "result": {
+          "title": "A more consistent way to manage daily operations.",
+          "text": "The team gained better visibility across its workflow, reduced fragmented tracking, and established a stronger digital foundation for future operational improvements."
+        }
+      },
+      "stripeErp": {
+        "context": {
+          "title": "Important business systems were operating in isolation.",
+          "text": "Data had to move between different applications and business processes, creating repetitive work and increasing the risk of inconsistent information between systems."
+        },
+        "solution": {
+          "title": "Reliable integration between the systems that matter.",
+          "text": "We designed an integration layer that connected the required workflows, automated data exchange, and reduced the need for teams to repeatedly transfer information by hand."
+        },
+        "engineering": {
+          "title": "Integration designed for reliability and maintainability.",
+          "text": "Clear service boundaries, controlled data flows, and predictable integration processes made failures easier to identify while keeping the architecture ready for additional connections."
+        },
+        "result": {
+          "title": "Less repetitive work and more consistent data.",
+          "text": "The integration reduced manual synchronization between systems and gave the business a more dependable flow of information across its operational tools."
+        }
+      }
+    },
+    "cta": {
+      "title": "Have a similar challenge?",
+      "button": "Start a Project"
+    }
+  },
+
+  "ContactPage": {
+    "metadata": {
+      "title": "Contact",
+      "description": "Start a software project with Forge Studio. Tell us about your business needs, product idea, automation challenge, or system integration requirements."
+    },
+    "intro": {
+      "eyebrow": "Start a project",
+      "title": "Let’s make the next step practical.",
+      "description": "Tell us what you are working through. We will reply with a clear next step, usually within 1–2 business days."
+    },
+    "form": {
+      "name": "Full name",
+      "namePlaceholder": "Jane Doe",
+      "contact": "Email or WhatsApp",
+      "contactPlaceholder": "jane@company.com",
+      "company": "Company name (optional)",
+      "companyPlaceholder": "Acme Corp",
+      "service": "What do you need help with?",
+      "selectService": "Select a service",
+      "description": "Tell us about the project",
+      "descriptionPlaceholder": "What is happening today, and what would a better outcome look like?",
+      "submit": "Send inquiry",
+      "replyTime": "We typically reply within 1–2 business days.",
+      "services": {
+        "customApp": "Custom App",
+        "saas": "SaaS",
+        "automation": "Automation",
+        "integration": "Integration",
+        "maintenance": "Maintenance",
+        "other": "Other"
+      }
+    },
+    "success": {
+      "eyebrow": "Message received",
+      "title": "Thank you for reaching out.",
+      "description": "We will review the details and get back to you. The usual next step is a short discovery conversation, followed by a practical proposal.",
+      "another": "Send another message"
+    },
+    "direct": {
+      "eyebrow": "Prefer direct contact?",
+      "title": "Start with a short conversation.",
+      "description": "Share the shape of the problem over email. We can work from there without a long sales process."
+    },
+    "next": {
+      "title": "What happens next",
+      "discovery": "Discovery call",
+      "proposal": "Practical proposal",
+      "build": "Build and handover"
+    }
+  },
+
   "AboutPage": {
     "metadata": {
       "title": "About",
-      "description": "Learn about Forge Studio, our principles, and how we approach software engineering for businesses."
+      "description": "Learn about Forge Studio, an independent software engineering studio focused on building reliable, practical, and business-driven digital products."
     },
 
     "intro": {
@@ -59,6 +251,11 @@
     }
   },
   "InsightsPage": {
+    "metadata": {
+      "title": "Insights",
+      "description": "Practical insights from Forge Studio about software engineering, product development, system architecture, automation, and building reliable digital products."
+    },
+
     "intro": {
       "eyebrow": "Notes from the studio",
       "title": "Insights",
@@ -73,6 +270,10 @@
     "integration": "Integration"
   },
   "WorkPage": {
+    "metadata": {
+      "title": "Selected Work",
+      "description": "Explore selected software engineering projects by Forge Studio, including SaaS platforms, custom web applications, automation systems, and business integrations."
+    },
     "intro": {
       "eyebrow": "Selected work",
       "title": "Built around the problem, not the technology.",
@@ -94,6 +295,10 @@
   },
 
   "ProductsPage": {
+    "metadata": {
+      "title": "Software Products",
+      "description": "Explore software products built by Forge Studio, including business tools, SaaS platforms, and digital solutions designed to simplify everyday operations."
+    },
     "intro": {
       "eyebrow": "Built by Forge",
       "title": "Products",
@@ -101,6 +306,10 @@
     }
   },
   "ServicesPage": {
+    "metadata": {
+      "title": "Software Development Services",
+      "description": "Explore Forge Studio's software development services, including custom web applications, SaaS development, automation, system integration, DevOps, and ongoing maintenance."
+    },
     "intro": {
       "eyebrow": "What we do",
       "title": "Engineering solutions for business growth.",
@@ -281,9 +490,22 @@
     "about": "About",
     "insights": "Insights",
     "contact": "Start a Project",
+
     "language": "Language",
+
     "english": "EN",
-    "indonesian": "ID"
+    "indonesian": "ID",
+
+    "englishName": "English",
+    "indonesianName": "Bahasa Indonesia",
+
+    "homeAria": "Forge Studio home",
+    "primaryNavigation": "Primary navigation",
+    "mobileNavigation": "Mobile navigation",
+    "openNavigation": "Open navigation",
+    "closeNavigation": "Close navigation",
+    "switchEnglish": "Switch to English",
+    "switchIndonesian": "Switch to Indonesian"
   },
   "Footer": {
     "description": "Industrial-grade software engineering for business.",
@@ -296,6 +518,7 @@
     "products": "Products",
     "insights": "Insights",
     "contact": "Contact",
+    "studioLabel": "Independent Software Studio",
     "copyright": "© 2026 Forge Studio. All rights reserved."
   },
   "WorkCard": {
@@ -303,6 +526,10 @@
   },
 
   "Home": {
+    "metadata": {
+      "title": "Software That Solves Real Problems",
+      "description": "Forge Studio is an independent software engineering studio building reliable web applications, SaaS products, automation systems, and business software."
+    },
     "hero": {
       "eyebrow": "Independent software studio",
       "title": "We build software that solves",
@@ -315,7 +542,8 @@
     },
 
     "technology": {
-      "label": "Technology is the tool."
+      "label": "Technology is the tool.",
+      "cloudInfrastructure": "Cloud infrastructure"
     },
 
     "services": {
