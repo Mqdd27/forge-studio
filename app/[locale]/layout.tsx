@@ -13,27 +13,15 @@ import { LocaleHtml } from "../../components/locale-html";
 
 import { routing } from "../../i18n/routing";
 
-/* =========================================================
-   STATIC LOCALES
-========================================================= */
+/* STATIC LOCALES */
 
 export function generateStaticParams() {
-  return routing.locales.map((locale) => ({
-    locale,
-  }));
+  return routing.locales.map((locale) => ({ locale }));
 }
 
-/* =========================================================
-   METADATA
-========================================================= */
+/* METADATA */
 
-export async function generateMetadata({
-  params,
-}: {
-  params: {
-    locale: string;
-  };
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const { locale } = params;
 
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
@@ -51,21 +39,14 @@ export async function generateMetadata({
     : "Independent software engineering studio building reliable digital products for businesses.";
 
   return {
-    title: {
-      default: title,
-      template: "%s | Forge Studio",
-    },
+    title: { default: title, template: "%s | Forge Studio" },
 
     description,
 
     alternates: {
       canonical: `/${locale}`,
 
-      languages: {
-        en: "/en",
-        id: "/id",
-        "x-default": "/en",
-      },
+      languages: { en: "/en", id: "/id", "x-default": "/en" },
     },
 
     openGraph: {
@@ -94,9 +75,7 @@ export async function generateMetadata({
   };
 }
 
-/* =========================================================
-   LOCALE LAYOUT
-========================================================= */
+/* LOCALE LAYOUT */
 
 export default async function LocaleLayout({
   children,
@@ -104,35 +83,25 @@ export default async function LocaleLayout({
 }: {
   children: React.ReactNode;
 
-  params: {
-    locale: string;
-  };
+  params: { locale: string };
 }) {
   const { locale } = params;
 
-  /* =======================================================
-     VALIDATE LOCALE
-  ======================================================== */
+  /* VALIDATE LOCALE */
 
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();
   }
 
-  /* =======================================================
-     NEXT-INTL REQUEST LOCALE
-  ======================================================== */
+  /* NEXT-INTL REQUEST LOCALE */
 
   setRequestLocale(locale);
 
-  /* =======================================================
-     LOAD TRANSLATIONS
-  ======================================================== */
+  /* LOAD TRANSLATIONS */
 
   const messages = (await import(`../../messages/${locale}.json`)).default;
 
-  /* =======================================================
-     RENDER
-  ======================================================== */
+  /* RENDER */
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>

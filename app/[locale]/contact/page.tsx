@@ -4,21 +4,10 @@ import { getTranslations } from "next-intl/server";
 
 import { ContactPageClient } from "../../../components/contact-page-client";
 
-/* =========================================================
-   METADATA
-========================================================= */
+/* METADATA */
 
-export async function generateMetadata({
-  params,
-}: {
-  params: {
-    locale: string;
-  };
-}): Promise<Metadata> {
-  const t = await getTranslations({
-    locale: params.locale,
-    namespace: "ContactPage.metadata",
-  });
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: "ContactPage.metadata" });
 
   const title = t("title");
   const description = t("description");
@@ -32,11 +21,7 @@ export async function generateMetadata({
     alternates: {
       canonical: path,
 
-      languages: {
-        en: "/en/contact",
-        id: "/id/contact",
-        "x-default": "/en/contact",
-      },
+      languages: { en: "/en/contact", id: "/id/contact", "x-default": "/en/contact" },
     },
 
     openGraph: {
@@ -51,17 +36,11 @@ export async function generateMetadata({
       alternateLocale: params.locale === "id" ? ["en_US"] : ["id_ID"],
     },
 
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | Forge Studio`,
-      description,
-    },
+    twitter: { card: "summary_large_image", title: `${title} | Forge Studio`, description },
   };
 }
 
-/* =========================================================
-   CONTACT
-========================================================= */
+/* CONTACT */
 
 export default function Contact() {
   return <ContactPageClient />;
