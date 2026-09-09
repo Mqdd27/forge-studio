@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { getTranslations } from "next-intl/server";
-
+import Image from "next/image";
 import { Link } from "../../../i18n/navigation";
 import { PageIntro } from "../../../components/page-intro";
 
@@ -98,9 +98,15 @@ export default async function About({ params }: { params: { locale: string } }) 
       <section className="mx-auto grid w-full max-w-[1200px] grid-cols-1 items-start gap-10 px-4 py-16 sm:px-6 sm:py-[88px] md:grid-cols-[minmax(160px,0.65fr)_minmax(0,1.35fr)] md:gap-12 lg:grid-cols-[minmax(220px,1fr)_minmax(0,2fr)] lg:gap-20 lg:px-8 lg:py-28 xl:gap-24">
         {/* BRAND MARK */}
 
-        <div className="grid aspect-square w-[120px] shrink-0 place-items-center rounded-xl bg-ink font-heading text-[36px] font-bold tracking-[-0.05em] text-white sm:w-[150px] sm:text-[44px] md:w-full md:max-w-[240px] md:text-[clamp(48px,7vw,72px)] lg:max-w-[320px] xl:max-w-[360px]">
-          FS
-        </div>
+        {/* <div className="grid aspect-square w-[120px] shrink-0 place-items-center rounded-xl bg-ink font-heading text-[36px] font-bold tracking-[-0.05em] text-white sm:w-[150px] sm:text-[44px] md:w-full md:max-w-[240px] md:text-[clamp(48px,7vw,72px)] lg:max-w-[320px] xl:max-w-[360px]"></div> */}
+        <Image
+          src={"/img/forge-icon.png"}
+          alt="Forge Studio"
+          width={512}
+          height={512}
+          priority
+          className="rounded-2xl h-full w-full object-contain"
+        />
 
         {/* CONTENT */}
 

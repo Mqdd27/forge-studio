@@ -159,12 +159,12 @@ export function SiteHeader() {
 
                 {/* BRAND NAME */}
                 <span
-                  className={`min-w-0 truncate font-heading font-bold leading-none tracking-[-0.045em] text-ink transition-colors duration-300 group-hover:text-accent ${
-                    scrolled ? `text-[17px] min-[375px]:text-[18px] sm:text-[19px]` : `text-[18px] min-[375px]:text-[19px] sm:text-[22px]`
+                  className={`py-1 min-w-0 truncate font-heading font-extrabold leading-none tracking-[-0.045em] text-ink transition-colors duration-300 group-hover:text-accent ${
+                    scrolled ? `text-[17px] min-[375px]:text-[18px] sm:text-[19px]` : `text-[18px] min-[375px]:text-[19px] sm:text-[27px]`
                   }`}
                 >
                   Forge
-                  <span className="font-medium text-muted"> Studio</span>
+                  <span className="font-bold text-grey"> Studio</span>
                 </span>
               </Link>
             </div>

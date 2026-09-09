@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-
+import Image from "next/image";
 import { Link } from "../i18n/navigation";
 
 export function Footer() {
@@ -17,9 +17,17 @@ export function Footer() {
 
           <div className="border-b border-border pb-8 sm:col-span-2 lg:col-span-1 lg:border-b-0 lg:pb-0 lg:pr-8">
             <Link href="/" className="group inline-flex items-center gap-3 min-w-0">
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-ink font-heading text-[10px] font-bold text-white transition-colors duration-200 group-hover:bg-accent">
+              {/* <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-ink font-heading text-[10px] font-bold text-white transition-colors duration-200 group-hover:bg-accent">
                 FS
-              </span>
+              </span> */}
+              <Image
+                src={"/img/forge-icon.png"}
+                alt="Forge Studio"
+                width={80}
+                height={80}
+                priority
+                className="rounded-2xl object-contain"
+              />
 
               <span className="min-w-0 font-heading text-[22px] font-bold leading-none tracking-[-0.04em] text-ink transition-colors group-hover:text-accent">
                 Forge
