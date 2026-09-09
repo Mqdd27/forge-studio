@@ -10,6 +10,8 @@ import { WorkVisual } from "../../components/visual";
 
 import { Reveal } from "../../components/reveal";
 
+import Image from "next/image";
+
 /* SHARED STYLES */
 
 const container = "mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8";
@@ -316,9 +318,10 @@ export default async function Home({ params }: { params: { locale: string } }) {
                 <Reveal key={item.key} delay={index * 0.07} y={22} className="h-full">
                   <article className="flex h-full min-h-[250px] flex-col rounded-xl border border-border bg-surface p-5 transition-all duration-200 sm:min-h-[270px] sm:p-6 lg:min-h-[290px] lg:hover:-translate-y-0.5 lg:hover:border-accent lg:hover:shadow-[0_8px_24px_rgba(181,80,26,0.06)]">
                     <div className="mb-6 flex items-start justify-between gap-4">
-                      <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-ink font-heading text-xs font-bold text-white sm:h-12 sm:w-12 sm:text-sm">
+                      {/* <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-ink font-heading text-xs font-bold text-white sm:h-12 sm:w-12 sm:text-sm">
                         FS
-                      </div>
+                      </div> */}
+                      <Image src={"/img/forge-icon.png"} alt="Forge Studio" width={60} height={60} priority className=" object-fill" />
 
                       <span
                         className={`inline-flex max-w-[150px] rounded-full px-2.5 py-[5px] text-center text-[9px] font-semibold uppercase leading-tight tracking-[0.05em] sm:text-[10px] ${

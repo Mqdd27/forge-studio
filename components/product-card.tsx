@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-
+import Image from "next/image";
 import { Link } from "../i18n/navigation";
 import type { products } from "../data/site";
 
@@ -19,9 +19,10 @@ export function ProductCard({ item }: { item: (typeof products)[number] }) {
       {/* HEADER */}
 
       <div className="mb-6 flex items-start justify-between gap-4">
-        <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-ink font-heading text-xs font-bold text-white sm:h-12 sm:w-12 sm:text-sm">
+        {/* <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-ink font-heading text-xs font-bold text-white sm:h-12 sm:w-12 sm:text-sm">
           FS
-        </div>
+        </div> */}
+        <Image src={"/img/forge-icon.png"} alt="Forge Studio" width={60} height={60} priority className=" object-fill" />
 
         <span
           className={`inline-flex max-w-[150px] rounded-full px-2.5 py-[5px] text-center text-[9px] font-semibold uppercase leading-tight tracking-[0.05em] sm:text-[10px] ${statusClass}`}
