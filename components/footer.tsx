@@ -23,8 +23,8 @@ export function Footer() {
               <Image
                 src={"/img/forge-icon.png"}
                 alt="Forge Studio"
-                width={80}
-                height={80}
+                width={44}
+                height={44}
                 priority
                 className="rounded-2xl object-contain"
               />

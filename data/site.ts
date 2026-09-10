@@ -22,9 +22,9 @@ export interface ProductItem {
 }
 
 export const products: readonly ProductItem[] = [
-  { key: "growpos", name: "GrowPOS", status: "beta" },
-  { key: "forgeInventory", name: "Forge Inventory", status: "comingSoon" },
-  { key: "signalDesk", name: "Signal Desk", status: "comingSoon" },
+  { key: "growpos", name: "GrowPOS", status: "live" },
+  { key: "forgeInventory", name: "FieldCoord", status: "comingSoon" },
+  { key: "signalDesk", name: "AuditLog OS", status: "comingSoon" },
 ];
 export const insights = [
   { key: "overEngineering", slug: "over-engineering", date: "Oct 12, 2024" },

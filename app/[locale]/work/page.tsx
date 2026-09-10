@@ -1,11 +1,6 @@
 import type { Metadata } from "next";
-
 import { getTranslations } from "next-intl/server";
-
-import { PageIntro } from "../../../components/page-intro";
-import { WorkList } from "../../../components/work-list";
-
-/* METADATA */
+import { WorkDesign } from "../../../components/design/work";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: "WorkPage.metadata" });
@@ -43,16 +38,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
 /* WORK */
 
-export default async function Work({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: "WorkPage" });
-
-  return (
-    <main className="min-w-0 overflow-x-clip">
-      <PageIntro eyebrow={t("intro.eyebrow")} title={t("intro.title")}>
-        <p>{t("intro.description")}</p>
-      </PageIntro>
-
-      <WorkList />
-    </main>
-  );
+export default function Page() {
+  return <WorkDesign />;
 }

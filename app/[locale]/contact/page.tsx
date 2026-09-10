@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
-
 import { getTranslations } from "next-intl/server";
-
-import { ContactPageClient } from "../../../components/contact-page-client";
-
-/* METADATA */
+import { ContactDesign } from "../../../components/design/contact";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: "ContactPage.metadata" });
@@ -42,6 +38,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
 /* CONTACT */
 
-export default function Contact() {
-  return <ContactPageClient />;
+export default function Page() {
+  return <ContactDesign />;
 }
