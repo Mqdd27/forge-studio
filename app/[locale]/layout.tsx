@@ -110,7 +110,7 @@ export default async function LocaleLayout({
       <MotionProvider>
         <SiteHeader />
 
-        <div className="min-w-0 overflow-x-clip">
+        <div id="main-content" tabIndex={-1} className="min-w-0 overflow-x-clip">
           <PageTransition>{children}</PageTransition>
         </div>
 

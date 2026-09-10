@@ -26,7 +26,6 @@
           }
         }
       },
-
       "professionalInterface": {
         "sections": {
           "1": {
@@ -47,7 +46,6 @@
           }
         }
       },
-
       "legacyMonolith": {
         "sections": {
           "1": {
@@ -131,7 +129,6 @@
     },
     "cta": { "title": "Have a similar challenge?", "button": "Start a Project" }
   },
-
   "ContactPage": {
     "metadata": {
       "title": "Contact",
@@ -177,41 +174,34 @@
     },
     "next": { "title": "What happens next", "discovery": "Discovery call", "proposal": "Practical proposal", "build": "Build and handover" }
   },
-
   "AboutPage": {
     "metadata": {
       "title": "About",
       "description": "Learn about Forge Studio, an independent software engineering studio focused on building reliable, practical, and business-driven digital products."
     },
-
     "intro": {
       "eyebrow": "About Forge",
       "title": "Independent by design. Serious about the outcome.",
       "description": "Forge Studio is an independent software studio focused on designing and engineering reliable digital products for businesses."
     },
-
     "principles": {
       "eyebrow": "Our principles",
       "title": "Good software earns trust quietly.",
-
       "items": {
         "reliability": {
           "title": "Reliability above all",
           "description": "Software should be stable, secure, and predictable in the moments your business depends on it."
         },
-
         "businessFirst": {
           "title": "Business-first approach",
           "description": "Technology is a tool. Every decision should connect back to a clear operational or commercial outcome."
         },
-
         "precision": {
           "title": "Precision engineering",
           "description": "We value clean systems, careful details, and simple solutions over convoluted, trendy ones."
         }
       }
     },
-
     "studio": {
       "eyebrow": "The studio",
       "title": "Small enough to stay close to the work.",
@@ -242,7 +232,6 @@
       "title": "Insights",
       "description": "Practical insights from Forge Studio about software engineering, product development, system architecture, automation, and building reliable digital products."
     },
-
     "intro": {
       "eyebrow": "Notes from the studio",
       "title": "Insights",
@@ -261,12 +250,9 @@
       "title": "Built around the problem, not the technology.",
       "description": "A collection of engineering projects demonstrating our approach to complex problem-solving and business-first software architecture."
     },
-
     "filters": { "all": "All", "customApp": "Custom App", "saas": "SaaS", "automation": "Automation", "integration": "Integration" },
-
     "empty": { "title": "No projects in this category yet.", "cta": "Talk to us about your challenge" }
   },
-
   "ProductsPage": {
     "metadata": {
       "title": "Software Products",
@@ -288,33 +274,26 @@
       "title": "Engineering solutions for business growth.",
       "description": "We build scalable, high-performance digital infrastructure designed specifically to solve complex operational challenges."
     },
-
     "status": { "available": "Available now", "byRequest": "By request" },
-
     "discussProject": "Discuss your project",
-
     "useCaseDescription": "Designed around your team's process, with a focus on clarity and dependable outcomes.",
-
     "maintenance": {
       "eyebrow": "Ongoing partnership",
       "title": "Maintenance & Support",
       "description": "Choose the level of care that matches your operating rhythm.",
       "mostPopular": "Most popular",
       "discussPlan": "Discuss a plan",
-
       "plans": {
         "basic": {
           "name": "Basic Care",
           "description": "Essential updates and monitoring",
           "features": { "1": "Uptime monitoring", "2": "Security patches", "3": "Email support" }
         },
-
         "business": {
           "name": "Business Care",
           "description": "Proactive care for growing teams",
           "features": { "1": "Everything in Basic Care", "2": "Performance reviews", "3": "Priority support" }
         },
-
         "continuous": {
           "name": "Continuous Development",
           "description": "An embedded technical partner",
@@ -356,7 +335,6 @@
         "useCases": { "1": "Security updates", "2": "Bug fixes", "3": "Continuous improvements" }
       }
     },
-
     "cases": {
       "nexus": {
         "title": "Nexus Analytics Platform",
@@ -374,15 +352,16 @@
         "summary": "A fault-tolerant data bridge between modern billing and legacy operations."
       }
     },
-
     "products": {
       "growpos": { "tagline": "Point-of-sale for growing retail businesses", "category": "POS / SaaS" },
-      "forgeInventory": { "tagline": "Clearer stock operations for distributed teams", "category": "Operations" },
-      "signalDesk": { "tagline": "A calm command center for business workflows", "category": "Automation" }
+      "forgeInventory": {
+        "tagline": "Operational workflow coordination and field dispatch for mid-sized teams.",
+        "category": "Operations"
+      },
+      "signalDesk": { "tagline": "Internal audit trails and compliance reporting for business systems.", "category": "Business Systems" },
+      "learnMore": "Ask about this product"
     },
-
     "productStatus": { "beta": "Beta", "comingSoon": "Coming Soon", "live": "Live", "visit": "Visit product →", "notify": "Notify me" },
-
     "insights": {
       "overEngineering": {
         "title": "The Case Against Over-Engineering in Early Stage Startups",
@@ -409,15 +388,11 @@
     "about": "About",
     "insights": "Insights",
     "contact": "Start a Project",
-
     "language": "Language",
-
     "english": "EN",
     "indonesian": "ID",
-
     "englishName": "English",
     "indonesianName": "Bahasa Indonesia",
-
     "homeAria": "Forge Studio home",
     "primaryNavigation": "Primary navigation",
     "mobileNavigation": "Mobile navigation",
@@ -441,7 +416,6 @@
     "copyright": "© 2026 Forge Studio. All rights reserved."
   },
   "WorkCard": { "caseStudy": "Case study" },
-
   "Home": {
     "metadata": {
       "title": "Software That Solves Real Problems",
@@ -457,9 +431,7 @@
       "noteTitle": "Business-first engineering",
       "noteDescription": "from discovery to handover."
     },
-
     "technology": { "label": "Technology is the tool.", "cloudInfrastructure": "Cloud infrastructure" },
-
     "services": {
       "eyebrow": "Capabilities",
       "title": "What we build",
@@ -467,14 +439,12 @@
       "viewAll": "All services →",
       "learnMore": "Learn more →"
     },
-
     "work": {
       "eyebrow": "Selected work",
       "title": "Built for the work behind the work.",
       "description": "Real-world systems engineered around the way businesses operate.",
       "viewAll": "View all work →"
     },
-
     "process": {
       "eyebrow": "How we work",
       "title": "A clear path from problem to production.",
@@ -489,9 +459,7 @@
         "maintenance": "Maintenance"
       }
     },
-
     "products": { "eyebrow": "Products", "title": "Software born from real problems.", "viewAll": "See all products →" },
-
     "about": {
       "eyebrow": "About Forge",
       "titleLine1": "Independent by design.",
@@ -499,7 +467,6 @@
       "description": "Forge Studio is an independent software studio focused on designing and engineering reliable digital products for businesses. We choose clarity over technical vanity and build systems meant to last.",
       "link": "About us →"
     },
-
     "cta": {
       "eyebrow": "Have a business problem worth solving?",
       "title": "Let's make the next step practical.",

@@ -1,3 +1,5 @@
+import designContent from "../../../../data/design-content.json";
+import { DesignDetail } from "../../../../components/design/detail";
 import type { Metadata } from "next";
 
 import { notFound } from "next/navigation";
@@ -11,12 +13,22 @@ const slugs = insights.map((item) => item.slug);
 /* STATIC PARAMS */
 
 export function generateStaticParams() {
-  return slugs.map((slug) => ({ slug }));
+  return [...slugs.map((slug) => ({ slug })), ...designContent.insights.map(({ slug }) => ({ slug }))];
 }
 
 /* METADATA */
 
 export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {
+  const designItem = designContent.insights.find((item) => item.slug === params.slug);
+  if (designItem)
+    return {
+      title: designItem.title,
+      description: designItem.description,
+      alternates: {
+        canonical: `/${params.locale}/insights/${params.slug}`,
+        languages: { en: `/en/insights/${params.slug}`, id: `/id/insights/${params.slug}` },
+      },
+    };
   const item = insights.find((entry) => entry.slug === params.slug);
 
   if (!item) {
@@ -59,6 +71,8 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
 /* ARTICLE */
 
 export default async function InsightArticle({ params }: { params: { slug: string; locale: string } }) {
+  const designItem = designContent.insights.find((item) => item.slug === params.slug);
+  if (designItem) return <DesignDetail item={designItem} kind="insights" locale={params.locale} />;
   const item = insights.find((entry) => entry.slug === params.slug);
 
   if (!item) {

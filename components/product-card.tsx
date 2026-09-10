@@ -12,7 +12,8 @@ export function ProductCard({ item }: { item: (typeof products)[number] }) {
 
   const isComingSoon = item.status === "comingSoon";
 
-  const statusClass = item.status === "beta" ? "bg-[#FBF3DD] text-warning" : "bg-[#F0F0F0] text-muted";
+  const statusClass =
+    item.status === "live" ? "bg-green-50 text-success" : item.status === "beta" ? "bg-[#FBF3DD] text-warning" : "bg-[#F0F0F0] text-muted";
 
   return (
     <article className="flex h-full min-h-[250px] min-w-0 flex-col rounded-xl border border-border bg-surface p-5 transition-all duration-200 sm:min-h-[270px] sm:p-6 lg:min-h-[290px] lg:hover:-translate-y-0.5 lg:hover:border-accent lg:hover:shadow-[0_8px_24px_rgba(181,80,26,0.06)]">
@@ -44,10 +45,10 @@ export function ProductCard({ item }: { item: (typeof products)[number] }) {
       {/* ACTION */}
 
       <Link
-        href="/products"
+        href="/contact"
         className="mt-auto inline-flex w-fit items-center gap-1.5 text-[11px] font-semibold uppercase tracking-[0.06em] text-accent transition-all hover:underline sm:text-xs"
       >
-        {isComingSoon ? tStatus("notify") : tStatus("visit")}
+        {isComingSoon ? tStatus("notify") : <span>{tProducts("learnMore")}</span>}
       </Link>
     </article>
   );

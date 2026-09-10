@@ -19,6 +19,7 @@ export const metadata: Metadata = {
   description: "Independent software engineering studio building reliable digital products for businesses.",
 
   applicationName: "Forge Studio",
+  icons: { icon: "/img/forge-icon.png", apple: "/img/forge-icon.png" },
 
   authors: [{ name: "Forge Studio" }],
 
