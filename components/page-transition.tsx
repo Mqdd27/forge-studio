@@ -79,7 +79,6 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
             if (node.hasAttribute("data-stagger")) {
               Array.from(node.children).forEach((child, index) => animate(child, Math.min(index, 3) * 60));
             } else animate(node);
-            if (node.classList.contains("process-grid")) node.classList.add("process-revealed");
             observer.unobserve(node);
           }
       },
@@ -87,15 +86,9 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     );
     const scan = () =>
       root.querySelectorAll<HTMLElement>("main > section h2:first-of-type, [data-stagger], [data-scroll-reveal]").forEach((node) => {
-        if (
-          seen.has(node) ||
-          node.closest(".hero-preview") ||
-          (node.closest("[data-stagger]") !== null && !node.hasAttribute("data-stagger"))
-        )
-          return;
+        if (seen.has(node) || (node.closest("[data-stagger]") !== null && !node.hasAttribute("data-stagger"))) return;
         seen.add(node);
         if (node.getBoundingClientRect().top < innerHeight) {
-          if (node.classList.contains("process-grid")) node.classList.add("process-revealed");
           return;
         }
         observer.observe(node);
@@ -114,11 +107,18 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   return (
     <>
       {pending && (
-        <div className="route-progress" role="status" aria-label={locale === "id" ? "Membuka halaman" : "Opening page"}>
+        <div
+          className="fixed inset-x-0 top-0 z-[100] h-0.5 overflow-hidden bg-[#f1e8df] [&>span]:block [&>span]:h-full [&>span]:w-2/3 [&>span]:bg-[#c34810] motion-safe:[&>span]:animate-pulse"
+          role="status"
+          aria-label={locale === "id" ? "Membuka halaman" : "Opening page"}
+        >
           <span />
         </div>
       )}
-      <div ref={container} className={`route-content ${pending ? "is-navigating" : ""}`}>
+      <div
+        ref={container}
+        className={`min-w-0 transition-opacity duration-200 motion-reduce:transition-none ${pending ? "opacity-80" : "opacity-100"}`}
+      >
         {children}
       </div>
     </>

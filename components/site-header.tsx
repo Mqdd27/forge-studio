@@ -114,65 +114,62 @@ export function SiteHeader() {
   };
   return (
     <>
-      <a href="#main-content" className="skip-link">
+      <a
+        href="#main-content"
+        className="fixed top-4 left-4 z-[100] -translate-y-24 rounded-lg bg-white px-4 py-3 text-[#a63409] shadow-lg focus:translate-y-0"
+      >
         {locale === "id" ? "Langsung ke konten" : "Skip to content"}
       </a>
-      <div className="scroll-progress-bar" style={{ transform: `scaleX(${progress})` }} aria-hidden="true" />
+      <progress
+        value={progress}
+        max={1}
+        aria-hidden="true"
+        className="fixed inset-x-0 top-0 z-[90] h-0.5 w-full appearance-none border-0 bg-transparent [&::-moz-progress-bar]:bg-[#c34810] [&::-webkit-progress-bar]:bg-transparent [&::-webkit-progress-value]:bg-[#c34810]"
+      />
       <header
         ref={header}
-        className={`site-header forge-nav ${scrolled ? "is-scrolled" : ""} ${hidden && !open ? "is-hidden" : ""} ${open ? "menu-is-open" : ""}`}
+        className={`sticky top-0 z-70 px-2 py-2.5 transition-transform duration-300 ease-out focus-within:translate-y-0 motion-reduce:transition-none sm:px-4 lg:px-8 ${hidden && !open ? "-translate-y-full" : "translate-y-0"}`}
         role={open ? "dialog" : undefined}
         aria-modal={open ? true : undefined}
         aria-label={open ? (locale === "id" ? "Menu navigasi" : "Navigation menu") : undefined}
       >
-        <div className="header-inner">
-          <Link href="/" aria-label="Forge Studio" className="header-brand group flex shrink-0 items-center gap-1.5">
+        <div
+          className={`relative mx-auto grid min-h-16 max-w-[1736px] grid-cols-[1fr_auto] items-center gap-2 rounded-2xl border bg-white/95 px-2 py-2 backdrop-blur-lg sm:gap-4 sm:px-5 lg:grid-cols-[1fr_auto_1fr] ${scrolled ? "border-[#c8b8ac] shadow-lg shadow-stone-900/10" : "border-[#d9cfc7] shadow-sm"}`}
+        >
+          <Link
+            href="/"
+            aria-label="Forge Studio"
+            className="flex items-center gap-1 justify-self-start font-[family-name:var(--font-manrope)] text-[13px] tracking-tight text-[#292421] min-[360px]:text-base sm:gap-2 sm:text-xl"
+          >
             <Image
               src="/img/forge-icon.png"
               alt=""
-              width={44}
-              height={44}
+              width={32}
+              height={32}
               priority
-              className="rounded-lg object-contain transition-transform duration-300 group-hover:scale-105"
+              className="size-5 object-contain min-[360px]:size-7 sm:size-8"
             />
-
-            <span className="flex items-center">
-              <span className="brand-name font-heading text-lg font-bold leading-none tracking-tight text-ink transition-colors duration-300 group-hover:text-accent sm:text-2xl">
-                Forge
-              </span>
-
-              <span className="ml-1 font-heading font-semibold text-lg leading-none text-grey sm:text-2xl">Studio</span>
+            <span className="font-bold">
+              Forge<span className="ml-1 font-semibold">Studio</span>
             </span>
-          </Link>{" "}
+          </Link>
           <nav
             aria-label={locale === "id" ? "Navigasi utama" : "Main navigation"}
-            className="desktop-navigation hidden items-center gap-1 lg:flex"
+            className="hidden items-center gap-1 rounded-xl border border-[#eee5de] bg-[#f6f2ee] p-1 lg:flex"
           >
-            {links.map(([label, href]) => {
-              const active = isActive(href);
-
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  aria-current={active ? "page" : undefined}
-                  className={`nav-link relative rounded-md px-3.5 py-2 text-[13px] font-medium transition-colors hover:text-accent ${
-                    active ? "font-semibold text-accent" : "text-grey"
-                  }`}
-                >
-                  {t(label)}
-                  {active && (
-                    <span
-                      aria-hidden="true"
-                      className="nav-active-dot absolute bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-accent"
-                    />
-                  )}
-                </Link>
-              );
-            })}
-          </nav>{" "}
-          <div className="header-actions flex items-center gap-2">
-            <div className="language-switch flex text-[11px] font-semibold" aria-label="Language">
+            {links.map(([label, href]) => (
+              <Link
+                key={href}
+                href={href}
+                aria-current={isActive(href) ? "page" : undefined}
+                className={`rounded-lg px-4 py-2.5 text-[13px] font-medium transition-colors hover:bg-[#eae0d6] hover:text-[#9d330a] ${isActive(href) ? "bg-white text-[#a63409] shadow-sm" : "text-[#63574f]"}`}
+              >
+                {t(label)}
+              </Link>
+            ))}
+          </nav>
+          <div className="flex items-center gap-1 justify-self-end sm:gap-3">
+            <div className="flex rounded-lg border border-[#e3d8ce] bg-white p-0.5 text-[11px] font-semibold" aria-label="Language">
               {(["en", "id"] as const).map((lang) => (
                 <button
                   key={lang}
@@ -182,7 +179,7 @@ export function SiteHeader() {
                     router.replace(pathname, { locale: lang });
                     setOpen(false);
                   }}
-                  className={`min-h-11 min-w-11 cursor-pointer rounded-full uppercase transition-colors ${locale === lang ? "text-accent font-bold" : "text-muted hover:text-ink"}`}
+                  className={`min-h-10 min-w-7 cursor-pointer rounded-md uppercase transition-colors min-[360px]:min-w-9 ${locale === lang ? "bg-[#303b40] text-white" : "text-[#67594f] hover:bg-stone-100"}`}
                 >
                   {lang}
                 </button>
@@ -190,12 +187,10 @@ export function SiteHeader() {
             </div>
             <Link
               href="/start-a-project"
-              className="btn-primary group hidden min-h-[44px] items-center gap-1.5 px-4 py-2.5 text-xs font-semibold text-white transition-all duration-200 md:inline-flex"
+              className="hidden min-h-11 items-center gap-2 rounded-lg bg-[#c34810] px-4 text-xs font-semibold text-white transition-colors hover:bg-[#a63409] md:inline-flex"
             >
-              <span>{locale === "id" ? "Mulai Proyek" : "Start a Project"}</span>
-              <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
-                →
-              </span>
+              {locale === "id" ? "Mulai Proyek" : "Start a Project"}
+              <span aria-hidden="true">→</span>
             </Link>
             <button
               ref={menuButton}
@@ -204,54 +199,44 @@ export function SiteHeader() {
               aria-expanded={open}
               aria-controls="mobile-navigation"
               onClick={() => setOpen(!open)}
-              className="grid h-11 w-11 place-items-center rounded-lg border border-border lg:hidden"
+              className="grid size-11 shrink-0 cursor-pointer place-items-center rounded-lg border border-[#daccc0] bg-[#f7f2ed] text-[#292421] lg:hidden"
             >
               <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d={open ? "m5 5 14 14M5 19 19 5" : "M3 6h18M3 12h18M3 18h18"} />
               </svg>
             </button>
           </div>
-        </div>
-        <nav
-          id="mobile-navigation"
-          aria-label={locale === "id" ? "Navigasi seluler" : "Mobile navigation"}
-          aria-hidden={!open}
-          className={`mobile-navigation grid gap-1 lg:hidden ${open ? "is-open" : ""}`}
-        >
-          {links.map(([label, href]) => {
-            const active = isActive(href);
-
-            return (
+          <nav
+            id="mobile-navigation"
+            aria-label={locale === "id" ? "Navigasi seluler" : "Mobile navigation"}
+            aria-hidden={!open}
+            className={`absolute inset-x-0 top-[calc(100%+8px)] max-h-[calc(100dvh-108px)] overflow-y-auto rounded-2xl border border-[#d9cfc7] bg-white p-5 shadow-xl transition-[opacity,transform,visibility] duration-300 motion-reduce:transition-none lg:hidden ${open ? "visible translate-y-0 opacity-100" : "pointer-events-none invisible -translate-y-2 opacity-0"}`}
+          >
+            {links.map(([label, href]) => (
               <Link
                 tabIndex={open ? 0 : -1}
                 key={href}
                 href={href}
-                aria-current={active ? "page" : undefined}
+                aria-current={isActive(href) ? "page" : undefined}
                 onClick={() => setOpen(false)}
-                className={`justify-between rounded-lg px-4 py-3 text-sm transition-colors ${
-                  active ? "bg-accent-light font-semibold text-accent" : "text-grey hover:bg-alt hover:text-accent"
-                }`}
+                className={`flex min-h-16 items-center justify-between border-b border-[#eee4db] px-2 py-4 font-[family-name:var(--font-manrope)] text-2xl ${isActive(href) ? "text-[#a63409]" : "text-[#292421]"}`}
               >
                 {t(label)}
-                {active && <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-current" />}
+                <span aria-hidden="true">↗</span>
               </Link>
-            );
-          })}
-          <Link
-            tabIndex={open ? 0 : -1}
-            href="/start-a-project"
-            onClick={() => setOpen(false)}
-            aria-current={isActive("/start-a-project") ? "page" : undefined}
-            className={`justify-between rounded-lg bg-accent px-4 py-3 text-sm font-semibold text-white ${
-              isActive("/start-a-project") ? "ring-2 ring-accent ring-offset-2" : "hover:bg-accent-dark"
-            }`}
-          >
-            {locale === "id" ? "Mulai Proyek" : "Start a Project"}
-            {isActive("/start-a-project") && <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-current" />}
-          </Link>
-        </nav>
+            ))}
+            <Link
+              tabIndex={open ? 0 : -1}
+              href="/start-a-project"
+              onClick={() => setOpen(false)}
+              className="mt-4 flex min-h-12 items-center justify-between rounded-lg bg-[#c34810] px-4 py-3 font-semibold text-white"
+            >
+              {locale === "id" ? "Mulai Proyek" : "Start a Project"}
+              <span aria-hidden="true">→</span>
+            </Link>
+          </nav>
+        </div>
       </header>
-      <div className="header-spacer" aria-hidden="true" />
     </>
   );
 }

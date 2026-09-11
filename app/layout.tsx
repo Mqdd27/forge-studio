@@ -28,9 +28,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="bg-surface" suppressHydrationWarning>
+    <html lang="en" className="scroll-pt-28 scroll-smooth bg-white motion-reduce:scroll-auto" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${manrope.variable} min-h-screen min-w-0 overflow-x-hidden bg-surface font-sans text-ink antialiased`}
+        className={`${inter.variable} ${manrope.variable} min-h-screen min-w-0 overflow-x-hidden bg-[#ffffff] font-[family-name:var(--font-inter)] text-[#1f1f1f] antialiased [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-4 [&_:focus-visible]:outline-[#c34810] [&_a]:touch-manipulation [&_button]:touch-manipulation [&_h1]:font-[family-name:var(--font-manrope)] [&_h1]:text-pretty [&_h2]:font-[family-name:var(--font-manrope)] [&_h2]:text-pretty [&_h3]:font-[family-name:var(--font-manrope)] [&_p]:text-pretty`}
       >
         {children}
       </body>

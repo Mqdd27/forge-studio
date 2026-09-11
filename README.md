@@ -1,6 +1,6 @@
 # Forge Studio
 
-Bilingual public website for an independent web development studio. Built with the existing Next.js App Router, next-intl, Inter/Manrope, and Forge Studio design tokens.
+Bilingual public website for an independent web development studio. Built with the existing Next.js App Router, next-intl, Inter/Manrope, and Tailwind utility styling.
 
 ## Run locally
 
@@ -48,10 +48,10 @@ The production build includes type checks. Route checks require a running server
 - `hooks/`: reusable browser hooks, including live reduced-motion preferences.
 - `data/`: typed service/project records and public presentation settings.
 - `messages/` and `i18n/`: English/Indonesian content and locale routing.
-- `styles/`: Tailwind tokens, global base styles, shared/legacy component styles, and current site layouts, imported in cascade order from `app/globals.css`.
+- Styling uses Tailwind utilities directly in components. `components/ui/page-shell.tsx` shares page typography; `app/globals.css` contains only the Tailwind v4 import. There are no custom stylesheets.
 - `scripts/`: route and inquiry verification.
 
-Use `@/` imports for project source. Prefer Tailwind utilities for local layout; use named CSS classes for reusable components and interaction states. Edit an existing selector instead of appending a competing override. Preserve stylesheet import order when refactoring the cascade. Build directories and incremental TypeScript caches are generated output, not source files.
+Use `@/` imports for project source. Use Tailwind utilities for layout, responsive states, hover/focus, and component styling. Extract reusable React components instead of adding custom CSS selectors. Prettier automatically orders Tailwind classes. Build directories and incremental TypeScript caches are generated output, not source files.
 
 Project screenshots use `next/image`: add a local public path, descriptive `alt`, and intrinsic `width`/`height` to `data/work-presentation.ts`. Remote sources require an explicit Next.js image configuration before use.
 
@@ -62,3 +62,5 @@ npm run check:routes # requires the local development server
 ```
 
 Page and scroll animations use the browser Web Animations API; no animation runtime dependency is required. The reduced-motion hook responds to preference changes while the page is open.
+
+Styling is implemented with Tailwind utilities in TSX. The only CSS entry is `app/globals.css`, containing `@import "tailwindcss";`. Shared page typography lives in `components/ui/page-shell.tsx`. Fonts are supplied by next/font; page transitions use the Web Animations API with reduced-motion support.

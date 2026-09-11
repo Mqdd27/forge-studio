@@ -45,7 +45,7 @@ export function DesignIcon({ name, className = "" }: { name: string; className?:
       strokeWidth="1.6"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={`design-icon ${className}`}
+      className={`inline-block size-[1em] shrink-0 align-[-0.15em] ${className}`}
     >
       <path d={path} />
     </svg>

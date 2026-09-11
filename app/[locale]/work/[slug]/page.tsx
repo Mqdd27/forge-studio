@@ -1,3 +1,4 @@
+import { PageShell } from "@/components/ui/page-shell";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -34,24 +35,24 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
   const presentation = workPresentation[item.key];
   const id = params.locale === "id";
   return (
-    <main className="stitch-page stitch-legacy design-page design-case mx-auto w-full max-w-[1240px] px-6 py-12 sm:px-8 md:py-20 lg:px-10">
-      <Link href="/work" className="group inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+    <PageShell className="mx-auto w-full max-w-[1240px] px-6 py-12 sm:px-8 md:py-20 lg:px-10">
+      <Link href="/work" className="group inline-flex items-center gap-1.5 text-sm font-semibold text-[#b5501a]">
         <span className="transition-transform duration-200 group-hover:-translate-x-1" aria-hidden="true">
           ←
         </span>
         <span>{id ? "Semua portofolio" : "All work"}</span>
       </Link>
       <header className="mt-8 max-w-4xl">
-        <p className="font-mono text-xs font-semibold uppercase tracking-wider text-accent">{t(`${item.key}.category`)}</p>
-        <h1 className="mt-3 font-heading text-3xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight text-ink">
+        <p className="font-mono text-xs font-semibold tracking-wider text-[#b5501a] uppercase">{t(`${item.key}.category`)}</p>
+        <h1 className="mt-3 font-[family-name:var(--font-manrope)] text-3xl leading-tight font-bold tracking-tight text-[#1f1f1f] sm:text-5xl md:text-6xl">
           {t(`${item.key}.title`)}
         </h1>
-        <p className="mt-5 text-lg sm:text-xl leading-relaxed text-grey">{t(`${item.key}.summary`)}</p>
-        <p className="mt-3 text-base leading-relaxed text-grey">{t(`${item.key}.description`)}</p>
+        <p className="mt-5 text-lg leading-relaxed text-[#595959] sm:text-xl">{t(`${item.key}.summary`)}</p>
+        <p className="mt-3 text-base leading-relaxed text-[#595959]">{t(`${item.key}.description`)}</p>
       </header>
-      <div className="case-layout mt-12">
-        <aside className="case-index">
-          <p className="font-mono text-[11px] font-semibold tracking-wider text-muted uppercase">
+      <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-[160px_minmax(0,1fr)] lg:grid-cols-[200px_minmax(0,1fr)]">
+        <aside className="self-start md:sticky md:top-28">
+          <p className="font-mono text-[11px] font-semibold tracking-wider text-[#8c8c8c] uppercase">
             {id ? "Di halaman ini" : "On this page"}
           </p>
           <nav aria-label={id ? "Isi studi kasus" : "Case study contents"} className="mt-4 flex flex-col space-y-1">
@@ -62,13 +63,13 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
               ["technical", id ? "Gambaran teknis" : "Technical overview"],
               ["outcome", id ? "Hasil" : "Outcome"],
             ].map(([key, label]) => (
-              <a key={key} href={`#${key}`} className="py-1 text-xs font-medium text-grey hover:text-accent transition-colors">
+              <a key={key} href={`#${key}`} className="py-1 text-xs font-medium text-[#595959] transition-colors hover:text-[#b5501a]">
                 {label}
               </a>
             ))}
           </nav>
         </aside>
-        <div className="case-story">
+        <div className="min-w-0 [&_section]:scroll-mt-28">
           <div className="max-w-3xl">
             <div className="min-w-0">
               {(
@@ -77,14 +78,16 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
                   ["solution", id ? "Solusi" : "Solution"],
                 ] as const
               ).map(([key, label]) => (
-                <section id={key} key={key} className="border-t border-border py-8">
-                  <h2 className="font-heading text-2xl font-semibold text-ink">{label}</h2>
-                  <p className="mt-4 leading-relaxed text-grey text-base sm:text-lg">{t(`${item.key}.${key}`)}</p>
+                <section id={key} key={key} className="border-t border-[#e3ddd5] py-8">
+                  <h2 className="font-[family-name:var(--font-manrope)] text-2xl font-semibold text-[#1f1f1f]">{label}</h2>
+                  <p className="mt-4 text-base leading-relaxed text-[#595959] sm:text-lg">{t(`${item.key}.${key}`)}</p>
                 </section>
               ))}
-              <section id="features" className="border-t border-border py-8">
-                <h2 className="font-heading text-2xl font-semibold text-ink">{id ? "Fitur utama" : "Key features"}</h2>
-                <ul className="mt-4 list-disc space-y-3 pl-5 text-grey text-base leading-relaxed">
+              <section id="features" className="border-t border-[#e3ddd5] py-8">
+                <h2 className="font-[family-name:var(--font-manrope)] text-2xl font-semibold text-[#1f1f1f]">
+                  {id ? "Fitur utama" : "Key features"}
+                </h2>
+                <ul className="mt-4 list-disc space-y-3 pl-5 text-base leading-relaxed text-[#595959]">
                   {item.scope.map((value, index) => (
                     <li key={value}>{t(`${item.key}.scope.${index}`)}</li>
                   ))}
@@ -93,12 +96,14 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
             </div>
           </div>
           {presentation.screenshots.length > 0 && (
-            <section className="mt-8 border-t border-border py-8">
-              <h2 className="font-heading text-2xl font-semibold text-ink">{id ? "Tampilan aplikasi" : "Screenshots"}</h2>
+            <section className="mt-8 border-t border-[#e3ddd5] py-8">
+              <h2 className="font-[family-name:var(--font-manrope)] text-2xl font-semibold text-[#1f1f1f]">
+                {id ? "Tampilan aplikasi" : "Screenshots"}
+              </h2>
               <div className="mt-6 grid gap-6">
                 {presentation.screenshots.map((image) => (
-                  <div key={image.src} className="overflow-hidden rounded-xl border border-border bg-surface shadow-md">
-                    <div className="flex items-center gap-1.5 border-b border-border/70 bg-[#FBF9F7] px-4 py-2.5" aria-hidden="true">
+                  <div key={image.src} className="overflow-hidden rounded-xl border border-[#e3ddd5] bg-[#ffffff] shadow-md">
+                    <div className="flex items-center gap-1.5 border-b border-[#e3ddd5]/70 bg-[#FBF9F7] px-4 py-2.5" aria-hidden="true">
                       <span className="h-2 w-2 rounded-full bg-[#E06C75]/70" />
                       <span className="h-2 w-2 rounded-full bg-[#E5C07B]/70" />
                       <span className="h-2 w-2 rounded-full bg-[#98C379]/70" />
@@ -110,26 +115,36 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
                       height={image.height}
                       sizes="(max-width: 767px) 100vw, 900px"
                       loading="lazy"
-                      className="w-full h-auto"
+                      className="h-auto w-full"
                     />
                   </div>
                 ))}
               </div>
             </section>
           )}
-          <details id="technical" className="case-technical">
+          <details
+            id="technical"
+            className="scroll-mt-28 border-y border-[#e3ddd5] [&_summary]:flex [&_summary]:list-none [&_summary]:items-center [&_summary]:justify-between [&_summary]:gap-4 [&_summary]:after:content-['+'] open:[&_summary]:after:content-['−']"
+          >
             <summary className="cursor-pointer py-6 select-none">
-              <h2 className="font-heading text-2xl font-semibold text-ink">{id ? "Gambaran teknis" : "Technical overview"}</h2>
+              <h2 className="font-[family-name:var(--font-manrope)] text-2xl font-semibold text-[#1f1f1f]">
+                {id ? "Gambaran teknis" : "Technical overview"}
+              </h2>
             </summary>{" "}
-            <section className="mt-4 max-w-3xl border-t border-border py-8">
-              <p className="leading-relaxed text-grey text-base sm:text-lg">{t(`${item.key}.engineering`)}</p>{" "}
+            <section className="mt-4 max-w-3xl border-t border-[#e3ddd5] py-8">
+              <p className="text-base leading-relaxed text-[#595959] sm:text-lg">{t(`${item.key}.engineering`)}</p>{" "}
               <div className="mt-6 grid gap-6 sm:grid-cols-2">
                 {item.stack.length > 0 && (
-                  <section className="rounded-xl border border-border bg-surface p-6">
-                    <h3 className="font-heading text-lg font-semibold text-ink">{id ? "Teknologi" : "Technology stack"}</h3>
+                  <section className="rounded-xl border border-[#e3ddd5] bg-[#ffffff] p-6">
+                    <h3 className="font-[family-name:var(--font-manrope)] text-lg font-semibold text-[#1f1f1f]">
+                      {id ? "Teknologi" : "Technology stack"}
+                    </h3>
                     <ul className="mt-4 flex flex-wrap gap-2">
                       {item.stack.map((value) => (
-                        <li key={value} className="rounded border border-border/70 bg-alt px-2.5 py-1 font-mono text-xs text-grey">
+                        <li
+                          key={value}
+                          className="rounded border border-[#e3ddd5]/70 bg-[#f7f4f0] px-2.5 py-1 font-mono text-xs text-[#595959]"
+                        >
                           {value}
                         </li>
                       ))}
@@ -137,9 +152,11 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
                   </section>
                 )}
                 {item.facts.length > 0 && (
-                  <section className="rounded-xl border border-border bg-surface p-6">
-                    <h3 className="font-heading text-lg font-semibold text-ink">{id ? "Fakta proyek" : "Project facts"}</h3>
-                    <ul className="mt-4 list-disc space-y-2.5 pl-5 text-sm leading-relaxed text-grey">
+                  <section className="rounded-xl border border-[#e3ddd5] bg-[#ffffff] p-6">
+                    <h3 className="font-[family-name:var(--font-manrope)] text-lg font-semibold text-[#1f1f1f]">
+                      {id ? "Fakta proyek" : "Project facts"}
+                    </h3>
+                    <ul className="mt-4 list-disc space-y-2.5 pl-5 text-sm leading-relaxed text-[#595959]">
                       {item.facts.map((value, index) => (
                         <li key={value}>{t(`${item.key}.facts.${index}`)}</li>
                       ))}
@@ -149,16 +166,16 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
               </div>
             </section>
           </details>
-          <section id="outcome" className="max-w-3xl border-t border-border py-8">
-            <h2 className="font-heading text-2xl font-semibold text-ink">{id ? "Hasil" : "Outcome"}</h2>
-            <p className="mt-4 leading-relaxed text-grey text-base sm:text-lg">{t(`${item.key}.outcome`)}</p>
+          <section id="outcome" className="max-w-3xl border-t border-[#e3ddd5] py-8">
+            <h2 className="font-[family-name:var(--font-manrope)] text-2xl font-semibold text-[#1f1f1f]">{id ? "Hasil" : "Outcome"}</h2>
+            <p className="mt-4 text-base leading-relaxed text-[#595959] sm:text-lg">{t(`${item.key}.outcome`)}</p>
           </section>
         </div>
       </div>
-      <div className="mt-12 border-t border-border pt-10">
+      <div className="mt-12 border-t border-[#e3ddd5] pt-10">
         <Link
           href="/start-a-project"
-          className="btn-primary group inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white"
+          className="group inline-flex items-center gap-2 rounded-lg bg-[#c34810] px-6 py-3.5 text-sm font-semibold text-white hover:bg-[#a63409]"
         >
           <span>{id ? "Mulai Proyek" : "Start a Project"}</span>
           <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
@@ -166,6 +183,6 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
           </span>
         </Link>
       </div>
-    </main>
+    </PageShell>
   );
 }

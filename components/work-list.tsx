@@ -16,7 +16,7 @@ export async function WorkList() {
           category: t(workPresentation[item.key].category),
           content: <WorkCard item={workCardData(item)} />,
         }))}
-        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 gap-6 min-[540px]:grid-cols-2 min-[1600px]:grid-cols-4 lg:grid-cols-3"
       />
     </section>
   );

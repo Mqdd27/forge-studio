@@ -1,11 +1,13 @@
 "use client";
 
+import { PageShell } from "@/components/ui/page-shell";
+
 import { FormEvent, useState } from "react";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
 const fieldClass =
-  "w-full rounded-xl border border-border/80 bg-surface px-4 py-3.5 text-base text-ink outline-none transition-all duration-200 placeholder:text-muted focus:border-accent focus:ring-4 focus:ring-accent/15";
+  "w-full rounded-xl border border-[#e3ddd5]/80 bg-[#ffffff] px-4 py-3.5 text-base text-[#1f1f1f] outline-none transition-all duration-200 placeholder:text-[#8c8c8c] focus:border-[#b5501a] focus:ring-4 focus:ring-[#b5501a]/15";
 const projectTypes = [
   ["customWeb", "Custom Web Application", "Aplikasi Web Custom"],
   ["businessSystems", "Business System", "Sistem Bisnis"],
@@ -70,39 +72,39 @@ export function ContactDesign() {
     }
   }
   return (
-    <main className="stitch-page stitch-contact st-section">
-      <div className="st-container">
-        <header className="st-contact-heading">
-          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+    <PageShell className="py-8 md:py-[clamp(32px,3.2vw,48px)] [&_form]:rounded-xl [&_form]:border-[#eee8e3] [&_form]:bg-white [&_form]:p-5 [&_form]:shadow-none md:[&_form]:p-6 lg:[&_form]:p-8 [&_form>button]:justify-self-start [&_form>button]:rounded-lg sm:[&_form>button]:w-auto [&_input]:text-base [&_select]:text-base [&_textarea]:text-base">
+      <div className="mx-auto w-full max-w-[1800px] px-5 md:px-[clamp(20px,3vw,56px)]">
+        <header className="mb-8 [&_h1]:max-w-none [&>p:last-child]:max-w-[90ch] [&>p:last-child]:text-base">
+          <p className="mb-3 font-mono text-xs font-semibold tracking-wider text-[#b5501a] uppercase">
             {id ? "MEMULAI PROYEK" : "START A PROJECT"}
           </p>
-          <h1 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-ink">
+          <h1 className="font-[family-name:var(--font-manrope)] text-4xl font-bold tracking-tight text-[#1f1f1f] sm:text-5xl">
             {id ? "Ceritakan proyek Anda." : "Tell us about your project."}
           </h1>
-          <p className="mt-4 text-base sm:text-lg leading-relaxed text-grey">
+          <p className="mt-4 text-base leading-relaxed text-[#595959] sm:text-lg">
             {id
               ? "Baik memulai dari ide maupun meningkatkan aplikasi yang sudah ada, ceritakan apa yang Anda butuhkan."
               : "Whether you are starting from an idea or improving an existing application, tell us what you need."}
           </p>
         </header>
-        <div className="st-contact-layout">
+        <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-[1.2fr_1fr] lg:grid-cols-[1.4fr_1fr]">
           <div>
             {status === "success" ? (
-              <section role="status" className="rounded-2xl border border-[#CED9C4] bg-[#F4F7F2] p-8 md:p-10 shadow-sm">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#E2ECDA] text-[#3A5729] mb-6 font-bold text-lg">
+              <section role="status" className="rounded-2xl border border-[#CED9C4] bg-[#F4F7F2] p-8 shadow-sm md:p-10">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-full bg-[#E2ECDA] text-lg font-bold text-[#3A5729]">
                   ✓
                 </div>
-                <h2 className="font-heading text-2xl sm:text-3xl font-bold text-ink">
+                <h2 className="font-[family-name:var(--font-manrope)] text-2xl font-bold text-[#1f1f1f] sm:text-3xl">
                   {id ? "Terima kasih telah menghubungi kami." : "Thanks for reaching out."}
                 </h2>
-                <p className="mt-4 text-base leading-relaxed text-grey max-w-xl">
+                <p className="mt-4 max-w-xl text-base leading-relaxed text-[#595959]">
                   {id
                     ? "Kami akan meninjau proyek Anda dan menghubungi Anda untuk membahas langkah berikutnya."
                     : "We will review your project and contact you to discuss the next step."}
                 </p>
                 <button
                   type="button"
-                  className="about-button btn-secondary mt-8 px-6 py-3 text-sm font-semibold"
+                  className="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[#d0c3b7] bg-white px-5 px-6 py-3 text-sm font-semibold text-[#26201c] hover:bg-[#f1e8df]"
                   onClick={() => setStatus("idle")}
                 >
                   {id ? "Kirim inquiry lain" : "Send another inquiry"}
@@ -111,11 +113,11 @@ export function ContactDesign() {
             ) : (
               <form
                 onSubmit={submit}
-                className="grid gap-6 rounded-2xl border border-border bg-surface p-7 sm:p-10 shadow-sm"
+                className="grid gap-6 rounded-2xl border border-[#e3ddd5] bg-[#ffffff] p-7 shadow-sm sm:p-10"
                 aria-busy={status === "loading"}
               >
                 <div className="grid gap-6">
-                  <label className="grid gap-2 text-sm font-semibold text-ink">
+                  <label className="grid gap-2 text-sm font-semibold text-[#1f1f1f]">
                     <span>{id ? "Nama" : "Name"}</span>
                     <input
                       name="name"
@@ -126,7 +128,7 @@ export function ContactDesign() {
                       placeholder={id ? "Nama Anda" : "Your name"}
                     />
                   </label>
-                  <label className="grid gap-2 text-sm font-semibold text-ink">
+                  <label className="grid gap-2 text-sm font-semibold text-[#1f1f1f]">
                     <span>{id ? "Email atau WhatsApp" : "Email or WhatsApp"}</span>
                     <input
                       name="contact"
@@ -138,7 +140,7 @@ export function ContactDesign() {
                     />
                   </label>
                 </div>
-                <label className="grid gap-2 text-sm font-semibold text-ink">
+                <label className="grid gap-2 text-sm font-semibold text-[#1f1f1f]">
                   <span>{id ? "Jenis Proyek" : "Project Type"}</span>
                   <select name="projectType" required defaultValue="" className={fieldClass}>
                     <option disabled value="">
@@ -151,7 +153,7 @@ export function ContactDesign() {
                     ))}
                   </select>
                 </label>
-                <label className="grid gap-2 text-sm font-semibold text-ink">
+                <label className="grid gap-2 text-sm font-semibold text-[#1f1f1f]">
                   <span>{id ? "Deskripsi Proyek" : "Project Description"}</span>
                   <textarea
                     name="description"
@@ -167,7 +169,7 @@ export function ContactDesign() {
                     }
                     aria-describedby="description-help"
                   />
-                  <span id="description-help" className="font-normal text-xs leading-relaxed text-muted">
+                  <span id="description-help" className="text-xs leading-relaxed font-normal text-[#8c8c8c]">
                     {id
                       ? "Ceritakan apa yang ingin Anda bangun, tingkatkan, atau selesaikan. Detail teknis tidak diperlukan."
                       : "Tell us what you are trying to build, improve, or solve. Technical details are not required."}
@@ -179,11 +181,11 @@ export function ContactDesign() {
                     <input name="website" tabIndex={-1} autoComplete="off" />
                   </label>
                 </div>
-                <p className="text-xs leading-relaxed text-muted">
+                <p className="text-xs leading-relaxed text-[#8c8c8c]">
                   {id
                     ? "Informasi ini digunakan untuk menanggapi inquiry proyek Anda. "
                     : "This information is used to respond to your project inquiry. "}
-                  <Link href="/privacy-policy" className="underline text-accent hover:text-accent-dark">
+                  <Link href="/privacy-policy" className="text-[#b5501a] underline hover:text-[#8f3f14]">
                     {id ? "Kebijakan Privasi" : "Privacy Policy"}
                   </Link>
                 </p>
@@ -193,12 +195,12 @@ export function ContactDesign() {
                 <button
                   disabled={status === "loading"}
                   type="submit"
-                  className="btn-primary group relative overflow-hidden inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 w-full sm:w-auto disabled:cursor-wait disabled:opacity-80"
+                  className="group relative inline-flex min-h-[50px] w-full items-center justify-center gap-2 overflow-hidden rounded-lg rounded-xl bg-[#c34810] px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 hover:bg-[#a63409] disabled:cursor-wait disabled:opacity-80 sm:w-auto"
                 >
                   {status === "loading" ? (
                     <>
                       <span>{id ? "Mengirim…" : "Sending…"}</span>
-                      <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent-light animate-pulse" />
+                      <span className="absolute right-0 bottom-0 left-0 h-[2px] animate-pulse bg-[#f4efea]" />
                     </>
                   ) : (
                     <>
@@ -212,7 +214,7 @@ export function ContactDesign() {
               </form>
             )}
           </div>
-          <aside className="st-contact-aside">
+          <aside className="mt-2 grid gap-6 md:mt-0 [&_h2]:text-2xl [&_h3]:text-base [&_li]:flex [&_li]:gap-4 [&_li>span]:grid [&_li>span]:size-[30px] [&_li>span]:shrink-0 [&_li>span]:place-items-center [&_li>span]:rounded-md [&_li>span]:bg-white [&_li>span]:text-[#953900] [&_ol]:mt-6 [&_ol]:grid [&_ol]:list-none [&_ol]:gap-7 [&_p]:mt-1.5 [&_p]:text-sm [&>section]:rounded-xl [&>section]:bg-[#f6f3f2] [&>section]:p-5 md:[&>section]:p-7">
             <section>
               <h2>{id ? "Apa langkah berikutnya?" : "What happens next?"}</h2>
               <ol>
@@ -246,7 +248,7 @@ export function ContactDesign() {
                 ))}
               </ol>
             </section>
-            <section className="st-contact-help">
+            <section className="bg-white!">
               <h3>{id ? "Belum punya detail teknis?" : "No technical brief yet?"}</h3>
               <p>
                 {id
@@ -257,6 +259,6 @@ export function ContactDesign() {
           </aside>
         </div>
       </div>
-    </main>
+    </PageShell>
   );
 }

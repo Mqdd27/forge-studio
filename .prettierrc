@@ -10,5 +10,7 @@
   "bracketSameLine": false,
   "arrowParens": "always",
   "proseWrap": "preserve",
-  "singleAttributePerLine": false
+  "singleAttributePerLine": false,
+  "plugins": ["prettier-plugin-tailwindcss"],
+  "tailwindStylesheet": "./app/globals.css"
 }

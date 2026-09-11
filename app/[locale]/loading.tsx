@@ -1,20 +1,20 @@
 import Image from "next/image";
 export default function Loading() {
   return (
-    <main className="page-loading" role="status" aria-label="Loading page" aria-busy="true">
-      <div className="brand-loading-mark" aria-hidden="true">
+    <main className="mx-auto max-w-[1800px] px-5 py-12 md:px-[3vw]" role="status" aria-label="Loading page" aria-busy="true">
+      <div className="mb-8 flex items-center gap-3" aria-hidden="true">
         <Image src="/img/forge-icon.png" alt="" width={32} height={32} />
         <span />
       </div>
-      <div className="loading-line loading-label" />
-      <div className="loading-line loading-title" />
-      <div className="loading-line loading-title short" />
-      <div className="loading-line loading-copy" />
-      <div className="loading-cards">
+      <div className="mb-6 h-3 w-28 rounded bg-[#eee7df] motion-safe:animate-pulse" />
+      <div className="mb-3 h-3 h-10 w-3/4 rounded bg-[#eee7df] motion-safe:animate-pulse" />
+      <div className="mb-3 h-3 h-10 w-1/2 w-3/4 rounded bg-[#eee7df] motion-safe:animate-pulse" />
+      <div className="mt-6 mb-10 h-3 w-2/3 rounded bg-[#eee7df] motion-safe:animate-pulse" />
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {[0, 1, 2].map((item) => (
-          <div key={item} className="loading-card">
-            <div className="loading-line" />
-            <div className="loading-line short" />
+          <div key={item} className="space-y-4 rounded-xl border border-[#e3ddd5] bg-white p-6">
+            <div className="h-3 rounded bg-[#eee7df] motion-safe:animate-pulse" />
+            <div className="h-3 w-1/2 rounded bg-[#eee7df] motion-safe:animate-pulse" />
           </div>
         ))}
       </div>

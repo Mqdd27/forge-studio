@@ -1,3 +1,4 @@
+import { PageShell } from "@/components/ui/page-shell";
 import { getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 export async function PrivacyDesign() {
@@ -48,10 +49,10 @@ export async function PrivacyDesign() {
         ],
       ];
   return (
-    <main className="stitch-page stitch-legacy design-page mx-auto max-w-[900px] px-6 py-12 md:py-20">
+    <PageShell className="mx-auto max-w-[900px] px-6 py-12 md:py-20">
       <header>
-        <h1 className="font-heading font-bold">{id ? "Kebijakan Privasi" : "Privacy Policy"}</h1>
-        <p className="mt-5 text-lg text-grey">
+        <h1 className="font-[family-name:var(--font-manrope)] font-bold">{id ? "Kebijakan Privasi" : "Privacy Policy"}</h1>
+        <p className="mt-5 text-lg text-[#595959]">
           {id
             ? "Cara website Forge Studio menangani informasi inquiry proyek."
             : "How the Forge Studio website handles project inquiry information."}
@@ -60,14 +61,17 @@ export async function PrivacyDesign() {
       <div className="mt-10 space-y-8">
         {sections.map(([title, description]) => (
           <section key={title}>
-            <h2 className="font-heading font-semibold">{title}</h2>
-            <p className="mt-4 leading-relaxed text-grey">{description}</p>
+            <h2 className="font-[family-name:var(--font-manrope)] font-semibold">{title}</h2>
+            <p className="mt-4 leading-relaxed text-[#595959]">{description}</p>
           </section>
         ))}
       </div>
-      <Link href="/start-a-project" className="about-button btn-secondary mt-10">
+      <Link
+        href="/start-a-project"
+        className="mt-10 inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[#d0c3b7] bg-white px-5 py-3 text-[#26201c] hover:bg-[#f1e8df]"
+      >
         {id ? "Mulai Proyek" : "Start a Project"}
       </Link>
-    </main>
+    </PageShell>
   );
 }
