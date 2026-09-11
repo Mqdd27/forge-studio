@@ -341,20 +341,44 @@
       }
     },
     "cases": {
-      "nexus": {
-        "title": "Nexus Analytics Platform",
-        "category": "SaaS",
-        "summary": "Platform reporting real-time untuk tim yang bekerja dengan data finansial yang kompleks."
-      },
-      "globalFreight": {
-        "title": "GlobalFreight Logistics",
+      "idxStocks": {
+        "title": "Dashboard Saham IDX",
         "category": "Aplikasi Custom",
-        "summary": "Workspace operasional terpadu untuk melacak pengiriman dan mengoordinasikan armada."
+        "summary": "Dashboard untuk mengeksplorasi dan memantau data pasar saham Indonesia.",
+        "description": "Dashboard terfokus untuk mengakses dan menganalisis informasi saham IDX dalam satu tempat.",
+        "problem": "Informasi pasar saham lebih mudah dievaluasi ketika data yang relevan dapat dilihat dalam satu ruang kerja yang terstruktur.",
+        "solution": "Forge Studio membangun dashboard khusus untuk mengeksplorasi dan memantau data saham IDX.",
+        "engineering": "Proyek ini dibangun sebagai aplikasi web berbasis data dengan fokus pada hierarki informasi yang jelas dan tampilan dashboard yang konsisten."
       },
-      "stripeErp": {
-        "title": "Sinkronisasi Stripe & ERP",
-        "category": "Integrasi",
-        "summary": "Jembatan data yang andal antara sistem billing modern dan sistem operasional legacy."
+
+      "aiSummarizer": {
+        "title": "Summarizer Berbasis Model AI",
+        "category": "SaaS",
+        "summary": "Aplikasi berbantuan AI untuk mengubah konten panjang menjadi ringkasan yang lebih singkat.",
+        "description": "Workflow summarization praktis yang didukung oleh model AI.",
+        "problem": "Konten panjang membutuhkan waktu untuk ditinjau, terutama ketika pengguna hanya membutuhkan poin-poin penting.",
+        "solution": "Forge Studio membangun aplikasi terfokus yang menggunakan model AI untuk menghasilkan ringkasan dari konten yang diberikan.",
+        "engineering": "Produk ini berfokus pada alur sederhana dari input menuju hasil ringkasan sehingga kemampuan AI tetap praktis tanpa menambah kompleksitas yang tidak diperlukan."
+      },
+
+      "odooWageOvertime": {
+        "title": "Modul Custom Odoo untuk Gaji dan Lembur",
+        "category": "Otomasi",
+        "summary": "Modul Odoo custom untuk mendukung workflow penggajian dan lembur.",
+        "description": "Kustomisasi workflow bisnis di dalam lingkungan Odoo.",
+        "problem": "Proses penggajian dan lembur perlu mengikuti aturan operasional yang sudah digunakan oleh bisnis.",
+        "solution": "Forge Studio mengembangkan modul Odoo custom untuk mendukung proses penggajian dan lembur di dalam workflow ERP yang sudah ada.",
+        "engineering": "Modul ini memperluas fungsi Odoo menggunakan implementasi yang menyesuaikan workflow bisnis sehingga tim tidak perlu mengikuti proses generik yang tidak sesuai."
+      },
+
+      "stockOpname": {
+        "title": "Aplikasi Stock Opname",
+        "category": "Aplikasi Custom",
+        "summary": "Aplikasi untuk mendukung proses stock opname yang lebih terstruktur.",
+        "description": "Workflow khusus untuk mencatat dan meninjau hasil perhitungan stok fisik.",
+        "problem": "Perhitungan stok fisik lebih mudah dikelola ketika proses pencatatan, pemeriksaan, dan rekonsiliasi mengikuti satu workflow yang jelas.",
+        "solution": "Forge Studio membangun aplikasi stock opname untuk mendukung aktivitas penghitungan inventaris secara terstruktur.",
+        "engineering": "Aplikasi berfokus pada tahapan operasional yang jelas sehingga informasi hasil perhitungan stok dapat dicatat dan ditinjau secara konsisten."
       }
     },
     "products": {
