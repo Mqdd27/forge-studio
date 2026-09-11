@@ -1,500 +1,98 @@
 {
-  "InsightDetailPage": {
-    "cta": {
-      "eyebrow": "Need help with your product?",
-      "title": "Turn technical decisions into reliable software.",
-      "button": "Start a Project"
-    },
-    "articles": {
-      "overEngineering": {
-        "sections": {
-          "1": {
-            "title": "Complexity is not the same as quality",
-            "text": "Software teams often associate sophisticated architecture with better engineering. In practice, every abstraction, service, dependency, and infrastructure component introduces a cost.\n\nGood engineering is not about using the most advanced architecture available. It is about choosing the simplest architecture that can reliably support the actual problem."
-          },
-          "2": {
-            "title": "Design for the problem you have today",
-            "text": "A product with hundreds of users does not automatically need the same architecture as a global platform serving millions of requests.\n\nStart with clear boundaries, reliable data models, maintainable application logic, and predictable deployment. Architecture can evolve when real constraints appear."
-          },
-          "3": {
-            "title": "Every abstraction should earn its place",
-            "text": "Service layers, queues, event systems, microservices, caching, and distributed infrastructure can all be useful. But they should exist because they solve a concrete problem.\n\nBefore introducing another layer, ask what failure, bottleneck, maintenance issue, or business requirement it actually addresses."
-          },
-          "4": {
-            "title": "Simple systems are easier to improve",
-            "text": "A system that developers can understand quickly is easier to debug, test, deploy, and extend.\n\nThe goal is not to avoid complexity completely. The goal is to keep complexity proportional to the value it provides."
-          }
-        }
-      },
-      "professionalInterface": {
-        "sections": {
-          "1": {
-            "title": "Professional does not mean visually busy",
-            "text": "Many business interfaces try to look advanced by displaying as much information as possible. The result is often the opposite: users have to work harder to understand what matters.\n\nA professional interface gives information structure, hierarchy, and predictable behavior."
-          },
-          "2": {
-            "title": "Reduce the number of decisions",
-            "text": "Every screen asks the user to make decisions. Navigation, labels, buttons, filters, tables, and forms all compete for attention.\n\nGood interface design reduces unnecessary choices and makes the next meaningful action obvious."
-          },
-          "3": {
-            "title": "Consistency builds confidence",
-            "text": "Consistent spacing, typography, terminology, interaction patterns, and component behavior help users understand a system without relearning it on every page.\n\nThis becomes especially important in operational software that people use repeatedly throughout the day."
-          },
-          "4": {
-            "title": "Calm interfaces support real work",
-            "text": "Business software should help users finish tasks rather than constantly demand attention.\n\nA calm interface uses hierarchy and feedback carefully so that important states are visible without turning every screen into an alert."
-          }
-        }
-      },
-      "legacyMonolith": {
-        "sections": {
-          "1": {
-            "title": "A rewrite is not automatically a migration strategy",
-            "text": "Legacy applications often contain years of operational knowledge hidden inside code, database structures, workflows, and exceptions.\n\nReplacing the entire application at once can introduce more business risk than technical benefit."
-          },
-          "2": {
-            "title": "Understand the existing system first",
-            "text": "Before changing architecture, identify which modules are stable, which areas create operational problems, where data ownership lives, and which integrations cannot break.\n\nThe goal is to separate genuine technical constraints from assumptions."
-          },
-          "3": {
-            "title": "Move one boundary at a time",
-            "text": "A safer modernization approach is usually incremental. Extract a clear module, define its contract, validate behavior, and move traffic gradually.\n\nThis allows the team to improve architecture without losing visibility over the existing system."
-          },
-          "4": {
-            "title": "Modernization should reduce business risk",
-            "text": "Technical improvement is valuable when it makes a system easier to maintain, operate, scale, or change.\n\nThe success of a migration should therefore be measured not only by newer technology, but also by lower operational risk and better development velocity."
-          }
-        }
-      }
-    }
-  },
-  "CaseStudyPage": {
-    "label": "Case study",
-    "sections": { "context": "Business context", "solution": "Solution", "engineering": "Engineering", "result": "Result" },
-    "projects": {
-      "nexus": {
-        "context": {
-          "title": "Business data was scattered across too many tools.",
-          "text": "The team needed a dependable way to bring operational information together, understand performance, and make decisions without repeatedly reconciling data from different sources."
-        },
-        "solution": {
-          "title": "A focused analytics system built around daily decisions.",
-          "text": "We designed a centralized interface that transformed fragmented operational data into clear dashboards, structured reporting, and information the team could actually use."
-        },
-        "engineering": {
-          "title": "A scalable foundation for growing data needs.",
-          "text": "The system was structured around clear data boundaries, reusable modules, and an architecture that could evolve as reporting requirements and business operations expanded."
-        },
-        "result": {
-          "title": "Less time collecting data. More time understanding it.",
-          "text": "The finished platform gave the team a clearer view of business performance and reduced the manual effort required to turn operational data into useful information."
-        }
-      },
-      "globalFreight": {
-        "context": {
-          "title": "Operational workflows were difficult to track consistently.",
-          "text": "Freight activities involved multiple processes, status updates, and operational records. The team needed a clearer way to follow work from one stage to the next without relying on fragmented manual tracking."
-        },
-        "solution": {
-          "title": "One operational workflow with clearer visibility.",
-          "text": "We designed a custom application around the team's actual process, bringing important activities, records, and status information into one structured system."
-        },
-        "engineering": {
-          "title": "Built around workflows that can continue to evolve.",
-          "text": "The application was separated into focused modules with clear responsibilities, making the system easier to maintain and allowing additional operational features to be introduced over time."
-        },
-        "result": {
-          "title": "A more consistent way to manage daily operations.",
-          "text": "The team gained better visibility across its workflow, reduced fragmented tracking, and established a stronger digital foundation for future operational improvements."
-        }
-      },
-      "stripeErp": {
-        "context": {
-          "title": "Important business systems were operating in isolation.",
-          "text": "Data had to move between different applications and business processes, creating repetitive work and increasing the risk of inconsistent information between systems."
-        },
-        "solution": {
-          "title": "Reliable integration between the systems that matter.",
-          "text": "We designed an integration layer that connected the required workflows, automated data exchange, and reduced the need for teams to repeatedly transfer information by hand."
-        },
-        "engineering": {
-          "title": "Integration designed for reliability and maintainability.",
-          "text": "Clear service boundaries, controlled data flows, and predictable integration processes made failures easier to identify while keeping the architecture ready for additional connections."
-        },
-        "result": {
-          "title": "Less repetitive work and more consistent data.",
-          "text": "The integration reduced manual synchronization between systems and gave the business a more dependable flow of information across its operational tools."
-        }
-      }
-    },
-    "cta": { "title": "Have a similar challenge?", "button": "Start a Project" }
-  },
-  "ContactPage": {
-    "metadata": {
-      "title": "Contact",
-      "description": "Start a software project with Forge Studio. Tell us about your business needs, product idea, automation challenge, or system integration requirements."
-    },
-    "intro": {
-      "eyebrow": "Start a project",
-      "title": "Let’s make the next step practical.",
-      "description": "Tell us what you are working through. We will reply with a clear next step, usually within 1–2 business days."
-    },
-    "form": {
-      "name": "Full name",
-      "namePlaceholder": "Jane Doe",
-      "contact": "Email or WhatsApp",
-      "contactPlaceholder": "jane@company.com",
-      "company": "Company name (optional)",
-      "companyPlaceholder": "Acme Corp",
-      "service": "What do you need help with?",
-      "selectService": "Select a service",
-      "description": "Tell us about the project",
-      "descriptionPlaceholder": "What is happening today, and what would a better outcome look like?",
-      "submit": "Send inquiry",
-      "replyTime": "We typically reply within 1–2 business days.",
-      "services": {
-        "customApp": "Custom App",
-        "saas": "SaaS",
-        "automation": "Automation",
-        "integration": "Integration",
-        "maintenance": "Maintenance",
-        "other": "Other"
-      }
-    },
-    "success": {
-      "eyebrow": "Message received",
-      "title": "Thank you for reaching out.",
-      "description": "We will review the details and get back to you. The usual next step is a short discovery conversation, followed by a practical proposal.",
-      "another": "Send another message"
-    },
-    "direct": {
-      "eyebrow": "Prefer direct contact?",
-      "title": "Start with a short conversation.",
-      "description": "Share the shape of the problem over email. We can work from there without a long sales process."
-    },
-    "next": { "title": "What happens next", "discovery": "Discovery call", "proposal": "Practical proposal", "build": "Build and handover" }
-  },
-  "AboutPage": {
-    "metadata": {
-      "title": "About",
-      "description": "Learn about Forge Studio, an independent software engineering studio focused on building reliable, practical, and business-driven digital products."
-    },
-    "intro": {
-      "eyebrow": "About Forge",
-      "title": "Independent by design. Serious about the outcome.",
-      "description": "Forge Studio is an independent software studio focused on designing and engineering reliable digital products for businesses."
-    },
-    "principles": {
-      "eyebrow": "Our principles",
-      "title": "Good software earns trust quietly.",
-      "items": {
-        "reliability": {
-          "title": "Reliability above all",
-          "description": "Software should be stable, secure, and predictable in the moments your business depends on it."
-        },
-        "businessFirst": {
-          "title": "Business-first approach",
-          "description": "Technology is a tool. Every decision should connect back to a clear operational or commercial outcome."
-        },
-        "precision": {
-          "title": "Precision engineering",
-          "description": "We value clean systems, careful details, and simple solutions over convoluted, trendy ones."
-        }
-      }
-    },
-    "studio": {
-      "eyebrow": "The studio",
-      "title": "Small enough to stay close to the work.",
-      "paragraph1": "Forge Studio is built around a simple idea: businesses need software partners who listen carefully, communicate plainly, and take responsibility for what gets shipped. We work independently, keep the team focused, and make the path from idea to production visible.",
-      "paragraph2": "That means no unnecessary layers, no technical theatre, and no handoff before the system is ready to be useful.",
-      "cta": "Start a conversation"
-    }
-  },
-  "insights": {
-    "overEngineering": {
-      "title": "The Case Against Over-Engineering in Early Stage Startups",
-      "tag": "Engineering",
-      "summary": "Why boring technology is often the best strategy when a business needs useful software quickly."
-    },
-    "professionalInterface": {
-      "title": "Designing for Calm: The Professional Interface",
-      "tag": "Product",
-      "summary": "Industrial software works best when clarity and reliability lead every interface decision."
-    },
-    "legacyMonolith": {
-      "title": "Migration Strategies for Legacy Monoliths",
-      "tag": "Engineering",
-      "summary": "Practical steps for improving aging systems without interrupting daily operations."
-    }
-  },
-  "InsightsPage": {
-    "metadata": {
-      "title": "Insights",
-      "description": "Practical insights from Forge Studio about software engineering, product development, system architecture, automation, and building reliable digital products."
-    },
-    "intro": {
-      "eyebrow": "Notes from the studio",
-      "title": "Insights",
-      "description": "Thoughts, technical deep dives, and observations on engineering, design, and business growth."
-    },
-    "readArticle": "Read article"
-  },
-  "caseCategories": { "customApp": "Custom App", "saas": "SaaS", "automation": "Automation", "integration": "Integration" },
-  "WorkPage": {
-    "metadata": {
-      "title": "Selected Work",
-      "description": "Explore selected software engineering projects by Forge Studio, including SaaS platforms, custom web applications, automation systems, and business integrations."
-    },
-    "intro": {
-      "eyebrow": "Selected work",
-      "title": "Built around the problem, not the technology.",
-      "description": "A collection of engineering projects demonstrating our approach to complex problem-solving and business-first software architecture."
-    },
-    "filters": { "all": "All", "customApp": "Custom App", "saas": "SaaS", "automation": "Automation", "integration": "Integration" },
-    "empty": { "title": "No projects in this category yet.", "cta": "Talk to us about your challenge" }
-  },
-  "ProductsPage": {
-    "metadata": {
-      "title": "Software Products",
-      "description": "Explore software products built by Forge Studio, including business tools, SaaS platforms, and digital solutions designed to simplify everyday operations."
-    },
-    "intro": {
-      "eyebrow": "Built by Forge",
-      "title": "Products",
-      "description": "Software products built by Forge Studio, born from real client problems."
-    }
-  },
-  "ServicesPage": {
-    "metadata": {
-      "title": "Software Development Services",
-      "description": "Explore Forge Studio's software development services, including custom web applications, SaaS development, automation, system integration, DevOps, and ongoing maintenance."
-    },
-    "intro": {
-      "eyebrow": "What we do",
-      "title": "Engineering solutions for business growth.",
-      "description": "We build scalable, high-performance digital infrastructure designed specifically to solve complex operational challenges."
-    },
-    "status": { "available": "Available now", "byRequest": "By request" },
-    "discussProject": "Discuss your project",
-    "useCaseDescription": "Designed around your team's process, with a focus on clarity and dependable outcomes.",
-    "maintenance": {
-      "eyebrow": "Ongoing partnership",
-      "title": "Maintenance & Support",
-      "description": "Choose the level of care that matches your operating rhythm.",
-      "mostPopular": "Most popular",
-      "discussPlan": "Discuss a plan",
-      "plans": {
-        "basic": {
-          "name": "Basic Care",
-          "description": "Essential updates and monitoring",
-          "features": { "1": "Uptime monitoring", "2": "Security patches", "3": "Email support" }
-        },
-        "business": {
-          "name": "Business Care",
-          "description": "Proactive care for growing teams",
-          "features": { "1": "Everything in Basic Care", "2": "Performance reviews", "3": "Priority support" }
-        },
-        "continuous": {
-          "name": "Continuous Development",
-          "description": "An embedded technical partner",
-          "features": { "1": "Planned improvements", "2": "New feature delivery", "3": "Technical direction" }
-        }
-      }
-    }
-  },
+  "Navigation": { "services": "Services", "work": "Work", "about": "About" },
+  "WorkCard": { "caseStudy": "Case study" },
   "Site": {
-    "services": {
-      "customWeb": {
-        "title": "Custom Web Applications",
-        "description": "Purpose-built systems that remove operational bottlenecks and fit the way your team actually works.",
-        "useCases": { "1": "Internal dashboards", "2": "Client portals", "3": "Operational tools" }
-      },
-      "saas": {
-        "title": "SaaS Development",
-        "description": "From product definition to production, we engineer reliable software that can grow with its customers.",
-        "useCases": { "1": "Multi-tenant platforms", "2": "Subscription workflows", "3": "Product MVPs" }
-      },
-      "automation": {
-        "title": "Business Automation",
-        "description": "Turn repetitive work into dependable processes that save time, reduce errors, and keep your team moving.",
-        "useCases": { "1": "Workflow scripts", "2": "Document processing", "3": "Scheduled operations" }
-      },
-      "integration": {
-        "title": "API & System Integration",
-        "description": "Connect the systems your business depends on and create a clear, consistent flow of information.",
-        "useCases": { "1": "Custom APIs", "2": "Legacy modernization", "3": "Third-party orchestration" }
-      },
-      "devops": {
-        "title": "DevOps & Deployment",
-        "description": "Practical infrastructure and delivery practices that make releases safer, faster, and easier to operate.",
-        "useCases": { "1": "CI/CD pipelines", "2": "Cloud infrastructure", "3": "Monitoring setup" }
-      },
-      "maintenance": {
-        "title": "Maintenance & Support",
-        "description": "Ongoing technical partnership to keep software secure, performant, and aligned with changing needs.",
-        "useCases": { "1": "Security updates", "2": "Bug fixes", "3": "Continuous improvements" }
-      }
-    },
     "cases": {
       "idxStocks": {
         "title": "IDX Stocks Dashboard",
-        "category": "Custom App",
+        "category": "Web Application",
         "summary": "A dashboard for exploring and monitoring Indonesian stock market data.",
         "description": "A focused dashboard experience for working with IDX stock information in one place.",
         "problem": "Stock-market information is easier to evaluate when the relevant data can be reviewed in a single, structured workspace.",
         "solution": "Forge Studio built a dedicated dashboard interface for exploring and monitoring IDX stock data.",
-        "engineering": "The project is structured as a data-focused web application, designed around readable information hierarchy and repeatable dashboard views."
+        "engineering": "The project is structured as a data-focused web application, designed around readable information hierarchy and repeatable dashboard views.",
+        "scope": {
+          "0": "Interactive market terminal with IHSG, gainers, losers, and active movers",
+          "1": "Five-year candlestick charts with SMA, EMA, RSI, MACD, Bollinger Bands, ATR, and volume analysis",
+          "2": "Annual and quarterly financial statements with valuation and performance ratios",
+          "3": "Fundamental screener, watchlists, and Google News RSS integration",
+          "4": "Quant and multi-agent AI paper-trading research with strategy-performance analytics",
+          "5": "Automated Telegram market briefs and operations-health monitoring"
+        },
+        "facts": {
+          "0": "Supports 840+ IDX-listed companies",
+          "1": "Self-hosted deployment with systemd services and timers",
+          "2": "Market data and paper-trading outcomes persist in PostgreSQL",
+          "3": "Browser UI communicates with the FastAPI backend over HTTP and SSE"
+        },
+        "outcome": "The dashboard brings IDX stock exploration and monitoring into a structured workspace."
       },
-
       "aiSummarizer": {
         "title": "Summarizer Powered by AI Models",
-        "category": "SaaS",
+        "category": "Web Application",
         "summary": "An AI-assisted application for turning longer content into concise summaries.",
         "description": "A practical summarization workflow powered by AI models.",
         "problem": "Long-form content takes time to review, especially when the reader only needs the essential points.",
         "solution": "Forge Studio built a focused application that uses AI models to generate concise summaries from supplied content.",
-        "engineering": "The product centers on a simple input-to-summary flow so the AI capability remains useful without adding unnecessary complexity."
+        "engineering": "The product centers on a simple input-to-summary flow so the AI capability remains useful without adding unnecessary complexity.",
+        "scope": { "0": "AI-powered summarization", "1": "Content input workflow", "2": "Readable summary output" },
+        "facts": {},
+        "outcome": "The application turns supplied content into concise summaries through a focused input-to-summary workflow."
       },
-
       "odooWageOvertime": {
         "title": "Odoo Custom Module for Wage and Overtime",
-        "category": "Automation",
+        "category": "Existing System",
         "summary": "A custom Odoo module for supporting wage and overtime workflows.",
         "description": "Business workflow customization within an Odoo environment.",
         "problem": "Wage and overtime processes need to reflect the operational rules a business already uses.",
         "solution": "Forge Studio developed a custom Odoo module to support wage and overtime processes within the existing ERP workflow.",
-        "engineering": "The module extends Odoo with a workflow-specific implementation instead of requiring teams to work around a generic process."
+        "engineering": "The module extends Odoo with a workflow-specific implementation instead of requiring teams to work around a generic process.",
+        "scope": { "0": "Custom Odoo module", "1": "Wage workflow support", "2": "Overtime workflow support" },
+        "facts": {},
+        "outcome": "Wage and overtime workflows are supported within the existing Odoo environment."
       },
-
       "stockOpname": {
         "title": "Stock Opname Application",
-        "category": "Custom App",
+        "category": "Business System",
         "summary": "An application for supporting structured stock-opname activities.",
         "description": "A dedicated workflow for recording and reviewing physical stock counts.",
         "problem": "Physical stock counts are easier to manage when recording, review, and reconciliation follow one clear workflow.",
         "solution": "Forge Studio built a stock-opname application to support structured inventory-counting activities.",
-        "engineering": "The application focuses on clear operational steps so stock-count information can be captured and reviewed consistently."
-      }
-    },
-    "products": {
-      "growpos": { "tagline": "Point-of-sale for growing retail businesses", "category": "POS / SaaS" },
-      "forgeInventory": {
-        "tagline": "Operational workflow coordination and field dispatch for mid-sized teams.",
-        "category": "Operations"
-      },
-      "signalDesk": { "tagline": "Internal audit trails and compliance reporting for business systems.", "category": "Business Systems" },
-      "learnMore": "Ask about this product"
-    },
-    "productStatus": { "beta": "Beta", "comingSoon": "Coming Soon", "live": "Live", "visit": "Visit product →", "notify": "Notify me" },
-    "insights": {
-      "overEngineering": {
-        "title": "The Case Against Over-Engineering in Early Stage Startups",
-        "tag": "Engineering",
-        "summary": "Why boring technology is often the best strategy when a business needs useful software quickly."
-      },
-      "professionalInterface": {
-        "title": "Designing for Calm: The Professional Interface",
-        "tag": "Product",
-        "summary": "Industrial software works best when clarity and reliability lead every interface decision."
-      },
-      "legacyMonolith": {
-        "title": "Migration Strategies for Legacy Monoliths",
-        "tag": "Engineering",
-        "summary": "Practical steps for improving aging systems without interrupting daily operations."
+        "engineering": "The application focuses on clear operational steps so stock-count information can be captured and reviewed consistently.",
+        "scope": { "0": "Stock-count workflow", "1": "Inventory recording", "2": "Review-ready operational data" },
+        "facts": {},
+        "outcome": "The application provides a structured workflow for recording and reviewing physical stock counts."
       }
     }
   },
-  "Navigation": {
-    "home": "Home",
-    "services": "Services",
-    "work": "Work",
-    "products": "Products",
-    "about": "About",
-    "insights": "Insights",
-    "contact": "Start a Project",
-    "language": "Language",
-    "english": "EN",
-    "indonesian": "ID",
-    "englishName": "English",
-    "indonesianName": "Bahasa Indonesia",
-    "homeAria": "Forge Studio home",
-    "primaryNavigation": "Primary navigation",
-    "mobileNavigation": "Mobile navigation",
-    "openNavigation": "Open navigation",
-    "closeNavigation": "Close navigation",
-    "switchEnglish": "Switch to English",
-    "switchIndonesian": "Switch to Indonesian"
+  "WorkPage": {
+    "metadata": {
+      "title": "Selected Work",
+      "description": "Web applications and systems built around real business and operational needs."
+    },
+    "filters": {
+      "all": "All",
+      "webApplication": "Web Application",
+      "businessSystem": "Business System",
+      "existingSystem": "Existing System"
+    }
   },
-  "Footer": {
-    "description": "Industrial-grade software engineering for business.",
-    "company": "Company",
-    "resources": "Resources",
-    "connect": "Connect",
-    "about": "About",
-    "services": "Services",
-    "work": "Work",
-    "products": "Products",
-    "insights": "Insights",
-    "contact": "Contact",
-    "studioLabel": "Independent Software Studio",
-    "copyright": "© 2026 Forge Studio. All rights reserved."
-  },
-  "WorkCard": { "caseStudy": "Case study" },
   "Home": {
     "metadata": {
-      "title": "Software That Solves Real Problems",
-      "description": "Forge Studio is an independent software engineering studio building reliable web applications, SaaS products, automation systems, and business software."
-    },
-    "hero": {
-      "eyebrow": "Independent software studio",
-      "title": "We build software that solves",
-      "highlight": "real business problems.",
-      "description": "Custom web applications, business systems and SaaS products engineered from idea to production. Professional, reliable, and built to scale.",
-      "startProject": "Start a Project",
-      "viewWork": "View Our Work",
-      "noteTitle": "Business-first engineering",
-      "noteDescription": "from discovery to handover."
-    },
-    "technology": { "label": "Technology is the tool.", "cloudInfrastructure": "Cloud infrastructure" },
-    "services": {
-      "eyebrow": "Capabilities",
-      "title": "What we build",
-      "description": "Specialized engineering services tailored for complex business needs.",
-      "viewAll": "All services →",
-      "learnMore": "Learn more →"
-    },
-    "work": {
-      "eyebrow": "Selected work",
-      "title": "Built for the work behind the work.",
-      "description": "Real-world systems engineered around the way businesses operate.",
-      "viewAll": "View all work →"
-    },
-    "process": {
-      "eyebrow": "How we work",
-      "title": "A clear path from problem to production.",
-      "description": "Small, focused steps keep the work aligned with your business and make progress visible from day one.",
-      "startConversation": "Start a conversation →",
-      "steps": {
-        "discovery": "Discovery",
-        "consultation": "Consultation",
-        "proposal": "Proposal",
-        "development": "Development",
-        "handover": "Handover",
-        "maintenance": "Maintenance"
-      }
-    },
-    "products": { "eyebrow": "Products", "title": "Software born from real problems.", "viewAll": "See all products →" },
-    "about": {
-      "eyebrow": "About Forge",
-      "titleLine1": "Independent by design.",
-      "titleLine2": "Serious about the outcome.",
-      "description": "Forge Studio is an independent software studio focused on designing and engineering reliable digital products for businesses. We choose clarity over technical vanity and build systems meant to last.",
-      "link": "About us →"
-    },
-    "cta": {
-      "eyebrow": "Have a business problem worth solving?",
-      "title": "Let's make the next step practical.",
-      "button": "Start a Project"
+      "title": "Web Applications for Real Business Needs",
+      "description": "An independent web development studio building, improving, and maintaining practical web applications and business systems."
+    }
+  },
+  "ServicesPage": {
+    "metadata": {
+      "title": "Web Development Services",
+      "description": "Custom web development, business systems, existing system development, and maintenance and deployment."
+    }
+  },
+  "AboutPage": {
+    "metadata": {
+      "title": "About Forge Studio",
+      "description": "An independent web development studio focused on practical, reliable, maintainable applications."
     }
   }
 }

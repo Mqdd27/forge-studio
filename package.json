@@ -9,11 +9,13 @@
     "lint": "next lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check:routes": "node scripts/check-routes.mjs"
+    "check:routes": "node scripts/check-routes.mjs",
+    "check:inquiries": "node scripts/check-inquiries.cjs",
+    "check:types": "tsc --noEmit",
+    "check": "npm run lint && npm run check:types && npm run format:check && npm run check:inquiries"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.3",
-    "framer-motion": "^13.2.0",
     "next": "^14.2.35",
     "next-intl": "^4.14.2",
     "postcss": "^8.5.28",
@@ -25,6 +27,8 @@
     "@types/node": "20.16.5",
     "@types/react": "18.3.5",
     "@types/react-dom": "18.3.0",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.35",
     "prettier": "3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "^5.6.3"

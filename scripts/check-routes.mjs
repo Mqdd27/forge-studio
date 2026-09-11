@@ -1,23 +1,15 @@
 import { readFile } from "node:fs/promises";
 
 const base = process.env.AUDIT_BASE_URL || "http://localhost:3000";
-const content = JSON.parse(await readFile(new URL("../data/design-content.json", import.meta.url), "utf8"));
-const work = ["nexus-analytics", "globalfreight", "stripe-erp", ...content.work.map((x) => x.slug)];
-const insights = ["over-engineering", "designing-for-calm", "legacy-migrations", ...content.insights.map((x) => x.slug)];
+const site = await readFile(new URL("../data/site.ts", import.meta.url), "utf8");
+const caseSection = site.split("export const cases = [")[1].split("] as const;")[0];
+const work = [...caseSection.matchAll(/slug: "([^"]+)"/g)].map((match) => match[1]);
 const routes = [
   "/",
   ...["en", "id"].flatMap((locale) =>
-    [
-      "",
-      "/services",
-      "/work",
-      "/products",
-      "/insights",
-      "/about",
-      "/contact",
-      ...work.map((x) => `/work/${x}`),
-      ...insights.map((x) => `/insights/${x}`),
-    ].map((path) => `/${locale}${path}`),
+    ["", "/services", "/work", "/about", "/start-a-project", "/privacy-policy", ...work.map((x) => `/work/${x}`)].map(
+      (path) => `/${locale}${path}`,
+    ),
   ),
 ];
 const assets = new Set();
@@ -37,6 +29,8 @@ for (const path of routes) {
       const asset = match[2].replaceAll("&amp;", "&");
       if (asset.startsWith("/_next/") || asset.startsWith("/img/")) assets.add(asset);
     }
+    if (text.includes("Mqdd27") || text.includes("hello@forgestudio.dev"))
+      failures.push(`Unconfirmed or personal contact exposed on ${path}`);
     for (const match of text.matchAll(/<a\b[^>]*href="(\/(?!\/)[^"]*)"/g)) {
       const link = match[1].split(/[?#]/)[0];
       links.add(link);
@@ -63,10 +57,27 @@ for (const link of links) {
   const { response } = await request(link);
   if (!response.ok) failures.push(`Internal link ${link}: ${response.status}`);
 }
-for (const path of ["/en/work/does-not-exist", "/id/insights/does-not-exist", "/fr/contact"]) {
+for (const path of ["/en/work/does-not-exist", "/id/work/does-not-exist", "/fr/contact"]) {
   const { response, text } = await request(path);
   if (response.status !== 404 && !text.includes("NEXT_NOT_FOUND"))
     failures.push(`Missing route ${path}: expected 404, got ${response.status}`);
 }
+for (const [path, destination] of [
+  ["/id/contact", "/id/start-a-project"],
+  ["/en/contact", "/en/start-a-project"],
+  ["/id/products", "/id/services"],
+  ["/en/insights", "/en"],
+  ["/start-a-project", "/en/start-a-project"],
+  ["/work", "/en/work"],
+]) {
+  const response = await fetch(new URL(path, base), { redirect: "manual" });
+  const location = response.headers.get("location");
+  if (![307, 308].includes(response.status) || !location || new URL(location, base).pathname !== destination)
+    failures.push(`Legacy redirect ${path}: ${response.status} ${location}`);
+}
+const { text: sitemap } = await request("/sitemap.xml");
+for (const locale of ["en", "id"])
+  for (const slug of work) if (!sitemap.includes(`/${locale}/work/${slug}`)) failures.push(`Sitemap missing ${locale}/${slug}`);
+if (/\/(products|insights|contact)</.test(sitemap)) failures.push("Sitemap contains retired routes");
 console.log(JSON.stringify({ pages: routes.length, assets: assets.size, internalLinks: links.size, failures }, null, 2));
 if (failures.length) process.exitCode = 1;

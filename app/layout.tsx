@@ -3,20 +3,16 @@ import { Inter, Manrope } from "next/font/google";
 
 import "./globals.css";
 
-/* FONTS */
-
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
-
-/* BASE METADATA */
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://forgestudio.dev"),
 
   title: { default: "Forge Studio", template: "%s | Forge Studio" },
 
-  description: "Independent software engineering studio building reliable digital products for businesses.",
+  description: "Independent web development studio building practical web applications and business systems.",
 
   applicationName: "Forge Studio",
   icons: { icon: "/img/forge-icon.png", apple: "/img/forge-icon.png" },
@@ -29,8 +25,6 @@ export const metadata: Metadata = {
 
   formatDetection: { email: false, address: false, telephone: false },
 };
-
-/* ROOT LAYOUT */
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (

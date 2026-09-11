@@ -1,212 +1,171 @@
-import { setRequestLocale } from "next-intl/server";
-import designContent from "../../../../data/design-content.json";
-import { DesignDetail } from "../../../../components/design/detail";
-import { InventoryDesign } from "../../../../components/design/inventory";
+import Image from "next/image";
 import type { Metadata } from "next";
-
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
-
-import { cases } from "../../../../data/site";
-import { WorkVisual } from "../../../../components/visual";
-import { Link } from "../../../../i18n/navigation";
-const slugs = ["nexus-analytics", "globalfreight", "stripe-erp"] as const;
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { workPresentation } from "@/data/work-presentation";
+import { cases } from "@/data/site";
+import { Link } from "@/i18n/navigation";
 
 export function generateStaticParams() {
-  return [...slugs.map((slug) => ({ slug })), ...designContent.work.map(({ slug }) => ({ slug }))];
+  return cases.map(({ slug }) => ({ slug }));
 }
 
-/* METADATA */
-
 export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {
-  const designItem = designContent.work.find((item) => item.slug === params.slug);
-  if (designItem)
-    return {
-      title: designItem.title,
-      description: designItem.description,
-      alternates: {
-        canonical: `/${params.locale}/work/${params.slug}`,
-        languages: { en: `/en/work/${params.slug}`, id: `/id/work/${params.slug}` },
-      },
-    };
-  const index = slugs.indexOf(params.slug as (typeof slugs)[number]);
-
-  if (index < 0) {
-    return {};
-  }
-
-  const item = cases[index];
-
-  const site = await getTranslations({ locale: params.locale, namespace: "Site" });
-
-  const projectTitle = site(`cases.${item.key}.title`);
-  const description = site(`cases.${item.key}.summary`);
-
-  const title = params.locale === "id" ? `${projectTitle} — Studi Kasus` : `${projectTitle} — Case Study`;
-
-  const path = `/${params.locale}/work/${params.slug}`;
-
+  const item = cases.find((item) => item.slug === params.slug);
+  if (!item) return {};
+  const t = await getTranslations({ locale: params.locale, namespace: "Site.cases" });
+  const title = t(`${item.key}.title`);
+  const description = t(`${item.key}.summary`);
+  const path = `/${params.locale}/work/${item.slug}`;
   return {
     title,
     description,
-
-    alternates: {
-      canonical: path,
-
-      languages: { en: `/en/work/${params.slug}`, id: `/id/work/${params.slug}`, "x-default": `/en/work/${params.slug}` },
-    },
-
-    openGraph: {
-      type: "article",
-      title: `${title} | Forge Studio`,
-      description,
-      url: path,
-      siteName: "Forge Studio",
-
-      locale: params.locale === "id" ? "id_ID" : "en_US",
-
-      alternateLocale: params.locale === "id" ? ["en_US"] : ["id_ID"],
-    },
-
-    twitter: { card: "summary_large_image", title: `${title} | Forge Studio`, description },
+    alternates: { canonical: path, languages: { en: `/en/work/${item.slug}`, id: `/id/work/${item.slug}` } },
+    openGraph: { type: "article", title, description, url: path },
+    twitter: { card: "summary", title, description },
   };
 }
 
 export default async function CaseStudy({ params }: { params: { slug: string; locale: string } }) {
   setRequestLocale(params.locale);
-  const designItem = designContent.work.find((item) => item.slug === params.slug);
-  if (params.slug === "multi-site-inventory-system") return <InventoryDesign />;
-  if (designItem) return <DesignDetail item={designItem} kind="work" locale={params.locale} />;
-  const index = slugs.indexOf(params.slug as (typeof slugs)[number]);
-
-  if (index < 0) {
-    notFound();
-  }
-
-  const item = cases[index];
-
-  const site = await getTranslations({ locale: params.locale, namespace: "Site" });
-
-  const t = await getTranslations({ locale: params.locale, namespace: "CaseStudyPage" });
-
+  const item = cases.find((item) => item.slug === params.slug);
+  if (!item) notFound();
+  const t = await getTranslations({ locale: params.locale, namespace: "Site.cases" });
+  const presentation = workPresentation[item.key];
+  const id = params.locale === "id";
   return (
-    <main className="min-w-0 overflow-x-clip">
-      {/* HERO */}
-
-      <section className="mx-auto w-full max-w-[1200px] px-4 pb-14 pt-[120px] min-[375px]:pt-[128px] sm:px-6 sm:pb-20 sm:pt-[145px] md:pb-24 md:pt-[155px] lg:px-8 lg:pb-28 lg:pt-[170px]">
-        {/* META */}
-
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-[10px] font-semibold uppercase tracking-[0.11em] text-accent sm:text-xs">
-          <span>{site(`cases.${item.key}.category`)}</span>
-
-          <span className="text-muted">/</span>
-
-          <span>{t("label")}</span>
-        </div>
-
-        {/* TITLE */}
-
-        <h1 className="mt-4 max-w-[900px] break-words font-heading text-[clamp(38px,11vw,50px)] font-bold leading-[1.06] tracking-[-0.04em] text-ink sm:mt-[18px] sm:text-[56px] md:text-[64px] lg:text-[72px]">
-          {site(`cases.${item.key}.title`)}
+    <main className="stitch-page stitch-legacy design-page design-case mx-auto w-full max-w-[1240px] px-6 py-12 sm:px-8 md:py-20 lg:px-10">
+      <Link href="/work" className="group inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
+        <span className="transition-transform duration-200 group-hover:-translate-x-1" aria-hidden="true">
+          ←
+        </span>
+        <span>{id ? "Semua portofolio" : "All work"}</span>
+      </Link>
+      <header className="mt-8 max-w-4xl">
+        <p className="font-mono text-xs font-semibold uppercase tracking-wider text-accent">{t(`${item.key}.category`)}</p>
+        <h1 className="mt-3 font-heading text-3xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight text-ink">
+          {t(`${item.key}.title`)}
         </h1>
-
-        {/* DESCRIPTION */}
-
-        <p className="mt-5 max-w-[700px] text-base leading-[1.75] text-grey sm:text-lg sm:leading-[1.7]">
-          {site(`cases.${item.key}.summary`)}
-        </p>
-
-        {/* VISUAL */}
-
-        <div className="mt-8 aspect-[16/10] w-full min-w-0 overflow-hidden sm:mt-12 sm:aspect-video lg:mt-14">
-          <WorkVisual type={item.visual} />
+        <p className="mt-5 text-lg sm:text-xl leading-relaxed text-grey">{t(`${item.key}.summary`)}</p>
+        <p className="mt-3 text-base leading-relaxed text-grey">{t(`${item.key}.description`)}</p>
+      </header>
+      <div className="case-layout mt-12">
+        <aside className="case-index">
+          <p className="font-mono text-[11px] font-semibold tracking-wider text-muted uppercase">
+            {id ? "Di halaman ini" : "On this page"}
+          </p>
+          <nav aria-label={id ? "Isi studi kasus" : "Case study contents"} className="mt-4 flex flex-col space-y-1">
+            {[
+              ["problem", id ? "Tantangan" : "Problem"],
+              ["solution", id ? "Solusi" : "Solution"],
+              ["features", id ? "Fitur utama" : "Key features"],
+              ["technical", id ? "Gambaran teknis" : "Technical overview"],
+              ["outcome", id ? "Hasil" : "Outcome"],
+            ].map(([key, label]) => (
+              <a key={key} href={`#${key}`} className="py-1 text-xs font-medium text-grey hover:text-accent transition-colors">
+                {label}
+              </a>
+            ))}
+          </nav>
+        </aside>
+        <div className="case-story">
+          <div className="max-w-3xl">
+            <div className="min-w-0">
+              {(
+                [
+                  ["problem", id ? "Tantangan" : "Problem"],
+                  ["solution", id ? "Solusi" : "Solution"],
+                ] as const
+              ).map(([key, label]) => (
+                <section id={key} key={key} className="border-t border-border py-8">
+                  <h2 className="font-heading text-2xl font-semibold text-ink">{label}</h2>
+                  <p className="mt-4 leading-relaxed text-grey text-base sm:text-lg">{t(`${item.key}.${key}`)}</p>
+                </section>
+              ))}
+              <section id="features" className="border-t border-border py-8">
+                <h2 className="font-heading text-2xl font-semibold text-ink">{id ? "Fitur utama" : "Key features"}</h2>
+                <ul className="mt-4 list-disc space-y-3 pl-5 text-grey text-base leading-relaxed">
+                  {item.scope.map((value, index) => (
+                    <li key={value}>{t(`${item.key}.scope.${index}`)}</li>
+                  ))}
+                </ul>
+              </section>
+            </div>
+          </div>
+          {presentation.screenshots.length > 0 && (
+            <section className="mt-8 border-t border-border py-8">
+              <h2 className="font-heading text-2xl font-semibold text-ink">{id ? "Tampilan aplikasi" : "Screenshots"}</h2>
+              <div className="mt-6 grid gap-6">
+                {presentation.screenshots.map((image) => (
+                  <div key={image.src} className="overflow-hidden rounded-xl border border-border bg-surface shadow-md">
+                    <div className="flex items-center gap-1.5 border-b border-border/70 bg-[#FBF9F7] px-4 py-2.5" aria-hidden="true">
+                      <span className="h-2 w-2 rounded-full bg-[#E06C75]/70" />
+                      <span className="h-2 w-2 rounded-full bg-[#E5C07B]/70" />
+                      <span className="h-2 w-2 rounded-full bg-[#98C379]/70" />
+                    </div>
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      width={image.width}
+                      height={image.height}
+                      sizes="(max-width: 767px) 100vw, 900px"
+                      loading="lazy"
+                      className="w-full h-auto"
+                    />
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+          <details id="technical" className="case-technical">
+            <summary className="cursor-pointer py-6 select-none">
+              <h2 className="font-heading text-2xl font-semibold text-ink">{id ? "Gambaran teknis" : "Technical overview"}</h2>
+            </summary>{" "}
+            <section className="mt-4 max-w-3xl border-t border-border py-8">
+              <p className="leading-relaxed text-grey text-base sm:text-lg">{t(`${item.key}.engineering`)}</p>{" "}
+              <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                {item.stack.length > 0 && (
+                  <section className="rounded-xl border border-border bg-surface p-6">
+                    <h3 className="font-heading text-lg font-semibold text-ink">{id ? "Teknologi" : "Technology stack"}</h3>
+                    <ul className="mt-4 flex flex-wrap gap-2">
+                      {item.stack.map((value) => (
+                        <li key={value} className="rounded border border-border/70 bg-alt px-2.5 py-1 font-mono text-xs text-grey">
+                          {value}
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+                {item.facts.length > 0 && (
+                  <section className="rounded-xl border border-border bg-surface p-6">
+                    <h3 className="font-heading text-lg font-semibold text-ink">{id ? "Fakta proyek" : "Project facts"}</h3>
+                    <ul className="mt-4 list-disc space-y-2.5 pl-5 text-sm leading-relaxed text-grey">
+                      {item.facts.map((value, index) => (
+                        <li key={value}>{t(`${item.key}.facts.${index}`)}</li>
+                      ))}
+                    </ul>
+                  </section>
+                )}
+              </div>
+            </section>
+          </details>
+          <section id="outcome" className="max-w-3xl border-t border-border py-8">
+            <h2 className="font-heading text-2xl font-semibold text-ink">{id ? "Hasil" : "Outcome"}</h2>
+            <p className="mt-4 leading-relaxed text-grey text-base sm:text-lg">{t(`${item.key}.outcome`)}</p>
+          </section>
         </div>
-      </section>
-
-      {/* CASE BODY */}
-
-      <section className="mx-auto w-full max-w-[900px] px-4 pb-20 sm:px-6 sm:pb-24 lg:px-8 lg:pb-28">
-        {/* 01 — CONTEXT */}
-
-        <CaseSection
-          number="01"
-          label={t("sections.context")}
-          title={t(`projects.${item.key}.context.title`)}
-          text={t(`projects.${item.key}.context.text`)}
-        />
-
-        {/* 02 — SOLUTION */}
-
-        <CaseSection
-          number="02"
-          label={t("sections.solution")}
-          title={t(`projects.${item.key}.solution.title`)}
-          text={t(`projects.${item.key}.solution.text`)}
-        />
-
-        {/* 03 — ENGINEERING */}
-
-        <CaseSection
-          number="03"
-          label={t("sections.engineering")}
-          title={t(`projects.${item.key}.engineering.title`)}
-          text={t(`projects.${item.key}.engineering.text`)}
-        />
-
-        {/* 04 — RESULT */}
-
-        <CaseSection
-          number="04"
-          label={t("sections.result")}
-          title={t(`projects.${item.key}.result.title`)}
-          text={t(`projects.${item.key}.result.text`)}
-        />
-      </section>
-
-      {/* CLOSING CTA */}
-
-      <section className="bg-ink py-16 sm:py-20 lg:py-[88px]">
-        <div className="mx-auto flex w-full max-w-[1200px] flex-col items-start gap-7 px-4 sm:px-6 md:flex-row md:items-center md:justify-between md:gap-10 lg:px-8">
-          <h2 className="max-w-[650px] break-words font-heading text-[28px] font-semibold leading-[1.2] tracking-[-0.025em] text-white sm:text-[34px] lg:text-4xl">
-            {t("cta.title")}
-          </h2>
-
-          <Link
-            href="/contact"
-            className="inline-flex min-h-12 w-full shrink-0 items-center justify-center rounded-lg bg-accent px-6 text-[11px] font-semibold uppercase tracking-[0.08em] text-white transition-all duration-200 hover:bg-accent-dark sm:w-auto sm:text-xs lg:hover:-translate-y-px"
-          >
-            {t("cta.button")}
-          </Link>
-        </div>
-      </section>
-    </main>
-  );
-}
-
-/* CASE SECTION */
-
-function CaseSection({ number, label, title, text }: { number: string; label: string; title: string; text: string }) {
-  return (
-    <section className="border-t border-border py-10 sm:py-14 lg:py-16">
-      {/* META */}
-
-      <div className="flex flex-wrap items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-accent sm:text-xs">
-        <span>{number}</span>
-
-        <span className="text-muted">/</span>
-
-        <span>{label}</span>
       </div>
-
-      {/* TITLE */}
-
-      <h2 className="mt-4 max-w-[740px] break-words font-heading text-[26px] font-semibold leading-[1.25] tracking-[-0.02em] text-ink sm:text-[32px] lg:text-[36px]">
-        {title}
-      </h2>
-
-      {/* DESCRIPTION */}
-
-      <p className="mt-5 max-w-[650px] text-sm leading-[1.8] text-grey sm:text-base sm:leading-relaxed">{text}</p>
-    </section>
+      <div className="mt-12 border-t border-border pt-10">
+        <Link
+          href="/start-a-project"
+          className="btn-primary group inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white"
+        >
+          <span>{id ? "Mulai Proyek" : "Start a Project"}</span>
+          <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
+            →
+          </span>
+        </Link>
+      </div>
+    </main>
   );
 }

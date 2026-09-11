@@ -1,6 +1,6 @@
 # Forge Studio
 
-Company profile website for Forge Studio, built with Next.js App Router and the Stitch design system.
+Bilingual public website for an independent web development studio. Built with the existing Next.js App Router, next-intl, Inter/Manrope, and Forge Studio design tokens.
 
 ## Run locally
 
@@ -9,10 +9,56 @@ npm install
 npm run dev
 ```
 
-The site uses `/en` and `/id` prefixes, for example `/id/services` and `/en/contact`.
+Canonical pages use `/en` and `/id`: Home, Services, Work and case studies, About, Start a Project, and Privacy Policy. Unprefixed links redirect to English. `/contact` redirects to Start a Project; former Products/Insights URLs redirect to Services/Home.
 
-`npm run dev` uses port 3000 explicitly so a second invocation fails instead of sharing the same development cache on another port. Production builds use `.next`; development uses `.next-dev`. If a separate development instance is needed, give it its own cache, for example `FORGE_DEV_DIST_DIR=.next-dev-review npx next dev --port 3001`.
+Development uses port 3000 and `.next-dev`; production builds use `.next`. For an isolated development instance, use `FORGE_DEV_DIST_DIR=.next-dev-review npx next dev --port 3001`.
+
+## Inquiry delivery
+
+Copy `.env.example` to `.env.local` and configure the business-owned `INQUIRY_WEBHOOK_URL` before launch. The HTTPS destination receives JSON with `name`, `contact`, `projectType`, and `description`. It must accept and reliably deliver/store the inquiry before returning 2xx. Optional `INQUIRY_WEBHOOK_TOKEN` is a server-only bearer token. Never use `NEXT_PUBLIC_` for delivery credentials.
+
+Without a destination the API returns 503 and the form reports that nothing was sent. It never fabricates success. The website does not store inquiry records. Delivery providers should be configured with a suitable retention policy and their details added to the privacy page before public launch.
+
+Validation, a hidden spam field, bounded request bodies, same-origin checks, timeouts, and an in-memory attempt limit are included. Configure `INQUIRY_TRUSTED_IP_HEADER` only when a trusted reverse proxy overwrites that header. For multi-instance production hosting, enforce a shared rate limit at the proxy/platform; the in-process limit alone is not shared across instances or restarts.
+
+## Portfolio content
+
+`data/site.ts` retains the four supplied real projects. `data/work-presentation.ts` controls public categories, capability tags, and optional reviewed screenshots. Cards receive only public keys/slug/visual fields; the supplied personal repository URL is not rendered or passed to browser components.
+
+No verified project screenshots were supplied. Existing abstract visuals are explicitly labeled illustrations. Add actual anonymized screenshots only after checking for client identities, people, domains, IPs, credentials, and confidential operational data. The detail template automatically displays reviewed screenshots when added.
+
+Only verified official contact/social channels should be published. No generic or personal social profiles are displayed.
 
 ## Verification
 
-Run `npm run build` for compilation and type checks. With the development server running, run `npm run check:routes` to check every content route in both languages, local assets, internal links, locale consistency, and missing routes. Set `AUDIT_BASE_URL` to check a different local server.
+```bash
+npm run build
+npm run check:inquiries
+npm run check:routes
+```
+
+The production build includes type checks. Route checks require a running server (`AUDIT_BASE_URL` overrides localhost:3000). Inquiry tests mock delivery in memory and send no external messages.
+
+## Code structure
+
+- `app/`: App Router pages, layouts, metadata, and the inquiry route handler.
+- `components/design/`: page content and composed sections.
+- `components/ui/`: shared icon, translation, and filter components. Client boundaries are declared only where hooks or interaction require them.
+- `components/`: shared navigation, footer, project cards, and page transitions.
+- `hooks/`: reusable browser hooks, including live reduced-motion preferences.
+- `data/`: typed service/project records and public presentation settings.
+- `messages/` and `i18n/`: English/Indonesian content and locale routing.
+- `styles/`: Tailwind tokens, global base styles, shared/legacy component styles, and current site layouts, imported in cascade order from `app/globals.css`.
+- `scripts/`: route and inquiry verification.
+
+Use `@/` imports for project source. Prefer Tailwind utilities for local layout; use named CSS classes for reusable components and interaction states. Edit an existing selector instead of appending a competing override. Preserve stylesheet import order when refactoring the cascade. Build directories and incremental TypeScript caches are generated output, not source files.
+
+Project screenshots use `next/image`: add a local public path, descriptive `alt`, and intrinsic `width`/`height` to `data/work-presentation.ts`. Remote sources require an explicit Next.js image configuration before use.
+
+```bash
+npm run check       # lint, types, formatting, and mocked inquiry tests
+npm run build       # production compilation and static generation
+npm run check:routes # requires the local development server
+```
+
+Page and scroll animations use the browser Web Animations API; no animation runtime dependency is required. The reduced-motion hook responds to preference changes while the page is open.

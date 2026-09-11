@@ -1,515 +1,90 @@
 {
-  "InsightDetailPage": {
-    "cta": {
-      "eyebrow": "Butuh bantuan untuk produkmu?",
-      "title": "Ubah keputusan teknis menjadi software yang andal.",
-      "button": "Mulai Proyek"
-    },
-    "articles": {
-      "overEngineering": {
-        "sections": {
-          "1": {
-            "title": "Kompleks bukan berarti lebih berkualitas",
-            "text": "Tim software sering menganggap arsitektur yang lebih canggih berarti engineering yang lebih baik. Padahal setiap abstraction, service, dependency, dan komponen infrastruktur selalu membawa biaya tambahan.\n\nEngineering yang baik bukan tentang memakai arsitektur paling canggih, tetapi memilih arsitektur paling sederhana yang tetap mampu menyelesaikan masalah dengan andal."
-          },
-          "2": {
-            "title": "Rancang untuk masalah yang ada saat ini",
-            "text": "Produk dengan ratusan pengguna tidak otomatis membutuhkan arsitektur seperti platform global yang melayani jutaan request.\n\nMulailah dari batas modul yang jelas, data model yang baik, application logic yang mudah dipelihara, dan proses deployment yang dapat diprediksi. Arsitektur dapat berkembang ketika constraint nyata mulai muncul."
-          },
-          "3": {
-            "title": "Setiap abstraction harus memiliki alasan",
-            "text": "Service layer, queue, event system, microservice, caching, dan distributed infrastructure semuanya dapat bermanfaat. Namun semuanya seharusnya hadir karena menyelesaikan masalah yang nyata.\n\nSebelum menambah layer baru, tanyakan masalah failure, bottleneck, maintenance, atau kebutuhan bisnis apa yang sebenarnya ingin diselesaikan."
-          },
-          "4": {
-            "title": "Sistem sederhana lebih mudah dikembangkan",
-            "text": "Sistem yang cepat dipahami developer akan lebih mudah di-debug, diuji, di-deploy, dan dikembangkan.\n\nTujuannya bukan menghilangkan kompleksitas sepenuhnya, tetapi menjaga agar kompleksitas tetap sebanding dengan manfaat yang diberikannya."
-          }
-        }
-      },
-      "professionalInterface": {
-        "sections": {
-          "1": {
-            "title": "Profesional tidak berarti tampilannya harus ramai",
-            "text": "Banyak aplikasi bisnis mencoba terlihat canggih dengan menampilkan sebanyak mungkin informasi. Hasilnya justru sering membuat pengguna lebih sulit memahami apa yang penting.\n\nInterface yang profesional memberikan struktur, hierarchy, dan perilaku yang dapat diprediksi."
-          },
-          "2": {
-            "title": "Kurangi jumlah keputusan pengguna",
-            "text": "Setiap layar meminta pengguna membuat keputusan. Navigation, label, button, filter, table, dan form semuanya bersaing mendapatkan perhatian.\n\nDesain interface yang baik mengurangi pilihan yang tidak diperlukan dan membuat tindakan berikutnya menjadi jelas."
-          },
-          "3": {
-            "title": "Konsistensi membangun kepercayaan",
-            "text": "Spacing, typography, terminology, interaction pattern, dan perilaku komponen yang konsisten membantu pengguna memahami sistem tanpa harus mempelajarinya kembali di setiap halaman.\n\nHal ini semakin penting pada software operasional yang digunakan berulang kali sepanjang hari."
-          },
-          "4": {
-            "title": "Interface yang tenang membantu pekerjaan nyata",
-            "text": "Software bisnis seharusnya membantu pengguna menyelesaikan pekerjaan, bukan terus-menerus meminta perhatian.\n\nInterface yang tenang menggunakan hierarchy dan feedback secara tepat agar kondisi penting tetap terlihat tanpa membuat setiap halaman terasa seperti peringatan."
-          }
-        }
-      },
-      "legacyMonolith": {
-        "sections": {
-          "1": {
-            "title": "Rewrite bukan otomatis strategi migrasi terbaik",
-            "text": "Aplikasi legacy sering menyimpan pengetahuan operasional bertahun-tahun di dalam code, struktur database, workflow, dan berbagai exception bisnis.\n\nMengganti seluruh aplikasi sekaligus justru dapat menciptakan risiko bisnis yang lebih besar dibanding manfaat teknisnya."
-          },
-          "2": {
-            "title": "Pahami sistem yang ada terlebih dahulu",
-            "text": "Sebelum mengubah arsitektur, identifikasi modul yang stabil, bagian yang sering menimbulkan masalah operasional, lokasi ownership data, serta integration yang tidak boleh gagal.\n\nTujuannya adalah memisahkan constraint teknis nyata dari asumsi."
-          },
-          "3": {
-            "title": "Pindahkan satu boundary dalam satu waktu",
-            "text": "Pendekatan modernisasi yang lebih aman biasanya dilakukan secara bertahap. Pisahkan satu modul yang jelas, tentukan contract-nya, validasi perilakunya, lalu pindahkan traffic secara perlahan.\n\nCara ini memungkinkan tim meningkatkan arsitektur tanpa kehilangan kontrol terhadap sistem lama."
-          },
-          "4": {
-            "title": "Modernisasi harus mengurangi risiko bisnis",
-            "text": "Peningkatan teknis bernilai ketika membuat sistem lebih mudah dipelihara, dioperasikan, dikembangkan, atau ditingkatkan skalanya.\n\nKeberhasilan migrasi karena itu tidak seharusnya hanya diukur dari penggunaan teknologi yang lebih baru, tetapi juga dari berkurangnya risiko operasional dan meningkatnya development velocity."
-          }
-        }
-      }
-    }
-  },
-  "CaseStudyPage": {
-    "label": "Studi kasus",
-    "sections": { "context": "Konteks bisnis", "solution": "Solusi", "engineering": "Engineering", "result": "Hasil" },
-    "projects": {
-      "nexus": {
-        "context": {
-          "title": "Data bisnis tersebar di terlalu banyak sistem.",
-          "text": "Tim membutuhkan cara yang lebih andal untuk menggabungkan informasi operasional, memahami performa, dan mengambil keputusan tanpa harus terus-menerus mencocokkan data dari berbagai sumber."
-        },
-        "solution": {
-          "title": "Sistem analitik yang dirancang untuk mendukung keputusan sehari-hari.",
-          "text": "Kami merancang antarmuka terpusat yang mengubah data operasional yang tersebar menjadi dashboard yang jelas, laporan yang terstruktur, dan informasi yang dapat digunakan oleh tim."
-        },
-        "engineering": {
-          "title": "Fondasi yang scalable untuk kebutuhan data yang terus berkembang.",
-          "text": "Sistem dibangun dengan batas data yang jelas, modul yang dapat digunakan kembali, dan arsitektur yang dapat berkembang mengikuti kebutuhan reporting serta operasional bisnis."
-        },
-        "result": {
-          "title": "Lebih sedikit waktu mengumpulkan data, lebih banyak waktu untuk memahaminya.",
-          "text": "Platform yang dibangun memberikan gambaran performa bisnis yang lebih jelas sekaligus mengurangi pekerjaan manual yang sebelumnya dibutuhkan untuk mengubah data operasional menjadi informasi yang berguna."
-        }
-      },
-      "globalFreight": {
-        "context": {
-          "title": "Alur operasional sulit dipantau secara konsisten.",
-          "text": "Aktivitas freight melibatkan berbagai proses, perubahan status, dan pencatatan operasional. Tim membutuhkan cara yang lebih jelas untuk mengikuti pekerjaan dari satu tahap ke tahap berikutnya tanpa bergantung pada pencatatan manual yang terpisah."
-        },
-        "solution": {
-          "title": "Satu alur operasional dengan visibilitas yang lebih jelas.",
-          "text": "Kami merancang aplikasi custom berdasarkan proses kerja tim sebenarnya dengan menyatukan aktivitas penting, pencatatan, dan informasi status ke dalam satu sistem yang terstruktur."
-        },
-        "engineering": {
-          "title": "Dibangun mengikuti workflow yang dapat terus berkembang.",
-          "text": "Aplikasi dipisahkan menjadi modul-modul dengan tanggung jawab yang jelas sehingga sistem lebih mudah dipelihara dan fitur operasional baru dapat ditambahkan secara bertahap."
-        },
-        "result": {
-          "title": "Cara yang lebih konsisten untuk mengelola operasional sehari-hari.",
-          "text": "Tim mendapatkan visibilitas yang lebih baik terhadap alur kerja, mengurangi pencatatan yang tersebar, dan memiliki fondasi digital yang lebih kuat untuk pengembangan operasional berikutnya."
-        }
-      },
-      "stripeErp": {
-        "context": {
-          "title": "Sistem bisnis penting berjalan secara terpisah.",
-          "text": "Data harus berpindah di antara berbagai aplikasi dan proses bisnis sehingga menimbulkan pekerjaan berulang dan meningkatkan risiko ketidaksesuaian informasi antar sistem."
-        },
-        "solution": {
-          "title": "Integrasi yang andal antara sistem yang dibutuhkan bisnis.",
-          "text": "Kami merancang integration layer yang menghubungkan workflow yang dibutuhkan, mengotomatisasi pertukaran data, dan mengurangi kebutuhan tim untuk memindahkan informasi secara manual."
-        },
-        "engineering": {
-          "title": "Integrasi yang dirancang agar andal dan mudah dipelihara.",
-          "text": "Batas service yang jelas, aliran data yang terkontrol, dan proses integrasi yang dapat diprediksi membuat kegagalan lebih mudah ditemukan sekaligus menjaga arsitektur tetap siap untuk integrasi tambahan."
-        },
-        "result": {
-          "title": "Lebih sedikit pekerjaan berulang dan data yang lebih konsisten.",
-          "text": "Integrasi mengurangi proses sinkronisasi manual antar sistem dan memberikan aliran informasi yang lebih andal di antara berbagai tools operasional bisnis."
-        }
-      }
-    },
-    "cta": { "title": "Punya tantangan yang serupa?", "button": "Mulai Proyek" }
-  },
-  "ContactPage": {
-    "metadata": {
-      "title": "Kontak",
-      "description": "Mulai proyek software bersama Forge Studio. Ceritakan kebutuhan bisnis, ide produk, kebutuhan otomasi, atau integrasi sistem yang ingin dibangun."
-    },
-    "intro": {
-      "eyebrow": "Mulai proyek",
-      "title": "Mari mulai dengan langkah yang jelas.",
-      "description": "Ceritakan kebutuhan atau permasalahan yang sedang Anda hadapi. Kami akan membalas dengan langkah selanjutnya yang jelas, biasanya dalam 1–2 hari kerja."
-    },
-    "form": {
-      "name": "Nama lengkap",
-      "namePlaceholder": "Nama Anda",
-      "contact": "Email atau WhatsApp",
-      "contactPlaceholder": "nama@perusahaan.com",
-      "company": "Nama perusahaan (opsional)",
-      "companyPlaceholder": "Nama Perusahaan",
-      "service": "Apa yang Anda butuhkan?",
-      "selectService": "Pilih layanan",
-      "description": "Ceritakan tentang proyek Anda",
-      "descriptionPlaceholder": "Jelaskan kondisi saat ini, permasalahan yang dihadapi, dan hasil seperti apa yang ingin Anda capai.",
-      "submit": "Kirim inquiry",
-      "replyTime": "Kami biasanya membalas dalam 1–2 hari kerja.",
-      "services": {
-        "customApp": "Aplikasi Custom",
-        "saas": "SaaS",
-        "automation": "Otomasi",
-        "integration": "Integrasi",
-        "maintenance": "Maintenance",
-        "other": "Lainnya"
-      }
-    },
-    "success": {
-      "eyebrow": "Pesan diterima",
-      "title": "Terima kasih telah menghubungi kami.",
-      "description": "Kami akan mempelajari detail yang Anda kirimkan dan menghubungi Anda kembali. Biasanya langkah berikutnya adalah diskusi singkat mengenai kebutuhan proyek, kemudian dilanjutkan dengan proposal yang jelas.",
-      "another": "Kirim pesan lainnya"
-    },
-    "direct": {
-      "eyebrow": "Lebih nyaman menghubungi langsung?",
-      "title": "Mulai dengan percakapan singkat.",
-      "description": "Ceritakan kebutuhan atau permasalahan Anda melalui email. Kita dapat memulai dari sana tanpa proses yang panjang."
-    },
-    "next": {
-      "title": "Langkah selanjutnya",
-      "discovery": "Diskusi kebutuhan",
-      "proposal": "Proposal proyek",
-      "build": "Pengembangan dan serah terima"
-    }
-  },
-  "AboutPage": {
-    "metadata": {
-      "title": "Tentang",
-      "description": "Kenali Forge Studio, studio software independen yang berfokus membangun produk digital yang andal, praktis, dan berorientasi pada kebutuhan bisnis."
-    },
-    "intro": {
-      "eyebrow": "Tentang Forge",
-      "title": "Independen dalam bekerja. Serius terhadap hasil.",
-      "description": "Forge Studio adalah studio software independen yang berfokus pada perancangan dan pengembangan produk digital yang andal untuk kebutuhan bisnis."
-    },
-    "principles": {
-      "eyebrow": "Prinsip kami",
-      "title": "Software yang baik membangun kepercayaan tanpa banyak bicara.",
-      "items": {
-        "reliability": {
-          "title": "Keandalan adalah prioritas",
-          "description": "Software harus stabil, aman, dan dapat diprediksi ketika bisnis Anda benar-benar membutuhkannya."
-        },
-        "businessFirst": {
-          "title": "Berorientasi pada kebutuhan bisnis",
-          "description": "Teknologi adalah alat. Setiap keputusan teknis harus terhubung dengan hasil operasional atau bisnis yang jelas."
-        },
-        "precision": {
-          "title": "Engineering yang presisi",
-          "description": "Kami mengutamakan sistem yang rapi, perhatian terhadap detail, serta solusi sederhana dibandingkan pendekatan rumit hanya karena mengikuti tren."
-        }
-      }
-    },
-    "studio": {
-      "eyebrow": "Tentang studio",
-      "title": "Cukup kecil untuk tetap dekat dengan setiap pekerjaan.",
-      "paragraph1": "Forge Studio dibangun dari satu gagasan sederhana: bisnis membutuhkan partner software yang mau mendengarkan dengan baik, berkomunikasi secara jelas, dan bertanggung jawab terhadap apa yang dibangun. Kami bekerja secara independen, menjaga fokus pada pekerjaan, dan membuat proses dari ide hingga production tetap transparan.",
-      "paragraph2": "Artinya tidak ada proses yang dibuat rumit tanpa alasan, tidak ada istilah teknis yang digunakan sekadar untuk terlihat kompleks, dan tidak ada serah terima sebelum sistem benar-benar siap digunakan.",
-      "cta": "Mulai diskusi"
-    }
-  },
-  "insights": {
-    "overEngineering": {
-      "title": "Mengapa Over-Engineering Merugikan Startup Tahap Awal",
-      "tag": "Engineering",
-      "summary": "Mengapa teknologi yang sederhana sering menjadi strategi terbaik ketika bisnis membutuhkan software yang dapat segera digunakan."
-    },
-    "professionalInterface": {
-      "title": "Merancang Interface Profesional yang Tenang dan Jelas",
-      "tag": "Produk",
-      "summary": "Software untuk kebutuhan industri bekerja lebih baik ketika kejelasan dan keandalan menjadi dasar setiap keputusan desain."
-    },
-    "legacyMonolith": {
-      "title": "Strategi Migrasi untuk Sistem Monolith Legacy",
-      "tag": "Engineering",
-      "summary": "Langkah praktis untuk meningkatkan sistem lama tanpa mengganggu aktivitas operasional sehari-hari."
-    }
-  },
-  "InsightsPage": {
-    "metadata": {
-      "title": "Insight",
-      "description": "Insight praktis dari Forge Studio tentang software engineering, pengembangan produk, arsitektur sistem, otomasi, dan pembangunan produk digital yang andal."
-    },
-    "intro": {
-      "eyebrow": "Catatan dari studio",
-      "title": "Insight",
-      "description": "Pemikiran, pembahasan teknis, dan pengalaman kami seputar engineering, desain, serta pengembangan bisnis."
-    },
-    "readArticle": "Baca artikel"
-  },
-  "caseCategories": { "customApp": "Aplikasi Custom", "saas": "SaaS", "automation": "Otomasi", "integration": "Integrasi" },
-  "WorkPage": {
-    "metadata": {
-      "title": "Portofolio",
-      "description": "Jelajahi proyek software pilihan Forge Studio, mulai dari platform SaaS, aplikasi web custom, sistem otomasi, hingga integrasi untuk kebutuhan bisnis."
-    },
-    "intro": {
-      "eyebrow": "Portofolio pilihan",
-      "title": "Dibangun berdasarkan masalah, bukan sekadar teknologi.",
-      "description": "Kumpulan proyek engineering yang menunjukkan pendekatan kami dalam menyelesaikan permasalahan kompleks dan membangun software yang berorientasi pada kebutuhan bisnis."
-    },
-    "filters": { "all": "Semua", "customApp": "Aplikasi Custom", "saas": "SaaS", "automation": "Otomasi", "integration": "Integrasi" },
-    "empty": { "title": "Belum ada proyek pada kategori ini.", "cta": "Diskusikan kebutuhan Anda dengan kami" }
-  },
-  "ProductsPage": {
-    "metadata": {
-      "title": "Produk Software",
-      "description": "Jelajahi produk software yang dikembangkan Forge Studio, mulai dari tools bisnis, platform SaaS, hingga solusi digital untuk menyederhanakan operasional sehari-hari."
-    },
-    "intro": {
-      "eyebrow": "Dibangun oleh Forge",
-      "title": "Produk",
-      "description": "Produk software yang dikembangkan oleh Forge Studio berdasarkan permasalahan nyata dalam bisnis dan operasional."
-    }
-  },
-  "ServicesPage": {
-    "metadata": {
-      "title": "Layanan Pengembangan Software",
-      "description": "Jelajahi layanan pengembangan software Forge Studio, mulai dari aplikasi web custom, SaaS, otomasi, integrasi sistem, DevOps, hingga maintenance berkelanjutan."
-    },
-    "intro": {
-      "eyebrow": "Apa yang kami kerjakan",
-      "title": "Solusi engineering untuk pertumbuhan bisnis.",
-      "description": "Kami membangun sistem digital yang scalable dan berkinerja tinggi untuk menyelesaikan berbagai tantangan operasional bisnis."
-    },
-    "status": { "available": "Tersedia sekarang", "byRequest": "Sesuai permintaan" },
-    "discussProject": "Diskusikan proyek Anda",
-    "useCaseDescription": "Dirancang mengikuti proses kerja tim Anda dengan fokus pada kejelasan, keandalan, dan hasil yang dapat digunakan.",
-    "maintenance": {
-      "eyebrow": "Kerja sama berkelanjutan",
-      "title": "Maintenance & Support",
-      "description": "Pilih tingkat dukungan yang paling sesuai dengan kebutuhan operasional bisnis Anda.",
-      "mostPopular": "Paling populer",
-      "discussPlan": "Diskusikan paket",
-      "plans": {
-        "basic": {
-          "name": "Basic Care",
-          "description": "Maintenance dasar dan monitoring sistem",
-          "features": { "1": "Monitoring uptime", "2": "Pembaruan keamanan", "3": "Dukungan melalui email" }
-        },
-        "business": {
-          "name": "Business Care",
-          "description": "Dukungan proaktif untuk bisnis yang berkembang",
-          "features": { "1": "Semua layanan Basic Care", "2": "Evaluasi performa", "3": "Dukungan prioritas" }
-        },
-        "continuous": {
-          "name": "Continuous Development",
-          "description": "Partner teknis untuk pengembangan berkelanjutan",
-          "features": { "1": "Pengembangan terencana", "2": "Pengembangan fitur baru", "3": "Arahan teknis" }
-        }
-      }
-    }
-  },
+  "Navigation": { "services": "Layanan", "work": "Portofolio", "about": "Tentang" },
+  "WorkCard": { "caseStudy": "Studi kasus" },
   "Site": {
-    "services": {
-      "customWeb": {
-        "title": "Aplikasi Web Custom",
-        "description": "Sistem yang dibangun khusus untuk mengurangi hambatan operasional dan menyesuaikan dengan cara kerja tim Anda.",
-        "useCases": { "1": "Dashboard internal", "2": "Portal pelanggan", "3": "Tools operasional" }
-      },
-      "saas": {
-        "title": "Pengembangan SaaS",
-        "description": "Mulai dari perencanaan produk hingga production, kami membangun software yang andal dan dapat berkembang bersama penggunanya.",
-        "useCases": { "1": "Platform multi-tenant", "2": "Sistem subscription", "3": "MVP produk" }
-      },
-      "automation": {
-        "title": "Otomasi Bisnis",
-        "description": "Mengubah pekerjaan berulang menjadi proses otomatis yang menghemat waktu, mengurangi kesalahan, dan meningkatkan efisiensi tim.",
-        "useCases": { "1": "Otomasi workflow", "2": "Pemrosesan dokumen", "3": "Operasi terjadwal" }
-      },
-      "integration": {
-        "title": "Integrasi API & Sistem",
-        "description": "Menghubungkan berbagai sistem bisnis agar pertukaran data menjadi lebih konsisten dan terintegrasi.",
-        "useCases": { "1": "Custom API", "2": "Modernisasi sistem legacy", "3": "Integrasi layanan pihak ketiga" }
-      },
-      "devops": {
-        "title": "DevOps & Deployment",
-        "description": "Infrastruktur dan proses deployment yang membuat proses rilis lebih aman, cepat, dan mudah dikelola.",
-        "useCases": { "1": "Pipeline CI/CD", "2": "Infrastruktur cloud", "3": "Monitoring sistem" }
-      },
-      "maintenance": {
-        "title": "Maintenance & Support",
-        "description": "Dukungan teknis berkelanjutan untuk menjaga software tetap aman, optimal, dan sesuai dengan kebutuhan bisnis yang berkembang.",
-        "useCases": { "1": "Pembaruan keamanan", "2": "Perbaikan bug", "3": "Pengembangan berkelanjutan" }
-      }
-    },
     "cases": {
       "idxStocks": {
         "title": "Dashboard Saham IDX",
-        "category": "Aplikasi Custom",
+        "category": "Aplikasi Web",
         "summary": "Dashboard untuk mengeksplorasi dan memantau data pasar saham Indonesia.",
         "description": "Dashboard terfokus untuk mengakses dan menganalisis informasi saham IDX dalam satu tempat.",
         "problem": "Informasi pasar saham lebih mudah dievaluasi ketika data yang relevan dapat dilihat dalam satu ruang kerja yang terstruktur.",
         "solution": "Forge Studio membangun dashboard khusus untuk mengeksplorasi dan memantau data saham IDX.",
-        "engineering": "Proyek ini dibangun sebagai aplikasi web berbasis data dengan fokus pada hierarki informasi yang jelas dan tampilan dashboard yang konsisten."
+        "engineering": "Proyek ini dibangun sebagai aplikasi web berbasis data dengan fokus pada hierarki informasi yang jelas dan tampilan dashboard yang konsisten.",
+        "scope": {
+          "0": "Terminal pasar interaktif dengan IHSG, saham naik, saham turun, dan saham teraktif",
+          "1": "Grafik candlestick lima tahun dengan SMA, EMA, RSI, MACD, Bollinger Bands, ATR, dan analisis volume",
+          "2": "Laporan keuangan tahunan dan kuartalan beserta rasio valuasi dan kinerja",
+          "3": "Screener fundamental, watchlist, dan integrasi RSS Google News",
+          "4": "Riset paper trading kuantitatif dan AI multiagen dengan analitik kinerja strategi",
+          "5": "Ringkasan pasar otomatis melalui Telegram dan pemantauan kesehatan operasional"
+        },
+        "facts": {
+          "0": "Mendukung lebih dari 840 perusahaan yang tercatat di IDX",
+          "1": "Deployment mandiri menggunakan service dan timer systemd",
+          "2": "Data pasar dan hasil paper trading disimpan di PostgreSQL",
+          "3": "Antarmuka browser berkomunikasi dengan backend FastAPI melalui HTTP dan SSE"
+        },
+        "outcome": "Dashboard menyatukan eksplorasi dan pemantauan saham IDX dalam ruang kerja terstruktur."
       },
-
       "aiSummarizer": {
         "title": "Summarizer Berbasis Model AI",
-        "category": "SaaS",
+        "category": "Aplikasi Web",
         "summary": "Aplikasi berbantuan AI untuk mengubah konten panjang menjadi ringkasan yang lebih singkat.",
         "description": "Workflow summarization praktis yang didukung oleh model AI.",
         "problem": "Konten panjang membutuhkan waktu untuk ditinjau, terutama ketika pengguna hanya membutuhkan poin-poin penting.",
         "solution": "Forge Studio membangun aplikasi terfokus yang menggunakan model AI untuk menghasilkan ringkasan dari konten yang diberikan.",
-        "engineering": "Produk ini berfokus pada alur sederhana dari input menuju hasil ringkasan sehingga kemampuan AI tetap praktis tanpa menambah kompleksitas yang tidak diperlukan."
+        "engineering": "Produk ini berfokus pada alur sederhana dari input menuju hasil ringkasan sehingga kemampuan AI tetap praktis tanpa menambah kompleksitas yang tidak diperlukan.",
+        "scope": { "0": "Peringkasan berbasis AI", "1": "Alur input konten", "2": "Hasil ringkasan yang mudah dibaca" },
+        "facts": {},
+        "outcome": "Aplikasi mengubah konten yang diberikan menjadi ringkasan melalui alur input-ke-ringkasan yang terfokus."
       },
-
       "odooWageOvertime": {
         "title": "Modul Custom Odoo untuk Gaji dan Lembur",
-        "category": "Otomasi",
+        "category": "Sistem yang Ada",
         "summary": "Modul Odoo custom untuk mendukung workflow penggajian dan lembur.",
         "description": "Kustomisasi workflow bisnis di dalam lingkungan Odoo.",
         "problem": "Proses penggajian dan lembur perlu mengikuti aturan operasional yang sudah digunakan oleh bisnis.",
         "solution": "Forge Studio mengembangkan modul Odoo custom untuk mendukung proses penggajian dan lembur di dalam workflow ERP yang sudah ada.",
-        "engineering": "Modul ini memperluas fungsi Odoo menggunakan implementasi yang menyesuaikan workflow bisnis sehingga tim tidak perlu mengikuti proses generik yang tidak sesuai."
+        "engineering": "Modul ini memperluas fungsi Odoo menggunakan implementasi yang menyesuaikan workflow bisnis sehingga tim tidak perlu mengikuti proses generik yang tidak sesuai.",
+        "scope": { "0": "Modul Odoo custom", "1": "Dukungan alur penggajian", "2": "Dukungan alur lembur" },
+        "facts": {},
+        "outcome": "Alur penggajian dan lembur didukung di dalam lingkungan Odoo yang sudah ada."
       },
-
       "stockOpname": {
         "title": "Aplikasi Stock Opname",
-        "category": "Aplikasi Custom",
+        "category": "Sistem Bisnis",
         "summary": "Aplikasi untuk mendukung proses stock opname yang lebih terstruktur.",
         "description": "Workflow khusus untuk mencatat dan meninjau hasil perhitungan stok fisik.",
         "problem": "Perhitungan stok fisik lebih mudah dikelola ketika proses pencatatan, pemeriksaan, dan rekonsiliasi mengikuti satu workflow yang jelas.",
         "solution": "Forge Studio membangun aplikasi stock opname untuk mendukung aktivitas penghitungan inventaris secara terstruktur.",
-        "engineering": "Aplikasi berfokus pada tahapan operasional yang jelas sehingga informasi hasil perhitungan stok dapat dicatat dan ditinjau secara konsisten."
-      }
-    },
-    "products": {
-      "growpos": { "tagline": "Sistem point-of-sale untuk bisnis retail yang berkembang", "category": "POS / SaaS" },
-      "forgeInventory": {
-        "tagline": "Koordinasi alur kerja operasional dan penugasan lapangan untuk tim menengah.",
-        "category": "Operasional"
-      },
-      "signalDesk": { "tagline": "Jejak audit internal dan pelaporan kepatuhan untuk sistem bisnis.", "category": "Sistem Bisnis" },
-      "learnMore": "Tanyakan produk ini"
-    },
-    "productStatus": {
-      "beta": "Beta",
-      "comingSoon": "Segera Hadir",
-      "live": "Aktif",
-      "visit": "Lihat produk →",
-      "notify": "Beri tahu saya"
-    },
-    "insights": {
-      "metadata": {
-        "title": "Insight",
-        "description": "Insight praktis dari Forge Studio tentang software engineering, pengembangan produk, arsitektur sistem, otomasi, dan pembangunan produk digital yang andal."
-      },
-      "overEngineering": {
-        "title": "Mengapa Over-Engineering Merugikan Startup Tahap Awal",
-        "tag": "Engineering",
-        "summary": "Mengapa teknologi yang sederhana sering menjadi strategi terbaik ketika bisnis membutuhkan software yang dapat segera digunakan."
-      },
-      "professionalInterface": {
-        "title": "Merancang Interface Profesional yang Tenang dan Jelas",
-        "tag": "Produk",
-        "summary": "Software untuk kebutuhan industri bekerja lebih baik ketika kejelasan dan keandalan menjadi dasar setiap keputusan desain."
-      },
-      "legacyMonolith": {
-        "title": "Strategi Migrasi untuk Sistem Monolith Legacy",
-        "tag": "Engineering",
-        "summary": "Langkah praktis untuk meningkatkan sistem lama tanpa mengganggu aktivitas operasional sehari-hari."
+        "engineering": "Aplikasi berfokus pada tahapan operasional yang jelas sehingga informasi hasil perhitungan stok dapat dicatat dan ditinjau secara konsisten.",
+        "scope": { "0": "Alur penghitungan stok", "1": "Pencatatan inventaris", "2": "Data operasional yang siap ditinjau" },
+        "facts": {},
+        "outcome": "Aplikasi menyediakan alur terstruktur untuk mencatat dan meninjau penghitungan stok fisik."
       }
     }
   },
-  "Navigation": {
-    "home": "Beranda",
-    "services": "Layanan",
-    "work": "Portofolio",
-    "products": "Produk",
-    "about": "Tentang",
-    "insights": "Insight",
-    "contact": "Mulai Proyek",
-    "language": "Bahasa",
-    "english": "EN",
-    "indonesian": "ID",
-    "englishName": "English",
-    "indonesianName": "Bahasa Indonesia",
-    "homeAria": "Beranda Forge Studio",
-    "primaryNavigation": "Navigasi utama",
-    "mobileNavigation": "Navigasi mobile",
-    "openNavigation": "Buka navigasi",
-    "closeNavigation": "Tutup navigasi",
-    "switchEnglish": "Ganti ke Bahasa Inggris",
-    "switchIndonesian": "Ganti ke Bahasa Indonesia"
+  "WorkPage": {
+    "metadata": { "title": "Portofolio", "description": "Aplikasi web dan sistem untuk kebutuhan bisnis dan operasional nyata." },
+    "filters": { "all": "Semua", "webApplication": "Aplikasi Web", "businessSystem": "Sistem Bisnis", "existingSystem": "Sistem yang Ada" }
   },
-  "Footer": {
-    "description": "Software engineering profesional untuk kebutuhan bisnis.",
-    "company": "Perusahaan",
-    "resources": "Sumber Daya",
-    "connect": "Terhubung",
-    "about": "Tentang",
-    "services": "Layanan",
-    "work": "Portofolio",
-    "products": "Produk",
-    "insights": "Insight",
-    "contact": "Kontak",
-    "studioLabel": "Studio Software Independen",
-    "copyright": "© 2026 Forge Studio. Seluruh hak cipta dilindungi."
-  },
-  "WorkCard": { "caseStudy": "Studi kasus" },
   "Home": {
     "metadata": {
-      "title": "Software untuk Menyelesaikan Masalah Nyata",
-      "description": "Forge Studio adalah studio software independen yang membangun aplikasi web, produk SaaS, sistem otomasi, dan software bisnis yang andal."
-    },
-    "hero": {
-      "eyebrow": "Studio software independen",
-      "title": "Kami membangun software yang menyelesaikan",
-      "highlight": "masalah bisnis nyata.",
-      "description": "Aplikasi web custom, sistem bisnis, dan produk SaaS yang dikembangkan dari ide hingga siap digunakan. Profesional, andal, dan dirancang untuk berkembang.",
-      "startProject": "Mulai Proyek",
-      "viewWork": "Lihat Portofolio",
-      "noteTitle": "Engineering yang berorientasi pada bisnis",
-      "noteDescription": "dari tahap discovery hingga handover."
-    },
-    "technology": { "label": "Teknologi adalah alat.", "cloudInfrastructure": "Infrastruktur cloud" },
-    "services": {
-      "eyebrow": "Kapabilitas",
-      "title": "Apa yang kami bangun",
-      "description": "Layanan software engineering yang dirancang untuk kebutuhan bisnis yang kompleks.",
-      "viewAll": "Semua layanan →",
-      "learnMore": "Pelajari lebih lanjut →"
-    },
-    "work": {
-      "eyebrow": "Portofolio pilihan",
-      "title": "Dibangun untuk mendukung proses bisnis nyata.",
-      "description": "Sistem yang dirancang berdasarkan cara bisnis benar-benar beroperasi.",
-      "viewAll": "Lihat semua portofolio →"
-    },
-    "process": {
-      "eyebrow": "Cara kami bekerja",
-      "title": "Alur yang jelas dari masalah hingga produksi.",
-      "description": "Tahapan yang kecil dan terarah menjaga proses pengembangan tetap selaras dengan kebutuhan bisnis dan membuat progres terlihat sejak hari pertama.",
-      "startConversation": "Mulai diskusi →",
-      "steps": {
-        "discovery": "Discovery",
-        "consultation": "Konsultasi",
-        "proposal": "Proposal",
-        "development": "Pengembangan",
-        "handover": "Serah Terima",
-        "maintenance": "Pemeliharaan"
-      }
-    },
-    "products": { "eyebrow": "Produk", "title": "Software yang lahir dari masalah nyata.", "viewAll": "Lihat semua produk →" },
-    "about": {
-      "eyebrow": "Tentang Forge",
-      "titleLine1": "Independen sejak awal.",
-      "titleLine2": "Serius terhadap hasil.",
-      "description": "Forge Studio adalah studio software independen yang berfokus pada desain dan pengembangan produk digital yang andal untuk bisnis. Kami mengutamakan kejelasan dibanding kompleksitas teknis yang tidak diperlukan dan membangun sistem yang dirancang untuk digunakan dalam jangka panjang.",
-      "link": "Tentang kami →"
-    },
-    "cta": {
-      "eyebrow": "Punya masalah bisnis yang perlu diselesaikan?",
-      "title": "Mari wujudkan langkah berikutnya menjadi solusi nyata.",
-      "button": "Mulai Proyek"
+      "title": "Aplikasi Web untuk Kebutuhan Bisnis",
+      "description": "Studio pengembangan web independen untuk membangun, meningkatkan, dan memelihara aplikasi web dan sistem bisnis."
+    }
+  },
+  "ServicesPage": {
+    "metadata": {
+      "title": "Layanan Pengembangan Web",
+      "description": "Empat layanan: pengembangan web custom, sistem bisnis, pengembangan sistem yang ada, serta pemeliharaan dan deployment."
+    }
+  },
+  "AboutPage": {
+    "metadata": {
+      "title": "Tentang Forge Studio",
+      "description": "Studio pengembangan web independen yang berfokus pada aplikasi praktis, andal, dan mudah dipelihara."
     }
   }
 }

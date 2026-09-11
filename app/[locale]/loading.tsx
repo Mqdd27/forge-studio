@@ -1,7 +1,11 @@
+import Image from "next/image";
 export default function Loading() {
   return (
     <main className="page-loading" role="status" aria-label="Loading page" aria-busy="true">
-      <span className="sr-only">Loading…</span>
+      <div className="brand-loading-mark" aria-hidden="true">
+        <Image src="/img/forge-icon.png" alt="" width={32} height={32} />
+        <span />
+      </div>
       <div className="loading-line loading-label" />
       <div className="loading-line loading-title" />
       <div className="loading-line loading-title short" />

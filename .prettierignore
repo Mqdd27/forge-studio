@@ -5,3 +5,7 @@ coverage/
 package-lock.json
 next-env.d.ts
 public/
+
+.next-dev/
+.next-dev-*/
+*.tsbuildinfo

@@ -1,212 +1,262 @@
 "use client";
 
+import { FormEvent, useState } from "react";
 import { useLocale } from "next-intl";
-import { DesignText, DesignIcon, InquiryForm } from "./primitives";
-import translations from "../../messages/design-id.json";
+import { Link } from "@/i18n/navigation";
 
-const field = "w-full border border-border rounded-lg p-3 text-ink outline-none focus:border-accent focus:ring-2 focus:ring-accent/20";
-const label = "flex flex-col gap-2 text-xs font-medium uppercase tracking-wide";
-const services = [
-  "Custom Web Application",
-  "Business System",
-  "SaaS",
-  "Automation",
-  "Integration",
-  "Existing System Improvement",
-  "Maintenance",
-  "SEO Friendly",
-  "Not Sure Yet",
-];
-
-function Heading({ children }: { children: string }) {
-  return (
-    <h2 className="mb-4 border-b border-border pb-2 text-lg font-medium">
-      <DesignText>{children}</DesignText>
-    </h2>
-  );
-}
-
-function Choices({ name, options }: { name: string; options: string[] }) {
-  return (
-    <div className={`grid grid-cols-2 gap-2 ${name === "project-type" ? "sm:grid-cols-4" : ""}`}>
-      {options.map((option) => (
-        <label key={option} className="relative cursor-pointer">
-          <input type="radio" name={name} value={option} className="peer sr-only" required={name === "project-type"} />
-          <span className="flex h-full min-h-12 items-center justify-center rounded-lg border border-border p-3 text-center text-xs transition-colors hover:border-accent peer-checked:border-accent peer-checked:bg-accent-light peer-checked:text-accent peer-focus-visible:ring-2 peer-focus-visible:ring-accent peer-focus-visible:ring-offset-2">
-            <DesignText>{option}</DesignText>
-          </span>
-        </label>
-      ))}
-    </div>
-  );
-}
+const fieldClass =
+  "w-full rounded-xl border border-border/80 bg-surface px-4 py-3.5 text-base text-ink outline-none transition-all duration-200 placeholder:text-muted focus:border-accent focus:ring-4 focus:ring-accent/15";
+const projectTypes = [
+  ["customWeb", "Custom Web Application", "Aplikasi Web Custom"],
+  ["businessSystems", "Business System", "Sistem Bisnis"],
+  ["existingSystems", "Existing System Development", "Pengembangan Sistem yang Ada"],
+  ["maintenance", "Maintenance / Deployment", "Pemeliharaan / Deployment"],
+  ["unsure", "Not Sure Yet", "Belum Yakin"],
+] as const;
 
 export function ContactDesign() {
-  const locale = useLocale();
-  const t = (text: string) => (locale === "id" ? ((translations as Record<string, string>)[text] ?? text) : text);
+  const id = useLocale() === "id";
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [error, setError] = useState("");
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (status === "loading") return;
+    const data = new FormData(event.currentTarget);
+    const contact = String(data.get("contact") || "").trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) && !/^\+?[\d\s().-]{8,25}$/.test(contact)) {
+      setError(id ? "Masukkan alamat email atau nomor WhatsApp yang valid." : "Enter a valid email address or WhatsApp number.");
+      setStatus("error");
+      return;
+    }
+    setStatus("loading");
+    setError("");
+    try {
+      const response = await fetch("/api/inquiries", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(data)),
+        signal: AbortSignal.timeout(15000),
+      });
+      if (!response.ok) {
+        const result = await response.json().catch(() => ({}));
+        if (result.code === "unavailable")
+          throw new Error(
+            id
+              ? "Pengiriman inquiry belum tersedia. Informasi Anda belum terkirim; silakan coba kembali nanti."
+              : "Inquiry delivery is not available yet. Your information has not been sent; please try again later.",
+          );
+        if (response.status === 429)
+          throw new Error(
+            id
+              ? "Terlalu banyak percobaan. Tunggu beberapa menit sebelum mencoba lagi."
+              : "Too many attempts. Wait a few minutes before trying again.",
+          );
+        throw new Error(
+          id
+            ? "Inquiry belum dapat dikirim. Periksa isian Anda dan coba lagi."
+            : "Your inquiry could not be sent. Check your details and try again.",
+        );
+      }
+      setStatus("success");
+    } catch (error) {
+      setStatus("error");
+      setError(
+        error instanceof Error && error.name !== "TimeoutError" && error.name !== "TypeError"
+          ? error.message
+          : id
+            ? "Koneksi terputus atau pengiriman belum terkonfirmasi. Isian Anda tetap tersimpan di halaman ini."
+            : "The connection was interrupted or delivery was not confirmed. Your entries are still on this page.",
+      );
+    }
+  }
   return (
-    <main className="design-page design-contact mx-auto w-full max-w-[1200px] px-4 py-16 sm:px-6 md:py-20 lg:px-8">
-      <section className="mx-auto mb-14 max-w-3xl text-center">
-        <h1 className="font-heading font-bold">
-          <DesignText>{"Tell us what you're trying to solve."}</DesignText>
-        </h1>
-        <p className="mx-auto mt-5 max-w-xl text-secondary">
-          <DesignText>{"You don't need to know the technical solution yet. Tell us about the problem, workflow or idea."}</DesignText>
-        </p>
-      </section>
-      <section className="grid grid-cols-1 items-start gap-8 lg:grid-cols-[2.1fr_1fr]">
-        <div className="min-w-0 rounded-lg border border-border bg-surface p-5 sm:p-8 lg:p-10">
-          <InquiryForm className="space-y-8">
-            <section>
-              <Heading>1. Your Information</Heading>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <label className={label}>
-                  <span>
-                    <DesignText>{"Name"}</DesignText> <span className="text-accent">*</span>
-                  </span>
-                  <input className={field} name="name" autoComplete="name" placeholder="Jane Doe" required />
-                </label>
-                <label className={label}>
-                  <span>
-                    <DesignText>{"Email"}</DesignText> <span className="text-accent">*</span>
-                  </span>
-                  <input className={field} type="email" name="contact" autoComplete="email" placeholder="jane@company.com" required />
-                </label>
-                <label className={label}>
-                  <DesignText>{"Company / Organization (optional)"}</DesignText>
-                  <input className={field} name="company" autoComplete="organization" placeholder="Acme Corp" />
-                </label>
-                <label className={label}>
-                  <DesignText>{"WhatsApp (optional)"}</DesignText>
-                  <input className={field} type="tel" name="whatsapp" autoComplete="tel" placeholder="+62 812-3456-7890" />
-                </label>
-              </div>
-            </section>
-            <fieldset>
-              <legend className="mb-4 w-full border-b border-border pb-2 text-lg font-medium">
-                <DesignText>{"2. What do you need help with?"}</DesignText>
-              </legend>
-              <p className="mb-3 text-sm text-secondary">
-                <DesignText>{"Select the option that best describes your needs:"}</DesignText>
-              </p>
-              <Choices name="project-type" options={services} />
-            </fieldset>
-            <section>
-              <Heading>3. Project Problem</Heading>
-              <label className={label}>
-                <span>
-                  <DesignText>{"What are you trying to solve?"}</DesignText> <span className="text-accent">*</span>
-                </span>
-                <textarea
-                  className={field}
-                  name="description"
-                  required
-                  rows={5}
-                  placeholder={t("Describe the core problem, bottleneck, or business initiative you're addressing...")}
-                />
-              </label>
-              <p className="mt-3 text-sm text-secondary">
-                <DesignText>{"Tell us about the problem, workflow or idea. Technical details are not required."}</DesignText>
-              </p>
-            </section>
-            <section>
-              <Heading>4. Current Workflow</Heading>
-              <label className={label}>
-                <DesignText>{"How are you handling this today? (optional)"}</DesignText>
-                <textarea
-                  className={field}
-                  name="workflow"
-                  rows={3}
-                  placeholder={t("E.g., Currently tracked in shared Google Sheets and WhatsApp groups...")}
-                />
-              </label>
-              <p className="mt-3 text-sm text-secondary">
-                <DesignText>{"Excel, WhatsApp, paper forms, an existing system, or something else."}</DesignText>
-              </p>
-            </section>
-            <div className="grid gap-6 sm:grid-cols-2">
-              <section>
-                <Heading>5. Budget</Heading>
-                <label className={label}>
-                  <DesignText>{"Estimated Budget (optional)"}</DesignText>
-                  <select name="budget" defaultValue="" className={field}>
-                    {["Select budget range", "Under Rp10m", "Rp10m–Rp25m", "Rp25m–Rp50m", "Rp50m+", "Not Sure Yet"].map((option, i) => (
-                      <option key={option} value={i === 0 ? "" : option}>
-                        {t(option)}
+    <main className="stitch-page stitch-contact st-section">
+      <div className="st-container">
+        <header className="st-contact-heading">
+          <p className="font-mono text-xs font-semibold uppercase tracking-wider text-accent mb-3">
+            {id ? "MEMULAI PROYEK" : "START A PROJECT"}
+          </p>
+          <h1 className="font-heading text-4xl sm:text-5xl font-bold tracking-tight text-ink">
+            {id ? "Ceritakan proyek Anda." : "Tell us about your project."}
+          </h1>
+          <p className="mt-4 text-base sm:text-lg leading-relaxed text-grey">
+            {id
+              ? "Baik memulai dari ide maupun meningkatkan aplikasi yang sudah ada, ceritakan apa yang Anda butuhkan."
+              : "Whether you are starting from an idea or improving an existing application, tell us what you need."}
+          </p>
+        </header>
+        <div className="st-contact-layout">
+          <div>
+            {status === "success" ? (
+              <section role="status" className="rounded-2xl border border-[#CED9C4] bg-[#F4F7F2] p-8 md:p-10 shadow-sm">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#E2ECDA] text-[#3A5729] mb-6 font-bold text-lg">
+                  ✓
+                </div>
+                <h2 className="font-heading text-2xl sm:text-3xl font-bold text-ink">
+                  {id ? "Terima kasih telah menghubungi kami." : "Thanks for reaching out."}
+                </h2>
+                <p className="mt-4 text-base leading-relaxed text-grey max-w-xl">
+                  {id
+                    ? "Kami akan meninjau proyek Anda dan menghubungi Anda untuk membahas langkah berikutnya."
+                    : "We will review your project and contact you to discuss the next step."}
+                </p>
+                <button
+                  type="button"
+                  className="about-button btn-secondary mt-8 px-6 py-3 text-sm font-semibold"
+                  onClick={() => setStatus("idle")}
+                >
+                  {id ? "Kirim inquiry lain" : "Send another inquiry"}
+                </button>
+              </section>
+            ) : (
+              <form
+                onSubmit={submit}
+                className="grid gap-6 rounded-2xl border border-border bg-surface p-7 sm:p-10 shadow-sm"
+                aria-busy={status === "loading"}
+              >
+                <div className="grid gap-6">
+                  <label className="grid gap-2 text-sm font-semibold text-ink">
+                    <span>{id ? "Nama" : "Name"}</span>
+                    <input
+                      name="name"
+                      autoComplete="name"
+                      required
+                      maxLength={120}
+                      className={fieldClass}
+                      placeholder={id ? "Nama Anda" : "Your name"}
+                    />
+                  </label>
+                  <label className="grid gap-2 text-sm font-semibold text-ink">
+                    <span>{id ? "Email atau WhatsApp" : "Email or WhatsApp"}</span>
+                    <input
+                      name="contact"
+                      required
+                      maxLength={254}
+                      className={fieldClass}
+                      placeholder={id ? "email@example.com / +628..." : "email@domain.com / +1..."}
+                      aria-describedby="inquiry-error"
+                    />
+                  </label>
+                </div>
+                <label className="grid gap-2 text-sm font-semibold text-ink">
+                  <span>{id ? "Jenis Proyek" : "Project Type"}</span>
+                  <select name="projectType" required defaultValue="" className={fieldClass}>
+                    <option disabled value="">
+                      {id ? "Pilih jenis proyek" : "Select a project type"}
+                    </option>
+                    {projectTypes.map(([value, en, ind]) => (
+                      <option key={value} value={value}>
+                        {id ? ind : en}
                       </option>
                     ))}
                   </select>
                 </label>
-              </section>
-              <fieldset>
-                <legend className="mb-4 w-full border-b border-border pb-2 text-lg font-medium">
-                  <DesignText>{"6. Timeline"}</DesignText>
-                </legend>
-                <p className="mb-2 text-xs uppercase tracking-wide">
-                  <DesignText>{"Target Timeline (optional)"}</DesignText>
+                <label className="grid gap-2 text-sm font-semibold text-ink">
+                  <span>{id ? "Deskripsi Proyek" : "Project Description"}</span>
+                  <textarea
+                    name="description"
+                    required
+                    minLength={10}
+                    maxLength={6000}
+                    rows={5}
+                    className={`${fieldClass} min-h-[160px]`}
+                    placeholder={
+                      id
+                        ? "Jelaskan kebutuhan alur kerja, pengguna, atau sistem yang ingin dibangun..."
+                        : "Describe the workflows, users, or systems you want to build or improve..."
+                    }
+                    aria-describedby="description-help"
+                  />
+                  <span id="description-help" className="font-normal text-xs leading-relaxed text-muted">
+                    {id
+                      ? "Ceritakan apa yang ingin Anda bangun, tingkatkan, atau selesaikan. Detail teknis tidak diperlukan."
+                      : "Tell us what you are trying to build, improve, or solve. Technical details are not required."}
+                  </span>
+                </label>
+                <div className="hidden" aria-hidden="true">
+                  <label>
+                    Website
+                    <input name="website" tabIndex={-1} autoComplete="off" />
+                  </label>
+                </div>
+                <p className="text-xs leading-relaxed text-muted">
+                  {id
+                    ? "Informasi ini digunakan untuk menanggapi inquiry proyek Anda. "
+                    : "This information is used to respond to your project inquiry. "}
+                  <Link href="/privacy-policy" className="underline text-accent hover:text-accent-dark">
+                    {id ? "Kebijakan Privasi" : "Privacy Policy"}
+                  </Link>
                 </p>
-                <Choices name="timeline" options={["ASAP", "1–2 months", "3–6 months", "Flexible"]} />
-              </fieldset>
-            </div>
-            <button
-              type="submit"
-              className="inline-flex w-full items-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-white hover:bg-accent-dark sm:w-auto"
-            >
-              <DesignText>{"Prepare Project Brief"}</DesignText>
-              <DesignIcon name="arrow_forward" />
-            </button>
-            <p className="text-xs text-secondary">
-              <DesignText>{"Opens an email draft with your project brief, ready for you to send."}</DesignText>
-            </p>
-          </InquiryForm>
+                <p id="inquiry-error" role="alert" className={error ? "text-sm font-medium text-[#B3261E]" : "sr-only"}>
+                  {error}
+                </p>
+                <button
+                  disabled={status === "loading"}
+                  type="submit"
+                  className="btn-primary group relative overflow-hidden inline-flex min-h-[50px] items-center justify-center gap-2 rounded-xl px-8 py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 w-full sm:w-auto disabled:cursor-wait disabled:opacity-80"
+                >
+                  {status === "loading" ? (
+                    <>
+                      <span>{id ? "Mengirim…" : "Sending…"}</span>
+                      <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-accent-light animate-pulse" />
+                    </>
+                  ) : (
+                    <>
+                      <span>{id ? "Kirim Inquiry Proyek" : "Send Project Inquiry"}</span>
+                      <span className="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true">
+                        →
+                      </span>
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
+          </div>
+          <aside className="st-contact-aside">
+            <section>
+              <h2>{id ? "Apa langkah berikutnya?" : "What happens next?"}</h2>
+              <ol>
+                {[
+                  [
+                    id ? "Meninjau kebutuhan" : "Review your requirements",
+                    id
+                      ? "Kami mempelajari kebutuhan, alur kerja, dan tujuan proyek Anda."
+                      : "We review your requirements, workflows and project goals.",
+                  ],
+                  [
+                    id ? "Diskusi lebih lanjut" : "Clarifying discussion",
+                    id
+                      ? "Kami membahas pertanyaan dan detail yang diperlukan untuk menentukan solusi."
+                      : "We discuss the details needed to define the right solution.",
+                  ],
+                  [
+                    id ? "Proposal yang jelas" : "Practical proposal",
+                    id
+                      ? "Anda mendapat rencana dengan lingkup pekerjaan dan tahapan yang jelas."
+                      : "You receive a plan with a clear scope and milestones.",
+                  ],
+                ].map(([title, desc], i) => (
+                  <li key={title}>
+                    <span>{i + 1}</span>
+                    <div>
+                      <h3>{title}</h3>
+                      <p>{desc}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </section>
+            <section className="st-contact-help">
+              <h3>{id ? "Belum punya detail teknis?" : "No technical brief yet?"}</h3>
+              <p>
+                {id
+                  ? "Cukup ceritakan masalah yang ingin diselesaikan. Kami membantu merumuskan langkah berikutnya."
+                  : "Start with the problem you want to solve. We will help define the next step."}
+              </p>
+            </section>
+          </aside>
         </div>
-        <aside className="space-y-6">
-          <div className="rounded-lg border border-border bg-surface-alt p-7">
-            <h2 className="mb-4 flex items-center gap-3 text-lg font-medium">
-              <DesignIcon name="schedule" className="text-accent" />
-              <DesignText>{"Response Expectation"}</DesignText>
-            </h2>
-            <p className="text-sm leading-relaxed text-secondary">
-              <DesignText>
-                {
-                  "We review all serious inquiries thoroughly. Expect a response from an engineering lead within 1–2 business days to schedule an initial consultation."
-                }
-              </DesignText>
-            </p>
-          </div>
-          <div className="rounded-lg border border-border p-7">
-            <h2 className="mb-4 text-lg font-medium">
-              <DesignText>{"Problem-First Approach"}</DesignText>
-            </h2>
-            <p className="text-sm leading-relaxed text-secondary">
-              <DesignText>
-                {
-                  "You don't need wireframes or technical specs. We start by unpacking the actual operational friction or business opportunity, then advise whether custom software is the right move."
-                }
-              </DesignText>
-            </p>
-          </div>
-          <div className="rounded-lg border border-border p-7">
-            <h2 className="text-lg font-medium">
-              <DesignText>{"Direct Channels"}</DesignText>
-            </h2>
-            <p className="mb-5 mt-1 text-sm text-secondary">
-              <DesignText>{"Prefer a quick informal check first?"}</DesignText>
-            </p>
-            <div className="flex items-start gap-3">
-              <DesignIcon name="mail" className="text-secondary" />
-              <div className="min-w-0">
-                <p className="text-xs uppercase">
-                  <DesignText>{"Email"}</DesignText>
-                </p>
-                <a href="mailto:hello@forgestudio.dev" className="break-all text-sm hover:text-accent hover:underline">
-                  hello@forgestudio.dev
-                </a>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </section>
+      </div>
     </main>
   );
 }

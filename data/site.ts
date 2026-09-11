@@ -1,6 +1,6 @@
 // data/site.ts
 
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://forgestudio.dev";
 
 /* =========================================================
    SERVICES
@@ -9,45 +9,31 @@ export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:300
 export const services = [
   {
     key: "customWeb",
-    title: "Custom Web Applications",
-    icon: "01",
-    description: "Purpose-built systems that remove operational bottlenecks and fit the way your team actually works.",
-    useCases: ["Internal dashboards", "Client portals", "Operational tools"],
+    icon: "code",
+    title: "Custom Web Development",
+    description: "Web applications designed around your requirements and workflows.",
+    useCases: ["Admin dashboards", "Customer portals", "Management applications", "Custom workflows"],
   },
   {
-    key: "saas",
-    title: "SaaS Development",
-    icon: "02",
-    description: "From product definition to production, we engineer reliable software that can grow with its customers.",
-    useCases: ["Multi-tenant platforms", "Subscription workflows", "Product MVPs"],
+    key: "businessSystems",
+    icon: "inventory_2",
+    title: "Business Systems",
+    description: "Bring operational data and everyday processes into one manageable web system.",
+    useCases: ["Inventory & warehouse", "Booking & POS", "Reporting", "Approval workflows"],
   },
   {
-    key: "automation",
-    title: "Business Automation",
-    icon: "03",
-    description: "Turn repetitive work into dependable processes that save time, reduce errors, and keep your team moving.",
-    useCases: ["Workflow scripts", "Document processing", "Scheduled operations"],
-  },
-  {
-    key: "integration",
-    title: "API & System Integration",
-    icon: "04",
-    description: "Connect the systems your business depends on and create a clear, consistent flow of information.",
-    useCases: ["Custom APIs", "Legacy modernization", "Third-party orchestration"],
-  },
-  {
-    key: "devops",
-    title: "DevOps & Deployment",
-    icon: "05",
-    description: "Practical infrastructure and delivery practices that make releases safer, faster, and easier to operate.",
-    useCases: ["CI/CD pipelines", "Cloud infrastructure", "Monitoring setup"],
+    key: "existingSystems",
+    icon: "sync",
+    title: "Existing System Development",
+    description: "Continue and improve your existing application with new features, fixes, and integrations.",
+    useCases: ["Feature development", "Bug fixes", "API & payment integration", "Performance improvements"],
   },
   {
     key: "maintenance",
-    title: "Maintenance & Support",
-    icon: "06",
-    description: "Ongoing technical partnership to keep software secure, performant, and aligned with changing needs.",
-    useCases: ["Security updates", "Bug fixes", "Continuous improvements"],
+    icon: "cloud",
+    title: "Maintenance & Deployment",
+    description: "Get your application into production and keep it supported after launch.",
+    useCases: ["Deployment & server setup", "Domain & SSL", "Backup & monitoring", "Ongoing improvements"],
   },
 ] as const;
 
@@ -191,32 +177,4 @@ export const cases = [
 
     facts: [],
   },
-] as const;
-
-/* =========================================================
-   PRODUCTS
-========================================================= */
-
-export type ProductStatus = "beta" | "comingSoon" | "live";
-
-export interface ProductItem {
-  readonly key: string;
-  readonly name: string;
-  readonly status: ProductStatus;
-}
-
-export const products: readonly ProductItem[] = [
-  { key: "growpos", name: "GrowPOS", status: "live" },
-  { key: "forgeInventory", name: "FieldCoord", status: "comingSoon" },
-  { key: "signalDesk", name: "AuditLog OS", status: "comingSoon" },
-];
-
-/* =========================================================
-   INSIGHTS
-========================================================= */
-
-export const insights = [
-  { key: "overEngineering", slug: "over-engineering", date: "Oct 12, 2024" },
-  { key: "professionalInterface", slug: "designing-for-calm", date: "Sep 15, 2024" },
-  { key: "legacyMonolith", slug: "legacy-migrations", date: "Aug 30, 2024" },
 ] as const;

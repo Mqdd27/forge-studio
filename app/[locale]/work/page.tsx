@@ -1,7 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
-import { WorkDesign } from "../../../components/design/work";
+import { WorkDesign } from "@/components/design/work";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: "WorkPage.metadata" });
@@ -36,8 +36,6 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     twitter: { card: "summary_large_image", title: `${title} | Forge Studio`, description },
   };
 }
-
-/* WORK */
 
 export default function Page({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);
