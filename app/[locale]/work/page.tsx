@@ -5,21 +5,10 @@ import { getTranslations } from "next-intl/server";
 import { PageIntro } from "../../../components/page-intro";
 import { WorkList } from "../../../components/work-list";
 
-/* =========================================================
-   METADATA
-========================================================= */
+/* METADATA */
 
-export async function generateMetadata({
-  params,
-}: {
-  params: {
-    locale: string;
-  };
-}): Promise<Metadata> {
-  const t = await getTranslations({
-    locale: params.locale,
-    namespace: "WorkPage.metadata",
-  });
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const t = await getTranslations({ locale: params.locale, namespace: "WorkPage.metadata" });
 
   const title = t("title");
   const description = t("description");
@@ -33,11 +22,7 @@ export async function generateMetadata({
     alternates: {
       canonical: path,
 
-      languages: {
-        en: "/en/work",
-        id: "/id/work",
-        "x-default": "/en/work",
-      },
+      languages: { en: "/en/work", id: "/id/work", "x-default": "/en/work" },
     },
 
     openGraph: {
@@ -52,29 +37,14 @@ export async function generateMetadata({
       alternateLocale: params.locale === "id" ? ["en_US"] : ["id_ID"],
     },
 
-    twitter: {
-      card: "summary_large_image",
-      title: `${title} | Forge Studio`,
-      description,
-    },
+    twitter: { card: "summary_large_image", title: `${title} | Forge Studio`, description },
   };
 }
 
-/* =========================================================
-   WORK
-========================================================= */
+/* WORK */
 
-export default async function Work({
-  params,
-}: {
-  params: {
-    locale: string;
-  };
-}) {
-  const t = await getTranslations({
-    locale: params.locale,
-    namespace: "WorkPage",
-  });
+export default async function Work({ params }: { params: { locale: string } }) {
+  const t = await getTranslations({ locale: params.locale, namespace: "WorkPage" });
 
   return (
     <main className="min-w-0 overflow-x-clip">

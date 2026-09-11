@@ -72,12 +72,7 @@
   },
   "CaseStudyPage": {
     "label": "Case study",
-    "sections": {
-      "context": "Business context",
-      "solution": "Solution",
-      "engineering": "Engineering",
-      "result": "Result"
-    },
+    "sections": { "context": "Business context", "solution": "Solution", "engineering": "Engineering", "result": "Result" },
     "projects": {
       "nexus": {
         "context": {
@@ -134,10 +129,7 @@
         }
       }
     },
-    "cta": {
-      "title": "Have a similar challenge?",
-      "button": "Start a Project"
-    }
+    "cta": { "title": "Have a similar challenge?", "button": "Start a Project" }
   },
 
   "ContactPage": {
@@ -183,12 +175,7 @@
       "title": "Start with a short conversation.",
       "description": "Share the shape of the problem over email. We can work from there without a long sales process."
     },
-    "next": {
-      "title": "What happens next",
-      "discovery": "Discovery call",
-      "proposal": "Practical proposal",
-      "build": "Build and handover"
-    }
+    "next": { "title": "What happens next", "discovery": "Discovery call", "proposal": "Practical proposal", "build": "Build and handover" }
   },
 
   "AboutPage": {
@@ -263,12 +250,7 @@
     },
     "readArticle": "Read article"
   },
-  "caseCategories": {
-    "customApp": "Custom App",
-    "saas": "SaaS",
-    "automation": "Automation",
-    "integration": "Integration"
-  },
+  "caseCategories": { "customApp": "Custom App", "saas": "SaaS", "automation": "Automation", "integration": "Integration" },
   "WorkPage": {
     "metadata": {
       "title": "Selected Work",
@@ -280,18 +262,9 @@
       "description": "A collection of engineering projects demonstrating our approach to complex problem-solving and business-first software architecture."
     },
 
-    "filters": {
-      "all": "All",
-      "customApp": "Custom App",
-      "saas": "SaaS",
-      "automation": "Automation",
-      "integration": "Integration"
-    },
+    "filters": { "all": "All", "customApp": "Custom App", "saas": "SaaS", "automation": "Automation", "integration": "Integration" },
 
-    "empty": {
-      "title": "No projects in this category yet.",
-      "cta": "Talk to us about your challenge"
-    }
+    "empty": { "title": "No projects in this category yet.", "cta": "Talk to us about your challenge" }
   },
 
   "ProductsPage": {
@@ -316,10 +289,7 @@
       "description": "We build scalable, high-performance digital infrastructure designed specifically to solve complex operational challenges."
     },
 
-    "status": {
-      "available": "Available now",
-      "byRequest": "By request"
-    },
+    "status": { "available": "Available now", "byRequest": "By request" },
 
     "discussProject": "Discuss your project",
 
@@ -336,31 +306,19 @@
         "basic": {
           "name": "Basic Care",
           "description": "Essential updates and monitoring",
-          "features": {
-            "1": "Uptime monitoring",
-            "2": "Security patches",
-            "3": "Email support"
-          }
+          "features": { "1": "Uptime monitoring", "2": "Security patches", "3": "Email support" }
         },
 
         "business": {
           "name": "Business Care",
           "description": "Proactive care for growing teams",
-          "features": {
-            "1": "Everything in Basic Care",
-            "2": "Performance reviews",
-            "3": "Priority support"
-          }
+          "features": { "1": "Everything in Basic Care", "2": "Performance reviews", "3": "Priority support" }
         },
 
         "continuous": {
           "name": "Continuous Development",
           "description": "An embedded technical partner",
-          "features": {
-            "1": "Planned improvements",
-            "2": "New feature delivery",
-            "3": "Technical direction"
-          }
+          "features": { "1": "Planned improvements", "2": "New feature delivery", "3": "Technical direction" }
         }
       }
     }
@@ -370,56 +328,32 @@
       "customWeb": {
         "title": "Custom Web Applications",
         "description": "Purpose-built systems that remove operational bottlenecks and fit the way your team actually works.",
-        "useCases": {
-          "1": "Internal dashboards",
-          "2": "Client portals",
-          "3": "Operational tools"
-        }
+        "useCases": { "1": "Internal dashboards", "2": "Client portals", "3": "Operational tools" }
       },
       "saas": {
         "title": "SaaS Development",
         "description": "From product definition to production, we engineer reliable software that can grow with its customers.",
-        "useCases": {
-          "1": "Multi-tenant platforms",
-          "2": "Subscription workflows",
-          "3": "Product MVPs"
-        }
+        "useCases": { "1": "Multi-tenant platforms", "2": "Subscription workflows", "3": "Product MVPs" }
       },
       "automation": {
         "title": "Business Automation",
         "description": "Turn repetitive work into dependable processes that save time, reduce errors, and keep your team moving.",
-        "useCases": {
-          "1": "Workflow scripts",
-          "2": "Document processing",
-          "3": "Scheduled operations"
-        }
+        "useCases": { "1": "Workflow scripts", "2": "Document processing", "3": "Scheduled operations" }
       },
       "integration": {
         "title": "API & System Integration",
         "description": "Connect the systems your business depends on and create a clear, consistent flow of information.",
-        "useCases": {
-          "1": "Custom APIs",
-          "2": "Legacy modernization",
-          "3": "Third-party orchestration"
-        }
+        "useCases": { "1": "Custom APIs", "2": "Legacy modernization", "3": "Third-party orchestration" }
       },
       "devops": {
         "title": "DevOps & Deployment",
         "description": "Practical infrastructure and delivery practices that make releases safer, faster, and easier to operate.",
-        "useCases": {
-          "1": "CI/CD pipelines",
-          "2": "Cloud infrastructure",
-          "3": "Monitoring setup"
-        }
+        "useCases": { "1": "CI/CD pipelines", "2": "Cloud infrastructure", "3": "Monitoring setup" }
       },
       "maintenance": {
         "title": "Maintenance & Support",
         "description": "Ongoing technical partnership to keep software secure, performant, and aligned with changing needs.",
-        "useCases": {
-          "1": "Security updates",
-          "2": "Bug fixes",
-          "3": "Continuous improvements"
-        }
+        "useCases": { "1": "Security updates", "2": "Bug fixes", "3": "Continuous improvements" }
       }
     },
 
@@ -442,27 +376,12 @@
     },
 
     "products": {
-      "growpos": {
-        "tagline": "Point-of-sale for growing retail businesses",
-        "category": "POS / SaaS"
-      },
-      "forgeInventory": {
-        "tagline": "Clearer stock operations for distributed teams",
-        "category": "Operations"
-      },
-      "signalDesk": {
-        "tagline": "A calm command center for business workflows",
-        "category": "Automation"
-      }
+      "growpos": { "tagline": "Point-of-sale for growing retail businesses", "category": "POS / SaaS" },
+      "forgeInventory": { "tagline": "Clearer stock operations for distributed teams", "category": "Operations" },
+      "signalDesk": { "tagline": "A calm command center for business workflows", "category": "Automation" }
     },
 
-    "productStatus": {
-      "beta": "Beta",
-      "comingSoon": "Coming Soon",
-      "live": "Live",
-      "visit": "Visit product →",
-      "notify": "Notify me"
-    },
+    "productStatus": { "beta": "Beta", "comingSoon": "Coming Soon", "live": "Live", "visit": "Visit product →", "notify": "Notify me" },
 
     "insights": {
       "overEngineering": {
@@ -521,9 +440,7 @@
     "studioLabel": "Independent Software Studio",
     "copyright": "© 2026 Forge Studio. All rights reserved."
   },
-  "WorkCard": {
-    "caseStudy": "Case study"
-  },
+  "WorkCard": { "caseStudy": "Case study" },
 
   "Home": {
     "metadata": {
@@ -541,10 +458,7 @@
       "noteDescription": "from discovery to handover."
     },
 
-    "technology": {
-      "label": "Technology is the tool.",
-      "cloudInfrastructure": "Cloud infrastructure"
-    },
+    "technology": { "label": "Technology is the tool.", "cloudInfrastructure": "Cloud infrastructure" },
 
     "services": {
       "eyebrow": "Capabilities",
@@ -576,11 +490,7 @@
       }
     },
 
-    "products": {
-      "eyebrow": "Products",
-      "title": "Software born from real problems.",
-      "viewAll": "See all products →"
-    },
+    "products": { "eyebrow": "Products", "title": "Software born from real problems.", "viewAll": "See all products →" },
 
     "about": {
       "eyebrow": "About Forge",

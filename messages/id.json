@@ -72,12 +72,7 @@
   },
   "CaseStudyPage": {
     "label": "Studi kasus",
-    "sections": {
-      "context": "Konteks bisnis",
-      "solution": "Solusi",
-      "engineering": "Engineering",
-      "result": "Hasil"
-    },
+    "sections": { "context": "Konteks bisnis", "solution": "Solusi", "engineering": "Engineering", "result": "Hasil" },
     "projects": {
       "nexus": {
         "context": {
@@ -134,10 +129,7 @@
         }
       }
     },
-    "cta": {
-      "title": "Punya tantangan yang serupa?",
-      "button": "Mulai Proyek"
-    }
+    "cta": { "title": "Punya tantangan yang serupa?", "button": "Mulai Proyek" }
   },
 
   "ContactPage": {
@@ -262,12 +254,7 @@
     },
     "readArticle": "Baca artikel"
   },
-  "caseCategories": {
-    "customApp": "Aplikasi Custom",
-    "saas": "SaaS",
-    "automation": "Otomasi",
-    "integration": "Integrasi"
-  },
+  "caseCategories": { "customApp": "Aplikasi Custom", "saas": "SaaS", "automation": "Otomasi", "integration": "Integrasi" },
   "WorkPage": {
     "metadata": {
       "title": "Portofolio",
@@ -279,18 +266,9 @@
       "description": "Kumpulan proyek engineering yang menunjukkan pendekatan kami dalam menyelesaikan permasalahan kompleks dan membangun software yang berorientasi pada kebutuhan bisnis."
     },
 
-    "filters": {
-      "all": "Semua",
-      "customApp": "Aplikasi Custom",
-      "saas": "SaaS",
-      "automation": "Otomasi",
-      "integration": "Integrasi"
-    },
+    "filters": { "all": "Semua", "customApp": "Aplikasi Custom", "saas": "SaaS", "automation": "Otomasi", "integration": "Integrasi" },
 
-    "empty": {
-      "title": "Belum ada proyek pada kategori ini.",
-      "cta": "Diskusikan kebutuhan Anda dengan kami"
-    }
+    "empty": { "title": "Belum ada proyek pada kategori ini.", "cta": "Diskusikan kebutuhan Anda dengan kami" }
   },
 
   "ProductsPage": {
@@ -315,10 +293,7 @@
       "description": "Kami membangun sistem digital yang scalable dan berkinerja tinggi untuk menyelesaikan berbagai tantangan operasional bisnis."
     },
 
-    "status": {
-      "available": "Tersedia sekarang",
-      "byRequest": "Sesuai permintaan"
-    },
+    "status": { "available": "Tersedia sekarang", "byRequest": "Sesuai permintaan" },
 
     "discussProject": "Diskusikan proyek Anda",
 
@@ -335,31 +310,19 @@
         "basic": {
           "name": "Basic Care",
           "description": "Maintenance dasar dan monitoring sistem",
-          "features": {
-            "1": "Monitoring uptime",
-            "2": "Pembaruan keamanan",
-            "3": "Dukungan melalui email"
-          }
+          "features": { "1": "Monitoring uptime", "2": "Pembaruan keamanan", "3": "Dukungan melalui email" }
         },
 
         "business": {
           "name": "Business Care",
           "description": "Dukungan proaktif untuk bisnis yang berkembang",
-          "features": {
-            "1": "Semua layanan Basic Care",
-            "2": "Evaluasi performa",
-            "3": "Dukungan prioritas"
-          }
+          "features": { "1": "Semua layanan Basic Care", "2": "Evaluasi performa", "3": "Dukungan prioritas" }
         },
 
         "continuous": {
           "name": "Continuous Development",
           "description": "Partner teknis untuk pengembangan berkelanjutan",
-          "features": {
-            "1": "Pengembangan terencana",
-            "2": "Pengembangan fitur baru",
-            "3": "Arahan teknis"
-          }
+          "features": { "1": "Pengembangan terencana", "2": "Pengembangan fitur baru", "3": "Arahan teknis" }
         }
       }
     }
@@ -369,56 +332,32 @@
       "customWeb": {
         "title": "Aplikasi Web Custom",
         "description": "Sistem yang dibangun khusus untuk mengurangi hambatan operasional dan menyesuaikan dengan cara kerja tim Anda.",
-        "useCases": {
-          "1": "Dashboard internal",
-          "2": "Portal pelanggan",
-          "3": "Tools operasional"
-        }
+        "useCases": { "1": "Dashboard internal", "2": "Portal pelanggan", "3": "Tools operasional" }
       },
       "saas": {
         "title": "Pengembangan SaaS",
         "description": "Mulai dari perencanaan produk hingga production, kami membangun software yang andal dan dapat berkembang bersama penggunanya.",
-        "useCases": {
-          "1": "Platform multi-tenant",
-          "2": "Sistem subscription",
-          "3": "MVP produk"
-        }
+        "useCases": { "1": "Platform multi-tenant", "2": "Sistem subscription", "3": "MVP produk" }
       },
       "automation": {
         "title": "Otomasi Bisnis",
         "description": "Mengubah pekerjaan berulang menjadi proses otomatis yang menghemat waktu, mengurangi kesalahan, dan meningkatkan efisiensi tim.",
-        "useCases": {
-          "1": "Otomasi workflow",
-          "2": "Pemrosesan dokumen",
-          "3": "Operasi terjadwal"
-        }
+        "useCases": { "1": "Otomasi workflow", "2": "Pemrosesan dokumen", "3": "Operasi terjadwal" }
       },
       "integration": {
         "title": "Integrasi API & Sistem",
         "description": "Menghubungkan berbagai sistem bisnis agar pertukaran data menjadi lebih konsisten dan terintegrasi.",
-        "useCases": {
-          "1": "Custom API",
-          "2": "Modernisasi sistem legacy",
-          "3": "Integrasi layanan pihak ketiga"
-        }
+        "useCases": { "1": "Custom API", "2": "Modernisasi sistem legacy", "3": "Integrasi layanan pihak ketiga" }
       },
       "devops": {
         "title": "DevOps & Deployment",
         "description": "Infrastruktur dan proses deployment yang membuat proses rilis lebih aman, cepat, dan mudah dikelola.",
-        "useCases": {
-          "1": "Pipeline CI/CD",
-          "2": "Infrastruktur cloud",
-          "3": "Monitoring sistem"
-        }
+        "useCases": { "1": "Pipeline CI/CD", "2": "Infrastruktur cloud", "3": "Monitoring sistem" }
       },
       "maintenance": {
         "title": "Maintenance & Support",
         "description": "Dukungan teknis berkelanjutan untuk menjaga software tetap aman, optimal, dan sesuai dengan kebutuhan bisnis yang berkembang.",
-        "useCases": {
-          "1": "Pembaruan keamanan",
-          "2": "Perbaikan bug",
-          "3": "Pengembangan berkelanjutan"
-        }
+        "useCases": { "1": "Pembaruan keamanan", "2": "Perbaikan bug", "3": "Pengembangan berkelanjutan" }
       }
     },
 
@@ -441,18 +380,9 @@
     },
 
     "products": {
-      "growpos": {
-        "tagline": "Sistem point-of-sale untuk bisnis retail yang berkembang",
-        "category": "POS / SaaS"
-      },
-      "forgeInventory": {
-        "tagline": "Pengelolaan stok yang lebih jelas untuk tim di berbagai lokasi",
-        "category": "Operasional"
-      },
-      "signalDesk": {
-        "tagline": "Pusat kendali yang sederhana untuk workflow bisnis",
-        "category": "Otomasi"
-      }
+      "growpos": { "tagline": "Sistem point-of-sale untuk bisnis retail yang berkembang", "category": "POS / SaaS" },
+      "forgeInventory": { "tagline": "Pengelolaan stok yang lebih jelas untuk tim di berbagai lokasi", "category": "Operasional" },
+      "signalDesk": { "tagline": "Pusat kendali yang sederhana untuk workflow bisnis", "category": "Otomasi" }
     },
 
     "productStatus": {
@@ -524,9 +454,7 @@
     "studioLabel": "Studio Software Independen",
     "copyright": "© 2026 Forge Studio. Seluruh hak cipta dilindungi."
   },
-  "WorkCard": {
-    "caseStudy": "Studi kasus"
-  },
+  "WorkCard": { "caseStudy": "Studi kasus" },
   "Home": {
     "metadata": {
       "title": "Software untuk Menyelesaikan Masalah Nyata",
@@ -543,10 +471,7 @@
       "noteDescription": "dari tahap discovery hingga handover."
     },
 
-    "technology": {
-      "label": "Teknologi adalah alat.",
-      "cloudInfrastructure": "Infrastruktur cloud"
-    },
+    "technology": { "label": "Teknologi adalah alat.", "cloudInfrastructure": "Infrastruktur cloud" },
 
     "services": {
       "eyebrow": "Kapabilitas",
@@ -578,11 +503,7 @@
       }
     },
 
-    "products": {
-      "eyebrow": "Produk",
-      "title": "Software yang lahir dari masalah nyata.",
-      "viewAll": "Lihat semua produk →"
-    },
+    "products": { "eyebrow": "Produk", "title": "Software yang lahir dari masalah nyata.", "viewAll": "Lihat semua produk →" },
 
     "about": {
       "eyebrow": "Tentang Forge",
