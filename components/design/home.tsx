@@ -7,7 +7,8 @@ import { DesignText as T } from "@/components/ui/design-text";
 import { DesignIcon } from "@/components/ui/design-icon";
 import { ServiceCards } from "@/components/design/services";
 import { ProjectCTA } from "@/components/design/project-cta";
-import { WorkVisual } from "@/components/visual";
+// import { WorkVisual } from "@/components/visual";
+import Image from "next/image";
 
 export function HomeDesign() {
   return (
@@ -38,6 +39,16 @@ export function HomeDesign() {
             </div>
           </div>
           <figure data-hero-reveal className="st-hero-preview">
+            <Image
+              src="/img/hero.png"
+              alt=""
+              width={1050}
+              height={1050}
+              className="rounded-lg object-contain transition-transform duration-300 group-hover:scale-105"
+            />
+          </figure>
+
+          {/* <figure data-hero-reveal className="st-hero-preview">
             <div className="st-browser-bar">
               <span aria-hidden="true">● ● ●</span>
               <span>Forge Studio</span>
@@ -45,11 +56,18 @@ export function HomeDesign() {
             </div>
             <div className="st-preview-screen">
               <WorkVisual type="bars" project="stockOpname" />
+              <Image
+                src="/img/hero.png"
+                alt=""
+                width={1050}
+                height={1050}
+                className="rounded-lg object-contain transition-transform duration-300 group-hover:scale-105"
+              />
             </div>
             <figcaption>
               <T>{"Project illustration"}</T>
             </figcaption>
-          </figure>
+          </figure> */}
         </div>
       </section>
       <section className="st-section st-tone">
