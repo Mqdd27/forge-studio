@@ -1,22 +1,34 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { cases } from "../../../data/site";
+import { cases, siteUrl } from "../../../data/site";
 import { WorkVisual } from "../../../components/visual";
 
-const slugs = ["nexus-analytics", "globalfreight", "stripe-erp"];
-export function generateStaticParams() { return slugs.map((slug) => ({ slug })); }
+type Props = { params: { slug: string } };
 
-export default function CaseStudy({ params }: { params: { slug: string } }) {
-  const index = slugs.indexOf(params.slug);
-  if (index < 0) return notFound();
-  const item = cases[index];
+export function generateStaticParams() { return cases.map(({ slug }) => ({ slug })); }
+
+export function generateMetadata({ params }: Props): Metadata {
+  const item = cases.find((caseStudy) => caseStudy.slug === params.slug);
+  if (!item) return {};
+  const description = `${item.title}: ${item.summary}`;
+  return { title: item.title, description, alternates: { canonical: `/work/${item.slug}` }, openGraph: { type: "article", url: `${siteUrl}/work/${item.slug}`, title: `${item.title} | Forge Studio`, description } };
+}
+
+export default function CaseStudy({ params }: Props) {
+  const item = cases.find((caseStudy) => caseStudy.slug === params.slug);
+  if (!item) return notFound();
+  const url = `${siteUrl}/work/${item.slug}`;
+  const schema = { "@context": "https://schema.org", "@type": "CreativeWork", name: item.title, description: item.description, url, creator: { "@type": "Organization", name: "Forge Studio", url: siteUrl }, about: item.scope };
+
   return <main>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
     <section className="container case-hero"><div className="eyebrow">{item.category} / Case study</div><h1>{item.title}</h1><p>{item.summary}</p><WorkVisual type={item.visual} /></section>
     <div className="container case-body">
-      <CaseSection number="01" title="Business context was scattered across too many tools." text="The team needed a more dependable way to see what was happening, make decisions, and move work forward without manual reconciliation." />
-      <CaseSection number="02" title="A focused system built around the daily workflow." text="We mapped the key operational moments, then designed and engineered a clear interface that gave the team one shared source of truth." />
-      <CaseSection number="03" title="Simple foundations, ready for the next stage." text="Modular services, clear data boundaries, and a delivery process that kept feedback close to the work." />
-      <section className="case-result"><div className="eyebrow">04 / Result</div><h2>Less operational noise. More room for useful work.</h2><p>The finished system gave the team better visibility and a calmer, more consistent way to operate.</p></section>
+      <CaseSection number="01" title="Problem" text={item.problem} />
+      <CaseSection number="02" title="Solution" text={item.solution} />
+      <CaseSection number="03" title="Engineering approach" text={item.engineering} />
+      <section className="case-result"><div className="eyebrow">04 / Scope</div><h2>What the project covers.</h2><ul>{item.scope.map((scope) => <li key={scope}>{scope}</li>)}</ul><p>Implementation details, screenshots, and outcomes can be added as they are cleared for publication.</p></section>
     </div>
     <section className="closing"><div className="container"><h2>Have a similar challenge?</h2><Link className="btn btn-primary" href="/contact">Start a Project</Link></div></section>
   </main>;
