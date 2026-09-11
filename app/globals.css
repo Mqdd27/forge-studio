@@ -58,6 +58,9 @@ p { text-wrap:pretty; }
 .case-result { background:var(--alt); padding:40px!important; border:0!important; border-radius:8px; margin-top:24px; }
 .case-result ul { display:grid; gap:10px; margin:24px 0; padding-left:20px; color:var(--ink); }
 .case-result li::marker { color:var(--accent); }
+.case-subheading { margin-top:32px; }
+.case-result .tags { margin:16px 0 24px; }
+.case-result .text-link { display:inline-block; margin-top:8px; }
 .alt-section { background:var(--alt); }
 .visual { position:relative; overflow:hidden; background:var(--alt); border:1px solid var(--border); border-radius:8px; }
 .visual:before { content:""; position:absolute; inset:16px; border:1px solid rgba(181,80,26,.16); border-radius:4px; }
