@@ -28,7 +28,7 @@ export default function CaseStudy({ params }: Props) {
       <CaseSection number="01" title="Problem" text={item.problem} />
       <CaseSection number="02" title="Solution" text={item.solution} />
       <CaseSection number="03" title="Engineering approach" text={item.engineering} />
-      <section className="case-result"><div className="eyebrow">04 / Scope</div><h2>What the project covers.</h2><ul>{item.scope.map((scope) => <li key={scope}>{scope}</li>)}</ul><p>Implementation details, screenshots, and outcomes can be added as they are cleared for publication.</p></section>
+      <section className="case-result"><div className="eyebrow">04 / Scope</div><h2>What the project covers.</h2><ul>{item.scope.map((scope) => <li key={scope}>{scope}</li>)}</ul>{item.facts.length > 0 && <><div className="eyebrow case-subheading">Verified project details</div><ul>{item.facts.map((fact) => <li key={fact}>{fact}</li>)}</ul></>}{item.stack.length > 0 && <><div className="eyebrow case-subheading">Technology</div><div className="tags">{item.stack.map((technology) => <span className="tag" key={technology}>{technology}</span>)}</div></>}{item.repositoryUrl ? <a className="text-link" href={item.repositoryUrl} target="_blank" rel="noreferrer">View repository →</a> : <p>Implementation details, screenshots, and outcomes can be added as they are cleared for publication.</p>}</section>
     </div>
     <section className="closing"><div className="container"><h2>Have a similar challenge?</h2><Link className="btn btn-primary" href="/contact">Start a Project</Link></div></section>
   </main>;
