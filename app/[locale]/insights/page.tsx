@@ -1,3 +1,4 @@
+import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { InsightsDesign } from "../../../components/design/insights";
@@ -38,6 +39,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
 /* INSIGHTS */
 
-export default function Page() {
+export default function Page({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
   return <InsightsDesign />;
 }

@@ -387,17 +387,6 @@ body {
   min-height: 44px;
   padding-inline: 12px;
 }
-.scroll-reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition:
-    opacity 0.65s ease,
-    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.scroll-reveal.is-visible {
-  opacity: 1;
-  transform: none;
-}
 .route-progress {
   position: fixed;
   z-index: 100;
@@ -576,11 +565,6 @@ body {
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .scroll-reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
   .loading-line,
   .route-progress span {
     animation: none;
@@ -817,4 +801,34 @@ body {
   .design-services .plan-description {
     min-height: 0;
   }
+}
+
+/* Keep the project brief compact, matching the contact reference. */
+.design-contact h1 {
+  font-size: clamp(32px, 4vw, 48px);
+}
+.design-contact h2,
+.design-contact legend {
+  font-size: 18px;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  text-wrap: initial;
+}
+.design-contact input[type="radio"] {
+  min-height: 0;
+}
+.design-contact input[type="radio"]:checked + span {
+  border-color: var(--color-accent);
+  background: #fff0e7;
+  color: #963e12;
+}
+.design-contact input[type="radio"]:focus-visible + span {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+.design-contact input:not([type="radio"]),
+.design-contact textarea {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
 }

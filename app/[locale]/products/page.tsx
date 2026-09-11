@@ -1,3 +1,4 @@
+import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 
 import { getTranslations } from "next-intl/server";
@@ -45,6 +46,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 /* PRODUCTS */
 
 export default async function Products({ params }: { params: { locale: string } }) {
+  setRequestLocale(params.locale);
   const t = await getTranslations({ locale: params.locale, namespace: "ProductsPage" });
 
   return (

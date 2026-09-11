@@ -19,6 +19,45 @@ export function ServicesDesign() {
           </DesignText>
         </p>
       </section>
+      <section
+        id="seo-friendly"
+        className="section-full-width mx-auto max-w-container-max border-t border-border px-gutter-mobile py-16 md:px-gutter-desktop"
+      >
+        <div className="grid gap-8 md:grid-cols-2">
+          <div>
+            <h2 className="font-h2 text-h2 text-ink">
+              <DesignText>{"SEO Friendly"}</DesignText>
+            </h2>
+            <p className="mt-5 text-secondary">
+              <DesignText>
+                {"Help customers discover your business with a fast, accessible website built for search engines and people."}
+              </DesignText>
+            </p>
+            <Link href="/contact" className="btn-secondary mt-6 inline-flex items-center gap-2 px-6 py-3">
+              <DesignText>{"Discuss your project"}</DesignText>
+              <DesignIcon name="arrow_forward" />
+            </Link>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              ["Technical SEO", "Metadata, canonical URLs, XML sitemaps, and structured data tailored to your website."],
+              ["Performance & Mobile", "Fast-loading pages, optimized images, and responsive layouts for a better browsing experience."],
+              ["Content Structure", "Clear headings, semantic HTML, and internal links that make your content easier to understand."],
+              ["Search Readiness", "Indexability checks and Search Console setup to help you monitor search visibility."],
+            ].map(([title, description]) => (
+              <div key={title} className="rounded-lg border border-border bg-surface-alt p-6">
+                <DesignIcon name="check_circle" className="mb-4 text-accent" />
+                <h3 className="text-lg font-semibold">
+                  <DesignText>{title}</DesignText>
+                </h3>
+                <p className="mt-2 text-sm text-secondary">
+                  <DesignText>{description}</DesignText>
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
       <section className="section-full-width py-16 px-gutter-mobile md:px-gutter-desktop max-w-container-max mx-auto border-t border-border">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter-desktop items-start">
           <div className="md:col-span-5 flex flex-col gap-6">

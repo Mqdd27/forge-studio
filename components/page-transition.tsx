@@ -33,11 +33,22 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (reducedMotion || !container.current) return;
     const elements = container.current.querySelectorAll<HTMLElement>("main > section, main > div > section");
+    const animations: Animation[] = [];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            // Animate without changing React-owned attributes: streamed sections
+            // may still be hydrating when this parent effect starts observing.
+            animations.push(
+              entry.target.animate(
+                [
+                  { opacity: 0, transform: "translateY(22px)" },
+                  { opacity: 1, transform: "none" },
+                ],
+                { duration: 650, easing: "cubic-bezier(0.22, 1, 0.36, 1)" },
+              ),
+            );
             observer.unobserve(entry.target);
           }
         });
@@ -46,13 +57,12 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     );
     elements.forEach((element) => {
       if (element.getBoundingClientRect().top > window.innerHeight) {
-        element.classList.add("scroll-reveal");
         observer.observe(element);
       }
     });
     return () => {
       observer.disconnect();
-      elements.forEach((element) => element.classList.remove("scroll-reveal", "is-visible"));
+      animations.forEach((animation) => animation.cancel());
     };
   }, [pathname, reducedMotion]);
 
