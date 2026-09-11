@@ -6,6 +6,7 @@ node_modules/
 # next.js
 .next/
 .next-dev/
+.next-dev-*/
 out/
 
 # production

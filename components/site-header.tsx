@@ -71,10 +71,17 @@ export function SiteHeader() {
       </a>
       <header ref={header} className={`floating-header ${scrolled ? "is-scrolled" : ""}`}>
         <div className="header-inner">
-          <Link href="/" aria-label="Forge Studio" className="header-brand flex shrink-0 items-center gap-2.5">
+          <Link href="/" aria-label="Forge Studio" className="header-brand group flex shrink-0 items-center gap-1.5">
             <Image src="/img/forge-icon.png" alt="" width={44} height={44} priority className="rounded-lg object-contain" />
-            <span className="brand-name font-heading text-lg font-bold tracking-tight sm:text-xl">Forge Studio</span>
-          </Link>
+
+            <span className="flex items-center">
+              <span className="brand-name font-heading text-lg font-bold leading-none tracking-tight text-ink transition-colors duration-300 group-hover:text-accent sm:text-2xl">
+                Forge
+              </span>
+
+              <span className="ml-1 font-heading font-semibold text-lg leading-none text-grey sm:text-2xl">Studio</span>
+            </span>
+          </Link>{" "}
           <nav
             aria-label={locale === "id" ? "Navigasi utama" : "Main navigation"}
             className="desktop-navigation hidden items-center gap-1 lg:flex"
@@ -136,17 +143,34 @@ export function SiteHeader() {
         </div>
         {open && (
           <nav id="mobile-navigation" aria-label="Mobile navigation" className="mobile-navigation grid gap-1 lg:hidden">
-            {links.map(([label, href]) => (
-              <Link key={href} href={href} onClick={() => setOpen(false)} className="rounded-lg px-4 py-3 text-sm hover:bg-alt">
-                {t(label)}
-              </Link>
-            ))}
+            {links.map(([label, href]) => {
+              const active = isActive(href);
+
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  aria-current={active ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                  className={`justify-between rounded-lg px-4 py-3 text-sm transition-colors ${
+                    active ? "bg-accent-light font-semibold text-accent" : "text-grey hover:bg-alt hover:text-accent"
+                  }`}
+                >
+                  {t(label)}
+                  {active && <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-current" />}
+                </Link>
+              );
+            })}
             <Link
               href="/contact"
               onClick={() => setOpen(false)}
-              className="rounded-lg bg-accent px-4 py-3 text-sm font-semibold text-white"
+              aria-current={isActive("/contact") ? "page" : undefined}
+              className={`justify-between rounded-lg bg-accent px-4 py-3 text-sm font-semibold text-white ${
+                isActive("/contact") ? "ring-2 ring-accent ring-offset-2" : "hover:bg-accent-dark"
+              }`}
             >
               {locale === "id" ? "Mulai Proyek" : "Start a Project"}
+              {isActive("/contact") && <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-current" />}
             </Link>
           </nav>
         )}

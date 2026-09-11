@@ -1,3 +1,4 @@
+import { setRequestLocale } from "next-intl/server";
 import designContent from "../../../../data/design-content.json";
 import { DesignDetail } from "../../../../components/design/detail";
 import { InventoryDesign } from "../../../../components/design/inventory";
@@ -72,6 +73,7 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
 }
 
 export default async function CaseStudy({ params }: { params: { slug: string; locale: string } }) {
+  setRequestLocale(params.locale);
   const designItem = designContent.work.find((item) => item.slug === params.slug);
   if (params.slug === "multi-site-inventory-system") return <InventoryDesign />;
   if (designItem) return <DesignDetail item={designItem} kind="work" locale={params.locale} />;

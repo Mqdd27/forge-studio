@@ -107,7 +107,7 @@ export function InquiryForm({ children, ...props }: { children: ReactNode; class
   function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    const body = `Name: ${data.get("name")}\nContact: ${data.get("contact")}\nCompany: ${data.get("company") || "—"}\nProject: ${data.get("project-type") || "—"}\n\n${data.get("description")}`;
+    const body = `Name: ${data.get("name")}\nContact: ${data.get("contact")}\nCompany: ${data.get("company") || "—"}\nWhatsApp: ${data.get("whatsapp") || "—"}\nProject: ${data.get("project-type") || "—"}\nBudget: ${data.get("budget") || "—"}\nTimeline: ${data.get("timeline") || "—"}\n\nProblem: ${data.get("description")}\n\nCurrent workflow: ${data.get("workflow") || "—"}`;
     const url = `mailto:hello@forgestudio.dev?subject=${encodeURIComponent(`Project inquiry — ${data.get("name")}`)}&body=${encodeURIComponent(body)}`;
     setDraft(url);
     setReady(true);

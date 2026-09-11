@@ -1,3 +1,4 @@
+import { setRequestLocale } from "next-intl/server";
 import designContent from "../../../../data/design-content.json";
 import { DesignDetail } from "../../../../components/design/detail";
 import type { Metadata } from "next";
@@ -71,6 +72,7 @@ export async function generateMetadata({ params }: { params: { slug: string; loc
 /* ARTICLE */
 
 export default async function InsightArticle({ params }: { params: { slug: string; locale: string } }) {
+  setRequestLocale(params.locale);
   const designItem = designContent.insights.find((item) => item.slug === params.slug);
   if (designItem) return <DesignDetail item={designItem} kind="insights" locale={params.locale} />;
   const item = insights.find((entry) => entry.slug === params.slug);
