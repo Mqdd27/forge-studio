@@ -182,7 +182,7 @@ export function SiteHeader() {
                     router.replace(pathname, { locale: lang });
                     setOpen(false);
                   }}
-                  className={`min-h-11 min-w-11 rounded-full uppercase transition-colors ${locale === lang ? "text-accent font-bold" : "text-muted hover:text-ink"}`}
+                  className={`min-h-11 min-w-11 cursor-pointer rounded-full uppercase transition-colors ${locale === lang ? "text-accent font-bold" : "text-muted hover:text-ink"}`}
                 >
                   {lang}
                 </button>
