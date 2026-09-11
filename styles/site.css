@@ -813,7 +813,7 @@
 }
 .st-container {
   width: min(100%, 1800px);
-  padding-inline: clamp(20px, 3vw, 56px);
+  padding-inline: clamp(65px, 3vw, 56px);
 }
 .st-section {
   padding-block: clamp(32px, 3.2vw, 48px);
@@ -960,7 +960,7 @@
   flex-shrink: 0;
 }
 .stitch-legacy.design-page > .section-full-width {
-  padding-inline: max(clamp(20px, 3vw, 56px), calc((100% - 1688px) / 2));
+  padding-inline: max(clamp(65px, 3vw, 56px), calc((100% - 1688px) / 2));
   padding-block: 40px;
 }
 .stitch-legacy.design-case {
