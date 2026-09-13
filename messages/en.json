@@ -22,8 +22,9 @@
         "facts": {
           "0": "Supports 840+ IDX-listed companies",
           "1": "Self-hosted deployment with systemd services and timers",
-          "2": "Market data and paper-trading outcomes persist in PostgreSQL",
-          "3": "Browser UI communicates with the FastAPI backend over HTTP and SSE"
+          "2": "Integrated with multiple AI providers through 9Router for market-data analysis",
+          "3": "Hermes Agent-compatible delivery for daily, weekly, or yearly market data, performance, and signals",
+          "4": "Browser UI communicates with the FastAPI backend over HTTP and SSE"
         },
         "outcome": "The dashboard brings IDX stock exploration and monitoring into a structured workspace."
       },

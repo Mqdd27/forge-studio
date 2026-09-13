@@ -51,7 +51,7 @@ export const cases = [
 
     summary: "A dashboard for exploring and monitoring Indonesian stock market data.",
 
-    description: "A focused dashboard experience for working with IDX stock information in one place.",
+    description: "A focused dashboard experience for working with IDX stock information in one place. Available for Web Based and Application Based",
 
     visual: "bars",
 
@@ -77,6 +77,8 @@ export const cases = [
       "TypeScript",
       "FastAPI",
       "Python 3.12+",
+      "Rust",
+      "Tauri",
       "PostgreSQL 16+",
       "lightweight-charts",
       "Server-Sent Events",
@@ -86,8 +88,9 @@ export const cases = [
 
     facts: [
       "Supports 840+ IDX-listed companies",
-      "Self-hosted deployment with systemd services and timers",
-      "Market data and paper-trading outcomes persist in PostgreSQL",
+      "Available in Desktop App or Self-Hosted",
+      "Integrated with AI Multiple Providers using 9Router to Analyze Market Data",
+      "Hermes Agent Compatible to send stocks data (performance, signals, etc) daily, weekly, or yearly",
       "Browser UI communicates with the FastAPI backend over HTTP and SSE",
     ],
   },
@@ -114,11 +117,22 @@ export const cases = [
 
     scope: ["AI-powered summarization", "Content input workflow", "Readable summary output"],
 
-    stack: [],
+    stack: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "FastAPI",
+      "Python 3.12+",
+      "SQLite",
+    ],
 
-    repositoryUrl: null,
+    repositoryUrl: "https://github.com/Mqdd27/summarizer",
 
-    facts: [],
+    facts: [
+      "Self-hosted deployment",
+      "Integrated with multiple AI Providers with 9Router",
+      "Local Model compatible using Ollama",
+    ],
   },
 
   {
@@ -143,11 +157,16 @@ export const cases = [
 
     scope: ["Custom Odoo module", "Wage workflow support", "Overtime workflow support"],
 
-    stack: [],
+    stack: [
+      "Odoo 14",
+      "Postgresql",
+    ],
 
     repositoryUrl: null,
 
-    facts: [],
+    facts: [
+      "Fully Custom Module for Wage Monitoring and Approval",
+    ],
   },
 
   {
@@ -171,10 +190,17 @@ export const cases = [
 
     scope: ["Stock-count workflow", "Inventory recording", "Review-ready operational data"],
 
-    stack: [],
+    stack: [
+      "Laravel 11",
+      "Postgresql",
+      "Odoo 14",
+    ],
 
     repositoryUrl: null,
 
-    facts: [],
+    facts: [
+        "Integrated with Odoo 14",
+        "Import and Export Compatible with Odoo 14 Inventory",
+    ],
   },
 ] as const;

@@ -1,90 +1,91 @@
 {
-  "Navigation": { "services": "Layanan", "work": "Portofolio", "about": "Tentang" },
-  "WorkCard": { "caseStudy": "Studi kasus" },
-  "Site": {
-    "cases": {
-      "idxStocks": {
-        "title": "Dashboard Saham IDX",
-        "category": "Aplikasi Web",
-        "summary": "Dashboard untuk mengeksplorasi dan memantau data pasar saham Indonesia.",
-        "description": "Dashboard terfokus untuk mengakses dan menganalisis informasi saham IDX dalam satu tempat.",
-        "problem": "Informasi pasar saham lebih mudah dievaluasi ketika data yang relevan dapat dilihat dalam satu ruang kerja yang terstruktur.",
-        "solution": "Forge Studio membangun dashboard khusus untuk mengeksplorasi dan memantau data saham IDX.",
-        "engineering": "Proyek ini dibangun sebagai aplikasi web berbasis data dengan fokus pada hierarki informasi yang jelas dan tampilan dashboard yang konsisten.",
-        "scope": {
-          "0": "Terminal pasar interaktif dengan IHSG, saham naik, saham turun, dan saham teraktif",
-          "1": "Grafik candlestick lima tahun dengan SMA, EMA, RSI, MACD, Bollinger Bands, ATR, dan analisis volume",
-          "2": "Laporan keuangan tahunan dan kuartalan beserta rasio valuasi dan kinerja",
-          "3": "Screener fundamental, watchlist, dan integrasi RSS Google News",
-          "4": "Riset paper trading kuantitatif dan AI multiagen dengan analitik kinerja strategi",
-          "5": "Ringkasan pasar otomatis melalui Telegram dan pemantauan kesehatan operasional"
-        },
-        "facts": {
-          "0": "Mendukung lebih dari 840 perusahaan yang tercatat di IDX",
-          "1": "Deployment mandiri menggunakan service dan timer systemd",
-          "2": "Data pasar dan hasil paper trading disimpan di PostgreSQL",
-          "3": "Antarmuka browser berkomunikasi dengan backend FastAPI melalui HTTP dan SSE"
-        },
-        "outcome": "Dashboard menyatukan eksplorasi dan pemantauan saham IDX dalam ruang kerja terstruktur."
-      },
-      "aiSummarizer": {
-        "title": "Summarizer Berbasis Model AI",
-        "category": "Aplikasi Web",
-        "summary": "Aplikasi berbantuan AI untuk mengubah konten panjang menjadi ringkasan yang lebih singkat.",
-        "description": "Workflow summarization praktis yang didukung oleh model AI.",
-        "problem": "Konten panjang membutuhkan waktu untuk ditinjau, terutama ketika pengguna hanya membutuhkan poin-poin penting.",
-        "solution": "Forge Studio membangun aplikasi terfokus yang menggunakan model AI untuk menghasilkan ringkasan dari konten yang diberikan.",
-        "engineering": "Produk ini berfokus pada alur sederhana dari input menuju hasil ringkasan sehingga kemampuan AI tetap praktis tanpa menambah kompleksitas yang tidak diperlukan.",
-        "scope": { "0": "Peringkasan berbasis AI", "1": "Alur input konten", "2": "Hasil ringkasan yang mudah dibaca" },
-        "facts": {},
-        "outcome": "Aplikasi mengubah konten yang diberikan menjadi ringkasan melalui alur input-ke-ringkasan yang terfokus."
-      },
-      "odooWageOvertime": {
-        "title": "Modul Custom Odoo untuk Gaji dan Lembur",
-        "category": "Sistem yang Ada",
-        "summary": "Modul Odoo custom untuk mendukung workflow penggajian dan lembur.",
-        "description": "Kustomisasi workflow bisnis di dalam lingkungan Odoo.",
-        "problem": "Proses penggajian dan lembur perlu mengikuti aturan operasional yang sudah digunakan oleh bisnis.",
-        "solution": "Forge Studio mengembangkan modul Odoo custom untuk mendukung proses penggajian dan lembur di dalam workflow ERP yang sudah ada.",
-        "engineering": "Modul ini memperluas fungsi Odoo menggunakan implementasi yang menyesuaikan workflow bisnis sehingga tim tidak perlu mengikuti proses generik yang tidak sesuai.",
-        "scope": { "0": "Modul Odoo custom", "1": "Dukungan alur penggajian", "2": "Dukungan alur lembur" },
-        "facts": {},
-        "outcome": "Alur penggajian dan lembur didukung di dalam lingkungan Odoo yang sudah ada."
-      },
-      "stockOpname": {
-        "title": "Aplikasi Stock Opname",
-        "category": "Sistem Bisnis",
-        "summary": "Aplikasi untuk mendukung proses stock opname yang lebih terstruktur.",
-        "description": "Workflow khusus untuk mencatat dan meninjau hasil perhitungan stok fisik.",
-        "problem": "Perhitungan stok fisik lebih mudah dikelola ketika proses pencatatan, pemeriksaan, dan rekonsiliasi mengikuti satu workflow yang jelas.",
-        "solution": "Forge Studio membangun aplikasi stock opname untuk mendukung aktivitas penghitungan inventaris secara terstruktur.",
-        "engineering": "Aplikasi berfokus pada tahapan operasional yang jelas sehingga informasi hasil perhitungan stok dapat dicatat dan ditinjau secara konsisten.",
-        "scope": { "0": "Alur penghitungan stok", "1": "Pencatatan inventaris", "2": "Data operasional yang siap ditinjau" },
-        "facts": {},
-        "outcome": "Aplikasi menyediakan alur terstruktur untuk mencatat dan meninjau penghitungan stok fisik."
-      }
+    "Navigation": { "services": "Layanan", "work": "Portofolio", "about": "Tentang" },
+    "WorkCard": { "caseStudy": "Studi kasus" },
+    "Site": {
+        "cases": {
+            "idxStocks": {
+                "title": "Dashboard Saham IDX",
+                "category": "Aplikasi Web",
+                "summary": "Dashboard untuk mengeksplorasi dan memantau data pasar saham Indonesia.",
+                "description": "Dashboard terfokus untuk mengakses dan menganalisis informasi saham IDX dalam satu tempat.",
+                "problem": "Informasi pasar saham lebih mudah dievaluasi ketika data yang relevan dapat dilihat dalam satu ruang kerja yang terstruktur.",
+                "solution": "Forge Studio membangun dashboard khusus untuk mengeksplorasi dan memantau data saham IDX.",
+                "engineering": "Proyek ini dibangun sebagai aplikasi web berbasis data dengan fokus pada hierarki informasi yang jelas dan tampilan dashboard yang konsisten.",
+                "scope": {
+                    "0": "Terminal pasar interaktif dengan IHSG, saham naik, saham turun, dan saham teraktif",
+                    "1": "Grafik candlestick lima tahun dengan SMA, EMA, RSI, MACD, Bollinger Bands, ATR, dan analisis volume",
+                    "2": "Laporan keuangan tahunan dan kuartalan beserta rasio valuasi dan kinerja",
+                    "3": "Screener fundamental, watchlist, dan integrasi RSS Google News",
+                    "4": "Riset paper trading kuantitatif dan AI multiagen dengan analitik kinerja strategi",
+                    "5": "Ringkasan pasar otomatis melalui Telegram dan pemantauan kesehatan operasional"
+                },
+                "facts": {
+                    "0": "Mendukung lebih dari 840 perusahaan yang tercatat di IDX",
+                    "1": "Tersedia dalam Aplikasi Desktop dan Self-host",
+                    "2": "Terintegrasi dengan berbagai penyedia model AI melalui 9Router untuk analisis data pasar",
+                    "3": "Kompatibel dengan Hermes Agent untuk pengiriman data pasar, performa, dan sinyal harian, mingguan, atau tahunan",
+                    "4": "Antarmuka browser berkomunikasi dengan backend FastAPI melalui HTTP dan SSE"
+                },
+                "outcome": "Dashboard menyatukan eksplorasi dan pemantauan saham IDX dalam ruang kerja terstruktur."
+            },
+            "aiSummarizer": {
+                "title": "Summarizer Berbasis Model AI",
+                "category": "Aplikasi Web",
+                "summary": "Aplikasi berbantuan AI untuk mengubah konten panjang menjadi ringkasan yang lebih singkat.",
+                "description": "Workflow summarization praktis yang didukung oleh model AI.",
+                "problem": "Konten panjang membutuhkan waktu untuk ditinjau, terutama ketika pengguna hanya membutuhkan poin-poin penting.",
+                "solution": "Forge Studio membangun aplikasi terfokus yang menggunakan model AI untuk menghasilkan ringkasan dari konten yang diberikan.",
+                "engineering": "Produk ini berfokus pada alur sederhana dari input menuju hasil ringkasan sehingga kemampuan AI tetap praktis tanpa menambah kompleksitas yang tidak diperlukan.",
+                "scope": { "0": "Peringkasan berbasis AI", "1": "Alur input konten", "2": "Hasil ringkasan yang mudah dibaca" },
+                "facts": {},
+                "outcome": "Aplikasi mengubah konten yang diberikan menjadi ringkasan melalui alur input-ke-ringkasan yang terfokus."
+            },
+            "odooWageOvertime": {
+                "title": "Modul Custom Odoo untuk Gaji dan Lembur",
+                "category": "Sistem yang Ada",
+                "summary": "Modul Odoo custom untuk mendukung workflow penggajian dan lembur.",
+                "description": "Kustomisasi workflow bisnis di dalam lingkungan Odoo.",
+                "problem": "Proses penggajian dan lembur perlu mengikuti aturan operasional yang sudah digunakan oleh bisnis.",
+                "solution": "Forge Studio mengembangkan modul Odoo custom untuk mendukung proses penggajian dan lembur di dalam workflow ERP yang sudah ada.",
+                "engineering": "Modul ini memperluas fungsi Odoo menggunakan implementasi yang menyesuaikan workflow bisnis sehingga tim tidak perlu mengikuti proses generik yang tidak sesuai.",
+                "scope": { "0": "Modul Odoo custom", "1": "Dukungan alur penggajian", "2": "Dukungan alur lembur" },
+                "facts": {},
+                "outcome": "Alur penggajian dan lembur didukung di dalam lingkungan Odoo yang sudah ada."
+            },
+            "stockOpname": {
+                "title": "Aplikasi Stock Opname",
+                "category": "Sistem Bisnis",
+                "summary": "Aplikasi untuk mendukung proses stock opname yang lebih terstruktur.",
+                "description": "Workflow khusus untuk mencatat dan meninjau hasil perhitungan stok fisik.",
+                "problem": "Perhitungan stok fisik lebih mudah dikelola ketika proses pencatatan, pemeriksaan, dan rekonsiliasi mengikuti satu workflow yang jelas.",
+                "solution": "Forge Studio membangun aplikasi stock opname untuk mendukung aktivitas penghitungan inventaris secara terstruktur.",
+                "engineering": "Aplikasi berfokus pada tahapan operasional yang jelas sehingga informasi hasil perhitungan stok dapat dicatat dan ditinjau secara konsisten.",
+                "scope": { "0": "Alur penghitungan stok", "1": "Pencatatan inventaris", "2": "Data operasional yang siap ditinjau" },
+                "facts": {},
+                "outcome": "Aplikasi menyediakan alur terstruktur untuk mencatat dan meninjau penghitungan stok fisik."
+            }
+        }
+    },
+    "WorkPage": {
+        "metadata": { "title": "Portofolio", "description": "Aplikasi web dan sistem untuk kebutuhan bisnis dan operasional nyata." },
+        "filters": { "all": "Semua", "webApplication": "Aplikasi Web", "businessSystem": "Sistem Bisnis", "existingSystem": "Sistem yang Ada" }
+    },
+    "Home": {
+        "metadata": {
+            "title": "Aplikasi Web untuk Kebutuhan Bisnis",
+            "description": "Studio pengembangan web independen untuk membangun, meningkatkan, dan memelihara aplikasi web dan sistem bisnis."
+        }
+    },
+    "ServicesPage": {
+        "metadata": {
+            "title": "Layanan Pengembangan Web",
+            "description": "Empat layanan: pengembangan web custom, sistem bisnis, pengembangan sistem yang ada, serta pemeliharaan dan deployment."
+        }
+    },
+    "AboutPage": {
+        "metadata": {
+            "title": "Tentang Forge Studio",
+            "description": "Studio pengembangan web independen yang berfokus pada aplikasi praktis, andal, dan mudah dipelihara."
+        }
     }
-  },
-  "WorkPage": {
-    "metadata": { "title": "Portofolio", "description": "Aplikasi web dan sistem untuk kebutuhan bisnis dan operasional nyata." },
-    "filters": { "all": "Semua", "webApplication": "Aplikasi Web", "businessSystem": "Sistem Bisnis", "existingSystem": "Sistem yang Ada" }
-  },
-  "Home": {
-    "metadata": {
-      "title": "Aplikasi Web untuk Kebutuhan Bisnis",
-      "description": "Studio pengembangan web independen untuk membangun, meningkatkan, dan memelihara aplikasi web dan sistem bisnis."
-    }
-  },
-  "ServicesPage": {
-    "metadata": {
-      "title": "Layanan Pengembangan Web",
-      "description": "Empat layanan: pengembangan web custom, sistem bisnis, pengembangan sistem yang ada, serta pemeliharaan dan deployment."
-    }
-  },
-  "AboutPage": {
-    "metadata": {
-      "title": "Tentang Forge Studio",
-      "description": "Studio pengembangan web independen yang berfokus pada aplikasi praktis, andal, dan mudah dipelihara."
-    }
-  }
 }
