@@ -33,6 +33,7 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
   if (!item) notFound();
   const t = await getTranslations({ locale: params.locale, namespace: "Site.cases" });
   const presentation = workPresentation[item.key];
+  const facts = item.facts.map((value, index) => ({ value, index })).filter(({ index }) => t.has(`${item.key}.facts.${index}`));
   const id = params.locale === "id";
   return (
     <PageShell className="mx-auto w-full max-w-[1240px] px-6 py-12 sm:px-8 md:py-20 lg:px-10">
@@ -151,13 +152,13 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
                     </ul>
                   </section>
                 )}
-                {item.facts.length > 0 && (
+                {facts.length > 0 && (
                   <section className="rounded-xl border border-[#e3ddd5] bg-[#ffffff] p-6">
                     <h3 className="font-[family-name:var(--font-manrope)] text-lg font-semibold text-[#1f1f1f]">
                       {id ? "Fakta proyek" : "Project facts"}
                     </h3>
                     <ul className="mt-4 list-disc space-y-2.5 pl-5 text-sm leading-relaxed text-[#595959]">
-                      {item.facts.map((value, index) => (
+                      {facts.map(({ value, index }) => (
                         <li key={value}>{t(`${item.key}.facts.${index}`)}</li>
                       ))}
                     </ul>
