@@ -118,9 +118,7 @@ export const cases = [
     scope: ["AI-powered summarization", "Content input workflow", "Readable summary output"],
 
     stack: [
-      "Next.js 15",
-      "React 19",
-      "TypeScript",
+      "Flask",
       "FastAPI",
       "Python 3.12+",
       "SQLite",
