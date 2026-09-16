@@ -1,5 +1,5 @@
 {
-  "name": "forge-studio",
+  "name": "risendev",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.3.3",
+    "geist": "^1.7.2",
     "next": "^14.2.35",
     "next-intl": "^4.14.2",
     "postcss": "^8.5.28",

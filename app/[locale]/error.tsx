@@ -4,21 +4,19 @@ import { Link } from "@/i18n/navigation";
 export default function PageError({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
   const id = useLocale() === "id";
   return (
-    <main className="forge-state">
-      <p>FORGE STUDIO</p>
-      <h1>{id ? "Halaman belum dapat dimuat." : "This page could not be loaded."}</h1>
-      <p>{id ? "Silakan coba kembali atau kembali ke beranda." : "Please try again or return to the homepage."}</p>
-      <div className="flex flex-wrap gap-4">
-        <button
-          onClick={reset}
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-[#c34810] px-5 py-3 text-white hover:bg-[#a63409]"
-        >
+    <main className="border-t border-[#111111] bg-[#FCF9F2] px-5 py-24 text-center md:px-12">
+      <p className="eyebrow text-[#A93100]">RisenDev</p>
+      <h1 className="mx-auto mt-3 max-w-xl font-[family-name:var(--font-geist-sans)] text-3xl font-semibold tracking-tight uppercase sm:text-4xl">
+        {id ? "Halaman belum dapat dimuat." : "This page could not be loaded."}
+      </h1>
+      <p className="mx-auto mt-3 max-w-md text-[15px] text-[#5F5E5E]">
+        {id ? "Silakan coba kembali atau kembali ke beranda." : "Please try again or return to the homepage."}
+      </p>
+      <div className="mt-8 flex flex-wrap justify-center gap-3">
+        <button onClick={reset} className="btn-forge">
           {id ? "Coba kembali" : "Try again"}
         </button>
-        <Link
-          href="/"
-          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-[#d0c3b7] bg-white px-5 py-3 text-[#26201c] hover:bg-[#f1e8df]"
-        >
+        <Link href="/" className="btn-ghost">
           {id ? "Kembali ke Beranda" : "Back to Home"}
         </Link>
       </div>

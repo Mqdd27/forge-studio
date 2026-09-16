@@ -15,7 +15,7 @@ export async function PrivacyDesign() {
         ],
         [
           "Pengiriman dan penyimpanan",
-          "Saat layanan pengiriman aktif, informasi diteruskan melalui penyedia pengiriman yang dikonfigurasi untuk Forge Studio. Halaman hanya menampilkan konfirmasi setelah layanan menerima pengiriman. Jika pengiriman tidak tersedia, halaman akan memberi tahu Anda. Website tidak menyimpan salinan inquiry dalam database aplikasi.",
+          "Saat layanan pengiriman aktif, informasi diteruskan melalui penyedia pengiriman yang dikonfigurasi untuk RisenDev. Halaman hanya menampilkan konfirmasi setelah layanan menerima pengiriman. Jika pengiriman tidak tersedia, halaman akan memberi tahu Anda. Website tidak menyimpan salinan inquiry dalam database aplikasi.",
         ],
         [
           "Data teknis",
@@ -23,7 +23,7 @@ export async function PrivacyDesign() {
         ],
         [
           "Permintaan terkait data",
-          "Untuk meminta koreksi atau penghapusan informasi inquiry, gunakan kanal Forge Studio yang digunakan saat berkorespondensi, atau sampaikan permintaan melalui form proyek jika tersedia. Jangan sertakan data sensitif tambahan.",
+          "Untuk meminta koreksi atau penghapusan informasi inquiry, gunakan kanal RisenDev yang digunakan saat berkorespondensi, atau sampaikan permintaan melalui form proyek jika tersedia. Jangan sertakan data sensitif tambahan.",
         ],
       ]
     : [
@@ -37,7 +37,7 @@ export async function PrivacyDesign() {
         ],
         [
           "Delivery and storage",
-          "When delivery is active, information is forwarded through the delivery provider configured for Forge Studio. The page confirms submission only after the service accepts it. If delivery is unavailable, the page will tell you. The website does not store an inquiry copy in an application database.",
+          "When delivery is active, information is forwarded through the delivery provider configured for RisenDev. The page confirms submission only after the service accepts it. If delivery is unavailable, the page will tell you. The website does not store an inquiry copy in an application database.",
         ],
         [
           "Technical data",
@@ -45,23 +45,23 @@ export async function PrivacyDesign() {
         ],
         [
           "Data requests",
-          "To request correction or deletion of inquiry information, use the Forge Studio channel used in your correspondence, or make a request through the project form when available. Do not include additional sensitive data.",
+          "To request correction or deletion of inquiry information, use the RisenDev channel used in your correspondence, or make a request through the project form when available. Do not include additional sensitive data.",
         ],
       ];
   return (
     <PageShell className="mx-auto max-w-[900px] px-6 py-12 md:py-20">
       <header>
-        <h1 className="font-[family-name:var(--font-manrope)] font-bold">{id ? "Kebijakan Privasi" : "Privacy Policy"}</h1>
+        <h1 className="font-[family-name:var(--font-geist-sans)] font-bold">{id ? "Kebijakan Privasi" : "Privacy Policy"}</h1>
         <p className="mt-5 text-lg text-[#595959]">
           {id
-            ? "Cara website Forge Studio menangani informasi inquiry proyek."
-            : "How the Forge Studio website handles project inquiry information."}
+            ? "Cara website RisenDev menangani informasi inquiry proyek."
+            : "How the RisenDev website handles project inquiry information."}
         </p>
       </header>
       <div className="mt-10 space-y-8">
         {sections.map(([title, description]) => (
           <section key={title}>
-            <h2 className="font-[family-name:var(--font-manrope)] font-semibold">{title}</h2>
+            <h2 className="font-[family-name:var(--font-geist-sans)] font-semibold">{title}</h2>
             <p className="mt-4 leading-relaxed text-[#595959]">{description}</p>
           </section>
         ))}

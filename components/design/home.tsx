@@ -1,237 +1,262 @@
 import { PageShell } from "@/components/ui/page-shell";
 import { workCardData } from "@/data/work-presentation";
 import { cases } from "@/data/site";
-import { capabilities, processSteps } from "@/data/studio";
 import { WorkCard } from "@/components/work-card";
 import { Link } from "@/i18n/navigation";
 import { DesignText as T } from "@/components/ui/design-text";
-import { DesignIcon } from "@/components/ui/design-icon";
-import { ServiceCards } from "@/components/design/services";
 import { ProjectCTA } from "@/components/design/project-cta";
-// import { WorkVisual } from "@/components/visual";
-import Image from "next/image";
+
+const problems = [
+  [
+    "Scattered data",
+    "Information spread across WhatsApp chats, stray Excel files, and piles of printed invoices with no single source of truth.",
+  ],
+  [
+    "Hard to monitor operations",
+    "Warehouse stock, customer order status, cash reports, or team assignments are not visible on one integrated screen.",
+  ],
+  ["Disconnected systems", "Website and bookkeeping don't talk to each other. Staff retype the same work manually, over and over."],
+  [
+    "Tangled manual bureaucracy",
+    "Many approval flows and data recaps could be shortened to a single click with an automated digital system.",
+  ],
+] as const;
+
+const phases = [
+  ["01", "Tell us the process", "We study the workflows, bottlenecks, and team needs currently running in the field."],
+  ["02", "Define the system", "Features, database relations, and interfaces designed precisely to need — no bloatware."],
+  ["03", "Build & test", "The app is programmed modularly, verified with the operations team, and refined."],
+  ["04", "Ready to use", "The system is deployed to production, direct training is given, and it's ready to lift business performance."],
+] as const;
 
 export function HomeDesign() {
   return (
     <PageShell>
-      <section className="py-8 md:py-[clamp(32px,3.2vw,48px)]">
-        <div className="mx-auto grid w-full max-w-[1800px] grid-cols-1 items-center gap-7 px-5 md:grid-cols-2 md:gap-[clamp(24px,3vw,48px)] md:px-[clamp(20px,3vw,56px)]">
-          <div>
-            <p data-hero-reveal className="mb-3 text-[11px] font-semibold tracking-[0.09em] text-[#a63409] uppercase">
-              <T>{"Independent Web Development Studio"}</T>
+      {/* HERO — asymmetric editorial */}
+      <section className="border-b border-[#111111] px-5 pt-12 pb-14 md:px-12 md:pt-20 md:pb-20">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+          <div className="md:col-span-12">
+            <p data-hero-reveal className="eyebrow text-[#A93100]">
+              <T>{"RisenDev — Independent Digital Studio"}</T>
             </p>
-            <h1 data-hero-reveal>
-              <T>{"Web applications built around real business needs."}</T>
-            </h1>
-            <p data-hero-reveal className="mt-[18px] mb-6 max-w-[68ch] text-base text-[#574b45]">
-              <T>
-                {
-                  "From custom business systems to improvements for existing applications, Forge Studio turns requirements and workflows into practical web software."
-                }
-              </T>
-            </p>
-            <div data-hero-reveal className="flex flex-wrap gap-4 max-[359px]:flex-col">
-              <Link
-                className="inline-flex min-h-11 items-center justify-center gap-2.5 rounded-lg border border-[#b43d09] bg-[#c34810] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#a63409] motion-reduce:transition-none"
-                href="/start-a-project"
-              >
-                <T>{"Start a Project"}</T>
-              </Link>
-              <Link
-                className="inline-flex min-h-11 items-center justify-center gap-2.5 rounded-lg border border-[#b43d09] border-[#d0c3b7]! bg-[#c34810] bg-white! px-5 py-3 text-sm font-semibold text-[#26201c]! text-white transition-colors hover:bg-[#a63409] hover:bg-[#f1e8df]! motion-reduce:transition-none"
-                href="/work"
-              >
-                <T>{"View Our Work"}</T>
-              </Link>
-            </div>
-          </div>
-          <figure
-            data-hero-reveal
-            className="m-0 overflow-hidden rounded-xl border border-[#d7c4b6] bg-white shadow-sm [&_figcaption]:px-3 [&_figcaption]:py-1.5 [&_figcaption]:text-right [&_figcaption]:text-[10px] [&_figcaption]:text-[#786c64]"
-          >
-            <Image
-              src="/img/hero.png"
-              alt=""
-              width={1050}
-              height={1050}
-              className="rounded-lg object-contain transition-transform duration-300 group-hover:scale-105"
-            />
-          </figure>
-
-          {/* <figure data-hero-reveal className="m-0 overflow-hidden rounded-xl border border-[#d7c4b6] bg-white shadow-sm [&_figcaption]:px-3 [&_figcaption]:py-1.5 [&_figcaption]:text-right [&_figcaption]:text-[10px] [&_figcaption]:text-[#786c64]">
-            <div className="flex justify-between gap-4 bg-[#f0eded] px-4 py-2 text-[10px] text-[#756c65] [&>span:first-child]:text-[#d9d4d0]">
-              <span aria-hidden="true">● ● ●</span>
-              <span>Forge Studio</span>
-              <span />
-            </div>
-            <div className="h-[260px] md:h-[clamp(260px,23vw,370px)]">
-              <WorkVisual type="bars" project="stockOpname" />
-              <Image
-                src="/img/hero.png"
-                alt=""
-                width={1050}
-                height={1050}
-                className="rounded-lg object-contain transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
-            <figcaption>
-              <T>{"Project illustration"}</T>
-            </figcaption>
-          </figure> */}
-        </div>
-      </section>
-      <section className="bg-[#f1e8df] py-8 md:py-[clamp(32px,3.2vw,48px)]">
-        <div className="mx-auto w-full max-w-[1800px] px-5 md:px-[clamp(20px,3vw,56px)]">
-          <div className="mb-6 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end md:[&>div]:max-w-[60%] md:[&>p]:max-w-[44%]">
-            <div>
-              <p className="mb-3 text-[11px] font-semibold tracking-[0.09em] text-[#a63409] uppercase">
-                <T>{"Context"}</T>
-              </p>
-              <h2>
-                <T>{"Still managing important workflows manually?"}</T>
-              </h2>
-            </div>
-            <p>
-              <T>
-                {
-                  "Spreadsheets, chats and repetitive admin work can work at first. When the process becomes harder to track, a focused web application can make it simpler."
-                }
-              </T>
+            <p data-hero-reveal className="eyebrow mt-2 text-[#5F5E5E]">
+              <T>{"Indonesia — Available remotely [ 2026 ]"}</T>
             </p>
           </div>
-          <div data-stagger className="grid grid-cols-1 gap-9 md:grid-cols-3">
-            {[
-              ["Manual Workflow", "Disjointed spreadsheets, manual handoffs and missed updates.", "inventory_2"],
-              ["Web Application", "A custom system shaped around your operational needs.", "web_window"],
-              ["Easier to Manage", "Central data, shared access and a clearer workflow.", "check_circle"],
-            ].map(([title, desc, icon], i) => (
-              <div
-                className="relative rounded-xl bg-white p-5 [&_h3]:mt-2 [&_p]:mt-2 [&_p]:text-[13px] [&_p]:text-[#574b45] [&:not(:last-child)]:after:absolute [&:not(:last-child)]:after:right-1/2 [&:not(:last-child)]:after:-bottom-7 [&:not(:last-child)]:after:text-[#b43d09] [&:not(:last-child)]:after:content-['↓'] md:[&:not(:last-child)]:after:top-1/2 md:[&:not(:last-child)]:after:-right-6 md:[&:not(:last-child)]:after:bottom-auto md:[&:not(:last-child)]:after:content-['→'] [&>svg]:mr-2.5 [&>svg]:inline-block [&>svg]:size-4 [&>svg]:text-[#953900]"
-                key={title}
-              >
-                <DesignIcon name={icon} />
-                <span className="mb-3 text-[11px] font-semibold tracking-[0.09em] text-[#a63409] uppercase">0{i + 1}</span>
-                <h3>
-                  <T>{title}</T>
-                </h3>
-                <p>
-                  <T>{desc}</T>
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="py-8 md:py-[clamp(32px,3.2vw,48px)]">
-        <div className="mx-auto w-full max-w-[1800px] px-5 md:px-[clamp(20px,3vw,56px)]">
-          <p className="mb-3 text-[11px] font-semibold tracking-[0.09em] text-[#a63409] uppercase">
-            <T>{"Our services"}</T>
-          </p>
-          <h2>
-            <T>{"What we can help you build."}</T>
-          </h2>
-          <ServiceCards />
-        </div>
-      </section>
-      <section className="bg-[#f1e8df] py-8 md:py-[clamp(32px,3.2vw,48px)]" id="work">
-        <div className="mx-auto w-full max-w-[1800px] px-5 md:px-[clamp(20px,3vw,56px)]">
-          <div className="mb-6 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end md:[&>div]:max-w-[60%] md:[&>p]:max-w-[44%]">
-            <div>
-              <p className="mb-3 text-[11px] font-semibold tracking-[0.09em] text-[#a63409] uppercase">
-                <T>{"Portfolio"}</T>
-              </p>
-              <h2>
-                <T>{"Selected Work"}</T>
-              </h2>
-            </div>
-            <Link
-              className="inline-flex min-h-11 items-center gap-2 text-[13px] text-[#a63409] hover:underline hover:underline-offset-4"
-              href="/work"
+          <div className="md:col-span-10">
+            <h1
+              data-hero-reveal
+              className="font-[family-name:var(--font-geist-sans)] text-5xl leading-[0.95] font-semibold tracking-tight uppercase md:text-8xl"
             >
+              <T>{"Websites & business apps that are neat, clear, and ready to use."}</T>
+            </h1>
+          </div>
+          <div className="md:col-span-5 md:col-start-1">
+            <p data-hero-reveal className="max-w-[45ch] text-base leading-relaxed text-[#5C4037] md:text-lg">
+              <T>{"RisenDev helps businesses build websites, internal systems, and web apps based on real needs — not templates."}</T>
+            </p>
+            <div data-hero-reveal className="mt-6 flex flex-wrap gap-3">
+              <Link href="/work" className="btn-ink">
+                <T>{"View Our Work"}</T> <span aria-hidden="true">↓</span>
+              </Link>
+              <Link href="/start-a-project" className="btn-forge">
+                <T>{"Start a Project"}</T> <span aria-hidden="true">↗</span>
+              </Link>
+            </div>
+          </div>
+          <div className="md:col-span-4 md:col-start-8">
+            <div className="border border-[#111111] bg-[#FFFDF7] p-5">
+              <p className="eyebrow text-[#A93100]">
+                <T>{"[ Our approach ]"}</T>
+              </p>
+              <p className="mt-2 text-xs font-semibold tracking-[0.06em] uppercase">
+                <T>{"Business-focused technology partner"}</T>
+              </p>
+              <p className="mt-1 text-sm text-[#5F5E5E]">
+                <T>{"Ready to support your daily operations without friction."}</T>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 01 — CONSTRUCTION PRINCIPLE */}
+      <section className="border-b border-[#111111] px-5 py-14 md:px-12 md:py-20">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <p className="eyebrow text-[#A93100]">
+              <T>{"[ What RisenDev builds / 01 ]"}</T>
+            </p>
+            <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:text-4xl">
+              <T>{"Construction principle"}</T>
+            </h2>
+          </div>
+          <div className="md:col-span-7 md:col-start-6">
+            <p className="font-[family-name:var(--font-geist-sans)] text-xl leading-snug font-medium tracking-tight md:text-2xl">
+              <T>{"Not generic factory software. We design precision data architecture that matches your real internal flow."}</T>
+            </p>
+            <p className="mt-4 max-w-[60ch] text-[15px] leading-relaxed text-[#5F5E5E]">
+              <T>
+                {
+                  "From company profile websites, cashier apps, stock systems, booking, dashboards, to developing systems already in operation."
+                }
+              </T>
+            </p>
+            <p className="mt-3 max-w-[60ch] text-[15px] leading-relaxed text-[#5F5E5E]">
+              <T>{"We remove messy spreadsheets, cut duplicate input, and give owners full control over daily operational data."}</T>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 02 — PROBLEMS */}
+      <section className="border-b border-[#111111] bg-[#F6F3EC] px-5 py-14 md:px-12 md:py-20">
+        <p className="eyebrow text-[#A93100]">
+          <T>{"[ Problems that keep recurring / 02 ]"}</T>
+        </p>
+        <div className="mt-3 grid grid-cols-1 items-end gap-6 md:grid-cols-12">
+          <h2 className="font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:col-span-8 md:text-5xl">
+            <T>{"Still running the business on chats, spreadsheets, and manual records?"}</T>
+          </h2>
+        </div>
+        <div className="mt-10 grid grid-cols-1 gap-px border border-[#111111] bg-[#111111] sm:grid-cols-2 lg:grid-cols-4">
+          {problems.map(([title, desc], i) => (
+            <div key={title} className="bg-[#FFFDF7] p-6">
+              <p className="eyebrow text-[#A93100]">[0{i + 1}]</p>
+              <h3 className="mt-3 font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight">
+                <T>{title}</T>
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-[#5F5E5E]">
+                <T>{desc}</T>
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ARCHITECTURE FLOW */}
+      <section className="border-b border-[#111111] px-5 py-14 md:px-12 md:py-20">
+        <p className="eyebrow text-[#A93100]">
+          <T>{"[ Digital transition / Architecture flow ]"}</T>
+        </p>
+        <div className="mt-3 grid grid-cols-1 gap-6 md:grid-cols-12 md:items-end">
+          <h2 className="font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:col-span-7 md:text-4xl">
+            <T>{"From manual process to a system that's easier to manage."}</T>
+          </h2>
+          <p className="text-[15px] leading-relaxed text-[#5F5E5E] md:col-span-5">
+            <T>
+              {
+                "Migration doesn't have to stop operations. We dissect the existing workflow chain and move it to modular software step by step."
+              }
+            </T>
+          </p>
+        </div>
+        <ol className="mt-10 grid list-none grid-cols-1 gap-px border border-[#111111] bg-[#111111] p-0 sm:grid-cols-2 lg:grid-cols-4">
+          {phases.map(([n, title, desc]) => (
+            <li key={n} className="bg-[#F6F3EC] p-6">
+              <p className="eyebrow text-[#A93100]">
+                <T>{"Phase"}</T> {n}
+              </p>
+              <h3 className="mt-3 font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight">
+                <T>{title}</T>
+              </h3>
+              <p className="mt-2 text-sm leading-relaxed text-[#5F5E5E]">
+                <T>{desc}</T>
+              </p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      {/* 03 — SERVICES INDEX */}
+      <section className="border-b border-[#111111] px-5 py-14 md:px-12 md:py-20">
+        <div className="grid grid-cols-1 items-end gap-6 md:grid-cols-12">
+          <div className="md:col-span-8">
+            <p className="eyebrow text-[#A93100]">
+              <T>{"[ Services / 03 ]"}</T>
+            </p>
+            <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:text-4xl">
+              <T>{"What RisenDev can help build."}</T>
+            </h2>
+          </div>
+          <div className="md:col-span-4 md:text-right">
+            <Link
+              href="/services"
+              className="text-xs font-semibold tracking-[0.06em] text-[#A93100] uppercase underline underline-offset-4"
+            >
+              <T>{"View all services"}</T> →
+            </Link>
+          </div>
+        </div>
+        <div className="mt-8">
+          {[
+            [
+              "01",
+              "Company Profile & Business Websites",
+              "High-performance professional websites presenting business strengths, product catalogs, and credibility in clients' eyes.",
+            ],
+            [
+              "02",
+              "Business Systems & Internal Tools",
+              "Customized apps for multi-location stock, booking reservations, staff attendance, workflow tracking, invoicing, and profit-and-loss recaps.",
+            ],
+            [
+              "03",
+              "Existing System Development",
+              "Legacy app modernization, custom feature additions, local payment gateway integration, courier integration, and performance fixes.",
+            ],
+            [
+              "04",
+              "Maintenance & Deployment",
+              "24/7 uptime monitoring, automatic SSL renewal, offsite data backup, and routine security patches.",
+            ],
+          ].map(([n, title, desc]) => (
+            <Link
+              key={n}
+              href="/services"
+              className="index-row group grid grid-cols-1 gap-2 px-2 py-6 md:grid-cols-12 md:items-baseline md:px-4"
+            >
+              <span className="eyebrow index-accent text-[#A93100] md:col-span-1">[ {n} ]</span>
+              <span className="font-[family-name:var(--font-geist-sans)] text-xl font-medium tracking-tight md:col-span-5 md:text-2xl">
+                <T>{title}</T>
+              </span>
+              <span className="index-muted text-sm leading-relaxed text-[#5F5E5E] md:col-span-5">
+                <T>{desc}</T>
+              </span>
+              <span aria-hidden="true" className="text-lg md:col-span-1 md:text-right">
+                →
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* SELECTED WORK */}
+      <section className="border-b border-[#111111] bg-[#F6F3EC] px-5 py-14 md:px-12 md:py-20">
+        <div className="grid grid-cols-1 items-end gap-6 md:grid-cols-12">
+          <div className="md:col-span-8">
+            <p className="eyebrow text-[#A93100]">
+              <T>{"[ Selected work ]"}</T>
+            </p>
+            <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:text-4xl">
+              <T>{"Systems built for real needs."}</T>
+            </h2>
+          </div>
+          <div className="md:col-span-4 md:text-right">
+            <Link href="/work" className="text-xs font-semibold tracking-[0.06em] text-[#A93100] uppercase underline underline-offset-4">
               <T>{"View all case studies"}</T> →
             </Link>
           </div>
-          <div
-            data-stagger
-            className="grid grid-cols-1 items-stretch gap-5 min-[600px]:grid-cols-2 lg:grid-cols-3 [&_h3]:text-[21px] [&_p]:text-[#574b45]"
-          >
-            {cases
-              .filter((x) => ["idxStocks", "odooWageOvertime", "stockOpname"].includes(x.key))
-              .map((item) => (
-                <WorkCard key={item.key} item={workCardData(item)} />
-              ))}
-          </div>
         </div>
-      </section>
-      <section className="py-8 md:py-[clamp(32px,3.2vw,48px)]">
-        <div className="mx-auto w-full max-w-[1800px] px-5 md:px-[clamp(20px,3vw,56px)]">
-          <p className="mb-3 text-[11px] font-semibold tracking-[0.09em] text-[#a63409] uppercase">
-            <T>{"How we work"}</T>
-          </p>
-          <h2>
-            <T>{"A straightforward way to work together."}</T>
-          </h2>
-          <div
-            data-stagger
-            className="mt-6 grid grid-cols-1 gap-4 min-[360px]:grid-cols-2 lg:grid-cols-4 [&_article>span]:mb-1.5 [&_article>span]:block [&_article>span]:text-[22px] [&_article>span]:font-semibold [&_article>span]:text-[#bc3e0b] [&_p]:mt-2 [&_p]:text-[13px] [&_p]:text-[#574b45] [&>article]:rounded-lg [&>article]:bg-white [&>article]:p-6"
-          >
-            {processSteps.map(([title, desc], i) => (
-              <article key={title}>
-                <span>0{i + 1}</span>
-                <h3>
-                  <T>{title}</T>
-                </h3>
-                <p>
-                  <T>{desc}</T>
-                </p>
-              </article>
+        <div className="mt-8 grid grid-cols-1 gap-px border border-[#111111] bg-[#111111] min-[600px]:grid-cols-2 lg:grid-cols-3">
+          {cases
+            .filter((x) => ["idxStocks", "odooWageOvertime", "stockOpname"].includes(x.key))
+            .map((item, i) => (
+              <WorkCard key={item.key} item={workCardData(item)} index={i} />
             ))}
-          </div>
         </div>
       </section>
-      <section className="bg-[#202b30]! bg-[#f1e8df] py-8 md:py-[clamp(32px,3.2vw,48px)] [&_div>div>div]:border [&_div>div>div]:border-[#45545a] [&_div>div>div]:bg-[#2f3d43] [&_div>div>div]:text-white [&_h2]:text-white [&_p]:text-white [&_svg]:text-[#ff9b65]!">
-        <div className="mx-auto w-full max-w-[1800px] px-5 md:px-[clamp(20px,3vw,56px)]">
-          <p className="mb-3 text-[11px] font-semibold tracking-[0.09em] text-[#a63409] uppercase">
-            <T>{"Capabilities"}</T>
-          </p>
-          <h2>
-            <T>{"Web development, end to end."}</T>
-          </h2>
-          <div className="mt-6 grid grid-cols-1 gap-3 min-[360px]:grid-cols-2 lg:grid-cols-4 [&_svg]:size-[18px] [&_svg]:shrink-0 [&_svg]:text-[#953900] [&>div]:flex [&>div]:items-center [&>div]:gap-2.5 [&>div]:rounded-lg [&>div]:bg-white [&>div]:p-[18px] [&>div]:text-[13px]">
-            {capabilities.map((value) => (
-              <div key={value}>
-                <DesignIcon name="check" />
-                <T>{value}</T>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="py-8 md:py-[clamp(32px,3.2vw,48px)]">
-        <div className="mx-auto w-full max-w-[1800px] px-5 md:px-[clamp(20px,3vw,56px)]">
-          <div className="rounded-xl bg-white p-5 md:p-8 [&>p]:max-w-[85ch] [&>p:not(:first-child)]:mt-4 [&>p:not(:first-child)]:mb-2">
-            <p className="mb-3 text-[11px] font-semibold tracking-[0.09em] text-[#a63409] uppercase">
-              <T>{"About us"}</T>
-            </p>
-            <h2>
-              <T>{"About Forge Studio"}</T>
-            </h2>
-            <p>
-              <T>
-                {
-                  "Forge Studio is an independent web development studio focused on building practical web applications and business systems."
-                }
-              </T>
-            </p>
-            <Link
-              className="inline-flex min-h-11 items-center gap-2 text-[13px] text-[#a63409] hover:underline hover:underline-offset-4"
-              href="/about"
-            >
-              <T>{"More About Forge"}</T> →
-            </Link>
-          </div>
-        </div>
-      </section>
+
       <ProjectCTA />
     </PageShell>
   );

@@ -9,7 +9,7 @@
         "summary": "A dashboard for exploring and monitoring Indonesian stock market data.",
         "description": "A focused dashboard experience for working with IDX stock information in one place.",
         "problem": "Stock-market information is easier to evaluate when the relevant data can be reviewed in a single, structured workspace.",
-        "solution": "Forge Studio built a dedicated dashboard interface for exploring and monitoring IDX stock data.",
+        "solution": "RisenDev built a dedicated dashboard interface for exploring and monitoring IDX stock data.",
         "engineering": "The project is structured as a data-focused web application, designed around readable information hierarchy and repeatable dashboard views.",
         "scope": {
           "0": "Interactive market terminal with IHSG, gainers, losers, and active movers",
@@ -34,7 +34,7 @@
         "summary": "An AI-assisted application for turning longer content into concise summaries.",
         "description": "A practical summarization workflow powered by AI models.",
         "problem": "Long-form content takes time to review, especially when the reader only needs the essential points.",
-        "solution": "Forge Studio built a focused application that uses AI models to generate concise summaries from supplied content.",
+        "solution": "RisenDev built a focused application that uses AI models to generate concise summaries from supplied content.",
         "engineering": "The product centers on a simple input-to-summary flow so the AI capability remains useful without adding unnecessary complexity.",
         "scope": { "0": "AI-powered summarization", "1": "Content input workflow", "2": "Readable summary output" },
         "facts": {},
@@ -46,7 +46,7 @@
         "summary": "A custom Odoo module for supporting wage and overtime workflows.",
         "description": "Business workflow customization within an Odoo environment.",
         "problem": "Wage and overtime processes need to reflect the operational rules a business already uses.",
-        "solution": "Forge Studio developed a custom Odoo module to support wage and overtime processes within the existing ERP workflow.",
+        "solution": "RisenDev developed a custom Odoo module to support wage and overtime processes within the existing ERP workflow.",
         "engineering": "The module extends Odoo with a workflow-specific implementation instead of requiring teams to work around a generic process.",
         "scope": { "0": "Custom Odoo module", "1": "Wage workflow support", "2": "Overtime workflow support" },
         "facts": {},
@@ -58,7 +58,7 @@
         "summary": "An application for supporting structured stock-opname activities.",
         "description": "A dedicated workflow for recording and reviewing physical stock counts.",
         "problem": "Physical stock counts are easier to manage when recording, review, and reconciliation follow one clear workflow.",
-        "solution": "Forge Studio built a stock-opname application to support structured inventory-counting activities.",
+        "solution": "RisenDev built a stock-opname application to support structured inventory-counting activities.",
         "engineering": "The application focuses on clear operational steps so stock-count information can be captured and reviewed consistently.",
         "scope": { "0": "Stock-count workflow", "1": "Inventory recording", "2": "Review-ready operational data" },
         "facts": {},
@@ -92,7 +92,7 @@
   },
   "AboutPage": {
     "metadata": {
-      "title": "About Forge Studio",
+      "title": "About RisenDev",
       "description": "An independent web development studio focused on practical, reliable, maintainable applications."
     }
   }

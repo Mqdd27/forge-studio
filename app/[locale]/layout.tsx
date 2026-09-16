@@ -25,16 +25,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
   const isIndonesian = locale === "id";
 
-  const title = isIndonesian
-    ? "Forge Studio | Software untuk Menyelesaikan Masalah Nyata"
-    : "Forge Studio | Software That Solves Real Problems";
+  const title = isIndonesian ? "RisenDev | Software untuk Menyelesaikan Masalah Nyata" : "RisenDev | Software That Solves Real Problems";
 
   const description = isIndonesian
     ? "Studio pengembangan web independen yang membangun aplikasi web praktis dan sistem bisnis."
     : "Independent web development studio building practical web applications and business systems.";
 
   return {
-    title: { default: title, template: "%s | Forge Studio" },
+    title: { default: title, template: "%s | RisenDev" },
 
     description,
 
@@ -47,7 +45,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     openGraph: {
       type: "website",
 
-      siteName: "Forge Studio",
+      siteName: "RisenDev",
 
       title,
 

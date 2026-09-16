@@ -3,7 +3,7 @@ export default function Loading() {
   return (
     <main className="mx-auto max-w-[1800px] px-5 py-12 md:px-[3vw]" role="status" aria-label="Loading page" aria-busy="true">
       <div className="mb-8 flex items-center gap-3" aria-hidden="true">
-        <Image src="/img/forge-icon.png" alt="" width={32} height={32} />
+        <Image src="/img/logo.png" alt="" width={32} height={32} className="mix-blend-multiply" />
         <span />
       </div>
       <div className="mb-6 h-3 w-28 rounded bg-[#eee7df] motion-safe:animate-pulse" />

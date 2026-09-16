@@ -24,13 +24,13 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     openGraph: {
       type: "website",
 
-      title: `${title} | Forge Studio`,
+      title: `${title} | RisenDev`,
 
       description,
 
       url: path,
 
-      siteName: "Forge Studio",
+      siteName: "RisenDev",
 
       locale: params.locale === "id" ? "id_ID" : "en_US",
 
@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     twitter: {
       card: "summary_large_image",
 
-      title: `${title} | Forge Studio`,
+      title: `${title} | RisenDev`,
 
       description,
     },

@@ -4,9 +4,7 @@ import { PrivacyDesign } from "@/components/design/privacy";
 export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
   const id = params.locale === "id";
   const title = id ? "Kebijakan Privasi" : "Privacy Policy";
-  const description = id
-    ? "Cara Forge Studio menangani informasi inquiry proyek."
-    : "How Forge Studio handles project inquiry information.";
+  const description = id ? "Cara RisenDev menangani informasi inquiry proyek." : "How RisenDev handles project inquiry information.";
   const path = `/${params.locale}/privacy-policy`;
   return {
     title,

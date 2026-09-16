@@ -1,36 +1,36 @@
 import type { Metadata } from "next";
-import { Inter, Manrope } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-
-const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
+const sans = GeistSans;
+const mono = GeistMono;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://forgestudio.dev"),
+  metadataBase: new URL("https://risendev.dev"),
 
-  title: { default: "Forge Studio", template: "%s | Forge Studio" },
+  title: { default: "RisenDev", template: "%s | RisenDev" },
 
-  description: "Independent web development studio building practical web applications and business systems.",
+  description: "RisenDev — independent digital studio building websites, business systems, and web applications based on real needs.",
 
-  applicationName: "Forge Studio",
-  icons: { icon: "/img/forge-icon.png", apple: "/img/forge-icon.png" },
+  applicationName: "RisenDev",
+  icons: { icon: "/img/logo.png", apple: "/img/logo.png" },
 
-  authors: [{ name: "Forge Studio" }],
+  authors: [{ name: "RisenDev" }],
 
-  creator: "Forge Studio",
+  creator: "RisenDev",
 
-  publisher: "Forge Studio",
+  publisher: "RisenDev",
 
   formatDetection: { email: false, address: false, telephone: false },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-pt-28 scroll-smooth bg-white motion-reduce:scroll-auto" suppressHydrationWarning>
+    <html lang="en" className="scroll-pt-28 scroll-smooth motion-reduce:scroll-auto" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${manrope.variable} min-h-screen min-w-0 overflow-x-hidden bg-[#ffffff] font-[family-name:var(--font-inter)] text-[#1f1f1f] antialiased [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-4 [&_:focus-visible]:outline-[#c34810] [&_a]:touch-manipulation [&_button]:touch-manipulation [&_h1]:font-[family-name:var(--font-manrope)] [&_h1]:text-pretty [&_h2]:font-[family-name:var(--font-manrope)] [&_h2]:text-pretty [&_h3]:font-[family-name:var(--font-manrope)] [&_p]:text-pretty`}
+        className={`${sans.variable} ${mono.variable} min-h-screen min-w-0 overflow-x-hidden bg-[#F2EFE8] font-[family-name:var(--font-geist-sans)] text-[#111111] antialiased [&_:focus-visible]:outline-2 [&_:focus-visible]:outline-offset-4 [&_:focus-visible]:outline-[#FF4F00] [&_a]:touch-manipulation [&_button]:touch-manipulation [&_h1]:font-[family-name:var(--font-geist-sans)] [&_h1]:text-pretty [&_h2]:font-[family-name:var(--font-geist-sans)] [&_h2]:text-pretty [&_h3]:font-[family-name:var(--font-geist-sans)] [&_p]:text-pretty`}
       >
         {children}
       </body>

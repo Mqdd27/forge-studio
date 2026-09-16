@@ -1,25 +1,26 @@
 import { Link } from "@/i18n/navigation";
-import { DesignText } from "@/components/ui/design-text";
-import { DesignIcon } from "@/components/ui/design-icon";
-export function ProjectCTA() {
+
+export function ProjectCTA({ locale }: { locale?: string }) {
+  const id = locale !== "en";
   return (
-    <section className="bg-[#f1e8df] py-8">
-      <div className="mx-auto w-full max-w-[1800px] px-5 md:px-[clamp(20px,3vw,56px)]">
-        <div className="flex flex-col flex-wrap items-start justify-between gap-5 rounded-xl bg-[#252c30] p-6 text-white md:p-8 lg:flex-row lg:items-center [&_a]:shrink-0 [&_h2]:text-[28px] [&_h2]:text-white [&_p]:text-[#dce0e2] [&>svg]:hidden">
-          <DesignIcon name="mail" />
-          <h2>
-            <DesignText>{"Have a web project in mind?"}</DesignText>
+    <section className="w-full border-t border-[#111111] bg-[#FF4F00] px-5 py-14 text-[#111111] md:px-12 md:py-20">
+      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
+        <div className="lg:col-span-8">
+          <p className="eyebrow mb-3 opacity-90">[Inisiasi Rekayasa Sistem // Kuota Q2 2026]</p>
+          <h2 className="font-[family-name:var(--font-geist-sans)] text-3xl font-semibold tracking-tight uppercase md:text-5xl">
+            {id ? "Punya tantangan sistem atau alur kerja yang ingin dibereskan?" : "Have a system or workflow challenge to fix?"}
           </h2>
-          <p>
-            <DesignText>{"Tell us what you are trying to build or improve."}</DesignText>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed opacity-90 md:text-lg">
+            {id
+              ? "Ceritakan kendala operasional bisnis Anda. Kami beri solusi yang jelas, realistis, dan hemat anggaran — tanpa komplikasi teknis yang membingungkan."
+              : "Tell us about your operational bottleneck. We reply with a clear, realistic, budget-conscious solution — no confusing technical jargon."}
           </p>
-          <Link
-            href="/start-a-project"
-            className="inline-flex min-h-11 items-center justify-center gap-2.5 rounded-lg border border-[#b43d09] bg-[#c34810] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#a63409] motion-reduce:transition-none"
-          >
-            <DesignText>{"Start a Project"}</DesignText>
-            <span aria-hidden="true"> →</span>
+        </div>
+        <div className="flex flex-col items-start gap-3 lg:col-span-4 lg:items-end">
+          <Link href="/start-a-project" className="btn-ink px-8! py-4! text-sm!">
+            {id ? "Mulai Diskusi Proyek" : "Start a Project"} <span aria-hidden="true">↗</span>
           </Link>
+          <span className="eyebrow opacity-80">{id ? "Respon maksimal 1x24 jam kerja" : "Replies within 24 working hours"}</span>
         </div>
       </div>
     </section>

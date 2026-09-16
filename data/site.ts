@@ -1,6 +1,6 @@
 // data/site.ts
 
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://forgestudio.dev";
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://risendev.dev";
 
 /* =========================================================
    SERVICES
@@ -51,13 +51,14 @@ export const cases = [
 
     summary: "A dashboard for exploring and monitoring Indonesian stock market data.",
 
-    description: "A focused dashboard experience for working with IDX stock information in one place. Available for Web Based and Application Based",
+    description:
+      "A focused dashboard experience for working with IDX stock information in one place. Available for Web Based and Application Based",
 
     visual: "bars",
 
     problem: "Stock-market information is easier to evaluate when the relevant data can be reviewed in a single, structured workspace.",
 
-    solution: "Forge Studio built a dedicated dashboard interface for exploring and monitoring IDX stock data.",
+    solution: "RisenDev built a dedicated dashboard interface for exploring and monitoring IDX stock data.",
 
     engineering:
       "The project is structured as a data-focused web application, designed around readable information hierarchy and repeatable dashboard views.",
@@ -110,27 +111,18 @@ export const cases = [
 
     problem: "Long-form content takes time to review, especially when the reader only needs the essential points.",
 
-    solution: "Forge Studio built a focused application that uses AI models to generate concise summaries from supplied content.",
+    solution: "RisenDev built a focused application that uses AI models to generate concise summaries from supplied content.",
 
     engineering:
       "The product centers on a simple input-to-summary flow so the AI capability remains useful without adding unnecessary complexity.",
 
     scope: ["AI-powered summarization", "Content input workflow", "Readable summary output"],
 
-    stack: [
-      "Flask",
-      "FastAPI",
-      "Python 3.12+",
-      "SQLite",
-    ],
+    stack: ["Flask", "FastAPI", "Python 3.12+", "SQLite"],
 
     repositoryUrl: "https://github.com/Mqdd27/summarizer",
 
-    facts: [
-      "Self-hosted deployment",
-      "Integrated with multiple AI Providers with 9Router",
-      "Local Model compatible using Ollama",
-    ],
+    facts: ["Self-hosted deployment", "Integrated with multiple AI Providers with 9Router", "Local Model compatible using Ollama"],
   },
 
   {
@@ -148,23 +140,18 @@ export const cases = [
 
     problem: "Wage and overtime processes need to reflect the operational rules a business already uses.",
 
-    solution: "Forge Studio developed a custom Odoo module to support wage and overtime processes within the existing ERP workflow.",
+    solution: "RisenDev developed a custom Odoo module to support wage and overtime processes within the existing ERP workflow.",
 
     engineering:
       "The module extends Odoo with a workflow-specific implementation instead of requiring teams to work around a generic process.",
 
     scope: ["Custom Odoo module", "Wage workflow support", "Overtime workflow support"],
 
-    stack: [
-      "Odoo 14",
-      "Postgresql",
-    ],
+    stack: ["Odoo 14", "Postgresql"],
 
     repositoryUrl: null,
 
-    facts: [
-      "Fully Custom Module for Wage Monitoring and Approval",
-    ],
+    facts: ["Fully Custom Module for Wage Monitoring and Approval"],
   },
 
   {
@@ -182,23 +169,16 @@ export const cases = [
 
     problem: "Physical stock counts are easier to manage when recording, review, and reconciliation follow one clear workflow.",
 
-    solution: "Forge Studio built a stock-opname application to support structured inventory-counting activities.",
+    solution: "RisenDev built a stock-opname application to support structured inventory-counting activities.",
 
     engineering: "The application focuses on clear operational steps so stock-count information can be captured and reviewed consistently.",
 
     scope: ["Stock-count workflow", "Inventory recording", "Review-ready operational data"],
 
-    stack: [
-      "Laravel 11",
-      "Postgresql",
-      "Odoo 14",
-    ],
+    stack: ["Laravel 11", "Postgresql", "Odoo 14"],
 
     repositoryUrl: null,
 
-    facts: [
-        "Integrated with Odoo 14",
-        "Import and Export Compatible with Odoo 14 Inventory",
-    ],
+    facts: ["Integrated with Odoo 14", "Import and Export Compatible with Odoo 14 Inventory"],
   },
 ] as const;

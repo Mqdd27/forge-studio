@@ -29,7 +29,7 @@ export function WorkVisual({ type, project }: { type: string; project?: string }
     <div className="h-full min-h-[220px] overflow-hidden bg-[#eeece7] text-[#645b54]" aria-hidden="true">
       <div className="flex h-[34px] items-center gap-2 border-b border-[#e8e2db] bg-white px-3 text-[9px]">
         <span className="font-bold text-[#b5501a]">F</span>
-        <span>Forge Studio</span>
+        <span>RisenDev</span>
         <span className="ml-auto size-1.5 rounded-full bg-[#cdbdaf]" />
       </div>
       <div className="flex h-[calc(100%-34px)] [&_aside]:w-[76px] [&_aside]:shrink-0 [&_aside]:border-r [&_aside]:border-[#e7e2dc] [&_aside]:bg-[#f8f7f4] [&_aside]:pt-3.5 [&_aside]:text-[8px] max-[359px]:[&_aside]:w-14 [&_aside>span]:block [&_aside>span]:p-2">
