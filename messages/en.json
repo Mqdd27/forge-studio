@@ -26,6 +26,34 @@
         },
         "outcome": "The dashboard brings IDX stock exploration and monitoring into a structured workspace."
       },
+      "growpos": {
+        "title": "GrowPOS",
+        "category": "Business System",
+        "summary": "A multi-tenant SaaS point-of-sale platform that connects sales with inventory, cash operations, customers, employees, and business reporting.",
+        "description": "GrowPOS is a web-based SaaS platform designed to manage point-of-sale and day-to-day business operations in one system. It supports retail, grocery, food, service, and mixed-business workflows while keeping each business isolated within its own tenant environment.",
+        "problem": "A point-of-sale transaction affects more than the checkout itself. Sales can change inventory, cashier balances, customer records, operational workflows, and reports. Managing these processes separately makes it harder to maintain consistent operational data, especially when different business types require different workflows.",
+        "solution": "RisenDev built GrowPOS as a multi-tenant business platform that connects POS transactions with inventory, cashier shifts, cash records, customers, reporting, and subscription-based features. Business-specific workflows extend the same platform with kitchen preparation for food businesses and service-job tracking for service businesses.",
+        "engineering": "GrowPOS is built with Laravel using a multi-tenant architecture and server-rendered Blade interfaces. Critical workflows such as inventory adjustments, payments, returns, refunds, and cash movements use dedicated service logic, database transactions, validation, and audit records. The system also integrates Midtrans for digital payment workflows and provides role-based and subscription-based feature access.",
+        "scope": {
+          "0": "Multi-tenant SaaS point-of-sale and business operations platform",
+          "1": "Product, category, variant, inventory, material, and supplier management",
+          "2": "Cash and Midtrans-based digital payment workflows with partial payment support",
+          "3": "Cashier shifts, cash ledger, operational expenses, returns, and refunds",
+          "4": "Customer, employee, role, loyalty, discount, and subscription management",
+          "5": "Business-specific kitchen and service-job operational workflows",
+          "6": "Business dashboard, reporting, activity logs, and spreadsheet exports"
+        },
+        "facts": {
+          "0": "Built as a multi-tenant SaaS application",
+          "1": "Supports retail, grocery, food, service, and mixed business configurations",
+          "2": "Includes product and variant-level inventory management with stock movement history",
+          "3": "Supports cash payments, partial payments, Midtrans-based digital payments, returns, and cash refunds",
+          "4": "Includes cashier shift reconciliation and an operational cash ledger",
+          "5": "Provides kitchen preparation workflows for food businesses and service-job tracking for service businesses",
+          "6": "Includes subscription, billing, role-based access control, reporting, data export, and scheduled database backup"
+        },
+        "outcome": "GrowPOS has developed from a point-of-sale application into a broader multi-tenant business operations platform. The implemented system connects checkout, inventory, payments, cashier shifts, cash movements, customers, operational workflows, and reporting within one application."
+      },
       "aiSummarizer": {
         "title": "Summarizer Powered by AI Models",
         "category": "Web Application",

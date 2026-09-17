@@ -26,6 +26,34 @@
         },
         "outcome": "Dashboard menyatukan eksplorasi dan pemantauan saham IDX dalam ruang kerja terstruktur."
       },
+      "growpos": {
+        "title": "GrowPOS",
+        "category": "Sistem Bisnis",
+        "summary": "Platform point-of-sale SaaS multi-tenant yang menghubungkan penjualan dengan inventaris, operasional kas, pelanggan, karyawan, dan laporan bisnis.",
+        "description": "GrowPOS adalah platform SaaS berbasis web yang dirancang untuk mengelola point-of-sale dan operasional bisnis sehari-hari dalam satu sistem. Platform ini mendukung workflow retail, grocery, kuliner, jasa, dan bisnis campuran dengan data setiap bisnis yang terisolasi dalam lingkungan tenant masing-masing.",
+        "problem": "Sebuah transaksi point-of-sale memengaruhi lebih dari sekadar proses checkout. Penjualan dapat mengubah stok, saldo kasir, data pelanggan, workflow operasional, dan laporan. Ketika proses tersebut dikelola secara terpisah, konsistensi data operasional menjadi lebih sulit dijaga, terutama ketika setiap jenis bisnis memiliki kebutuhan workflow yang berbeda.",
+        "solution": "RisenDev membangun GrowPOS sebagai platform bisnis multi-tenant yang menghubungkan transaksi POS dengan inventaris, shift kasir, pencatatan kas, pelanggan, laporan, dan fitur berbasis subscription. Workflow khusus bisnis memperluas platform yang sama dengan antrean persiapan untuk bisnis kuliner dan pelacakan pekerjaan untuk bisnis jasa.",
+        "engineering": "GrowPOS dibangun menggunakan Laravel dengan arsitektur multi-tenant dan antarmuka server-rendered berbasis Blade. Workflow penting seperti penyesuaian stok, pembayaran, retur, refund, dan pergerakan kas menggunakan service logic, database transaction, validasi, dan audit record. Sistem juga terintegrasi dengan Midtrans untuk workflow pembayaran digital serta menerapkan akses fitur berbasis role dan subscription.",
+        "scope": {
+          "0": "Platform point-of-sale SaaS multi-tenant dan operasional bisnis",
+          "1": "Pengelolaan produk, kategori, varian, inventaris, bahan baku, dan supplier",
+          "2": "Workflow pembayaran tunai dan digital berbasis Midtrans dengan dukungan pembayaran sebagian",
+          "3": "Shift kasir, buku kas, pengeluaran operasional, retur, dan refund",
+          "4": "Pengelolaan pelanggan, karyawan, role, loyalty, diskon, dan subscription",
+          "5": "Workflow operasional khusus untuk antrean dapur dan pekerjaan jasa",
+          "6": "Dashboard bisnis, laporan, activity log, dan ekspor spreadsheet"
+        },
+        "facts": {
+          "0": "Dibangun sebagai aplikasi SaaS multi-tenant",
+          "1": "Mendukung konfigurasi bisnis retail, grocery, kuliner, jasa, dan bisnis campuran",
+          "2": "Memiliki pengelolaan stok tingkat produk dan varian dengan riwayat stock movement",
+          "3": "Mendukung pembayaran tunai, pembayaran sebagian, pembayaran digital berbasis Midtrans, retur, dan refund tunai",
+          "4": "Memiliki rekonsiliasi shift kasir dan buku kas operasional",
+          "5": "Menyediakan workflow persiapan dapur untuk bisnis kuliner dan pelacakan pekerjaan untuk bisnis jasa",
+          "6": "Memiliki subscription, billing, role-based access control, laporan, ekspor data, dan backup database terjadwal"
+        },
+        "outcome": "GrowPOS berkembang dari aplikasi point-of-sale menjadi platform operasional bisnis multi-tenant yang lebih luas. Sistem yang telah diimplementasikan menghubungkan checkout, inventaris, pembayaran, shift kasir, pergerakan kas, pelanggan, workflow operasional, dan laporan dalam satu aplikasi."
+      },
       "aiSummarizer": {
         "title": "Summarizer Berbasis Model AI",
         "category": "Aplikasi Web",
