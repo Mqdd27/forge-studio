@@ -78,30 +78,18 @@ export function HomeDesign() {
                 ? "Teknologi seharusnya membuat pekerjaan lebih sederhana, bukan menambah pekerjaan baru."
                 : "Technology should make work simpler, not create more work."}
             </h2>
-<<<<<<< HEAD
-            <div className="mt-12 grid gap-3 sm:grid-cols-2">
-=======
             <div className="mt-12 grid gap-px bg-on-surface/20 sm:grid-cols-2">
->>>>>>> e8ff196 (fix internationalization and clean unused code)
               {services.map((s, i) => (
                 <Link
                   href="/services"
                   key={s}
-<<<<<<< HEAD
-                  className="group flex min-h-28 items-end justify-between rounded-2xl bg-surface-container-high p-5 transition-all duration-300 hover:bg-primary/10 hover:ring-1 hover:ring-primary/35 hover:ring-inset"
-=======
                   className="group flex min-h-28 items-end justify-between bg-surface-container-low p-5 transition-all duration-300 hover:bg-primary/10 hover:ring-1 hover:ring-primary/35 hover:ring-inset"
->>>>>>> e8ff196 (fix internationalization and clean unused code)
                 >
                   <span className="text-lg font-medium text-on-surface transition-colors group-hover:text-primary">{s}</span>
                   <span className="text-primary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">0{i + 1} ↗</span>
                 </Link>
               ))}
-<<<<<<< HEAD
-            </div>{" "}
-=======
             </div>
->>>>>>> e8ff196 (fix internationalization and clean unused code)
           </div>
         </div>
       </section>
