@@ -21,7 +21,7 @@ export function Footer() {
       <div className="relative z-10 w-full px-5 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           <div className="md:col-span-6">
-            <p className="eyebrow mb-4 text-[#a93100]">[Manifesto Studio]</p>
+            <p className="eyebrow mb-4 text-[#a93100]">{id ? "[Manifesto Studio]" : "[Studio Manifesto]"}</p>
             <p className="max-w-xl font-[family-name:var(--font-geist-sans)] text-2xl font-medium tracking-tight md:text-4xl">
               {id ? "Software yang dibuat untuk menyelesaikan masalah nyata." : "Software built to solve real problems."}
             </p>

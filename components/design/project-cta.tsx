@@ -6,7 +6,7 @@ export function ProjectCTA({ locale }: { locale?: string }) {
     <section className="w-full border-t border-[#1c1c18] bg-[#FF4F00] px-5 py-14 text-[#1c1c18] md:px-12 md:py-20">
       <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
         <div className="lg:col-span-8">
-          <p className="eyebrow mb-3 opacity-90">[Inisiasi Rekayasa Sistem // Kuota Q2 2026]</p>
+          <p className="eyebrow mb-3 opacity-90">{id ? "[Inisiasi Proyek // RisenDev]" : "[Project Inquiry // RisenDev]"}</p>
           <h2 className="font-[family-name:var(--font-geist-sans)] text-3xl font-semibold tracking-tight uppercase md:text-5xl">
             {id ? "Punya tantangan sistem atau alur kerja yang ingin dibereskan?" : "Have a system or workflow challenge to fix?"}
           </h2>

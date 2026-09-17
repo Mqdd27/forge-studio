@@ -7,11 +7,13 @@ const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
 const nextConfig = (phase) => ({
   async redirects() {
     return [
-      ...["services", "work", "about", "start-a-project", "privacy-policy"].map((path) => ({
+      ...["services", "work", "studio", "start-a-project", "privacy-policy"].map((path) => ({
         source: `/${path}`,
         destination: `/en/${path}`,
         permanent: true,
       })),
+      { source: "/about", destination: "/en/studio", permanent: true },
+      { source: "/:locale(en|id)/about", destination: "/:locale/studio", permanent: true },
       { source: "/contact", destination: "/en/start-a-project", permanent: true },
       { source: "/:locale(en|id)/contact", destination: "/:locale/start-a-project", permanent: true },
       { source: "/work/:slug", destination: "/en/work/:slug", permanent: true },
