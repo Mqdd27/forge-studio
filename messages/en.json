@@ -1,6 +1,4 @@
 {
-  "Navigation": { "services": "Services", "work": "Work", "about": "About" },
-  "WorkCard": { "caseStudy": "Case study" },
   "Site": {
     "cases": {
       "idxStocks": {
@@ -88,12 +86,6 @@
     "metadata": {
       "title": "Web Development Services",
       "description": "Custom web development, business systems, existing system development, and maintenance and deployment."
-    }
-  },
-  "AboutPage": {
-    "metadata": {
-      "title": "About RisenDev",
-      "description": "An independent web development studio focused on practical, reliable, maintainable applications."
     }
   }
 }

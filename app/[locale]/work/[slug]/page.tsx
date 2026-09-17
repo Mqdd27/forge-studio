@@ -48,12 +48,12 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
               ← {id ? "KEMBALI KE SEMUA PORTOFOLIO" : "BACK TO ALL WORK"}
             </Link>
             <div className="font-label-sm tracking-widest text-on-surface-variant uppercase">
-              [ {id ? "ARSIP REKAYASA" : "ENGINEERING ARCHIVE"} // {code} ]
+              [ {id ? "ARSIP REKAYASA" : "ENGINEERING ARCHIVE"} {"//"} {code} ]
             </div>
           </div>
           <div className="grid grid-cols-2 gap-x-4 gap-y-6 bg-surface-container-low px-space-md py-space-sm shadow-sm md:grid-cols-4">
             <div>
-              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">// PROJECT</span>
+              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">{"// PROJECT"}</span>
               <p className="font-headline-sm font-semibold">
                 {String(order + 1).padStart(2, "0")} / {String(cases.length).padStart(2, "0")}
               </p>
@@ -63,7 +63,7 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
               <p className="font-body-md font-medium">{t(`${item.key}.category`)}</p>
             </div>
             <div>
-              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">// STACK</span>
+              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">{"// STACK"}</span>
               <p className="font-body-sm">{item.stack.slice(0, 4).join(" · ")}</p>
             </div>
             <div>
@@ -97,7 +97,9 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
                 <span className="h-3 w-3 bg-primary" />
                 <span className="font-label-md tracking-wider text-surface-dim uppercase">PROJECT SYSTEM // {code}</span>
               </div>
-              <span className="bg-primary px-2 py-0.5 font-label-sm font-semibold text-on-primary">DOCUMENTED PORTFOLIO</span>
+              <span className="bg-primary px-2 py-0.5 font-label-sm font-semibold text-on-primary">
+                {id ? "PORTOFOLIO TERDOKUMENTASI" : "DOCUMENTED PORTFOLIO"}
+              </span>
             </div>
             <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12">
               <div className="flex min-h-[320px] flex-col justify-between bg-surface/10 p-space-md lg:col-span-8">
@@ -172,7 +174,7 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
         <div className="mx-auto grid max-w-7xl grid-cols-1 gap-gutter-desktop lg:grid-cols-12">
           <div className="lg:col-span-5">
             <span className="font-label-sm tracking-widest text-primary-fixed uppercase">{`// ${id ? "TAHAP 04 : ENGINEERING" : "PHASE 04 : ENGINEERING"}`}</span>
-            <h2 className="mt-2 font-headline-lg">Technical Stack</h2>
+            <h2 className="mt-2 font-headline-lg">{id ? "Teknologi yang Digunakan" : "Technical Stack"}</h2>
           </div>
           <div className="lg:col-span-7">
             <div className="flex flex-wrap gap-2">
@@ -191,16 +193,7 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
                 ))}
               </div>
             )}
-            {item.repositoryUrl && (
-              <a
-                href={item.repositoryUrl}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-8 inline-flex font-label-md text-primary-fixed uppercase underline underline-offset-4"
-              >
-                {id ? "Lihat repositori" : "View repository"} ↗
-              </a>
-            )}
+
           </div>
         </div>
       </section>
@@ -211,7 +204,7 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
           <h2 className="mt-4 max-w-5xl font-display-lg-mobile tracking-tight uppercase md:font-display-lg">{t(`${item.key}.outcome`)}</h2>
         </div>
       </section>
-      <ProjectCTA locale={params.locale} />
+      <ProjectCTA />
     </PageShell>
   );
 }

@@ -85,12 +85,22 @@ export function ServicesDesign() {
       <section className="w-full bg-primary px-margin py-space-lg text-on-surface md:px-margin-tablet md:py-space-xl lg:px-margin-desktop">
         <div className="mx-auto flex max-w-7xl flex-col gap-space-md">
           <div className="flex items-center justify-between border-b border-on-surface/20 pb-space-sm">
-            <span className="font-label-sm uppercase tracking-widest font-semibold"><T>{"[03 // INDEX LAYANAN]"}</T></span>
-            <span className="font-label-sm uppercase tracking-widest font-semibold">RISENDEV ENGINEERING</span>
+            <span className="font-label-sm font-semibold tracking-widest uppercase">
+              <T>{"[03 // SERVICES INDEX]"}</T>
+            </span>
+            <span className="font-label-sm font-semibold tracking-widest uppercase">RISENDEV ENGINEERING</span>
           </div>
           <div className="grid grid-cols-1 items-end gap-gutter-desktop pt-4 lg:grid-cols-12">
-            <div className="lg:col-span-9"><h1 className="font-display-lg-mobile text-display-lg-mobile font-semibold leading-[.95] tracking-tight uppercase md:font-display-lg md:text-display-lg"><T>{"Website & aplikasi yang dibuat sesuai kebutuhan bisnis Anda."}</T></h1></div>
-            <div className="pb-2 lg:col-span-3"><p className="font-body-lg text-body-lg font-medium leading-relaxed"><T>{"Mulai dari website sederhana sampai sistem operasional yang lebih kompleks. Tanpa komplikasi fiktif."}</T></p></div>
+            <div className="lg:col-span-9">
+              <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg-mobile leading-[.95] font-semibold tracking-tight uppercase md:font-display-lg">
+                <T>{"Websites and applications built around what your business actually needs."}</T>
+              </h1>
+            </div>
+            <div className="pb-2 lg:col-span-3">
+              <p className="text-body-lg font-body-lg leading-relaxed font-medium">
+                <T>{"From a simple website to a more complex operational system. No invented complexity."}</T>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -99,7 +109,9 @@ export function ServicesDesign() {
         <section key={b.n} className="w-full bg-surface px-margin md:px-margin-tablet lg:px-margin-desktop">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-gutter-desktop border-t border-on-surface py-12 lg:grid-cols-12">
             <div className="md:col-span-4">
-              <p className="font-label-md text-primary font-semibold tracking-widest uppercase">{b.n} / {b.tag}</p>
+              <p className="font-label-md font-semibold tracking-widest text-primary uppercase">
+                {b.n} / {b.tag}
+              </p>
               <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-2xl font-medium tracking-tight uppercase md:text-3xl">
                 <T>{b.title}</T>
               </h2>
@@ -163,35 +175,5 @@ export function ServicesDesign() {
 
       <ProjectCTA />
     </PageShell>
-  );
-}
-
-export function ServiceCards() {
-  const cards = [
-    ["01", "Company Profile & Business Websites", "Professional high-performance websites presenting business strengths and credibility."],
-    ["02", "Business Systems & Internal Tools", "Custom apps for stock, booking, attendance, workflow tracking, and invoicing."],
-    ["03", "Existing System Development", "Modernize legacy apps, add custom features, integrate payments and couriers."],
-    ["04", "Maintenance & Deployment", "Monitoring, SSL, backups, and security patches after launch."],
-  ] as const;
-  return (
-    <div className="mt-8 grid grid-cols-1 gap-px border border-[#1c1c18] bg-[#31312c] min-[540px]:grid-cols-2 lg:grid-cols-4">
-      {cards.map(([n, title, desc]) => (
-        <article key={n} className="flex flex-col bg-white p-6">
-          <span className="eyebrow text-[#a93100]">[ {n} ]</span>
-          <h3 className="mt-3 font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight">
-            <T>{title}</T>
-          </h3>
-          <p className="mt-2 mb-5 text-sm leading-relaxed text-[#5c4037]">
-            <T>{desc}</T>
-          </p>
-          <Link
-            href="/services"
-            className="mt-auto inline-flex min-h-11 items-center gap-2 text-xs font-semibold tracking-[0.06em] text-[#a93100] uppercase"
-          >
-            <T>{"Learn more"}</T> <span aria-hidden="true">→</span>
-          </Link>
-        </article>
-      ))}
-    </div>
   );
 }

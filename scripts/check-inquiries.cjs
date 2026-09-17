@@ -32,7 +32,14 @@ function request(data = valid, headers = {}) {
 }
 (async () => {
   assert.equal((await handler()(request())).status, 503, "Unconfigured delivery must not claim success");
-  for (const patch of [{ name: "" }, { contact: "invalid" }, { projectType: "invented" }, { description: "short" }, { website: "spam" }])
+  for (const patch of [
+    { name: "" },
+    { contact: "invalid" },
+    { projectType: "invented" },
+    { projectType: "constructor" },
+    { description: "short" },
+    { website: "spam" },
+  ])
     assert.equal((await handler()(request({ ...valid, ...patch }))).status, 400);
   assert.equal((await handler()(request(null))).status, 400);
   assert.equal((await handler()(request(valid, { origin: "https://other.example" }))).status, 403);

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { cases, siteUrl } from "../data/site";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = ["", "/services", "/work", "/about", "/start-a-project", "/privacy-policy", ...cases.map((item) => `/work/${item.slug}`)];
+  const paths = ["", "/services", "/work", "/studio", "/start-a-project", "/privacy-policy", ...cases.map((item) => `/work/${item.slug}`)];
   return ["en", "id"].flatMap((locale) =>
     paths.map((path) => ({
       url: `${siteUrl}/${locale}${path}`,

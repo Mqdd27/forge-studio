@@ -7,12 +7,14 @@ import { cases } from "@/data/site";
 import { workPresentation } from "@/data/work-presentation";
 
 function ProjectVisual({ item }: { item: (typeof cases)[number] }) {
+  const id = useLocale() === "id";
+  const t = useTranslations("Site.cases");
   return (
     <div className="flex min-h-[310px] flex-col justify-between overflow-hidden bg-inverse-surface p-space-md text-inverse-on-surface">
       <div className="flex items-center justify-between gap-4 pb-4">
         <div className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 bg-primary" />
-          <span className="font-label-sm tracking-widest text-surface-dim uppercase">// ENGINEERING PROJECT</span>
+          <span className="font-label-sm tracking-widest text-surface-dim uppercase">{`// ${id ? "PROYEK ENGINEERING" : "ENGINEERING PROJECT"}`}</span>
         </div>
         <span className="font-label-sm tracking-wider text-primary-fixed uppercase">{item.stack[0] ?? "WEB"}</span>
       </div>
@@ -31,14 +33,13 @@ function ProjectVisual({ item }: { item: (typeof cases)[number] }) {
           {item.scope.slice(0, 4).map((s, i) => (
             <div key={s} className="flex gap-3 bg-surface/10 p-3">
               <span className="font-label-sm text-primary-fixed">{String(i + 1).padStart(2, "0")}</span>
-              <span className="font-body-sm text-surface-dim">{s}</span>
+              <span className="font-body-sm text-surface-dim">{t(`${item.key}.scope.${i}`)}</span>
             </div>
           ))}
         </div>
       </div>
-      <div className="mt-4 flex justify-between border-t border-surface-dim/15 pt-3 font-label-sm tracking-widest text-surface-dim uppercase">
-        <span>{item.visual}</span>
-        <span className="text-primary-fixed">CASE STUDY READY ↗</span>
+      <div className="mt-4 flex justify-end border-t border-surface-dim/15 pt-3 font-label-sm tracking-widest uppercase">
+        <span className="text-primary-fixed">{id ? "CASE STUDY SIAP ↗" : "CASE STUDY READY ↗"}</span>
       </div>
     </div>
   );
@@ -71,7 +72,7 @@ export function WorkList() {
           </div>
           <div className="font-label-sm tracking-widest text-on-surface-variant uppercase">
             {`// ${id ? "URUTKAN: DATA PORTOFOLIO" : "SORT: PORTFOLIO DATA"}`} &nbsp; • &nbsp;{" "}
-            <span className="font-semibold text-primary">// VIEW: GRID &amp; ARCHIVE</span>
+            <span className="font-semibold text-primary">{"// VIEW: GRID & ARCHIVE"}</span>
           </div>
         </div>
       </section>
@@ -87,7 +88,7 @@ export function WorkList() {
                       <div className="flex items-center justify-between gap-4">
                         <span className="font-display-lg-mobile font-semibold text-primary">[{String(index).padStart(2, "0")}]</span>
                         <span className="bg-surface-container px-3 py-1 font-label-sm font-semibold tracking-widest uppercase">
-                          // {tCases(`${item.key}.category`)}
+                          {"//"} {tCases(`${item.key}.category`)}
                         </span>
                       </div>
                       <h2 className="pt-2 font-headline-lg tracking-tight uppercase">{tCases(`${item.key}.title`)}</h2>

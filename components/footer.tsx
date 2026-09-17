@@ -2,17 +2,12 @@
 import Image from "next/image";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { siteNav, navLabel } from "@/components/site-nav";
 
 export function Footer() {
-  const id = useLocale() === "id";
+  const locale = useLocale();
+  const id = locale === "id";
   const year = new Date().getFullYear();
-  const nav = [
-    { n: "01", label: "Overview", href: "/" },
-    { n: "02", label: id ? "Hasil Kerja" : "Work", href: "/work" },
-    { n: "03", label: id ? "Layanan" : "Services", href: "/services" },
-    { n: "04", label: "Studio", href: "/studio" },
-    { n: "05", label: "Start a Project", href: "/start-a-project" },
-  ];
   return (
     <footer className="relative overflow-hidden border-t border-[#1c1c18] bg-[#f1eee7] pt-16 pb-6 md:pt-28">
       <div aria-hidden="true" className="pointer-events-none absolute right-0 -bottom-6 left-0 overflow-hidden opacity-[0.06]">
@@ -36,16 +31,16 @@ export function Footer() {
             </div>
           </div>
           <div className="md:col-span-3">
-            <p className="eyebrow mb-4 text-[#5c4037]">[Index Halaman]</p>
+            <p className="eyebrow mb-4 text-[#5c4037]">{id ? "[Index Halaman]" : "[Page Index]"}</p>
             <ul className="space-y-1">
-              {nav.map((item) => (
-                <li key={item.n}>
+              {siteNav.map((item) => (
+                <li key={item.index}>
                   <Link
                     href={item.href}
                     className="flex items-center justify-between py-2 text-xs font-semibold tracking-[0.06em] text-[#5c4037] uppercase transition-colors hover:text-[#a93100]"
                   >
                     <span>
-                      {item.n} {item.label}
+                      {item.index} {navLabel(item, locale)}
                     </span>
                     <span aria-hidden="true">↗</span>
                   </Link>

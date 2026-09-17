@@ -7,8 +7,8 @@ export default function Loading() {
         <span />
       </div>
       <div className="mb-6 h-3 w-28 rounded bg-[#eee7df] motion-safe:animate-pulse" />
-      <div className="mb-3 h-3 h-10 w-3/4 rounded bg-[#eee7df] motion-safe:animate-pulse" />
-      <div className="mb-3 h-3 h-10 w-1/2 w-3/4 rounded bg-[#eee7df] motion-safe:animate-pulse" />
+      <div className="mb-3 h-10 w-3/4 rounded bg-[#eee7df] motion-safe:animate-pulse" />
+      <div className="mb-3 h-10 w-1/2 rounded bg-[#eee7df] motion-safe:animate-pulse" />
       <div className="mt-6 mb-10 h-3 w-2/3 rounded bg-[#eee7df] motion-safe:animate-pulse" />
       <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
         {[0, 1, 2].map((item) => (

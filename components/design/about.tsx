@@ -60,7 +60,7 @@ export function AboutDesign() {
   return (
     <PageShell>
       {/* MANIFESTO */}
-      <section className="border-b border-[#1c1c18] px-5 pt-20 pb-24 md:px-12 lg:px-20 md:pt-28 md:pb-32 lg:pt-36 lg:pb-44">
+      <section className="border-b border-[#1c1c18] px-5 pt-20 pb-24 md:px-12 md:pt-28 md:pb-32 lg:px-20 lg:pt-36 lg:pb-44">
         <div className="inline-flex items-center gap-2 bg-[#f1eee7] px-3 py-1.5">
           <span className="h-2 w-2 bg-[#A93100]" aria-hidden="true" />
           <span className="eyebrow">
@@ -113,7 +113,7 @@ export function AboutDesign() {
       </section>
 
       {/* COLLABORATION METHOD */}
-      <section className="border-b border-[#1c1c18] bg-[#f6f3ec] px-5 py-20 md:px-12 lg:px-20 md:py-28 lg:py-44">
+      <section className="border-b border-[#1c1c18] bg-[#f6f3ec] px-5 py-20 md:px-12 md:py-28 lg:px-20 lg:py-44">
         <p className="eyebrow text-[#a93100]">
           <T>{"[ Collaboration method ]"}</T>
         </p>
@@ -224,7 +224,7 @@ export function AboutDesign() {
       </section>
 
       {/* TEAM */}
-      <section className="border-b border-[#1c1c18] px-5 py-20 md:px-12 lg:px-20 md:py-28 lg:py-44">
+      <section className="border-b border-[#1c1c18] px-5 py-20 md:px-12 md:py-28 lg:px-20 lg:py-44">
         <p className="eyebrow text-[#a93100]">
           <T>{"[ Dedicated core team ]"}</T>
         </p>
@@ -261,7 +261,7 @@ export function AboutDesign() {
       </section>
 
       {/* HANDOVER & GUARANTEE */}
-      <section className="border-b border-[#1c1c18] bg-[#f6f3ec] px-5 py-20 md:px-12 lg:px-20 md:py-28 lg:py-44">
+      <section className="border-b border-[#1c1c18] bg-[#f6f3ec] px-5 py-20 md:px-12 md:py-28 lg:px-20 lg:py-44">
         <p className="eyebrow text-[#a93100]">
           <T>{"[ Post-release support ]"}</T>
         </p>

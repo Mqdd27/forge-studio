@@ -315,5 +315,17 @@
   "Format: video & concise guides": "Format: video & panduan ringkas",
   "Clean handover & full rights": "Serah terima bersih & hak penuh",
   "All source code, databases, server access, and credentials are handed over documented — 100% yours, ready for any party to continue.": "Seluruh source code, database, akses server, dan kredensial diserahterimakan secara terdokumentasi — 100% milik Anda, siap dilanjutkan pihak mana pun.",
-  "Rights: 100% yours": "Hak: 100% milik Anda"
+  "Rights: 100% yours": "Hak: 100% milik Anda",
+  "[03 // SERVICES INDEX]": "[03 // INDEX LAYANAN]",
+  "Websites and applications built around what your business actually needs.": "Website & aplikasi yang dibuat sesuai kebutuhan bisnis Anda.",
+  "From a simple website to a more complex operational system. No invented complexity.": "Mulai dari website sederhana sampai sistem operasional yang lebih kompleks. Tanpa komplikasi fiktif.",
+  "Performance, responsiveness, and technical SEO are considered from the start.": "Performa, responsivitas, dan fondasi SEO teknis diperhitungkan sejak awal.",
+  "Deployment, backups, SSL, monitoring, and routine maintenance based on project needs.": "Deployment, backup, SSL, monitoring, dan perawatan rutin sesuai kebutuhan proyek.",
+  "Deployment pipeline": "Pipeline deployment",
+  "Domain routing & SSL": "Routing domain & SSL",
+  "Server hardening & firewall": "Hardening server & firewall",
+  "Production setup, backups, monitoring, and post-launch support based on the agreed scope.": "Penyiapan produksi, backup, monitoring, dan dukungan pasca-peluncuran sesuai scope yang disepakati.",
+  "You talk directly with the team building the system. Communication stays direct so questions and blockers can be handled without unnecessary layers.": "Anda berbicara langsung dengan tim yang membangun sistemnya. Komunikasi tetap langsung sehingga pertanyaan dan hambatan bisa ditangani tanpa lapisan yang tidak perlu.",
+  "Clear flows for day-to-day users": "Alur yang jelas untuk pengguna harian",
+  "Payment gateway (Midtrans/Xendit)": "Payment gateway (Midtrans/Xendit)"
 }

@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export const runtime = "nodejs";
-const types = new Set(["customWeb", "businessSystems", "existingSystems", "maintenance", "unsure"]);
+// Must stay in sync with projectTypes in components/design/contact.tsx.
+const types: Record<string, true> = { customWeb: true, catalogWeb: true, businessSystems: true, inventory: true, posBooking: true };
 const attempts = new Map<string, { count: number; until: number }>();
 const reply = (code: string, status: number) => NextResponse.json({ code }, { status });
 
@@ -52,7 +53,7 @@ export async function POST(request: NextRequest) {
     name.length > 120 ||
     contact.length > 254 ||
     (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact) && !/^\+?[\d\s().-]{8,25}$/.test(contact)) ||
-    !types.has(data.projectType) ||
+    types[data.projectType] !== true ||
     description.length < 10 ||
     description.length > 6000
   )

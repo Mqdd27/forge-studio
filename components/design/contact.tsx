@@ -8,19 +8,27 @@ import { Link } from "@/i18n/navigation";
 
 const fieldClass = "field-sharp";
 
+// Values must stay in sync with the accepted set in app/api/inquiries/route.ts.
 const projectTypes = [
   ["customWeb", "Company Profile Website", "Website Company Profile"],
-  ["businessSystems", "Catalog Website", "Website Katalog"],
-  ["existingSystems", "Business System", "Sistem Bisnis"],
-  ["maintenance", "Inventory / Warehouse", "Inventory / Warehouse"],
-  ["unsure", "POS / Booking / Dashboard", "POS / Booking / Dashboard"],
+  ["catalogWeb", "Catalog Website", "Website Katalog"],
+  ["businessSystems", "Business System", "Sistem Bisnis"],
+  ["inventory", "Inventory / Warehouse", "Inventory / Warehouse"],
+  ["posBooking", "POS / Booking / Dashboard", "POS / Booking / Dashboard"],
 ] as const;
 
 const budgets = ["< Rp5 jt", "Rp5–10 jt", "Rp10–25 jt", "Rp25–50 jt", "> Rp50 jt"] as const;
-const timelines = ["ASAP", "1–2 bln", "2–3 bln", "3+ bln"] as const;
+const timelines = [
+  ["ASAP", "ASAP"],
+  ["1–2 months", "1–2 bln"],
+  ["2–3 months", "2–3 bln"],
+  ["3+ months", "3+ bln"],
+] as const;
 
 export function ContactDesign() {
   const id = useLocale() === "id";
+  const required = id ? "[wajib]" : "[required]";
+  const optional = id ? "[opsional]" : "[optional]";
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState("");
 
@@ -99,17 +107,31 @@ export function ContactDesign() {
       <section className="w-full bg-surface px-margin pt-space-lg pb-space-lg md:px-margin-tablet lg:px-margin-desktop lg:pt-space-xl">
         <div className="grid grid-cols-1 gap-gutter-desktop lg:grid-cols-12">
           <div className="flex flex-col gap-space-sm lg:col-span-10">
-            <div className="flex items-center gap-3"><span className="inline-block size-2.5 bg-primary"/><span className="font-label-sm uppercase tracking-widest text-on-surface-variant">// 04. INISIASI PROTOKOL</span></div>
-            <h1 className="font-display-lg-mobile text-display-lg-mobile max-w-4xl font-semibold tracking-tight uppercase md:font-display-lg md:text-display-lg">{id ? "Ceritakan apa yang ingin Anda buat." : "Tell us what you want to build."}</h1>
-            <p className="font-body-lg text-body-lg max-w-2xl pt-2 text-on-surface-variant">{id ? "Tidak perlu punya spesifikasi teknis. Ceritakan saja bisnis Anda, masalahnya, atau sistem seperti apa yang ingin dibuat." : "No technical spec needed. Just tell us your business, the problem, or what kind of system you want."}</p>
+            <div className="flex items-center gap-3">
+              <span className="inline-block size-2.5 bg-primary" />
+              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">
+                {id ? "// 04. INISIASI PROTOKOL" : "// 04. PROJECT INITIATION"}
+              </span>
+            </div>
+            <h1 className="text-display-lg-mobile md:text-display-lg max-w-4xl font-display-lg-mobile font-semibold tracking-tight uppercase md:font-display-lg">
+              {id ? "Ceritakan apa yang ingin Anda buat." : "Tell us what you want to build."}
+            </h1>
+            <p className="text-body-lg max-w-2xl pt-2 font-body-lg text-on-surface-variant">
+              {id
+                ? "Tidak perlu punya spesifikasi teknis. Ceritakan saja bisnis Anda, masalahnya, atau sistem seperti apa yang ingin dibuat."
+                : "No technical spec needed. Just tell us your business, the problem, or what kind of system you want."}
+            </p>
           </div>
-          <div className="hidden flex-col items-end justify-end pb-2 lg:col-span-2 lg:flex"><span className="font-label-md uppercase tracking-widest text-primary">[RISENDEV FORM_V2]</span><span className="font-label-sm text-secondary">{id?"DISKUSI LANGSUNG":"DIRECT DISCUSSION"}</span></div>
+          <div className="hidden flex-col items-end justify-end pb-2 lg:col-span-2 lg:flex">
+            <span className="font-label-md tracking-widest text-primary uppercase">[RISENDEV FORM_V2]</span>
+            <span className="font-label-sm text-secondary">{id ? "DISKUSI LANGSUNG" : "DIRECT DISCUSSION"}</span>
+          </div>
         </div>
       </section>
 
       <section className="w-full bg-surface-container-low px-margin py-space-lg md:px-margin-tablet lg:px-margin-desktop lg:py-space-xl">
         <div className="grid grid-cols-1 items-start gap-gutter-desktop lg:grid-cols-12">
-          <div className="lg:order-2 lg:col-span-8 bg-surface-container-lowest p-space-md md:p-space-lg">
+          <div className="bg-surface-container-lowest p-space-md md:p-space-lg lg:order-2 lg:col-span-8">
             {status === "success" ? (
               <section role="status" className="border border-[#1c1c18] bg-white p-8 md:p-10">
                 <p className="eyebrow text-emerald-700">
@@ -131,13 +153,13 @@ export function ContactDesign() {
               <form onSubmit={submit} aria-busy={status === "loading"} className="border border-[#1c1c18] bg-white">
                 <div className="flex items-center justify-between border-b border-[#1c1c18] px-5 py-3">
                   <p className="eyebrow">[RisenDev Form_v2]</p>
-                  <p className="eyebrow text-[#a93100]">{id ? "Project inquiry" : "Project inquiry"}</p>
+                  <p className="eyebrow text-[#a93100]">{id ? "Inquiry proyek" : "Project inquiry"}</p>
                 </div>
                 <div className="grid gap-6 p-5 md:p-8">
                   <div className="grid gap-6 sm:grid-cols-2">
                     <label className="grid gap-2 text-xs font-semibold tracking-[0.06em] uppercase">
                       <span>
-                        {id ? "Nama lengkap *" : "Full name *"} <span className="text-[#a93100]">[wajib]</span>
+                        {id ? "Nama lengkap *" : "Full name *"} <span className="text-[#a93100]">{required}</span>
                       </span>
                       <input
                         name="name"
@@ -150,7 +172,7 @@ export function ContactDesign() {
                     </label>
                     <label className="grid gap-2 text-xs font-semibold tracking-[0.06em] uppercase">
                       <span>
-                        {id ? "Email / WhatsApp *" : "Email / WhatsApp *"} <span className="text-[#a93100]">[wajib]</span>
+                        Email / WhatsApp * <span className="text-[#a93100]">{required}</span>
                       </span>
                       <input
                         name="contact"
@@ -164,7 +186,7 @@ export function ContactDesign() {
                   </div>
                   <label className="grid gap-2 text-xs font-semibold tracking-[0.06em] uppercase">
                     <span>
-                      {id ? "Nama bisnis / perusahaan" : "Business / company name"} <span className="text-[#5c4037]">[opsional]</span>
+                      {id ? "Nama bisnis / perusahaan" : "Business / company name"} <span className="text-[#5c4037]">{optional}</span>
                     </span>
                     <input
                       name="company"
@@ -193,7 +215,7 @@ export function ContactDesign() {
                   <label className="grid gap-2 text-xs font-semibold tracking-[0.06em] uppercase">
                     <span>
                       {id ? "Ceritakan kebutuhan Anda *" : "Describe your needs *"}{" "}
-                      <span className="text-[#5c4037]">[detail operasional]</span>
+                      <span className="text-[#5c4037]">{id ? "[detail operasional]" : "[operational detail]"}</span>
                     </span>
                     <textarea
                       name="description"
@@ -212,7 +234,7 @@ export function ContactDesign() {
                   <div className="grid gap-6 sm:grid-cols-2">
                     <fieldset className="grid content-start gap-2">
                       <legend className="text-xs font-semibold tracking-[0.06em] uppercase">
-                        {id ? "Estimasi budget" : "Budget estimate"} <span className="text-[#5c4037]">[opsional]</span>
+                        {id ? "Estimasi budget" : "Budget estimate"} <span className="text-[#5c4037]">{optional}</span>
                       </legend>
                       {budgets.map((b) => (
                         <label key={b} className="flex cursor-pointer items-center gap-3 text-sm">
@@ -222,11 +244,11 @@ export function ContactDesign() {
                     </fieldset>
                     <fieldset className="grid content-start gap-2">
                       <legend className="text-xs font-semibold tracking-[0.06em] uppercase">
-                        {id ? "Target waktu peluncuran" : "Target launch time"} <span className="text-[#5c4037]">[opsional]</span>
+                        {id ? "Target waktu peluncuran" : "Target launch time"} <span className="text-[#5c4037]">{optional}</span>
                       </legend>
-                      {timelines.map((t) => (
-                        <label key={t} className="flex cursor-pointer items-center gap-3 text-sm">
-                          <input type="radio" name="timeline" value={t} className="check-sharp" /> {t}
+                      {timelines.map(([value, indonesian]) => (
+                        <label key={value} className="flex cursor-pointer items-center gap-3 text-sm">
+                          <input type="radio" name="timeline" value={value} className="check-sharp" /> {id ? indonesian : value}
                         </label>
                       ))}
                     </fieldset>
@@ -267,7 +289,7 @@ export function ContactDesign() {
           </div>
           <aside className="grid gap-px border border-[#1c1c18] bg-[#31312c] lg:order-1 lg:col-span-4">
             <div className="bg-[#31312c] p-6 text-[#f3f0e9]">
-              <p className="eyebrow text-[#FF4F00]">{id ? "// Post-submit protocol" : "// Post-submit protocol"}</p>
+              <p className="eyebrow text-[#FF4F00]">{id ? "// Protokol setelah pengiriman" : "// Post-submit protocol"}</p>
               <h2 className="mt-2 font-[family-name:var(--font-geist-sans)] text-xl font-medium tracking-tight">
                 {id ? "Setelah dikirim, apa berikutnya?" : "What happens after you send?"}
               </h2>

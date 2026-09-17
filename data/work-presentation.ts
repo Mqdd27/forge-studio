@@ -11,9 +11,3 @@ export const workPresentation: Record<(typeof cases)[number]["key"], WorkPresent
   odooWageOvertime: { category: "existingSystem", tags: ["ERP customization", "Wage workflows", "Overtime"], screenshots: [] },
   stockOpname: { category: "businessSystem", tags: ["Inventory", "Stock counts", "Review workflow"], screenshots: [] },
 };
-
-// Only these fields cross the server/client boundary for public project cards.
-export function workCardData(item: (typeof cases)[number]) {
-  const { key, slug, visual } = item;
-  return { key, slug, visual };
-}

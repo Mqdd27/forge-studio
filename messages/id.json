@@ -1,6 +1,4 @@
 {
-  "Navigation": { "services": "Layanan", "work": "Portofolio", "about": "Tentang" },
-  "WorkCard": { "caseStudy": "Studi kasus" },
   "Site": {
     "cases": {
       "idxStocks": {
@@ -80,12 +78,6 @@
     "metadata": {
       "title": "Layanan Pengembangan Web",
       "description": "Empat layanan: pengembangan web custom, sistem bisnis, pengembangan sistem yang ada, serta pemeliharaan dan deployment."
-    }
-  },
-  "AboutPage": {
-    "metadata": {
-      "title": "Tentang RisenDev",
-      "description": "Studio pengembangan web independen yang berfokus pada aplikasi praktis, andal, dan mudah dipelihara."
     }
   }
 }
