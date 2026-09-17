@@ -82,7 +82,7 @@ const blocks = [
 export function ServicesDesign() {
   return (
     <PageShell>
-      <section className="w-full bg-primary px-margin py-space-lg text-on-surface md:px-margin-tablet md:py-space-xl lg:px-margin-desktop">
+      <section className="w-full bg-primary px-margin py-space-lg text-on-primary md:px-margin-tablet md:py-space-xl lg:px-margin-desktop">
         <div className="mx-auto flex max-w-7xl flex-col gap-space-md">
           <div className="flex items-center justify-between border-b border-on-surface/20 pb-space-sm">
             <span className="font-label-sm font-semibold tracking-widest uppercase">

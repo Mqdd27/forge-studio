@@ -4,99 +4,317 @@
       "idxStocks": {
         "title": "IDX Stocks Dashboard",
         "category": "Web Application",
-        "summary": "A dashboard for exploring and monitoring Indonesian stock market data.",
-        "description": "A focused dashboard experience for working with IDX stock information in one place.",
-        "problem": "Stock-market information is easier to evaluate when the relevant data can be reviewed in a single, structured workspace.",
-        "solution": "RisenDev built a dedicated dashboard interface for exploring and monitoring IDX stock data.",
-        "engineering": "The project is structured as a data-focused web application, designed around readable information hierarchy and repeatable dashboard views.",
-        "scope": {
-          "0": "Interactive market terminal with IHSG, gainers, losers, and active movers",
-          "1": "Five-year candlestick charts with SMA, EMA, RSI, MACD, Bollinger Bands, ATR, and volume analysis",
-          "2": "Annual and quarterly financial statements with valuation and performance ratios",
-          "3": "Fundamental screener, watchlists, and Google News RSS integration",
-          "4": "Quant and multi-agent AI paper-trading research with strategy-performance analytics",
-          "5": "Automated Telegram market briefs and operations-health monitoring"
+        "summary": "A focused workspace for exploring, monitoring, and researching the Indonesian stock market.",
+
+        "overview": "IDX Stocks Dashboard brings market movement, charts, company fundamentals, research tools, and automated insights into one structured workspace.",
+
+        "challengeTitle": "Market information is useful when the context stays connected.",
+        "challenge": "Research often requires moving between market data, charts, financial reports, news, and separate analysis tools.",
+
+        "challengePoints": {
+          "0": {
+            "title": "Scattered information",
+            "description": "Market data, company fundamentals, charts, and news often live in separate places."
+          },
+          "1": { "title": "Too much manual analysis", "description": "Repeated research tasks can slow down daily market monitoring." },
+          "2": {
+            "title": "Harder to see context",
+            "description": "Signals become easier to understand when technical and fundamental data can be reviewed together."
+          }
         },
-        "facts": {
-          "0": "Supports 840+ IDX-listed companies",
-          "1": "Self-hosted deployment with systemd services and timers",
-          "2": "Integrated with multiple AI providers through 9Router for market-data analysis",
-          "3": "Hermes Agent-compatible delivery for daily, weekly, or yearly market data, performance, and signals",
-          "4": "Browser UI communicates with the FastAPI backend over HTTP and SSE"
+
+        "solutionTitle": "One workspace for market research.",
+        "solution": "The dashboard organizes market information into a consistent workflow, from broad market movement to deeper company analysis.",
+
+        "solutionPoints": {
+          "0": { "title": "Discover", "description": "Review market movement and active stocks." },
+          "1": { "title": "Analyze", "description": "Explore charts and technical indicators." },
+          "2": { "title": "Research", "description": "Review financial data, ratios, and news." },
+          "3": { "title": "Monitor", "description": "Track selected companies and automated insights." }
         },
-        "outcome": "The dashboard brings IDX stock exploration and monitoring into a structured workspace."
+
+        "capabilitiesTitle": "Research tools built around one market workflow.",
+
+        "capabilities": {
+          "0": { "title": "Market Terminal", "description": "IHSG, gainers, losers, and active market movers." },
+          "1": { "title": "Technical Analysis", "description": "Candlestick charts with common indicators and volume analysis." },
+          "2": { "title": "Company Fundamentals", "description": "Annual and quarterly financial statements with key ratios." },
+          "3": { "title": "Screening & Watchlists", "description": "Fundamental screening and personal stock monitoring." },
+          "4": { "title": "AI Research", "description": "AI-assisted and quantitative research workflows for market analysis." },
+          "5": { "title": "Automated Briefs", "description": "Scheduled market summaries and monitoring through Telegram." }
+        },
+
+        "engineeringTitle": "Designed for data-heavy research without a heavy experience.",
+        "engineering": "The system combines a web interface, data services, automation, and desktop support while keeping the research flow readable and responsive.",
+
+        "engineeringPoints": {
+          "0": { "title": "Broad IDX Coverage", "description": "Supports data workflows across more than 840 IDX-listed companies." },
+          "1": { "title": "Web & Desktop", "description": "Designed for browser use with desktop application support." },
+          "2": { "title": "AI Integration", "description": "Connects multiple AI providers through 9Router for market analysis." },
+          "3": { "title": "Agent Automation", "description": "Compatible with Hermes Agent for scheduled market information delivery." },
+          "4": { "title": "Live Data Flow", "description": "The interface communicates with FastAPI through HTTP and Server-Sent Events." }
+        },
+
+        "outcomeTitle": "A clearer way to explore the Indonesian market.",
+        "outcome": "Market movement, company research, analysis, and monitoring now live within one focused workspace.",
+
+        "role": "Full-Stack Development, System Design, and Data Integration"
       },
+
       "growpos": {
         "title": "GrowPOS",
         "category": "Business System",
-        "summary": "A multi-tenant SaaS point-of-sale platform that connects sales with inventory, cash operations, customers, employees, and business reporting.",
-        "description": "GrowPOS is a web-based SaaS platform designed to manage point-of-sale and day-to-day business operations in one system. It supports retail, grocery, food, service, and mixed-business workflows while keeping each business isolated within its own tenant environment.",
-        "problem": "A point-of-sale transaction affects more than the checkout itself. Sales can change inventory, cashier balances, customer records, operational workflows, and reports. Managing these processes separately makes it harder to maintain consistent operational data, especially when different business types require different workflows.",
-        "solution": "RisenDev built GrowPOS as a multi-tenant business platform that connects POS transactions with inventory, cashier shifts, cash records, customers, reporting, and subscription-based features. Business-specific workflows extend the same platform with kitchen preparation for food businesses and service-job tracking for service businesses.",
-        "engineering": "GrowPOS is built with Laravel using a multi-tenant architecture and server-rendered Blade interfaces. Critical workflows such as inventory adjustments, payments, returns, refunds, and cash movements use dedicated service logic, database transactions, validation, and audit records. The system also integrates Midtrans for digital payment workflows and provides role-based and subscription-based feature access.",
-        "scope": {
-          "0": "Multi-tenant SaaS point-of-sale and business operations platform",
-          "1": "Product, category, variant, inventory, material, and supplier management",
-          "2": "Cash and Midtrans-based digital payment workflows with partial payment support",
-          "3": "Cashier shifts, cash ledger, operational expenses, returns, and refunds",
-          "4": "Customer, employee, role, loyalty, discount, and subscription management",
-          "5": "Business-specific kitchen and service-job operational workflows",
-          "6": "Business dashboard, reporting, activity logs, and spreadsheet exports"
+        "summary": "A multi-tenant platform connecting sales, inventory, cash operations, customers, teams, and reporting.",
+
+        "overview": "GrowPOS brings everyday business operations into one connected platform for retail, grocery, food, service, and mixed-business workflows.",
+
+        "challengeTitle": "A sale affects more than the checkout.",
+        "challenge": "Inventory, cash, customer records, staff activity, and reporting all change as transactions happen.",
+
+        "challengePoints": {
+          "0": {
+            "title": "Disconnected operations",
+            "description": "Sales, stock, cash, customers, and reporting can become fragmented across separate workflows."
+          },
+          "1": {
+            "title": "Different business needs",
+            "description": "Retail, food, grocery, and service businesses do not operate in exactly the same way."
+          },
+          "2": {
+            "title": "Data must stay consistent",
+            "description": "Payments, stock changes, returns, refunds, and cash movements need to remain synchronized."
+          }
         },
-        "facts": {
-          "0": "Built as a multi-tenant SaaS application",
-          "1": "Supports retail, grocery, food, service, and mixed business configurations",
-          "2": "Includes product and variant-level inventory management with stock movement history",
-          "3": "Supports cash payments, partial payments, Midtrans-based digital payments, returns, and cash refunds",
-          "4": "Includes cashier shift reconciliation and an operational cash ledger",
-          "5": "Provides kitchen preparation workflows for food businesses and service-job tracking for service businesses",
-          "6": "Includes subscription, billing, role-based access control, reporting, data export, and scheduled database backup"
+
+        "solutionTitle": "One platform, connected operations.",
+        "solution": "GrowPOS connects transactions with the operational records around them instead of treating checkout as an isolated process.",
+
+        "solutionPoints": {
+          "0": { "title": "Sell", "description": "Process customer transactions." },
+          "1": { "title": "Update", "description": "Reflect inventory changes." },
+          "2": { "title": "Record", "description": "Track cash and operational activity." },
+          "3": { "title": "Operate", "description": "Continue into kitchen or service workflows." },
+          "4": { "title": "Report", "description": "Turn activity into business information." }
         },
-        "outcome": "GrowPOS has developed from a point-of-sale application into a broader multi-tenant business operations platform. The implemented system connects checkout, inventory, payments, cashier shifts, cash movements, customers, operational workflows, and reporting within one application."
+
+        "capabilitiesTitle": "Core tools for running day-to-day operations.",
+
+        "capabilities": {
+          "0": { "title": "Point of Sale", "description": "Checkout, cash, partial payments, and digital payment workflows." },
+          "1": { "title": "Inventory", "description": "Products, variants, materials, suppliers, and stock movement." },
+          "2": { "title": "Cash Operations", "description": "Cashier shifts, expenses, cash records, returns, and refunds." },
+          "3": { "title": "Customers & Loyalty", "description": "Customer records, loyalty programs, discounts, and promotions." },
+          "4": { "title": "Business Workflows", "description": "Kitchen preparation and service-job operational flows." },
+          "5": { "title": "Team & Access", "description": "Employees, roles, permissions, and tenant-level access." },
+          "6": {
+            "title": "Reports & Administration",
+            "description": "Dashboards, reports, exports, activity logs, subscriptions, and billing."
+          }
+        },
+
+        "engineeringTitle": "Built around consistency, isolation, and traceable operations.",
+        "engineering": "Critical business workflows are structured so stock, payments, cash activity, and tenant data remain controlled as the system grows.",
+
+        "engineeringPoints": {
+          "0": {
+            "title": "Multi-Tenant Architecture",
+            "description": "Each business operates within its own isolated tenant environment."
+          },
+          "1": {
+            "title": "Safe Transactions",
+            "description": "Critical stock, payment, refund, and cash operations use controlled database transactions."
+          },
+          "2": {
+            "title": "Inventory Integrity",
+            "description": "Product and variant stock changes are recorded through stock movement history."
+          },
+          "3": {
+            "title": "Payment Integration",
+            "description": "Digital payment workflows connect with Midtrans while coordinating local transaction state."
+          },
+          "4": {
+            "title": "Controlled Access",
+            "description": "Roles, permissions, tenants, and subscriptions determine available features."
+          },
+          "5": {
+            "title": "Operational History",
+            "description": "Activity, cash, stock, and transaction records keep important actions traceable."
+          }
+        },
+
+        "outcomeTitle": "From checkout tool to connected business operations.",
+        "outcome": "GrowPOS has grown into a broader platform where sales, inventory, cash, customers, operational workflows, and reporting work together.",
+
+        "role": "Full-Stack Development, System Architecture, and UI/UX Design"
       },
+
       "aiSummarizer": {
-        "title": "Summarizer Powered by AI Models",
+        "title": "AI Summarizer",
         "category": "Web Application",
-        "summary": "An AI-assisted application for turning longer content into concise summaries.",
-        "description": "A practical summarization workflow powered by AI models.",
-        "problem": "Long-form content takes time to review, especially when the reader only needs the essential points.",
-        "solution": "RisenDev built a focused application that uses AI models to generate concise summaries from supplied content.",
-        "engineering": "The product centers on a simple input-to-summary flow so the AI capability remains useful without adding unnecessary complexity.",
-        "scope": { "0": "AI-powered summarization", "1": "Content input workflow", "2": "Readable summary output" },
-        "facts": {},
-        "outcome": "The application turns supplied content into concise summaries through a focused input-to-summary workflow."
+        "summary": "A focused application for turning long content into clear, concise AI-assisted summaries.",
+
+        "overview": "AI Summarizer provides a simple workflow for submitting content and receiving a shorter version focused on the essential information.",
+
+        "challengeTitle": "Long content takes time to understand.",
+        "challenge": "Users may only need the key ideas, but still have to review the entire source to find them.",
+
+        "challengePoints": {
+          "0": { "title": "Information overload", "description": "Important points can be difficult to identify inside long content." },
+          "1": {
+            "title": "Time-consuming review",
+            "description": "Reading everything is inefficient when only a concise overview is needed."
+          }
+        },
+
+        "solutionTitle": "From long content to the essential points.",
+        "solution": "The application keeps the workflow intentionally simple: provide content, process it with an AI model, and present a readable summary.",
+
+        "solutionPoints": {
+          "0": { "title": "Input", "description": "Provide the content to summarize." },
+          "1": { "title": "Process", "description": "Send the content through the selected AI workflow." },
+          "2": { "title": "Read", "description": "Receive a concise and readable result." }
+        },
+
+        "capabilitiesTitle": "A small set of features focused on one task.",
+
+        "capabilities": {
+          "0": { "title": "Content Input", "description": "A focused interface for supplying source content." },
+          "1": { "title": "AI Summarization", "description": "Content is processed through supported AI models." },
+          "2": { "title": "Readable Output", "description": "Results are presented as concise summaries for faster review." }
+        },
+
+        "engineeringTitle": "Simple on the surface, flexible underneath.",
+        "engineering": "The application separates the user-facing summarization flow from model integration so different AI providers can be used without complicating the interface.",
+
+        "engineeringPoints": {
+          "0": { "title": "Self-Hosted", "description": "Designed to run within a self-managed environment." },
+          "1": { "title": "Multiple AI Providers", "description": "Supports model access through 9Router." },
+          "2": { "title": "Local Model Support", "description": "Compatible with local models through Ollama." }
+        },
+
+        "outcomeTitle": "Less reading before reaching the point.",
+        "outcome": "The application turns supplied content into concise summaries through a direct and focused workflow.",
+
+        "role": "Full-Stack Development and AI Integration"
       },
+
       "odooWageOvertime": {
-        "title": "Odoo Custom Module for Wage and Overtime",
+        "title": "Odoo Wage & Overtime",
         "category": "Existing System",
-        "summary": "A custom Odoo module for supporting wage and overtime workflows.",
-        "description": "Business workflow customization within an Odoo environment.",
-        "problem": "Wage and overtime processes need to reflect the operational rules a business already uses.",
-        "solution": "RisenDev developed a custom Odoo module to support wage and overtime processes within the existing ERP workflow.",
-        "engineering": "The module extends Odoo with a workflow-specific implementation instead of requiring teams to work around a generic process.",
-        "scope": { "0": "Custom Odoo module", "1": "Wage workflow support", "2": "Overtime workflow support" },
-        "facts": {},
-        "outcome": "Wage and overtime workflows are supported within the existing Odoo environment."
+        "summary": "A custom Odoo module supporting wage and overtime workflows inside an existing ERP environment.",
+
+        "overview": "The project extends Odoo with workflow-specific functionality for managing wage and overtime processes without introducing a separate system.",
+
+        "challengeTitle": "Generic ERP workflows do not fit every operation.",
+        "challenge": "Existing wage and overtime rules needed to work inside the ERP process already used by the business.",
+
+        "challengePoints": {
+          "0": {
+            "title": "Existing business rules",
+            "description": "The workflow needed to follow established wage and overtime processes."
+          },
+          "1": {
+            "title": "Existing ERP environment",
+            "description": "The solution needed to fit Odoo instead of creating another disconnected application."
+          }
+        },
+
+        "solutionTitle": "Extend the existing system, not the complexity.",
+        "solution": "A custom Odoo module adds the required workflow directly to the existing ERP environment.",
+
+        "solutionPoints": {
+          "0": { "title": "Adapt", "description": "Translate operational rules into the module workflow." },
+          "1": { "title": "Integrate", "description": "Keep the process inside the existing Odoo environment." },
+          "2": { "title": "Operate", "description": "Support wage and overtime activity through a dedicated flow." }
+        },
+
+        "capabilitiesTitle": "Focused ERP customization for the required workflow.",
+
+        "capabilities": {
+          "0": { "title": "Custom Odoo Module", "description": "Workflow-specific functionality built inside Odoo 14." },
+          "1": { "title": "Wage Workflow", "description": "Support for structured wage monitoring and processing." },
+          "2": { "title": "Overtime Workflow", "description": "Support for overtime recording and approval activities." }
+        },
+
+        "engineeringTitle": "Built inside the system the team already uses.",
+        "engineering": "The implementation extends Odoo rather than forcing users into a separate application or unrelated workflow.",
+
+        "engineeringPoints": {
+          "0": { "title": "Native Extension", "description": "Functionality is implemented as a custom Odoo module." },
+          "1": { "title": "Workflow Fit", "description": "The module follows the required wage and overtime process." },
+          "2": {
+            "title": "Existing Data Environment",
+            "description": "The customization remains within the existing Odoo and PostgreSQL environment."
+          }
+        },
+
+        "outcomeTitle": "A custom workflow inside the existing ERP.",
+        "outcome": "Wage and overtime processes can be handled within Odoo using a workflow designed around the required operation.",
+
+        "role": "Odoo Module Development and Workflow Implementation"
       },
+
       "stockOpname": {
         "title": "Stock Opname Application",
         "category": "Business System",
-        "summary": "An application for supporting structured stock-opname activities.",
-        "description": "A dedicated workflow for recording and reviewing physical stock counts.",
-        "problem": "Physical stock counts are easier to manage when recording, review, and reconciliation follow one clear workflow.",
-        "solution": "RisenDev built a stock-opname application to support structured inventory-counting activities.",
-        "engineering": "The application focuses on clear operational steps so stock-count information can be captured and reviewed consistently.",
-        "scope": { "0": "Stock-count workflow", "1": "Inventory recording", "2": "Review-ready operational data" },
-        "facts": {},
-        "outcome": "The application provides a structured workflow for recording and reviewing physical stock counts."
+        "summary": "A structured application for recording, reviewing, and preparing physical inventory counts.",
+
+        "overview": "The application provides a dedicated workflow for stock-opname activities while supporting data exchange with the existing Odoo inventory environment.",
+
+        "challengeTitle": "Physical stock counts need a clear process.",
+        "challenge": "Recording and reviewing inventory counts becomes harder when the workflow is inconsistent or disconnected from existing inventory data.",
+
+        "challengePoints": {
+          "0": { "title": "Manual counting workflow", "description": "Physical counts need a consistent way to be recorded and reviewed." },
+          "1": {
+            "title": "Existing inventory data",
+            "description": "The workflow needs to remain compatible with the existing Odoo inventory process."
+          }
+        },
+
+        "solutionTitle": "A dedicated workflow for stock verification.",
+        "solution": "The application structures stock counting into a clearer process while supporting import and export with Odoo inventory data.",
+
+        "solutionPoints": {
+          "0": { "title": "Import", "description": "Prepare inventory data for stock counting." },
+          "1": { "title": "Count", "description": "Record physical inventory results." },
+          "2": { "title": "Review", "description": "Prepare results for verification and further processing." }
+        },
+
+        "capabilitiesTitle": "Everything needed for a focused stock-count workflow.",
+
+        "capabilities": {
+          "0": { "title": "Stock Counting", "description": "Structured recording of physical inventory counts." },
+          "1": { "title": "Inventory Records", "description": "Organized stock data for operational review." },
+          "2": { "title": "Odoo Data Exchange", "description": "Import and export support for the existing Odoo inventory workflow." }
+        },
+
+        "engineeringTitle": "Designed to work alongside the existing inventory system.",
+        "engineering": "The application focuses on a clear operational flow while keeping stock data compatible with Odoo 14.",
+
+        "engineeringPoints": {
+          "0": { "title": "Odoo Integration", "description": "The workflow is designed around the existing Odoo inventory environment." },
+          "1": {
+            "title": "Import & Export",
+            "description": "Inventory data can move between the application and Odoo-compatible formats."
+          },
+          "2": { "title": "Structured Records", "description": "Count results are organized for consistent operational review." }
+        },
+
+        "outcomeTitle": "A clearer path from physical count to inventory review.",
+        "outcome": "Stock-opname activities are organized into a dedicated workflow that remains compatible with the existing inventory environment.",
+
+        "role": "Full-Stack Development and Odoo Integration"
       }
     }
   },
+
   "WorkPage": {
     "metadata": {
       "title": "Selected Work",
       "description": "Web applications and systems built around real business and operational needs."
     },
+
     "filters": {
       "all": "All",
       "webApplication": "Web Application",
@@ -104,12 +322,14 @@
       "existingSystem": "Existing System"
     }
   },
+
   "Home": {
     "metadata": {
       "title": "Web Applications for Real Business Needs",
       "description": "An independent web development studio building, improving, and maintaining practical web applications and business systems."
     }
   },
+
   "ServicesPage": {
     "metadata": {
       "title": "Web Development Services",

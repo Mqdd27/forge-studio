@@ -1,15 +1,18 @@
-import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+
+import { getTranslations, setRequestLocale } from "next-intl/server";
+
 import { WorkDesign } from "@/components/design/work";
 
-export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
-  const t = await getTranslations({ locale: params.locale, namespace: "WorkPage.metadata" });
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+
+  const t = await getTranslations({ locale, namespace: "WorkPage.metadata" });
 
   const title = t("title");
   const description = t("description");
 
-  const path = `/${params.locale}/work`;
+  const path = `/${locale}/work`;
 
   return {
     title,
@@ -27,17 +30,18 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       description,
       url: path,
       siteName: "RisenDev",
-
-      locale: params.locale === "id" ? "id_ID" : "en_US",
-
-      alternateLocale: params.locale === "id" ? ["en_US"] : ["id_ID"],
+      locale: locale === "id" ? "id_ID" : "en_US",
+      alternateLocale: locale === "id" ? ["en_US"] : ["id_ID"],
     },
 
     twitter: { card: "summary_large_image", title: `${title} | RisenDev`, description },
   };
 }
 
-export default function Page({ params }: { params: { locale: string } }) {
-  setRequestLocale(params.locale);
+export default async function Page({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+
+  setRequestLocale(locale);
+
   return <WorkDesign />;
 }

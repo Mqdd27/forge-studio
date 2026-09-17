@@ -1,124 +1,200 @@
-import { PageShell } from "@/components/ui/page-shell";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+
+import { PageShell } from "@/components/ui/page-shell";
+import { ProjectCTA } from "@/components/design/project-cta";
+import { ProjectCarousel } from "@/components/design/project-carousel";
+
 import { cases } from "@/data/site";
 import { Link } from "@/i18n/navigation";
-import { ProjectCTA } from "@/components/design/project-cta";
 
 export function generateStaticParams() {
   return cases.map(({ slug }) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string; locale: string } }): Promise<Metadata> {
-  const item = cases.find((item) => item.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
+  const { slug, locale } = await params;
+
+  const item = cases.find((project) => project.slug === slug);
+
   if (!item) return {};
-  const t = await getTranslations({ locale: params.locale, namespace: "Site.cases" });
-  const title = t(`${item.key}.title`);
-  const description = t(`${item.key}.summary`);
-  const path = `/${params.locale}/work/${item.slug}`;
+
+  const t = await getTranslations({ locale, namespace: "Site.cases" });
+
   return {
-    title,
-    description,
-    alternates: { canonical: path, languages: { en: `/en/work/${item.slug}`, id: `/id/work/${item.slug}` } },
-    openGraph: { type: "article", title, description, url: path },
-    twitter: { card: "summary", title, description },
+    title: t(`${item.key}.title`),
+    description: t(`${item.key}.summary`),
+
+    alternates: {
+      canonical: `/${locale}/work/${item.slug}`,
+
+      languages: { en: `/en/work/${item.slug}`, id: `/id/work/${item.slug}` },
+    },
   };
 }
 
-export default async function CaseStudy({ params }: { params: { slug: string; locale: string } }) {
-  setRequestLocale(params.locale);
-  const item = cases.find((item) => item.slug === params.slug);
+export default async function CaseStudy({ params }: { params: Promise<{ slug: string; locale: string }> }) {
+  const { slug, locale } = await params;
+
+  setRequestLocale(locale);
+
+  const item = cases.find((project) => project.slug === slug);
+
   if (!item) notFound();
-  const t = await getTranslations({ locale: params.locale, namespace: "Site.cases" });
-  const id = params.locale === "id";
-  const order = cases.findIndex((c) => c.slug === item.slug);
-  const code = `F-${String(order + 1).padStart(2, "0")}`;
-  const facts = item.facts.map((value, index) => ({ value, index })).filter(({ index }) => t.has(`${item.key}.facts.${index}`));
+
+  const t = await getTranslations({ locale, namespace: "Site.cases" });
+
+  const id = locale === "id";
+
+  const projectIndex = cases.findIndex((project) => project.slug === item.slug) + 1;
+
+  const code = `F-${String(projectIndex).padStart(2, "0")}`;
+
+  const statusLabel =
+    item.status === "development"
+      ? id
+        ? "Dalam Pengembangan"
+        : "In Development"
+      : item.status === "active"
+        ? id
+          ? "Aktif"
+          : "Active"
+        : id
+          ? "Selesai"
+          : "Completed";
 
   return (
     <PageShell>
-      <section className="w-full bg-surface px-margin py-space-md md:px-margin-tablet lg:px-margin-desktop">
-        <div className="mx-auto flex max-w-7xl flex-col gap-space-md">
-          <div className="flex items-center justify-between pb-space-xs">
-            <Link
-              href="/work"
-              className="inline-flex items-center gap-2 font-label-md tracking-wider text-primary uppercase transition-colors hover:text-on-surface"
-            >
-              ← {id ? "KEMBALI KE SEMUA PORTOFOLIO" : "BACK TO ALL WORK"}
-            </Link>
-            <div className="font-label-sm tracking-widest text-on-surface-variant uppercase">
-              [ {id ? "ARSIP REKAYASA" : "ENGINEERING ARCHIVE"} {"//"} {code} ]
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-6 bg-surface-container-low px-space-md py-space-sm shadow-sm md:grid-cols-4">
-            <div>
-              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">{"// PROJECT"}</span>
-              <p className="font-headline-sm font-semibold">
-                {String(order + 1).padStart(2, "0")} / {String(cases.length).padStart(2, "0")}
-              </p>
-            </div>
-            <div>
-              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">{`// ${id ? "KATEGORI" : "CATEGORY"}`}</span>
-              <p className="font-body-md font-medium">{t(`${item.key}.category`)}</p>
-            </div>
-            <div>
-              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">{"// STACK"}</span>
-              <p className="font-body-sm">{item.stack.slice(0, 4).join(" · ")}</p>
-            </div>
-            <div>
-              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">{`// ${id ? "CAKUPAN" : "SCOPE"}`}</span>
-              <p className="font-body-sm">
-                {item.scope.length} {id ? "fitur/cakupan terdokumentasi" : "documented scope items"}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* =====================================================
+          HERO
+      ====================================================== */}
 
-      <section className="w-full bg-surface px-margin pt-space-md pb-space-xl md:px-margin-tablet lg:px-margin-desktop">
-        <div className="mx-auto flex max-w-7xl flex-col gap-space-lg">
-          <div className="grid grid-cols-1 items-end gap-gutter-desktop lg:grid-cols-12">
+      <section className="bg-[#F6F3EC] px-5 pt-8 pb-12 text-[#1C1C18] md:px-10 md:pt-12 md:pb-16 lg:px-16">
+        <div className="mx-auto max-w-[1440px]">
+          {/* top meta */}
+
+          <div className="flex items-center justify-between border-b border-black/15 pb-4">
+            <Link href="/work" className="text-[10px] font-semibold tracking-[0.16em] uppercase transition-opacity hover:opacity-50">
+              ← {id ? "Portofolio" : "Work"}
+            </Link>
+
+            <span className="text-[10px] font-semibold tracking-[0.16em] text-black/40 uppercase">{code}</span>
+          </div>
+
+          {/* title */}
+
+          <div className="grid gap-10 py-12 lg:grid-cols-12 lg:items-end lg:py-16">
             <div className="lg:col-span-8">
-              <div className="inline-flex items-center gap-2 font-label-md tracking-widest text-primary uppercase">
-                <span className="h-2 w-2 bg-primary" /> {id ? "STUDI KASUS" : "CASE STUDY"} / {t(`${item.key}.category`)}
-              </div>
-              <h1 className="text-display-lg-mobile md:text-display-lg mt-3 font-display-lg tracking-tight uppercase">
+              <p className="mb-5 text-[10px] font-semibold tracking-[0.2em] text-primary uppercase">{t(`${item.key}.category`)}</p>
+
+              <h1 className="max-w-[1000px] text-[clamp(3.8rem,8vw,7.5rem)] leading-[0.85] font-semibold tracking-[-0.065em] uppercase">
                 {t(`${item.key}.title`)}
               </h1>
             </div>
+
             <div className="lg:col-span-4">
-              <p className="font-body-lg leading-relaxed text-on-surface-variant">{t(`${item.key}.summary`)}</p>
+              <p className="max-w-md text-lg leading-[1.45] font-medium tracking-[-0.025em] md:text-xl">{t(`${item.key}.summary`)}</p>
+
+              <div className="mt-7 flex flex-wrap gap-x-4 gap-y-2 text-[9px] font-semibold tracking-[0.14em] text-black/45 uppercase">
+                <span>{item.stack[0]}</span>
+
+                <span>/</span>
+
+                <span>{statusLabel}</span>
+
+                <span>/</span>
+
+                <span>{code}</span>
+              </div>
             </div>
           </div>
-          <div className="w-full overflow-hidden bg-inverse-surface p-space-md text-inverse-on-surface shadow-xl md:p-space-lg">
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-space-sm">
-              <div className="flex items-center gap-3">
-                <span className="h-3 w-3 bg-primary" />
-                <span className="font-label-md tracking-wider text-surface-dim uppercase">PROJECT SYSTEM // {code}</span>
-              </div>
-              <span className="bg-primary px-2 py-0.5 font-label-sm font-semibold text-on-primary">
-                {id ? "PORTOFOLIO TERDOKUMENTASI" : "DOCUMENTED PORTFOLIO"}
-              </span>
+
+          {/* imagery */}
+
+          {item.images.length > 0 && (
+            <ProjectCarousel images={item.images} title={t(`${item.key}.title`)} locale={locale} priority className="w-full" />
+          )}
+        </div>
+      </section>
+
+      {/* =====================================================
+          OVERVIEW
+      ====================================================== */}
+
+      <Section number="01" label={id ? "Gambaran" : "Overview"}>
+        <div className="grid gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-8">
+            <SectionEyebrow>{id ? "Tentang proyek" : "About the project"}</SectionEyebrow>
+
+            <p className="mt-5 max-w-4xl text-3xl leading-[1.12] font-medium tracking-[-0.035em] md:text-4xl lg:text-5xl">
+              {t(`${item.key}.overview`)}
+            </p>
+          </div>
+
+          <div className="flex flex-col justify-end lg:col-span-4">
+            <div className="border-t border-black/15 pt-5">
+              <MetaRow label={id ? "Kategori" : "Category"} value={t(`${item.key}.category`)} />
+
+              <MetaRow label={id ? "Status" : "Status"} value={statusLabel} />
+
+              <MetaRow label={id ? "Peran" : "Role"} value={t(`${item.key}.role`)} last />
             </div>
-            <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12">
-              <div className="flex min-h-[320px] flex-col justify-between bg-surface/10 p-space-md lg:col-span-8">
-                <span className="font-label-sm tracking-widest text-primary-fixed uppercase">{`// ${id ? "GAMBARAN PROYEK" : "PROJECT OVERVIEW"}`}</span>
-                <p className="max-w-3xl font-headline-md text-inverse-on-surface">{t(`${item.key}.description`)}</p>
-                <div className="flex flex-wrap gap-2">
-                  {item.stack.map((s) => (
-                    <span key={s} className="border border-surface-dim/25 px-3 py-1 font-label-sm text-surface-dim">
-                      {s}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="flex flex-col gap-2 lg:col-span-4">
-                {item.scope.slice(0, 5).map((_, i) => (
-                  <div key={i} className="bg-surface/10 p-3">
-                    <span className="font-label-sm text-primary-fixed">{String(i + 1).padStart(2, "0")}</span>
-                    <p className="mt-1 font-body-sm text-surface-dim">{t(`${item.key}.scope.${i}`)}</p>
-                  </div>
+          </div>
+        </div>
+      </Section>
+
+      {/* =====================================================
+          CHALLENGE
+      ====================================================== */}
+
+      <Section number="02" label={id ? "Tantangan" : "Challenge"} muted>
+        <SectionEyebrow>{id ? "Masalah utama" : "The problem"}</SectionEyebrow>
+
+        <h2 className="mt-5 max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:text-6xl">
+          {t(`${item.key}.challengeTitle`)}
+        </h2>
+
+        <p className="mt-7 max-w-2xl text-base leading-[1.7] text-black/60 md:text-lg">{t(`${item.key}.challenge`)}</p>
+
+        <div className="mt-14 border-t border-black/15">
+          {Array.from({ length: item.contentCount.challenges }).map((_, index) => (
+            <ContentRow
+              key={index}
+              number={index + 1}
+              title={t(`${item.key}.challengePoints.${index}.title`)}
+              description={t(`${item.key}.challengePoints.${index}.description`)}
+            />
+          ))}
+        </div>
+      </Section>
+
+      {/* =====================================================
+          SOLUTION
+      ====================================================== */}
+
+      <section className="bg-[#FF4F00] px-5 py-20 text-[#1C1C18] md:px-10 md:py-24 lg:px-16">
+        <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-12">
+          <SectionMarker number="03" label={id ? "Solusi" : "Solution"} />
+
+          <div className="lg:col-span-9">
+            <SectionEyebrow dark>{id ? "Pendekatan" : "Approach"}</SectionEyebrow>
+
+            <h2 className="mt-5 max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:text-6xl">
+              {t(`${item.key}.solutionTitle`)}
+            </h2>
+
+            <p className="mt-7 max-w-2xl text-base leading-[1.7] text-black/70 md:text-lg">{t(`${item.key}.solution`)}</p>
+
+            <div className="mt-14 border-t border-black/25">
+              <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))" }}>
+                {Array.from({ length: item.contentCount.solutions }).map((_, index) => (
+                  <SolutionItem
+                    key={index}
+                    number={index + 1}
+                    title={t(`${item.key}.solutionPoints.${index}.title`)}
+                    description={t(`${item.key}.solutionPoints.${index}.description`)}
+                  />
                 ))}
               </div>
             </div>
@@ -126,85 +202,202 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
         </div>
       </section>
 
-      <section className="w-full bg-inverse-surface px-margin py-space-xl text-inverse-on-surface md:px-margin-tablet lg:px-margin-desktop">
-        <div className="mx-auto max-w-7xl">
-          <span className="font-label-sm tracking-widest text-primary-fixed uppercase">{`// ${id ? "TAHAP 01 : ANALISIS HAMBATAN" : "PHASE 01 : PROBLEM ANALYSIS"}`}</span>
-          <h2 className="mt-3 max-w-4xl font-headline-lg">“{t(`${item.key}.problem`)}”</h2>
-        </div>
-      </section>
+      {/* =====================================================
+          CAPABILITIES
+      ====================================================== */}
 
-      <section className="w-full bg-surface px-margin py-space-xl md:px-margin-tablet lg:px-margin-desktop">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-gutter-desktop lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <span className="font-label-sm tracking-widest text-primary uppercase">{`// ${id ? "TAHAP 02 : REKAYASA SISTEM" : "PHASE 02 : SYSTEM ENGINEERING"}`}</span>
-            <h2 className="mt-3 font-display-lg-mobile tracking-tight uppercase md:font-display-lg">
-              {id ? "SOLUSI YANG DIBANGUN" : "THE BUILT SOLUTION"}
+      <Section number="04" label={id ? "Kapabilitas" : "Capabilities"}>
+        <SectionEyebrow>{id ? "Yang dibangun" : "What was built"}</SectionEyebrow>
+
+        <h2 className="mt-5 max-w-3xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl">
+          {t(`${item.key}.capabilitiesTitle`)}
+        </h2>
+
+        <div className="mt-14 border-t border-black/15">
+          {Array.from({ length: item.contentCount.capabilities }).map((_, index) => (
+            <ContentRow
+              key={index}
+              number={index + 1}
+              title={t(`${item.key}.capabilities.${index}.title`)}
+              description={t(`${item.key}.capabilities.${index}.description`)}
+            />
+          ))}
+        </div>
+      </Section>
+
+      {/* =====================================================
+          ENGINEERING
+      ====================================================== */}
+
+      <section className="bg-[#1C1C18] px-5 py-20 text-[#F6F3EC] md:px-10 md:py-24 lg:px-16">
+        <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-12">
+          <SectionMarker number="05" label="Engineering" dark />
+
+          <div className="lg:col-span-9">
+            <p className="text-[10px] font-semibold tracking-[0.18em] text-[#FF4F00] uppercase">
+              // {id ? "Di balik sistem" : "Behind the system"}
+            </p>
+
+            <h2 className="mt-5 max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:text-6xl">
+              {t(`${item.key}.engineeringTitle`)}
             </h2>
-          </div>
-          <div className="flex flex-col gap-space-md lg:col-span-7">
-            <div className="bg-surface-container p-space-md">
-              <h3 className="font-headline-md">{t(`${item.key}.solution`)}</h3>
-              <p className="mt-4 font-body-md leading-relaxed text-on-surface-variant">{t(`${item.key}.engineering`)}</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <section className="w-full bg-surface-container-low px-margin py-space-xl md:px-margin-tablet lg:px-margin-desktop">
-        <div className="mx-auto flex max-w-7xl flex-col gap-space-lg">
-          <div>
-            <span className="font-label-sm tracking-widest text-primary uppercase">{`// ${id ? "TAHAP 03 : KAPABILITAS UTAMA" : "PHASE 03 : KEY CAPABILITIES"}`}</span>
-            <h2 className="mt-2 font-headline-lg">{id ? "Fitur dan cakupan yang terdokumentasi" : "Documented features and scope"}</h2>
-          </div>
-          <div className="grid grid-cols-1 gap-gutter md:grid-cols-2">
-            {item.scope.map((_, i) => (
-              <div key={i} className="min-h-[180px] bg-surface p-space-md">
-                <div className="flex justify-between">
-                  <span className="font-label-sm font-semibold text-primary">[ {String(i + 1).padStart(2, "0")} ]</span>
-                  <span className="font-label-sm text-on-surface-variant">{code}</span>
-                </div>
-                <p className="mt-8 font-headline-sm">{t(`${item.key}.scope.${i}`)}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+            <p className="mt-7 max-w-2xl text-base leading-[1.7] text-white/55 md:text-lg">{t(`${item.key}.engineering`)}</p>
 
-      <section className="w-full bg-inverse-surface px-margin py-space-xl text-inverse-on-surface md:px-margin-tablet lg:px-margin-desktop">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-gutter-desktop lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <span className="font-label-sm tracking-widest text-primary-fixed uppercase">{`// ${id ? "TAHAP 04 : ENGINEERING" : "PHASE 04 : ENGINEERING"}`}</span>
-            <h2 className="mt-2 font-headline-lg">{id ? "Teknologi yang Digunakan" : "Technical Stack"}</h2>
-          </div>
-          <div className="lg:col-span-7">
-            <div className="flex flex-wrap gap-2">
-              {item.stack.map((s) => (
-                <span key={s} className="border border-surface-dim/30 px-3 py-2 font-label-md">
-                  {s}
-                </span>
+            {/* engineering points */}
+
+            <div className="mt-14 border-t border-white/15">
+              {Array.from({ length: item.contentCount.engineering }).map((_, index) => (
+                <EngineeringRow
+                  key={index}
+                  number={index + 1}
+                  title={t(`${item.key}.engineeringPoints.${index}.title`)}
+                  description={t(`${item.key}.engineeringPoints.${index}.description`)}
+                />
               ))}
             </div>
-            {facts.length > 0 && (
-              <div className="mt-8 flex flex-col gap-2">
-                {facts.map(({ value, index }) => (
-                  <div key={value} className="bg-surface/5 p-4 font-body-sm text-surface-dim">
-                    {t(`${item.key}.facts.${index}`)}
-                  </div>
+
+            {/* stack */}
+
+            <div className="mt-16">
+              <p className="text-[10px] font-semibold tracking-[0.18em] text-white/35 uppercase">// Technology</p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {item.stack.map((technology) => (
+                  <span
+                    key={technology}
+                    className="border border-white/15 px-3 py-2 text-[11px] font-medium tracking-[0.02em] text-white/65"
+                  >
+                    {technology}
+                  </span>
                 ))}
               </div>
-            )}
-
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full bg-primary-container px-margin py-space-xl md:px-margin-tablet lg:px-margin-desktop">
-        <div className="mx-auto max-w-7xl">
-          <span className="font-label-sm tracking-widest uppercase">{`// ${id ? "TAHAP 05 : HASIL" : "PHASE 05 : OUTCOME"}`}</span>
-          <h2 className="mt-4 max-w-5xl font-display-lg-mobile tracking-tight uppercase md:font-display-lg">{t(`${item.key}.outcome`)}</h2>
+      {/* =====================================================
+          OUTCOME
+      ====================================================== */}
+
+      <Section number="06" label={id ? "Hasil" : "Outcome"} muted>
+        <SectionEyebrow>{id ? "Hasil proyek" : "Project outcome"}</SectionEyebrow>
+
+        <div className="mt-5 grid gap-10 lg:grid-cols-12">
+          <h2 className="max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:col-span-7">
+            {t(`${item.key}.outcomeTitle`)}
+          </h2>
+
+          <div className="lg:col-span-5 lg:pt-1">
+            <p className="max-w-xl text-base leading-[1.75] text-black/60 md:text-lg">{t(`${item.key}.outcome`)}</p>
+
+            <div className="mt-8 flex items-center gap-3">
+              <span className="h-2 w-2 bg-primary" />
+
+              <span className="text-[9px] font-semibold tracking-[0.16em] text-black/40 uppercase">{code} / RisenDev</span>
+            </div>
+          </div>
         </div>
-      </section>
+      </Section>
+
       <ProjectCTA />
     </PageShell>
+  );
+}
+
+/* ============================================================
+   COMPONENTS
+============================================================ */
+
+function Section({
+  number,
+  label,
+  muted = false,
+  children,
+}: {
+  number: string;
+  label: string;
+  muted?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className={`px-5 py-20 text-[#1C1C18] md:px-10 md:py-24 lg:px-16 ${muted ? "bg-[#EFEBE2]" : "bg-[#FAF8F2]"}`}>
+      <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-12">
+        <SectionMarker number={number} label={label} />
+
+        <div className="lg:col-span-9">{children}</div>
+      </div>
+    </section>
+  );
+}
+
+function SectionMarker({ number, label, dark = false }: { number: string; label: string; dark?: boolean }) {
+  return (
+    <div className="lg:col-span-3">
+      <div className="flex items-center gap-3">
+        <span className={`text-[10px] font-semibold tracking-[0.14em] ${dark ? "text-[#FF4F00]" : "text-primary"}`}>{number}</span>
+
+        <span className={`h-px w-8 ${dark ? "bg-white/20" : "bg-black/20"}`} />
+
+        <span className={`text-[10px] font-semibold tracking-[0.16em] uppercase ${dark ? "text-white/35" : "text-black/40"}`}>{label}</span>
+      </div>
+    </div>
+  );
+}
+
+function SectionEyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
+  return (
+    <p className={`text-[10px] font-semibold tracking-[0.18em] uppercase ${dark ? "text-black/65" : "text-primary"}`}>// {children}</p>
+  );
+}
+
+function ContentRow({ number, title, description }: { number: number; title: string; description: string }) {
+  return (
+    <div className="group grid gap-3 border-b border-black/15 py-6 md:grid-cols-12 md:items-start md:gap-6 md:py-7">
+      <span className="text-[10px] font-semibold tracking-[0.12em] text-primary md:col-span-1">{String(number).padStart(2, "0")}</span>
+
+      <h3 className="text-xl leading-[1.15] font-semibold tracking-[-0.025em] md:col-span-4 md:text-2xl">{title}</h3>
+
+      <p className="max-w-xl text-sm leading-[1.65] text-black/55 md:col-span-6 md:text-base">{description}</p>
+
+      <span className="hidden justify-self-end text-black/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary md:block">
+        ↗
+      </span>
+    </div>
+  );
+}
+
+function EngineeringRow({ number, title, description }: { number: number; title: string; description: string }) {
+  return (
+    <div className="grid gap-3 border-b border-white/15 py-6 md:grid-cols-12 md:items-start md:gap-6 md:py-7">
+      <span className="text-[10px] font-semibold tracking-[0.12em] text-[#FF4F00] md:col-span-1">{String(number).padStart(2, "0")}</span>
+
+      <h3 className="text-xl leading-[1.15] font-semibold tracking-[-0.025em] text-white md:col-span-4 md:text-2xl">{title}</h3>
+
+      <p className="max-w-xl text-sm leading-[1.65] text-white/50 md:col-span-6 md:text-base">{description}</p>
+    </div>
+  );
+}
+
+function SolutionItem({ number, title, description }: { number: number; title: string; description: string }) {
+  return (
+    <div className="border-b border-black/25 py-6 md:border-r md:px-5">
+      <span className="text-[9px] font-semibold tracking-[0.14em] text-black/45">{String(number).padStart(2, "0")}</span>
+
+      <h3 className="mt-6 text-2xl font-semibold tracking-[-0.035em]">{title}</h3>
+
+      <p className="mt-2 max-w-[220px] text-sm leading-[1.55] text-black/60">{description}</p>
+    </div>
+  );
+}
+
+function MetaRow({ label, value, last = false }: { label: string; value: string; last?: boolean }) {
+  return (
+    <div className={`grid grid-cols-[90px_1fr] gap-5 py-3 ${!last ? "border-b border-black/10" : ""}`}>
+      <span className="text-[9px] font-semibold tracking-[0.14em] text-black/35 uppercase">{label}</span>
+
+      <span className="text-sm leading-[1.5] font-medium">{value}</span>
+    </div>
   );
 }
