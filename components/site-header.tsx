@@ -72,9 +72,9 @@ export function SiteHeader() {
                 RisenDev
               </span>
             </Link>
-            <span className="hidden text-[11px] font-medium tracking-[0.08em] text-[#5F5E5E] uppercase xl:inline-block">
+            {/* <span className="hidden text-[11px] font-medium tracking-[0.08em] text-[#5F5E5E] uppercase xl:inline-block">
               [Edisi Rekayasa Sistem 2026]
-            </span>
+            </span> */}
           </div>
 
           <nav aria-label={id ? "Navigasi utama" : "Main navigation"} className="hidden items-center gap-8 lg:flex">
@@ -101,10 +101,10 @@ export function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <div className="hidden items-center gap-2 bg-[#F1EEE7] px-3 py-1.5 sm:flex" aria-label="Availability">
+            {/* <div className="hidden items-center gap-2 bg-[#F1EEE7] px-3 py-1.5 sm:flex" aria-label="Availability">
               <span className="h-2 w-2 animate-pulse bg-emerald-500" aria-hidden="true" />
               <span className="text-[11px] font-medium tracking-[0.08em] uppercase">{id ? "Beroperasi penuh" : "Available"}</span>
-            </div>
+            </div> */}
             <div className="flex border border-[#E5E2DB] bg-white p-0.5 text-[11px] font-semibold" aria-label="Language">
               {(["en", "id"] as const).map((lang) => (
                 <button
