@@ -1,29 +1,207 @@
 "use client";
-import {useLocale,useTranslations} from "next-intl";
-import {Link} from "@/i18n/navigation";
-import {cases} from "@/data/site";
+import { useLocale, useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { cases } from "@/data/site";
 
-export function HomeDesign(){
- const id=useLocale()==="id"; const t=useTranslations("Site.cases");
- const services=id?["Website bisnis","Sistem internal","Pengembangan sistem","Maintenance & deployment"]:["Business websites","Internal systems","System development","Maintenance & deployment"];
- const steps=id?[["01","Pahami masalah","Kami mulai dari alur kerja, pengguna, dan hambatan yang benar-benar terjadi."],["02","Rancang yang perlu","Scope dipadatkan ke fitur yang berguna, jelas, dan realistis untuk dijalankan."],["03","Bangun & uji","Implementasi dilakukan bertahap dengan feedback yang mudah dipahami."],["04","Launch & dukung","Sistem disiapkan untuk dipakai, dipantau, dan dikembangkan saat dibutuhkan."]]:[["01","Understand the problem","We start with the workflow, users, and friction that actually exist."],["02","Design what matters","Scope is reduced to useful, clear features that are realistic to operate."],["03","Build & test","Implementation moves in focused stages with feedback that is easy to understand."],["04","Launch & support","The system is prepared for real use, monitoring, and future development."]];
- return <main className="w-full bg-surface">
-  <section className="hero-grid min-h-[calc(100svh-5rem)] bg-primary-container px-margin py-8 text-on-surface md:px-margin-tablet lg:px-margin-desktop lg:py-12">
-   <div className="mx-auto flex min-h-[calc(100svh-9rem)] max-w-7xl flex-col justify-between">
-    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-on-surface/20 pb-4"><span className="eyebrow flex items-center gap-2"><i className="size-2 bg-on-surface"/>RISENDEV // DIGITAL STUDIO</span><span className="eyebrow">INDONESIA / REMOTE</span></div>
-    <div className="max-w-6xl py-14" data-hero-reveal><p className="eyebrow mb-6 inline-flex bg-on-surface px-3 py-2 text-surface">{id?"DESIGN + ENGINEERING":"DESIGN + ENGINEERING"}</p><h1 className="text-[clamp(3.25rem,8.6vw,7.4rem)] font-semibold leading-[.88] tracking-[-.065em] uppercase">{id?<>Website & sistem bisnis yang <span className="text-surface">jelas</span>, rapi, dan siap dipakai.</>:<>Clear, practical <span className="text-surface">websites</span> & business systems built to work.</>}</h1></div>
-    <div className="grid gap-6 border-t border-on-surface/20 pt-6 lg:grid-cols-12 lg:items-end"><p className="max-w-2xl text-lg leading-relaxed lg:col-span-7">{id?"Kami membantu bisnis mengubah proses manual dan ide digital menjadi website atau aplikasi yang mudah dipahami pengguna—tanpa fitur berlebihan.":"We turn manual workflows and digital ideas into websites and applications people can understand and use—without unnecessary features."}</p><div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end"><Link href="/work" className="btn-ghost">{id?"Lihat hasil kerja":"View work"} ↘</Link><Link href="/start-a-project" className="btn-ink">{id?"Ceritakan project":"Tell us your project"} ↗</Link></div></div>
-   </div>
-  </section>
+export function HomeDesign() {
+  const id = useLocale() === "id";
+  const t = useTranslations("Site.cases");
+  const services = id
+    ? ["Website bisnis", "Sistem internal", "Pengembangan sistem", "Maintenance & deployment"]
+    : ["Business websites", "Internal systems", "System development", "Maintenance & deployment"];
+  const steps = id
+    ? [
+        ["01", "Pahami masalah", "Kami mulai dari alur kerja, pengguna, dan hambatan yang benar-benar terjadi."],
+        ["02", "Rancang yang perlu", "Scope dipadatkan ke fitur yang berguna, jelas, dan realistis untuk dijalankan."],
+        ["03", "Bangun & uji", "Implementasi dilakukan bertahap dengan feedback yang mudah dipahami."],
+        ["04", "Launch & dukung", "Sistem disiapkan untuk dipakai, dipantau, dan dikembangkan saat dibutuhkan."],
+      ]
+    : [
+        ["01", "Understand the problem", "We start with the workflow, users, and friction that actually exist."],
+        ["02", "Design what matters", "Scope is reduced to useful, clear features that are realistic to operate."],
+        ["03", "Build & test", "Implementation moves in focused stages with feedback that is easy to understand."],
+        ["04", "Launch & support", "The system is prepared for real use, monitoring, and future development."],
+      ];
+  return (
+    <main className="w-full bg-surface">
+      <section className="hero-grid min-h-[calc(100svh-5rem)] bg-primary-container px-margin py-8 text-on-surface md:px-margin-tablet lg:px-margin-desktop lg:py-12">
+        <div className="mx-auto flex min-h-[calc(100svh-9rem)] max-w-7xl flex-col justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-on-surface/20 pb-4">
+            <span className="eyebrow flex items-center gap-2">
+              <i className="size-2 bg-on-surface" />
+              RISENDEV // DIGITAL STUDIO
+            </span>
+            <span className="eyebrow">INDONESIA / REMOTE</span>
+          </div>
+          <div className="max-w-6xl py-14" data-hero-reveal>
+            <p className="eyebrow mb-6 inline-flex bg-on-surface px-3 py-2 text-surface">
+              {id ? "DESIGN + ENGINEERING" : "DESIGN + ENGINEERING"}
+            </p>
+            <h1 className="text-[clamp(3.25rem,8.6vw,7.4rem)] leading-[.88] font-semibold tracking-[-.065em] uppercase">
+              {id ? (
+                <>
+                  Website & sistem bisnis yang <span className="text-surface">jelas</span>, rapi, dan siap dipakai.
+                </>
+              ) : (
+                <>
+                  Clear, practical <span className="text-surface">websites</span> & business systems built to work.
+                </>
+              )}
+            </h1>
+          </div>
+          <div className="grid gap-6 border-t border-on-surface/20 pt-6 lg:grid-cols-12 lg:items-end">
+            <p className="max-w-2xl text-lg leading-relaxed lg:col-span-7">
+              {id
+                ? "Kami membantu bisnis mengubah proses manual dan ide digital menjadi website atau aplikasi yang mudah dipahami pengguna—tanpa fitur berlebihan."
+                : "We turn manual workflows and digital ideas into websites and applications people can understand and use—without unnecessary features."}
+            </p>
+            <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
+              <Link href="/work" className="btn-ghost">
+                {id ? "Lihat hasil kerja" : "View work"} ↘
+              </Link>
+              <Link href="/start-a-project" className="btn-ink">
+                {id ? "Ceritakan project" : "Tell us your project"} ↗
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <section className="px-margin py-24 md:px-margin-tablet md:py-36 lg:px-margin-desktop"><div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-12"><div className="lg:col-span-4"><p className="eyebrow text-primary">[01 / {id?"APA YANG KAMI BANGUN":"WHAT WE BUILD"}]</p></div><div className="lg:col-span-8"><h2 className="max-w-4xl text-[clamp(2.2rem,5vw,4.5rem)] font-medium leading-[.98] tracking-[-.05em]">{id?"Teknologi seharusnya membuat pekerjaan lebih sederhana, bukan menambah pekerjaan baru.":"Technology should make work simpler, not create more work."}</h2><div className="mt-12 grid gap-px bg-on-surface/20 sm:grid-cols-2">{services.map((s,i)=><Link href="/services" key={s} className="group flex min-h-28 items-end justify-between bg-surface-container-low p-5 transition-all duration-300 hover:bg-primary/10 hover:ring-1 hover:ring-inset hover:ring-primary/35"><span className="text-lg font-medium text-on-surface transition-colors group-hover:text-primary">{s}</span><span className="text-primary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">0{i+1} ↗</span></Link>)}</div></div></div></section>
+      <section className="px-margin py-24 md:px-margin-tablet md:py-36 lg:px-margin-desktop">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <p className="eyebrow text-primary">[01 / {id ? "APA YANG KAMI BANGUN" : "WHAT WE BUILD"}]</p>
+          </div>
+          <div className="lg:col-span-8">
+            <h2 className="max-w-4xl text-[clamp(2.2rem,5vw,4.5rem)] leading-[.98] font-medium tracking-[-.05em]">
+              {id
+                ? "Teknologi seharusnya membuat pekerjaan lebih sederhana, bukan menambah pekerjaan baru."
+                : "Technology should make work simpler, not create more work."}
+            </h2>
+            <div className="mt-12 grid gap-3 sm:grid-cols-2">
+              {services.map((s, i) => (
+                <Link
+                  href="/services"
+                  key={s}
+                  className="group flex min-h-28 items-end justify-between rounded-2xl bg-surface-container-high p-5 transition-all duration-300 hover:bg-primary/10 hover:ring-1 hover:ring-primary/35 hover:ring-inset"
+                >
+                  <span className="text-lg font-medium text-on-surface transition-colors group-hover:text-primary">{s}</span>
+                  <span className="text-primary transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">0{i + 1} ↗</span>
+                </Link>
+              ))}
+            </div>{" "}
+          </div>
+        </div>
+      </section>
 
-  <section className="bg-inverse-surface px-margin py-24 text-inverse-on-surface md:px-margin-tablet md:py-36 lg:px-margin-desktop"><div className="mx-auto max-w-7xl"><div className="grid gap-8 lg:grid-cols-12"><p className="eyebrow text-primary-fixed lg:col-span-4">[02 / {id?"CARA KERJA":"HOW IT WORKS"}]</p><h2 className="text-[clamp(2.2rem,5vw,4.2rem)] font-medium leading-none tracking-[-.05em] lg:col-span-8">{id?"Dari masalah ke sistem yang siap digunakan, dalam empat tahap yang jelas.":"From problem to production, in four clear stages."}</h2></div><div className="mt-14 grid gap-px bg-white/15 md:grid-cols-2 lg:grid-cols-4">{steps.map(([n,title,desc])=><article key={n} className="group min-h-64 bg-inverse-surface p-6 transition-colors hover:bg-white/[.06]"><span className="text-5xl font-semibold tracking-[-.06em] text-primary-fixed">{n}</span><h3 className="mt-14 text-xl font-medium">{title}</h3><p className="mt-3 text-sm leading-relaxed text-surface-dim">{desc}</p></article>)}</div></div></section>
+      <section className="bg-inverse-surface px-margin py-24 text-inverse-on-surface md:px-margin-tablet md:py-36 lg:px-margin-desktop">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-8 lg:grid-cols-12">
+            <p className="eyebrow text-primary-fixed lg:col-span-4">[02 / {id ? "CARA KERJA" : "HOW IT WORKS"}]</p>
+            <h2 className="text-[clamp(2.2rem,5vw,4.2rem)] leading-none font-medium tracking-[-.05em] lg:col-span-8">
+              {id
+                ? "Dari masalah ke sistem yang siap digunakan, dalam empat tahap yang jelas."
+                : "From problem to production, in four clear stages."}
+            </h2>
+          </div>
+          <div className="mt-14 grid gap-px bg-white/15 md:grid-cols-2 lg:grid-cols-4">
+            {steps.map(([n, title, desc]) => (
+              <article key={n} className="group min-h-64 bg-inverse-surface p-6 transition-colors hover:bg-white/[.06]">
+                <span className="text-5xl font-semibold tracking-[-.06em] text-primary-fixed">{n}</span>
+                <h3 className="mt-14 text-xl font-medium">{title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-surface-dim">{desc}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-  <section id="projects" className="px-margin py-24 md:px-margin-tablet md:py-36 lg:px-margin-desktop"><div className="mx-auto max-w-7xl"><div className="mb-12 grid gap-6 lg:grid-cols-12 lg:items-end"><div className="lg:col-span-8"><p className="eyebrow text-primary">[03 / {id?"PORTOFOLIO":"SELECTED WORK"}]</p><h2 className="mt-4 text-[clamp(2.5rem,6vw,5.5rem)] font-semibold leading-[.92] tracking-[-.06em] uppercase">{id?"Dibangun untuk kebutuhan nyata.":"Built for real needs."}</h2></div><p className="max-w-md text-on-surface-variant lg:col-span-4">{id?"Beberapa aplikasi dan sistem dari data portofolio RisenDev. Tanpa angka atau klaim yang dibuat-buat.":"A selection of applications and systems from the RisenDev portfolio. No invented metrics or claims."}</p></div><div className="border-t border-on-surface">{cases.slice(0,4).map((c,i)=><Link href={`/work/${c.slug}`} key={c.key} className="group grid gap-4 border-b border-on-surface py-7 transition-all hover:bg-surface-container-low md:grid-cols-12 md:items-center md:px-4"><span className="text-3xl font-semibold tracking-[-.05em] text-primary md:col-span-1">0{i+1}</span><div className="md:col-span-6"><h3 className="text-2xl font-medium tracking-[-.035em] md:text-3xl">{t(`${c.key}.title`)}</h3><p className="mt-1 max-w-xl text-sm text-on-surface-variant">{t(`${c.key}.summary`)}</p></div><span className="eyebrow text-on-surface-variant md:col-span-3">{t(`${c.key}.category`)}</span><span className="justify-self-end text-2xl transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 md:col-span-2">↗</span></Link>)}</div><div className="mt-8"><Link href="/work" className="btn-ghost">{id?"Semua portofolio":"All work"} ↗</Link></div></div></section>
+      <section id="projects" className="px-margin py-24 md:px-margin-tablet md:py-36 lg:px-margin-desktop">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 grid gap-6 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-8">
+              <p className="eyebrow text-primary">[03 / {id ? "PORTOFOLIO" : "SELECTED WORK"}]</p>
+              <h2 className="mt-4 text-[clamp(2.5rem,6vw,5.5rem)] leading-[.92] font-semibold tracking-[-.06em] uppercase">
+                {id ? "Dibangun untuk kebutuhan nyata." : "Built for real needs."}
+              </h2>
+            </div>
+            <p className="max-w-md text-on-surface-variant lg:col-span-4">
+              {id
+                ? "Beberapa aplikasi dan sistem dari data portofolio RisenDev. Tanpa angka atau klaim yang dibuat-buat."
+                : "A selection of applications and systems from the RisenDev portfolio. No invented metrics or claims."}
+            </p>
+          </div>
+          <div className="border-t border-on-surface">
+            {cases.slice(0, 4).map((c, i) => (
+              <Link
+                href={`/work/${c.slug}`}
+                key={c.key}
+                className="group grid gap-4 border-b border-on-surface py-7 transition-all hover:bg-surface-container-low md:grid-cols-12 md:items-center md:px-4"
+              >
+                <span className="text-3xl font-semibold tracking-[-.05em] text-primary md:col-span-1">0{i + 1}</span>
+                <div className="md:col-span-6">
+                  <h3 className="text-2xl font-medium tracking-[-.035em] md:text-3xl">{t(`${c.key}.title`)}</h3>
+                  <p className="mt-1 max-w-xl text-sm text-on-surface-variant">{t(`${c.key}.summary`)}</p>
+                </div>
+                <span className="eyebrow text-on-surface-variant md:col-span-3">{t(`${c.key}.category`)}</span>
+                <span className="justify-self-end text-2xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 md:col-span-2">
+                  ↗
+                </span>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-8">
+            <Link href="/work" className="btn-ghost">
+              {id ? "Semua portofolio" : "All work"} ↗
+            </Link>
+          </div>
+        </div>
+      </section>
 
-  <section className="bg-surface-container-low px-margin py-24 md:px-margin-tablet lg:px-margin-desktop"><div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12"><p className="eyebrow text-primary lg:col-span-4">[04 / RISENDEV]</p><div className="lg:col-span-8"><h2 className="text-[clamp(2.1rem,4.5vw,4rem)] font-medium leading-none tracking-[-.05em]">{id?"Partner digital yang bicara bisnis dulu, teknologi setelahnya.":"A digital partner that speaks business first, technology second."}</h2><p className="mt-7 max-w-2xl text-lg leading-relaxed text-on-surface-variant">{id?"Kami menjaga komunikasi tetap sederhana, scope tetap fokus, dan hasil akhir tetap mudah digunakan oleh tim non-tech maupun tech.":"We keep communication simple, scope focused, and the final product easy to use for both non-technical and technical teams."}</p><Link href="/studio" className="mt-8 inline-flex border-b-2 border-primary pb-1 text-sm font-semibold uppercase tracking-wider hover:text-primary">{id?"Kenal RisenDev":"About RisenDev"} ↗</Link></div></div></section>
+      <section className="bg-surface-container-low px-margin py-24 md:px-margin-tablet lg:px-margin-desktop">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12">
+          <p className="eyebrow text-primary lg:col-span-4">[04 / RISENDEV]</p>
+          <div className="lg:col-span-8">
+            <h2 className="text-[clamp(2.1rem,4.5vw,4rem)] leading-none font-medium tracking-[-.05em]">
+              {id
+                ? "Partner digital yang bicara bisnis dulu, teknologi setelahnya."
+                : "A digital partner that speaks business first, technology second."}
+            </h2>
+            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-on-surface-variant">
+              {id
+                ? "Kami menjaga komunikasi tetap sederhana, scope tetap fokus, dan hasil akhir tetap mudah digunakan oleh tim non-tech maupun tech."
+                : "We keep communication simple, scope focused, and the final product easy to use for both non-technical and technical teams."}
+            </p>
+            <Link
+              href="/studio"
+              className="mt-8 inline-flex border-b-2 border-primary pb-1 text-sm font-semibold tracking-wider uppercase hover:text-primary"
+            >
+              {id ? "Kenal RisenDev" : "About RisenDev"} ↗
+            </Link>
+          </div>
+        </div>
+      </section>
 
-  <section className="bg-primary px-margin py-24 text-on-primary md:px-margin-tablet md:py-32 lg:px-margin-desktop"><div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12 lg:items-end"><div className="lg:col-span-8"><p className="eyebrow mb-5">[05 / {id?"MULAI":"START"}]</p><h2 className="text-[clamp(3rem,7vw,6.5rem)] font-semibold leading-[.9] tracking-[-.06em] uppercase">{id?"Punya ide atau proses yang ingin dirapikan?":"Have an idea or workflow to improve?"}</h2></div><div className="lg:col-span-4"><p className="mb-6 max-w-md text-lg">{id?"Ceritakan masalahnya. Kami bantu menentukan langkah yang masuk akal.":"Tell us the problem. We’ll help define a practical next step."}</p><Link href="/start-a-project" className="btn-ink">{id?"Mulai diskusi":"Start a conversation"} ↗</Link></div></div></section>
- </main>
+      <section className="bg-primary px-margin py-24 text-on-primary md:px-margin-tablet md:py-32 lg:px-margin-desktop">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-8">
+            <p className="eyebrow mb-5">[05 / {id ? "MULAI" : "START"}]</p>
+            <h2 className="text-[clamp(3rem,7vw,6.5rem)] leading-[.9] font-semibold tracking-[-.06em] uppercase">
+              {id ? "Punya ide atau proses yang ingin dirapikan?" : "Have an idea or workflow to improve?"}
+            </h2>
+          </div>
+          <div className="lg:col-span-4">
+            <p className="mb-6 max-w-md text-lg">
+              {id
+                ? "Ceritakan masalahnya. Kami bantu menentukan langkah yang masuk akal."
+                : "Tell us the problem. We’ll help define a practical next step."}
+            </p>
+            <Link href="/start-a-project" className="btn-ink">
+              {id ? "Mulai diskusi" : "Start a conversation"} ↗
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }
