@@ -27,7 +27,7 @@ const principles = [
     "04",
     "Fast response",
     "Easy communication & quick replies",
-    "You talk directly with the team building the system. Questions and blockers get answered in minutes, with no ticket-queue bureaucracy.",
+    "You talk directly with the team building the system. Communication stays direct so questions and blockers can be handled without unnecessary layers.",
   ],
 ] as const;
 
@@ -52,7 +52,7 @@ const roles = [
     "Role 03",
     "Interface & Experience Designer",
     "Makes complex systems feel simple for staff and customers on any device.",
-    ["Staff learn it in about 15 minutes", "Clear screens, no confusing menus", "Works well on phones and desktops"],
+    ["Clear flows for day-to-day users", "Clear screens, no confusing menus", "Works well on phones and desktops"],
   ],
 ] as const;
 
@@ -60,8 +60,8 @@ export function AboutDesign() {
   return (
     <PageShell>
       {/* MANIFESTO */}
-      <section className="border-b border-[#111111] px-5 pt-12 pb-14 md:px-12 md:pt-20 md:pb-20">
-        <div className="inline-flex items-center gap-2 bg-[#F1EEE7] px-3 py-1.5">
+      <section className="border-b border-[#1c1c18] px-5 pt-20 pb-24 md:px-12 lg:px-20 md:pt-28 md:pb-32 lg:pt-36 lg:pb-44">
+        <div className="inline-flex items-center gap-2 bg-[#f1eee7] px-3 py-1.5">
           <span className="h-2 w-2 bg-[#A93100]" aria-hidden="true" />
           <span className="eyebrow">
             <T>{"Technology & business-system development partner"}</T>
@@ -71,14 +71,14 @@ export function AboutDesign() {
           <T>{"We build software the honest, simple, and durable way."}</T>
         </h1>
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-12">
-          <div className="bg-[#F1EEE7] p-5 md:col-span-4">
-            <p className="eyebrow text-[#A93100]">
+          <div className="bg-[#f1eee7] p-5 md:col-span-4">
+            <p className="eyebrow text-[#a93100]">
               <T>{"[ Our approach ]"}</T>
             </p>
             <p className="mt-2 text-xs font-semibold tracking-[0.06em] uppercase">
               <T>{"Business-focused technology partner"}</T>
             </p>
-            <p className="mt-1 text-sm text-[#5F5E5E]">
+            <p className="mt-1 text-sm text-[#5c4037]">
               <T>{"Ready to support your daily operations without friction."}</T>
             </p>
           </div>
@@ -90,17 +90,17 @@ export function AboutDesign() {
                 }
               </T>
             </p>
-            <div className="mt-5 grid grid-cols-1 gap-px border border-[#111111] bg-[#111111] sm:grid-cols-2">
-              <div className="bg-[#F6F3EC] p-4">
-                <p className="text-xs font-semibold tracking-[0.06em] text-[#A93100] uppercase">
+            <div className="mt-5 grid grid-cols-1 gap-px border border-[#1c1c18] bg-[#31312c] sm:grid-cols-2">
+              <div className="bg-[#f6f3ec] p-4">
+                <p className="text-xs font-semibold tracking-[0.06em] text-[#a93100] uppercase">
                   <T>{"Direct communication"}</T>
                 </p>
                 <p className="mt-1 text-sm">
                   <T>{"Consult directly with the people building the system."}</T>
                 </p>
               </div>
-              <div className="bg-[#F6F3EC] p-4">
-                <p className="text-xs font-semibold tracking-[0.06em] text-[#A93100] uppercase">
+              <div className="bg-[#f6f3ec] p-4">
+                <p className="text-xs font-semibold tracking-[0.06em] text-[#a93100] uppercase">
                   <T>{"100% ownership"}</T>
                 </p>
                 <p className="mt-1 text-sm">
@@ -113,21 +113,21 @@ export function AboutDesign() {
       </section>
 
       {/* COLLABORATION METHOD */}
-      <section className="border-b border-[#111111] bg-[#F6F3EC] px-5 py-14 md:px-12 md:py-20">
-        <p className="eyebrow text-[#A93100]">
+      <section className="border-b border-[#1c1c18] bg-[#f6f3ec] px-5 py-20 md:px-12 lg:px-20 md:py-28 lg:py-44">
+        <p className="eyebrow text-[#a93100]">
           <T>{"[ Collaboration method ]"}</T>
         </p>
         <div className="mt-3 grid grid-cols-1 items-end gap-6 md:grid-cols-12">
           <h2 className="font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:col-span-7 md:text-4xl">
             <T>{"How we work: direct, fast & clear"}</T>
           </h2>
-          <p className="text-[15px] leading-relaxed text-[#5F5E5E] md:col-span-5">
+          <p className="text-[15px] leading-relaxed text-[#5c4037] md:col-span-5">
             <T>{"Compare the convoluted conventional agency flow with working directly alongside the RisenDev core team."}</T>
           </p>
         </div>
-        <div className="mt-8 border border-[#111111] bg-[#FFFDF7] p-5 opacity-70 md:p-6">
+        <div className="mt-8 border border-[#1c1c18] bg-white p-5 opacity-70 md:p-6">
           <div className="flex flex-col justify-between gap-2 sm:flex-row">
-            <p className="eyebrow text-[#5F5E5E]">
+            <p className="eyebrow text-[#5c4037]">
               <T>{"[ Old model / generic agency ]"}</T>
             </p>
             <p className="eyebrow text-[#B3261E]">
@@ -142,8 +142,8 @@ export function AboutDesign() {
               "Third-party vendors",
               "Bugs & delays",
             ].map((s, i) => (
-              <div key={s} className="bg-[#F6F3EC] p-3">
-                <p className="eyebrow text-[#5F5E5E]">
+              <div key={s} className="bg-[#f6f3ec] p-3">
+                <p className="eyebrow text-[#5c4037]">
                   <T>{"Layer"}</T> {i}
                 </p>
                 <p className="mt-1 text-xs font-semibold">
@@ -153,7 +153,7 @@ export function AboutDesign() {
             ))}
           </div>
         </div>
-        <div className="mt-4 border border-[#111111] bg-[#111111] p-5 text-[#F3F0E9] md:p-6">
+        <div className="mt-4 border border-[#1c1c18] bg-[#31312c] p-5 text-[#f3f0e9] md:p-6">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 bg-[#FF4F00]" aria-hidden="true" />
             <p className="eyebrow">
@@ -173,21 +173,21 @@ export function AboutDesign() {
             )}
           </ol>
         </div>
-        <div className="mt-8 grid grid-cols-1 gap-px border border-[#111111] bg-[#111111] sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-px border border-[#1c1c18] bg-[#31312c] sm:grid-cols-2 lg:grid-cols-4">
           {[
             ["Nationwide reach", "All of Indonesia", "Responsive online coordination, tidy and reachable anytime."],
             ["Guarded quality", "Focus on 2–3 clients", "We limit projects so every business gets maximum attention."],
             ["Easy communication", "Direct solution talks", "Speak straight with the system designer, no middleman distortion."],
             ["100% ownership", "Full control in your hands", "All systems, databases, and account access handed over fully."],
           ].map(([k, v, d]) => (
-            <div key={k} className="bg-[#FFFDF7] p-5">
-              <p className="eyebrow text-[#5F5E5E]">
+            <div key={k} className="bg-white p-5">
+              <p className="eyebrow text-[#5c4037]">
                 [<T>{k}</T>]
               </p>
               <p className="mt-2 font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight">
                 <T>{v}</T>
               </p>
-              <p className="mt-1 text-sm text-[#5F5E5E]">
+              <p className="mt-1 text-sm text-[#5c4037]">
                 <T>{d}</T>
               </p>
             </div>
@@ -196,7 +196,7 @@ export function AboutDesign() {
       </section>
 
       {/* DARK PRINCIPLES */}
-      <section className="border-b border-[#111111] bg-[#111111] px-5 py-14 text-[#F3F0E9] md:px-12 md:py-20">
+      <section className="border-b border-[#1c1c18] bg-[#31312c] px-5 py-14 text-[#f3f0e9] md:px-12 md:py-20">
         <p className="eyebrow text-[#FF4F00]">
           <T>{"Our commitment to your business"}</T>
         </p>
@@ -205,7 +205,7 @@ export function AboutDesign() {
         </h2>
         <div className="mt-10 grid grid-cols-1 gap-px border border-[#F3F0E9]/25 bg-[#F3F0E9]/25 md:grid-cols-2">
           {principles.map(([n, tag, title, desc]) => (
-            <div key={n} className="flex flex-col bg-[#111111] p-6 md:p-8">
+            <div key={n} className="flex flex-col bg-[#31312c] p-6 md:p-8">
               <div className="flex items-center justify-between">
                 <span className="eyebrow text-[#FF4F00]">[ {n} ]</span>
                 <span className="eyebrow text-[#B9B5AE]">
@@ -224,33 +224,33 @@ export function AboutDesign() {
       </section>
 
       {/* TEAM */}
-      <section className="border-b border-[#111111] px-5 py-14 md:px-12 md:py-20">
-        <p className="eyebrow text-[#A93100]">
+      <section className="border-b border-[#1c1c18] px-5 py-20 md:px-12 lg:px-20 md:py-28 lg:py-44">
+        <p className="eyebrow text-[#a93100]">
           <T>{"[ Dedicated core team ]"}</T>
         </p>
         <div className="mt-3 grid grid-cols-1 items-end gap-6 md:grid-cols-12">
           <h2 className="font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:col-span-8 md:text-4xl">
             <T>{"The core team guarding your system's success"}</T>
           </h2>
-          <p className="text-[15px] text-[#5F5E5E] md:col-span-4">
+          <p className="text-[15px] text-[#5c4037] md:col-span-4">
             <T>{"Guided by a team blending technical reliability, business efficiency, and user ease."}</T>
           </p>
         </div>
-        <div className="mt-8 grid grid-cols-1 gap-px border border-[#111111] bg-[#111111] lg:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-px border border-[#1c1c18] bg-[#31312c] lg:grid-cols-3">
           {roles.map(([role, title, desc, points]) => (
-            <div key={role} className="flex flex-col bg-[#F1EEE7] p-6 md:p-8">
-              <p className="eyebrow text-[#A93100]">
+            <div key={role} className="flex flex-col bg-[#f1eee7] p-6 md:p-8">
+              <p className="eyebrow text-[#a93100]">
                 <T>{role}</T>
               </p>
               <h3 className="mt-3 font-[family-name:var(--font-geist-sans)] text-xl font-medium tracking-tight">
                 <T>{title}</T>
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#5F5E5E]">
+              <p className="mt-2 text-sm leading-relaxed text-[#5c4037]">
                 <T>{desc}</T>
               </p>
               <ul className="mt-4 list-none space-y-2 p-0">
                 {(points as readonly string[]).map((pt) => (
-                  <li key={pt} className="bg-[#FFFDF7] p-2.5 text-sm">
+                  <li key={pt} className="bg-white p-2.5 text-sm">
                     <T>{pt}</T>
                   </li>
                 ))}
@@ -261,14 +261,14 @@ export function AboutDesign() {
       </section>
 
       {/* HANDOVER & GUARANTEE */}
-      <section className="border-b border-[#111111] bg-[#F6F3EC] px-5 py-14 md:px-12 md:py-20">
-        <p className="eyebrow text-[#A93100]">
+      <section className="border-b border-[#1c1c18] bg-[#f6f3ec] px-5 py-20 md:px-12 lg:px-20 md:py-28 lg:py-44">
+        <p className="eyebrow text-[#a93100]">
           <T>{"[ Post-release support ]"}</T>
         </p>
         <h2 className="mt-3 max-w-[20ch] font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:text-4xl">
           <T>{"Peace-of-mind guarantee & full post-release support"}</T>
         </h2>
-        <div className="mt-8 space-y-px border border-[#111111] bg-[#111111]">
+        <div className="mt-8 space-y-px border border-[#1c1c18] bg-[#31312c]">
           {[
             [
               "01",
@@ -289,25 +289,25 @@ export function AboutDesign() {
               "Rights: 100% yours",
             ],
           ].map(([n, title, desc, badge]) => (
-            <div key={n} className="grid grid-cols-1 gap-4 bg-[#FFFDF7] p-5 md:grid-cols-12 md:items-center md:p-6">
+            <div key={n} className="grid grid-cols-1 gap-4 bg-white p-5 md:grid-cols-12 md:items-center md:p-6">
               <div className="flex items-start gap-4 md:col-span-9">
-                <span className="font-[family-name:var(--font-geist-sans)] text-2xl font-semibold text-[#A93100]">{n}</span>
+                <span className="font-[family-name:var(--font-geist-sans)] text-2xl font-semibold text-[#a93100]">{n}</span>
                 <div>
                   <h3 className="font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight uppercase">
                     <T>{title}</T>
                   </h3>
-                  <p className="mt-1 max-w-2xl text-sm leading-relaxed text-[#5F5E5E]">
+                  <p className="mt-1 max-w-2xl text-sm leading-relaxed text-[#5c4037]">
                     <T>{desc}</T>
                   </p>
                 </div>
               </div>
-              <p className="bg-[#F1EEE7] px-4 py-2 text-[11px] font-semibold tracking-[0.06em] uppercase md:col-span-3 md:text-center">
+              <p className="bg-[#f1eee7] px-4 py-2 text-[11px] font-semibold tracking-[0.06em] uppercase md:col-span-3 md:text-center">
                 <T>{badge}</T>
               </p>
             </div>
           ))}
         </div>
-        <div className="mt-8 flex flex-col items-start gap-4 border border-[#111111] bg-[#FFFDF7] p-6 md:flex-row md:items-center">
+        <div className="mt-8 flex flex-col items-start gap-4 border border-[#1c1c18] bg-white p-6 md:flex-row md:items-center">
           <Image src="/img/logo.png" alt="RisenDev logo" width={56} height={56} className="object-contain mix-blend-multiply" />
           <div>
             <Image
@@ -317,7 +317,7 @@ export function AboutDesign() {
               height={73}
               className="h-auto w-44 object-contain mix-blend-multiply"
             />
-            <p className="mt-2 text-sm text-[#5F5E5E]">
+            <p className="mt-2 text-sm text-[#5c4037]">
               <T>{"Practical thinking. Careful engineering. Clear communication."}</T>
             </p>
           </div>

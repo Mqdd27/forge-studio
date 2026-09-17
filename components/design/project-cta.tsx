@@ -3,7 +3,7 @@ import { Link } from "@/i18n/navigation";
 export function ProjectCTA({ locale }: { locale?: string }) {
   const id = locale !== "en";
   return (
-    <section className="w-full border-t border-[#111111] bg-[#FF4F00] px-5 py-14 text-[#111111] md:px-12 md:py-20">
+    <section className="w-full border-t border-[#1c1c18] bg-[#FF4F00] px-5 py-14 text-[#1c1c18] md:px-12 md:py-20">
       <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
         <div className="lg:col-span-8">
           <p className="eyebrow mb-3 opacity-90">[Inisiasi Rekayasa Sistem // Kuota Q2 2026]</p>

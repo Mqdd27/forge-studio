@@ -3,16 +3,16 @@ import Image from "next/image";
 
 export default function RootNotFound() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#F2EFE8] p-6 text-[#111111] antialiased">
+    <div className="flex min-h-screen items-center justify-center bg-[#F2EFE8] p-6 text-[#1c1c18] antialiased">
       <main className="flex max-w-lg flex-col items-center justify-center text-center">
-        <div className="mb-6 flex h-16 w-16 items-center justify-center border border-[#111111] bg-[#FFFDF7]">
+        <div className="mb-6 flex h-16 w-16 items-center justify-center border border-[#1c1c18] bg-white">
           <Image src="/img/logo.png" alt="RisenDev" width={40} height={40} className="object-contain mix-blend-multiply" />
         </div>
-        <p className="eyebrow mb-3 text-[#A93100]">404 / Not found</p>
+        <p className="eyebrow mb-3 text-[#a93100]">404 / Not found</p>
         <h1 className="font-[family-name:var(--font-geist-sans)] text-3xl font-semibold tracking-tight uppercase sm:text-5xl">
           This page isn&apos;t in the system.
         </h1>
-        <p className="mt-4 text-base leading-relaxed text-[#5F5E5E]">
+        <p className="mt-4 text-base leading-relaxed text-[#5c4037]">
           The page you are looking for might have moved, or doesn&apos;t exist.
         </p>
         <Link href="/en" className="btn-forge mt-8">

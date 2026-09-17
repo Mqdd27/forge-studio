@@ -1,263 +1,29 @@
-import { PageShell } from "@/components/ui/page-shell";
-import { workCardData } from "@/data/work-presentation";
-import { cases } from "@/data/site";
-import { WorkCard } from "@/components/work-card";
-import { Link } from "@/i18n/navigation";
-import { DesignText as T } from "@/components/ui/design-text";
-import { ProjectCTA } from "@/components/design/project-cta";
+"use client";
+import {useLocale,useTranslations} from "next-intl";
+import {Link} from "@/i18n/navigation";
+import {cases} from "@/data/site";
 
-const problems = [
-  [
-    "Scattered data",
-    "Information spread across WhatsApp chats, stray Excel files, and piles of printed invoices with no single source of truth.",
-  ],
-  [
-    "Hard to monitor operations",
-    "Warehouse stock, customer order status, cash reports, or team assignments are not visible on one integrated screen.",
-  ],
-  ["Disconnected systems", "Website and bookkeeping don't talk to each other. Staff retype the same work manually, over and over."],
-  [
-    "Tangled manual bureaucracy",
-    "Many approval flows and data recaps could be shortened to a single click with an automated digital system.",
-  ],
-] as const;
+export function HomeDesign(){
+ const id=useLocale()==="id"; const t=useTranslations("Site.cases");
+ const services=id?["Website bisnis","Sistem internal","Pengembangan sistem","Maintenance & deployment"]:["Business websites","Internal systems","System development","Maintenance & deployment"];
+ const steps=id?[["01","Pahami masalah","Kami mulai dari alur kerja, pengguna, dan hambatan yang benar-benar terjadi."],["02","Rancang yang perlu","Scope dipadatkan ke fitur yang berguna, jelas, dan realistis untuk dijalankan."],["03","Bangun & uji","Implementasi dilakukan bertahap dengan feedback yang mudah dipahami."],["04","Launch & dukung","Sistem disiapkan untuk dipakai, dipantau, dan dikembangkan saat dibutuhkan."]]:[["01","Understand the problem","We start with the workflow, users, and friction that actually exist."],["02","Design what matters","Scope is reduced to useful, clear features that are realistic to operate."],["03","Build & test","Implementation moves in focused stages with feedback that is easy to understand."],["04","Launch & support","The system is prepared for real use, monitoring, and future development."]];
+ return <main className="w-full bg-surface">
+  <section className="hero-grid min-h-[calc(100svh-5rem)] bg-primary-container px-margin py-8 text-on-surface md:px-margin-tablet lg:px-margin-desktop lg:py-12">
+   <div className="mx-auto flex min-h-[calc(100svh-9rem)] max-w-7xl flex-col justify-between">
+    <div className="flex flex-wrap items-center justify-between gap-3 border-b border-on-surface/20 pb-4"><span className="eyebrow flex items-center gap-2"><i className="size-2 bg-on-surface"/>RISENDEV // DIGITAL STUDIO</span><span className="eyebrow">INDONESIA / REMOTE</span></div>
+    <div className="max-w-6xl py-14" data-hero-reveal><p className="eyebrow mb-6 inline-flex bg-on-surface px-3 py-2 text-surface">{id?"DESIGN + ENGINEERING":"DESIGN + ENGINEERING"}</p><h1 className="text-[clamp(3.25rem,8.6vw,7.4rem)] font-semibold leading-[.88] tracking-[-.065em] uppercase">{id?<>Website & sistem bisnis yang <span className="text-surface">jelas</span>, rapi, dan siap dipakai.</>:<>Clear, practical <span className="text-surface">websites</span> & business systems built to work.</>}</h1></div>
+    <div className="grid gap-6 border-t border-on-surface/20 pt-6 lg:grid-cols-12 lg:items-end"><p className="max-w-2xl text-lg leading-relaxed lg:col-span-7">{id?"Kami membantu bisnis mengubah proses manual dan ide digital menjadi website atau aplikasi yang mudah dipahami pengguna—tanpa fitur berlebihan.":"We turn manual workflows and digital ideas into websites and applications people can understand and use—without unnecessary features."}</p><div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end"><Link href="/work" className="btn-ghost">{id?"Lihat hasil kerja":"View work"} ↘</Link><Link href="/start-a-project" className="btn-ink">{id?"Ceritakan project":"Tell us your project"} ↗</Link></div></div>
+   </div>
+  </section>
 
-const phases = [
-  ["01", "Tell us the process", "We study the workflows, bottlenecks, and team needs currently running in the field."],
-  ["02", "Define the system", "Features, database relations, and interfaces designed precisely to need — no bloatware."],
-  ["03", "Build & test", "The app is programmed modularly, verified with the operations team, and refined."],
-  ["04", "Ready to use", "The system is deployed to production, direct training is given, and it's ready to lift business performance."],
-] as const;
+  <section className="px-margin py-24 md:px-margin-tablet md:py-36 lg:px-margin-desktop"><div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-12"><div className="lg:col-span-4"><p className="eyebrow text-primary">[01 / {id?"APA YANG KAMI BANGUN":"WHAT WE BUILD"}]</p></div><div className="lg:col-span-8"><h2 className="max-w-4xl text-[clamp(2.2rem,5vw,4.5rem)] font-medium leading-[.98] tracking-[-.05em]">{id?"Teknologi seharusnya membuat pekerjaan lebih sederhana, bukan menambah pekerjaan baru.":"Technology should make work simpler, not create more work."}</h2><div className="mt-12 grid gap-px bg-on-surface/20 sm:grid-cols-2">{services.map((s,i)=><Link href="/services" key={s} className="group flex min-h-28 items-end justify-between bg-surface-container-low p-5 hover:bg-on-surface hover:text-inverse-on-surface"><span className="text-lg font-medium">{s}</span><span className="text-primary transition-transform group-hover:-translate-y-1 group-hover:translate-x-1">0{i+1} ↗</span></Link>)}</div></div></div></section>
 
-export function HomeDesign() {
-  return (
-    <PageShell>
-      {/* HERO — asymmetric editorial */}
-      <section className="border-b border-[#111111] px-5 pt-12 pb-14 md:px-12 md:pt-20 md:pb-20">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
-          <div className="md:col-span-12">
-            <p data-hero-reveal className="eyebrow text-[#A93100]">
-              <T>{"RisenDev — Independent Digital Studio"}</T>
-            </p>
-            <p data-hero-reveal className="eyebrow mt-2 text-[#5F5E5E]">
-              <T>{"Indonesia — Available remotely [ 2026 ]"}</T>
-            </p>
-          </div>
-          <div className="md:col-span-10">
-            <h1
-              data-hero-reveal
-              className="font-[family-name:var(--font-geist-sans)] text-5xl leading-[0.95] font-semibold tracking-tight uppercase md:text-8xl"
-            >
-              <T>{"Websites & business apps that are neat, clear, and ready to use."}</T>
-            </h1>
-          </div>
-          <div className="md:col-span-5 md:col-start-1">
-            <p data-hero-reveal className="max-w-[45ch] text-base leading-relaxed text-[#5C4037] md:text-lg">
-              <T>{"RisenDev helps businesses build websites, internal systems, and web apps based on real needs — not templates."}</T>
-            </p>
-            <div data-hero-reveal className="mt-6 flex flex-wrap gap-3">
-              <Link href="/work" className="btn-ink">
-                <T>{"View Our Work"}</T> <span aria-hidden="true">↓</span>
-              </Link>
-              <Link href="/start-a-project" className="btn-forge">
-                <T>{"Start a Project"}</T> <span aria-hidden="true">↗</span>
-              </Link>
-            </div>
-          </div>
-          <div className="md:col-span-4 md:col-start-8">
-            <div className="border border-[#111111] bg-[#FFFDF7] p-5">
-              <p className="eyebrow text-[#A93100]">
-                <T>{"[ Our approach ]"}</T>
-              </p>
-              <p className="mt-2 text-xs font-semibold tracking-[0.06em] uppercase">
-                <T>{"Business-focused technology partner"}</T>
-              </p>
-              <p className="mt-1 text-sm text-[#5F5E5E]">
-                <T>{"Ready to support your daily operations without friction."}</T>
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+  <section className="bg-inverse-surface px-margin py-24 text-inverse-on-surface md:px-margin-tablet md:py-36 lg:px-margin-desktop"><div className="mx-auto max-w-7xl"><div className="grid gap-8 lg:grid-cols-12"><p className="eyebrow text-primary-fixed lg:col-span-4">[02 / {id?"CARA KERJA":"HOW IT WORKS"}]</p><h2 className="text-[clamp(2.2rem,5vw,4.2rem)] font-medium leading-none tracking-[-.05em] lg:col-span-8">{id?"Dari masalah ke sistem yang siap digunakan, dalam empat tahap yang jelas.":"From problem to production, in four clear stages."}</h2></div><div className="mt-14 grid gap-px bg-white/15 md:grid-cols-2 lg:grid-cols-4">{steps.map(([n,title,desc])=><article key={n} className="group min-h-64 bg-inverse-surface p-6 transition-colors hover:bg-white/[.06]"><span className="text-5xl font-semibold tracking-[-.06em] text-primary-fixed">{n}</span><h3 className="mt-14 text-xl font-medium">{title}</h3><p className="mt-3 text-sm leading-relaxed text-surface-dim">{desc}</p></article>)}</div></div></section>
 
-      {/* 01 — CONSTRUCTION PRINCIPLE */}
-      <section className="border-b border-[#111111] px-5 py-14 md:px-12 md:py-20">
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <p className="eyebrow text-[#A93100]">
-              <T>{"[ What RisenDev builds / 01 ]"}</T>
-            </p>
-            <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:text-4xl">
-              <T>{"Construction principle"}</T>
-            </h2>
-          </div>
-          <div className="md:col-span-7 md:col-start-6">
-            <p className="font-[family-name:var(--font-geist-sans)] text-xl leading-snug font-medium tracking-tight md:text-2xl">
-              <T>{"Not generic factory software. We design precision data architecture that matches your real internal flow."}</T>
-            </p>
-            <p className="mt-4 max-w-[60ch] text-[15px] leading-relaxed text-[#5F5E5E]">
-              <T>
-                {
-                  "From company profile websites, cashier apps, stock systems, booking, dashboards, to developing systems already in operation."
-                }
-              </T>
-            </p>
-            <p className="mt-3 max-w-[60ch] text-[15px] leading-relaxed text-[#5F5E5E]">
-              <T>{"We remove messy spreadsheets, cut duplicate input, and give owners full control over daily operational data."}</T>
-            </p>
-          </div>
-        </div>
-      </section>
+  <section id="projects" className="px-margin py-24 md:px-margin-tablet md:py-36 lg:px-margin-desktop"><div className="mx-auto max-w-7xl"><div className="mb-12 grid gap-6 lg:grid-cols-12 lg:items-end"><div className="lg:col-span-8"><p className="eyebrow text-primary">[03 / {id?"PORTOFOLIO":"SELECTED WORK"}]</p><h2 className="mt-4 text-[clamp(2.5rem,6vw,5.5rem)] font-semibold leading-[.92] tracking-[-.06em] uppercase">{id?"Dibangun untuk kebutuhan nyata.":"Built for real needs."}</h2></div><p className="max-w-md text-on-surface-variant lg:col-span-4">{id?"Beberapa aplikasi dan sistem dari data portofolio RisenDev. Tanpa angka atau klaim yang dibuat-buat.":"A selection of applications and systems from the RisenDev portfolio. No invented metrics or claims."}</p></div><div className="border-t border-on-surface">{cases.slice(0,4).map((c,i)=><Link href={`/work/${c.slug}`} key={c.key} className="group grid gap-4 border-b border-on-surface py-7 transition-all hover:bg-surface-container-low md:grid-cols-12 md:items-center md:px-4"><span className="text-3xl font-semibold tracking-[-.05em] text-primary md:col-span-1">0{i+1}</span><div className="md:col-span-6"><h3 className="text-2xl font-medium tracking-[-.035em] md:text-3xl">{t(`${c.key}.title`)}</h3><p className="mt-1 max-w-xl text-sm text-on-surface-variant">{t(`${c.key}.summary`)}</p></div><span className="eyebrow text-on-surface-variant md:col-span-3">{t(`${c.key}.category`)}</span><span className="justify-self-end text-2xl transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 md:col-span-2">↗</span></Link>)}</div><div className="mt-8"><Link href="/work" className="btn-ghost">{id?"Semua portofolio":"All work"} ↗</Link></div></div></section>
 
-      {/* 02 — PROBLEMS */}
-      <section className="border-b border-[#111111] bg-[#F6F3EC] px-5 py-14 md:px-12 md:py-20">
-        <p className="eyebrow text-[#A93100]">
-          <T>{"[ Problems that keep recurring / 02 ]"}</T>
-        </p>
-        <div className="mt-3 grid grid-cols-1 items-end gap-6 md:grid-cols-12">
-          <h2 className="font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:col-span-8 md:text-5xl">
-            <T>{"Still running the business on chats, spreadsheets, and manual records?"}</T>
-          </h2>
-        </div>
-        <div className="mt-10 grid grid-cols-1 gap-px border border-[#111111] bg-[#111111] sm:grid-cols-2 lg:grid-cols-4">
-          {problems.map(([title, desc], i) => (
-            <div key={title} className="bg-[#FFFDF7] p-6">
-              <p className="eyebrow text-[#A93100]">[0{i + 1}]</p>
-              <h3 className="mt-3 font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight">
-                <T>{title}</T>
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#5F5E5E]">
-                <T>{desc}</T>
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
+  <section className="bg-surface-container-low px-margin py-24 md:px-margin-tablet lg:px-margin-desktop"><div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12"><p className="eyebrow text-primary lg:col-span-4">[04 / RISENDEV]</p><div className="lg:col-span-8"><h2 className="text-[clamp(2.1rem,4.5vw,4rem)] font-medium leading-none tracking-[-.05em]">{id?"Partner digital yang bicara bisnis dulu, teknologi setelahnya.":"A digital partner that speaks business first, technology second."}</h2><p className="mt-7 max-w-2xl text-lg leading-relaxed text-on-surface-variant">{id?"Kami menjaga komunikasi tetap sederhana, scope tetap fokus, dan hasil akhir tetap mudah digunakan oleh tim non-tech maupun tech.":"We keep communication simple, scope focused, and the final product easy to use for both non-technical and technical teams."}</p><Link href="/studio" className="mt-8 inline-flex border-b-2 border-primary pb-1 text-sm font-semibold uppercase tracking-wider hover:text-primary">{id?"Kenal RisenDev":"About RisenDev"} ↗</Link></div></div></section>
 
-      {/* ARCHITECTURE FLOW */}
-      <section className="border-b border-[#111111] px-5 py-14 md:px-12 md:py-20">
-        <p className="eyebrow text-[#A93100]">
-          <T>{"[ Digital transition / Architecture flow ]"}</T>
-        </p>
-        <div className="mt-3 grid grid-cols-1 gap-6 md:grid-cols-12 md:items-end">
-          <h2 className="font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:col-span-7 md:text-4xl">
-            <T>{"From manual process to a system that's easier to manage."}</T>
-          </h2>
-          <p className="text-[15px] leading-relaxed text-[#5F5E5E] md:col-span-5">
-            <T>
-              {
-                "Migration doesn't have to stop operations. We dissect the existing workflow chain and move it to modular software step by step."
-              }
-            </T>
-          </p>
-        </div>
-        <ol className="mt-10 grid list-none grid-cols-1 gap-px border border-[#111111] bg-[#111111] p-0 sm:grid-cols-2 lg:grid-cols-4">
-          {phases.map(([n, title, desc]) => (
-            <li key={n} className="bg-[#F6F3EC] p-6">
-              <p className="eyebrow text-[#A93100]">
-                <T>{"Phase"}</T> {n}
-              </p>
-              <h3 className="mt-3 font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight">
-                <T>{title}</T>
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#5F5E5E]">
-                <T>{desc}</T>
-              </p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      {/* 03 — SERVICES INDEX */}
-      <section className="border-b border-[#111111] px-5 py-14 md:px-12 md:py-20">
-        <div className="grid grid-cols-1 items-end gap-6 md:grid-cols-12">
-          <div className="md:col-span-8">
-            <p className="eyebrow text-[#A93100]">
-              <T>{"[ Services / 03 ]"}</T>
-            </p>
-            <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:text-4xl">
-              <T>{"What RisenDev can help build."}</T>
-            </h2>
-          </div>
-          <div className="md:col-span-4 md:text-right">
-            <Link
-              href="/services"
-              className="text-xs font-semibold tracking-[0.06em] text-[#A93100] uppercase underline underline-offset-4"
-            >
-              <T>{"View all services"}</T> →
-            </Link>
-          </div>
-        </div>
-        <div className="mt-8">
-          {[
-            [
-              "01",
-              "Company Profile & Business Websites",
-              "High-performance professional websites presenting business strengths, product catalogs, and credibility in clients' eyes.",
-            ],
-            [
-              "02",
-              "Business Systems & Internal Tools",
-              "Customized apps for multi-location stock, booking reservations, staff attendance, workflow tracking, invoicing, and profit-and-loss recaps.",
-            ],
-            [
-              "03",
-              "Existing System Development",
-              "Legacy app modernization, custom feature additions, local payment gateway integration, courier integration, and performance fixes.",
-            ],
-            [
-              "04",
-              "Maintenance & Deployment",
-              "24/7 uptime monitoring, automatic SSL renewal, offsite data backup, and routine security patches.",
-            ],
-          ].map(([n, title, desc]) => (
-            <Link
-              key={n}
-              href="/services"
-              className="index-row group grid grid-cols-1 gap-2 px-2 py-6 md:grid-cols-12 md:items-baseline md:px-4"
-            >
-              <span className="eyebrow index-accent text-[#A93100] md:col-span-1">[ {n} ]</span>
-              <span className="font-[family-name:var(--font-geist-sans)] text-xl font-medium tracking-tight md:col-span-5 md:text-2xl">
-                <T>{title}</T>
-              </span>
-              <span className="index-muted text-sm leading-relaxed text-[#5F5E5E] md:col-span-5">
-                <T>{desc}</T>
-              </span>
-              <span aria-hidden="true" className="text-lg md:col-span-1 md:text-right">
-                →
-              </span>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* SELECTED WORK */}
-      <section className="border-b border-[#111111] bg-[#F6F3EC] px-5 py-14 md:px-12 md:py-20">
-        <div className="grid grid-cols-1 items-end gap-6 md:grid-cols-12">
-          <div className="md:col-span-8">
-            <p className="eyebrow text-[#A93100]">
-              <T>{"[ Selected work ]"}</T>
-            </p>
-            <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:text-4xl">
-              <T>{"Systems built for real needs."}</T>
-            </h2>
-          </div>
-          <div className="md:col-span-4 md:text-right">
-            <Link href="/work" className="text-xs font-semibold tracking-[0.06em] text-[#A93100] uppercase underline underline-offset-4">
-              <T>{"View all case studies"}</T> →
-            </Link>
-          </div>
-        </div>
-        <div className="mt-8 grid grid-cols-1 gap-px border border-[#111111] bg-[#111111] min-[600px]:grid-cols-2 lg:grid-cols-3">
-          {cases
-            .filter((x) => ["idxStocks", "odooWageOvertime", "stockOpname"].includes(x.key))
-            .map((item, i) => (
-              <WorkCard key={item.key} item={workCardData(item)} index={i} />
-            ))}
-        </div>
-      </section>
-
-      <ProjectCTA />
-    </PageShell>
-  );
+  <section className="bg-primary px-margin py-24 text-on-primary md:px-margin-tablet md:py-32 lg:px-margin-desktop"><div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12 lg:items-end"><div className="lg:col-span-8"><p className="eyebrow mb-5">[05 / {id?"MULAI":"START"}]</p><h2 className="text-[clamp(3rem,7vw,6.5rem)] font-semibold leading-[.9] tracking-[-.06em] uppercase">{id?"Punya ide atau proses yang ingin dirapikan?":"Have an idea or workflow to improve?"}</h2></div><div className="lg:col-span-4"><p className="mb-6 max-w-md text-lg">{id?"Ceritakan masalahnya. Kami bantu menentukan langkah yang masuk akal.":"Tell us the problem. We’ll help define a practical next step."}</p><Link href="/start-a-project" className="btn-ink">{id?"Mulai diskusi":"Start a conversation"} ↗</Link></div></div></section>
+ </main>
 }

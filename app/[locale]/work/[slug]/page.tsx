@@ -31,152 +31,186 @@ export default async function CaseStudy({ params }: { params: { slug: string; lo
   const item = cases.find((item) => item.slug === params.slug);
   if (!item) notFound();
   const t = await getTranslations({ locale: params.locale, namespace: "Site.cases" });
-  const facts = item.facts.map((value, index) => ({ value, index })).filter(({ index }) => t.has(`${item.key}.facts.${index}`));
   const id = params.locale === "id";
   const order = cases.findIndex((c) => c.slug === item.slug);
   const code = `F-${String(order + 1).padStart(2, "0")}`;
+  const facts = item.facts.map((value, index) => ({ value, index })).filter(({ index }) => t.has(`${item.key}.facts.${index}`));
 
   return (
     <PageShell>
-      <div className="border-b border-[#111111] px-5 pt-10 pb-12 md:px-12 md:pt-14 md:pb-16">
-        <Link
-          href="/work"
-          className="group inline-flex items-center gap-2 text-xs font-semibold tracking-[0.06em] text-[#A93100] uppercase"
-        >
-          <span className="transition-transform duration-150 group-hover:-translate-x-1" aria-hidden="true">
-            ←
-          </span>
-          <span>{id ? "Kembali ke semua portofolio" : "Back to all work"}</span>
-        </Link>
-        <p className="eyebrow mt-6 text-[#A93100]">
-          [ {id ? "Arsip rekayasa" : "Engineering archive"} {"//"} {code} ]
-        </p>
-        <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-12">
-          <h1 className="font-[family-name:var(--font-geist-sans)] text-4xl leading-[0.95] font-semibold tracking-tight uppercase md:col-span-9 md:text-6xl">
-            {t(`${item.key}.title`)}
-          </h1>
-          <dl className="grid content-start gap-px border border-[#111111] bg-[#111111] md:col-span-3">
-            <div className="bg-[#FFFDF7] px-4 py-3">
-              <dt className="eyebrow text-[#5F5E5E]">{id ? "Layanan" : "Service"}</dt>
-              <dd className="mt-1 text-sm font-semibold">{t(`${item.key}.category`)}</dd>
+      <section className="w-full bg-surface px-margin py-space-md md:px-margin-tablet lg:px-margin-desktop">
+        <div className="mx-auto flex max-w-7xl flex-col gap-space-md">
+          <div className="flex items-center justify-between pb-space-xs">
+            <Link
+              href="/work"
+              className="inline-flex items-center gap-2 font-label-md tracking-wider text-primary uppercase transition-colors hover:text-on-surface"
+            >
+              ← {id ? "KEMBALI KE SEMUA PORTOFOLIO" : "BACK TO ALL WORK"}
+            </Link>
+            <div className="font-label-sm tracking-widest text-on-surface-variant uppercase">
+              [ {id ? "ARSIP REKAYASA" : "ENGINEERING ARCHIVE"} // {code} ]
             </div>
-            <div className="bg-[#FFFDF7] px-4 py-3">
-              <dt className="eyebrow text-[#5F5E5E]">Stack</dt>
-              <dd className="mt-1 text-sm font-semibold">{item.stack.slice(0, 3).join(" · ")}</dd>
-            </div>
-          </dl>
-        </div>
-        <p className="mt-6 max-w-[65ch] text-base leading-relaxed text-[#5C4037] md:text-lg">{t(`${item.key}.summary`)}</p>
-        <p className="mt-2 max-w-[65ch] text-[15px] leading-relaxed text-[#5F5E5E]">{t(`${item.key}.description`)}</p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-12">
-        <aside className="border-b border-[#111111] px-5 py-8 md:col-span-3 md:border-r md:border-b-0 md:px-8">
-          <div className="md:sticky md:top-28">
-            <p className="eyebrow text-[#5F5E5E]">{id ? "Di halaman ini" : "On this page"}</p>
-            <nav aria-label={id ? "Isi studi kasus" : "Case study contents"} className="mt-4 flex flex-col">
-              {[
-                ["problem", id ? "01 — Hambatan" : "01 — Problem"],
-                ["solution", id ? "02 — Rekayasa" : "02 — Solution"],
-                ["features", id ? "03 — Fitur" : "03 — Features"],
-                ["technical", id ? "04 — Teknis" : "04 — Technical"],
-                ["outcome", id ? "05 — Hasil" : "05 — Outcome"],
-              ].map(([key, label]) => (
-                <a
-                  key={key}
-                  href={`#${key}`}
-                  className="border-t border-[#111111]/20 py-2.5 text-xs font-semibold tracking-[0.06em] uppercase transition-colors last:border-b hover:text-[#A93100]"
-                >
-                  {label}
-                </a>
-              ))}
-            </nav>
           </div>
-        </aside>
+          <div className="grid grid-cols-2 gap-x-4 gap-y-6 bg-surface-container-low px-space-md py-space-sm shadow-sm md:grid-cols-4">
+            <div>
+              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">// PROJECT</span>
+              <p className="font-headline-sm font-semibold">
+                {String(order + 1).padStart(2, "0")} / {String(cases.length).padStart(2, "0")}
+              </p>
+            </div>
+            <div>
+              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">{`// ${id ? "KATEGORI" : "CATEGORY"}`}</span>
+              <p className="font-body-md font-medium">{t(`${item.key}.category`)}</p>
+            </div>
+            <div>
+              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">// STACK</span>
+              <p className="font-body-sm">{item.stack.slice(0, 4).join(" · ")}</p>
+            </div>
+            <div>
+              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">{`// ${id ? "CAKUPAN" : "SCOPE"}`}</span>
+              <p className="font-body-sm">
+                {item.scope.length} {id ? "fitur/cakupan terdokumentasi" : "documented scope items"}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <div className="md:col-span-9">
-          <section id="problem" className="scroll-mt-28 border-b border-[#111111] px-5 py-10 md:px-10 md:py-14">
-            <p className="eyebrow text-[#A93100]">{id ? "// Tahap 01 : Analisis hambatan" : "// Phase 01: Problem analysis"}</p>
-            <h2 className="mt-2 font-[family-name:var(--font-geist-sans)] text-2xl font-medium tracking-tight uppercase md:text-3xl">
-              {id ? "Masalah" : "Problem"}
-            </h2>
-            <p className="mt-4 max-w-[62ch] border-l-2 border-[#FF4F00] pl-4 font-[family-name:var(--font-geist-sans)] text-lg leading-snug font-medium tracking-tight md:text-xl">
-              “{t(`${item.key}.problem`)}”
-            </p>
-          </section>
+      <section className="w-full bg-surface px-margin pt-space-md pb-space-xl md:px-margin-tablet lg:px-margin-desktop">
+        <div className="mx-auto flex max-w-7xl flex-col gap-space-lg">
+          <div className="grid grid-cols-1 items-end gap-gutter-desktop lg:grid-cols-12">
+            <div className="lg:col-span-8">
+              <div className="inline-flex items-center gap-2 font-label-md tracking-widest text-primary uppercase">
+                <span className="h-2 w-2 bg-primary" /> {id ? "STUDI KASUS" : "CASE STUDY"} / {t(`${item.key}.category`)}
+              </div>
+              <h1 className="text-display-lg-mobile md:text-display-lg mt-3 font-display-lg tracking-tight uppercase">
+                {t(`${item.key}.title`)}
+              </h1>
+            </div>
+            <div className="lg:col-span-4">
+              <p className="font-body-lg leading-relaxed text-on-surface-variant">{t(`${item.key}.summary`)}</p>
+            </div>
+          </div>
+          <div className="w-full overflow-hidden bg-inverse-surface p-space-md text-inverse-on-surface shadow-xl md:p-space-lg">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-space-sm">
+              <div className="flex items-center gap-3">
+                <span className="h-3 w-3 bg-primary" />
+                <span className="font-label-md tracking-wider text-surface-dim uppercase">PROJECT SYSTEM // {code}</span>
+              </div>
+              <span className="bg-primary px-2 py-0.5 font-label-sm font-semibold text-on-primary">DOCUMENTED PORTFOLIO</span>
+            </div>
+            <div className="grid grid-cols-1 gap-gutter lg:grid-cols-12">
+              <div className="flex min-h-[320px] flex-col justify-between bg-surface/10 p-space-md lg:col-span-8">
+                <span className="font-label-sm tracking-widest text-primary-fixed uppercase">{`// ${id ? "GAMBARAN PROYEK" : "PROJECT OVERVIEW"}`}</span>
+                <p className="max-w-3xl font-headline-md text-inverse-on-surface">{t(`${item.key}.description`)}</p>
+                <div className="flex flex-wrap gap-2">
+                  {item.stack.map((s) => (
+                    <span key={s} className="border border-surface-dim/25 px-3 py-1 font-label-sm text-surface-dim">
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="flex flex-col gap-2 lg:col-span-4">
+                {item.scope.slice(0, 5).map((_, i) => (
+                  <div key={i} className="bg-surface/10 p-3">
+                    <span className="font-label-sm text-primary-fixed">{String(i + 1).padStart(2, "0")}</span>
+                    <p className="mt-1 font-body-sm text-surface-dim">{t(`${item.key}.scope.${i}`)}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <section id="solution" className="scroll-mt-28 border-b border-[#111111] bg-[#F6F3EC] px-5 py-10 md:px-10 md:py-14">
-            <p className="eyebrow text-[#A93100]">{id ? "// Tahap 02 : Rekayasa sistem" : "// Phase 02: System engineering"}</p>
-            <h2 className="mt-2 font-[family-name:var(--font-geist-sans)] text-2xl font-medium tracking-tight uppercase md:text-3xl">
-              {id ? "Solusi" : "Solution"}
-            </h2>
-            <p className="mt-4 max-w-[62ch] text-[15px] leading-relaxed md:text-base">{t(`${item.key}.solution`)}</p>
-            <p className="mt-3 max-w-[62ch] text-[15px] leading-relaxed text-[#5F5E5E]">{t(`${item.key}.engineering`)}</p>
-          </section>
+      <section className="w-full bg-inverse-surface px-margin py-space-xl text-inverse-on-surface md:px-margin-tablet lg:px-margin-desktop">
+        <div className="mx-auto max-w-7xl">
+          <span className="font-label-sm tracking-widest text-primary-fixed uppercase">{`// ${id ? "TAHAP 01 : ANALISIS HAMBATAN" : "PHASE 01 : PROBLEM ANALYSIS"}`}</span>
+          <h2 className="mt-3 max-w-4xl font-headline-lg">“{t(`${item.key}.problem`)}”</h2>
+        </div>
+      </section>
 
-          <section id="features" className="scroll-mt-28 border-b border-[#111111] px-5 py-10 md:px-10 md:py-14">
-            <p className="eyebrow text-[#A93100]">{id ? "// Tahap 03 : Cakupan" : "// Phase 03: Scope"}</p>
-            <h2 className="mt-2 font-[family-name:var(--font-geist-sans)] text-2xl font-medium tracking-tight uppercase md:text-3xl">
-              {id ? "Fitur utama" : "Key features"}
+      <section className="w-full bg-surface px-margin py-space-xl md:px-margin-tablet lg:px-margin-desktop">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-gutter-desktop lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <span className="font-label-sm tracking-widest text-primary uppercase">{`// ${id ? "TAHAP 02 : REKAYASA SISTEM" : "PHASE 02 : SYSTEM ENGINEERING"}`}</span>
+            <h2 className="mt-3 font-display-lg-mobile tracking-tight uppercase md:font-display-lg">
+              {id ? "SOLUSI YANG DIBANGUN" : "THE BUILT SOLUTION"}
             </h2>
-            <ul className="mt-6 list-none space-y-0 border border-[#111111] p-0">
-              {item.scope.map((value, index) => (
-                <li key={value} className="flex gap-4 border-b border-[#111111]/15 p-4 last:border-b-0">
-                  <span className="eyebrow text-[#A93100]">{String(index + 1).padStart(2, "0")}</span>
-                  <span className="text-[15px]">{t(`${item.key}.scope.${index}`)}</span>
-                </li>
+          </div>
+          <div className="flex flex-col gap-space-md lg:col-span-7">
+            <div className="bg-surface-container p-space-md">
+              <h3 className="font-headline-md">{t(`${item.key}.solution`)}</h3>
+              <p className="mt-4 font-body-md leading-relaxed text-on-surface-variant">{t(`${item.key}.engineering`)}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-surface-container-low px-margin py-space-xl md:px-margin-tablet lg:px-margin-desktop">
+        <div className="mx-auto flex max-w-7xl flex-col gap-space-lg">
+          <div>
+            <span className="font-label-sm tracking-widest text-primary uppercase">{`// ${id ? "TAHAP 03 : KAPABILITAS UTAMA" : "PHASE 03 : KEY CAPABILITIES"}`}</span>
+            <h2 className="mt-2 font-headline-lg">{id ? "Fitur dan cakupan yang terdokumentasi" : "Documented features and scope"}</h2>
+          </div>
+          <div className="grid grid-cols-1 gap-gutter md:grid-cols-2">
+            {item.scope.map((_, i) => (
+              <div key={i} className="min-h-[180px] bg-surface p-space-md">
+                <div className="flex justify-between">
+                  <span className="font-label-sm font-semibold text-primary">[ {String(i + 1).padStart(2, "0")} ]</span>
+                  <span className="font-label-sm text-on-surface-variant">{code}</span>
+                </div>
+                <p className="mt-8 font-headline-sm">{t(`${item.key}.scope.${i}`)}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="w-full bg-inverse-surface px-margin py-space-xl text-inverse-on-surface md:px-margin-tablet lg:px-margin-desktop">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-gutter-desktop lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <span className="font-label-sm tracking-widest text-primary-fixed uppercase">{`// ${id ? "TAHAP 04 : ENGINEERING" : "PHASE 04 : ENGINEERING"}`}</span>
+            <h2 className="mt-2 font-headline-lg">Technical Stack</h2>
+          </div>
+          <div className="lg:col-span-7">
+            <div className="flex flex-wrap gap-2">
+              {item.stack.map((s) => (
+                <span key={s} className="border border-surface-dim/30 px-3 py-2 font-label-md">
+                  {s}
+                </span>
               ))}
-            </ul>
-          </section>
-
-          <section
-            id="technical"
-            className="scroll-mt-28 border-b border-[#111111] bg-[#111111] px-5 py-10 text-[#F3F0E9] md:px-10 md:py-14"
-          >
-            <p className="eyebrow text-[#FF4F00]">{id ? "// Tahap 04 : Gambaran teknis" : "// Phase 04: Technical overview"}</p>
-            <h2 className="mt-2 font-[family-name:var(--font-geist-sans)] text-2xl font-medium tracking-tight uppercase md:text-3xl">
-              {id ? "Teknis" : "Technical"}
-            </h2>
-            {item.stack.length > 0 && (
-              <ul className="mt-6 flex list-none flex-wrap gap-1.5 p-0">
-                {item.stack.map((value) => (
-                  <li key={value} className="border border-[#F3F0E9]/35 px-2.5 py-1 font-mono text-xs">
-                    {value}
-                  </li>
-                ))}
-              </ul>
-            )}
+            </div>
             {facts.length > 0 && (
-              <ul className="mt-6 list-none space-y-2 p-0">
+              <div className="mt-8 flex flex-col gap-2">
                 {facts.map(({ value, index }) => (
-                  <li key={value} className="border-l-2 border-[#FF4F00] pl-3 text-sm text-[#B9B5AE]">
+                  <div key={value} className="bg-surface/5 p-4 font-body-sm text-surface-dim">
                     {t(`${item.key}.facts.${index}`)}
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             )}
             {item.repositoryUrl && (
               <a
                 href={item.repositoryUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-xs font-semibold tracking-[0.06em] text-[#FF4F00] uppercase underline underline-offset-4"
+                className="mt-8 inline-flex font-label-md text-primary-fixed uppercase underline underline-offset-4"
               >
                 {id ? "Lihat repositori" : "View repository"} ↗
               </a>
             )}
-          </section>
-
-          <section id="outcome" className="scroll-mt-28 px-5 py-10 md:px-10 md:py-14">
-            <p className="eyebrow text-[#A93100]">{id ? "// Tahap 05 : Hasil" : "// Phase 05: Outcome"}</p>
-            <h2 className="mt-2 font-[family-name:var(--font-geist-sans)] text-2xl font-medium tracking-tight uppercase md:text-3xl">
-              {id ? "Hasil" : "Outcome"}
-            </h2>
-            <p className="mt-4 max-w-[62ch] text-[15px] leading-relaxed md:text-base">{t(`${item.key}.outcome`)}</p>
-          </section>
+          </div>
         </div>
-      </div>
+      </section>
 
+      <section className="w-full bg-primary-container px-margin py-space-xl md:px-margin-tablet lg:px-margin-desktop">
+        <div className="mx-auto max-w-7xl">
+          <span className="font-label-sm tracking-widest uppercase">{`// ${id ? "TAHAP 05 : HASIL" : "PHASE 05 : OUTCOME"}`}</span>
+          <h2 className="mt-4 max-w-5xl font-display-lg-mobile tracking-tight uppercase md:font-display-lg">{t(`${item.key}.outcome`)}</h2>
+        </div>
+      </section>
       <ProjectCTA locale={params.locale} />
     </PageShell>
   );

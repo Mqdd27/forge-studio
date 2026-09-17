@@ -96,59 +96,48 @@ export function ContactDesign() {
 
   return (
     <PageShell>
-      <section className="border-b border-[#111111] px-5 pt-12 pb-14 md:px-12 md:pt-20 md:pb-20">
-        <p className="eyebrow text-[#A93100]">{"// 04. Initiation protocol"}</p>
-        <h1 className="mt-3 max-w-[16ch] font-[family-name:var(--font-geist-sans)] text-4xl leading-[0.95] font-semibold tracking-tight uppercase md:text-7xl">
-          {id ? "Ceritakan apa yang ingin Anda buat." : "Tell us what you want to build."}
-        </h1>
-        <p className="mt-5 max-w-[65ch] text-base leading-relaxed text-[#5C4037] md:text-lg">
-          {id
-            ? "Tidak perlu punya spesifikasi teknis. Ceritakan saja bisnis Anda, masalahnya, atau sistem seperti apa yang ingin dibuat."
-            : "No technical spec needed. Just tell us your business, the problem, or what kind of system you want."}
-        </p>
-        <div className="mt-6 flex flex-col gap-3 border border-[#111111] bg-[#FFFDF7] p-5 sm:flex-row sm:items-center md:max-w-3xl">
-          <div>
-            <p className="eyebrow text-[#A93100]">{id ? "// Fast path" : "// Fast path"}</p>
-            <p className="mt-1 text-sm">
-              {id ? "Lebih suka WhatsApp langsung? Hubungi technical lead kami:" : "Prefer WhatsApp? Reach our technical lead:"}
-            </p>
-            <p className="mt-1 font-[family-name:var(--font-geist-sans)] text-xl font-semibold">+62 812 3456 7890 ↗</p>
-            <p className="text-xs text-[#5F5E5E]">{id ? "Senin — Sabtu, 09.00–18.00 WIB" : "Mon — Sat, 09.00–18.00 WIB"}</p>
+      <section className="w-full bg-surface px-margin pt-space-lg pb-space-lg md:px-margin-tablet lg:px-margin-desktop lg:pt-space-xl">
+        <div className="grid grid-cols-1 gap-gutter-desktop lg:grid-cols-12">
+          <div className="flex flex-col gap-space-sm lg:col-span-10">
+            <div className="flex items-center gap-3"><span className="inline-block size-2.5 bg-primary"/><span className="font-label-sm uppercase tracking-widest text-on-surface-variant">// 04. INISIASI PROTOKOL</span></div>
+            <h1 className="font-display-lg-mobile text-display-lg-mobile max-w-4xl font-semibold tracking-tight uppercase md:font-display-lg md:text-display-lg">{id ? "Ceritakan apa yang ingin Anda buat." : "Tell us what you want to build."}</h1>
+            <p className="font-body-lg text-body-lg max-w-2xl pt-2 text-on-surface-variant">{id ? "Tidak perlu punya spesifikasi teknis. Ceritakan saja bisnis Anda, masalahnya, atau sistem seperti apa yang ingin dibuat." : "No technical spec needed. Just tell us your business, the problem, or what kind of system you want."}</p>
           </div>
+          <div className="hidden flex-col items-end justify-end pb-2 lg:col-span-2 lg:flex"><span className="font-label-md uppercase tracking-widest text-primary">[RISENDEV FORM_V2]</span><span className="font-label-sm text-secondary">{id?"DISKUSI LANGSUNG":"DIRECT DISCUSSION"}</span></div>
         </div>
       </section>
 
-      <section className="px-5 py-14 md:px-12 md:py-20">
-        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+      <section className="w-full bg-surface-container-low px-margin py-space-lg md:px-margin-tablet lg:px-margin-desktop lg:py-space-xl">
+        <div className="grid grid-cols-1 items-start gap-gutter-desktop lg:grid-cols-12">
+          <div className="lg:order-2 lg:col-span-8 bg-surface-container-lowest p-space-md md:p-space-lg">
             {status === "success" ? (
-              <section role="status" className="border border-[#111111] bg-[#FFFDF7] p-8 md:p-10">
+              <section role="status" className="border border-[#1c1c18] bg-white p-8 md:p-10">
                 <p className="eyebrow text-emerald-700">
                   ✓ {id ? "Data terkirim ke pipeline RisenDev" : "Data sent to the RisenDev pipeline"}
                 </p>
                 <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-2xl font-semibold tracking-tight md:text-3xl">
                   {id ? "Terima kasih telah menghubungi kami." : "Thanks for reaching out."}
                 </h2>
-                <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#5F5E5E]">
+                <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#5c4037]">
                   {id
-                    ? "Kami akan menganalisis kebutuhan Anda dan menghubungi dalam waktu 24 jam kerja."
-                    : "We will analyze your needs and contact you within 24 working hours."}
+                    ? "Kami akan membaca kebutuhan Anda dan menghubungi melalui kontak yang diberikan."
+                    : "We will review your needs and contact you using the details provided."}
                 </p>
                 <button type="button" className="btn-ghost mt-6" onClick={() => setStatus("idle")}>
                   {id ? "Kirim inquiry lain" : "Send another inquiry"}
                 </button>
               </section>
             ) : (
-              <form onSubmit={submit} aria-busy={status === "loading"} className="border border-[#111111] bg-[#FFFDF7]">
-                <div className="flex items-center justify-between border-b border-[#111111] px-5 py-3">
+              <form onSubmit={submit} aria-busy={status === "loading"} className="border border-[#1c1c18] bg-white">
+                <div className="flex items-center justify-between border-b border-[#1c1c18] px-5 py-3">
                   <p className="eyebrow">[RisenDev Form_v2]</p>
-                  <p className="eyebrow text-[#A93100]">{id ? "Respon < 24 jam" : "Reply < 24h"}</p>
+                  <p className="eyebrow text-[#a93100]">{id ? "Project inquiry" : "Project inquiry"}</p>
                 </div>
                 <div className="grid gap-6 p-5 md:p-8">
                   <div className="grid gap-6 sm:grid-cols-2">
                     <label className="grid gap-2 text-xs font-semibold tracking-[0.06em] uppercase">
                       <span>
-                        {id ? "Nama lengkap *" : "Full name *"} <span className="text-[#A93100]">[wajib]</span>
+                        {id ? "Nama lengkap *" : "Full name *"} <span className="text-[#a93100]">[wajib]</span>
                       </span>
                       <input
                         name="name"
@@ -161,7 +150,7 @@ export function ContactDesign() {
                     </label>
                     <label className="grid gap-2 text-xs font-semibold tracking-[0.06em] uppercase">
                       <span>
-                        {id ? "Email / WhatsApp *" : "Email / WhatsApp *"} <span className="text-[#A93100]">[wajib]</span>
+                        {id ? "Email / WhatsApp *" : "Email / WhatsApp *"} <span className="text-[#a93100]">[wajib]</span>
                       </span>
                       <input
                         name="contact"
@@ -175,7 +164,7 @@ export function ContactDesign() {
                   </div>
                   <label className="grid gap-2 text-xs font-semibold tracking-[0.06em] uppercase">
                     <span>
-                      {id ? "Nama bisnis / perusahaan" : "Business / company name"} <span className="text-[#5F5E5E]">[opsional]</span>
+                      {id ? "Nama bisnis / perusahaan" : "Business / company name"} <span className="text-[#5c4037]">[opsional]</span>
                     </span>
                     <input
                       name="company"
@@ -193,7 +182,7 @@ export function ContactDesign() {
                       {projectTypes.map(([value, en, ind]) => (
                         <label
                           key={value}
-                          className="flex cursor-pointer items-center gap-3 border border-[#111111] bg-[#F6F3EC] px-4 py-3 text-sm font-medium has-checked:bg-[#111111] has-checked:text-[#FFFDF7]"
+                          className="flex cursor-pointer items-center gap-3 border border-[#1c1c18] bg-[#f6f3ec] px-4 py-3 text-sm font-medium has-checked:bg-[#31312c] has-checked:text-[#FFFDF7]"
                         >
                           <input type="checkbox" name="projectType" value={value} className="check-sharp" />
                           {id ? ind : en}
@@ -204,7 +193,7 @@ export function ContactDesign() {
                   <label className="grid gap-2 text-xs font-semibold tracking-[0.06em] uppercase">
                     <span>
                       {id ? "Ceritakan kebutuhan Anda *" : "Describe your needs *"}{" "}
-                      <span className="text-[#5F5E5E]">[detail operasional]</span>
+                      <span className="text-[#5c4037]">[detail operasional]</span>
                     </span>
                     <textarea
                       name="description"
@@ -223,7 +212,7 @@ export function ContactDesign() {
                   <div className="grid gap-6 sm:grid-cols-2">
                     <fieldset className="grid content-start gap-2">
                       <legend className="text-xs font-semibold tracking-[0.06em] uppercase">
-                        {id ? "Estimasi budget" : "Budget estimate"} <span className="text-[#5F5E5E]">[opsional]</span>
+                        {id ? "Estimasi budget" : "Budget estimate"} <span className="text-[#5c4037]">[opsional]</span>
                       </legend>
                       {budgets.map((b) => (
                         <label key={b} className="flex cursor-pointer items-center gap-3 text-sm">
@@ -233,7 +222,7 @@ export function ContactDesign() {
                     </fieldset>
                     <fieldset className="grid content-start gap-2">
                       <legend className="text-xs font-semibold tracking-[0.06em] uppercase">
-                        {id ? "Target waktu peluncuran" : "Target launch time"} <span className="text-[#5F5E5E]">[opsional]</span>
+                        {id ? "Target waktu peluncuran" : "Target launch time"} <span className="text-[#5c4037]">[opsional]</span>
                       </legend>
                       {timelines.map((t) => (
                         <label key={t} className="flex cursor-pointer items-center gap-3 text-sm">
@@ -248,11 +237,11 @@ export function ContactDesign() {
                       <input name="website" tabIndex={-1} autoComplete="off" />
                     </label>
                   </div>
-                  <p className="text-xs leading-relaxed text-[#5F5E5E]">
+                  <p className="text-xs leading-relaxed text-[#5c4037]">
                     {id
                       ? "Informasi yang dikirim hanya digunakan untuk membahas kebutuhan proyek Anda. "
                       : "Submitted information is only used to discuss your project needs. "}
-                    <Link href="/privacy-policy" className="text-[#A93100] underline">
+                    <Link href="/privacy-policy" className="text-[#a93100] underline">
                       {id ? "Kebijakan Privasi" : "Privacy Policy"}
                     </Link>
                   </p>
@@ -276,8 +265,8 @@ export function ContactDesign() {
               </form>
             )}
           </div>
-          <aside className="grid gap-px border border-[#111111] bg-[#111111] lg:col-span-5">
-            <div className="bg-[#111111] p-6 text-[#F3F0E9]">
+          <aside className="grid gap-px border border-[#1c1c18] bg-[#31312c] lg:order-1 lg:col-span-4">
+            <div className="bg-[#31312c] p-6 text-[#f3f0e9]">
               <p className="eyebrow text-[#FF4F00]">{id ? "// Post-submit protocol" : "// Post-submit protocol"}</p>
               <h2 className="mt-2 font-[family-name:var(--font-geist-sans)] text-xl font-medium tracking-tight">
                 {id ? "Setelah dikirim, apa berikutnya?" : "What happens after you send?"}
@@ -309,11 +298,11 @@ export function ContactDesign() {
                   : "A clear plan with milestones, timeline, and transparent cost.",
               ],
             ].map(([title, desc], i) => (
-              <div key={title} className="flex gap-4 bg-[#F6F3EC] p-5">
-                <span className="font-[family-name:var(--font-geist-sans)] text-xl font-semibold text-[#A93100]">0{i + 1}</span>
+              <div key={title} className="flex gap-4 bg-[#f6f3ec] p-5">
+                <span className="font-[family-name:var(--font-geist-sans)] text-xl font-semibold text-[#a93100]">0{i + 1}</span>
                 <div>
                   <h3 className="text-sm font-semibold tracking-[0.04em] uppercase">{title}</h3>
-                  <p className="mt-1 text-sm text-[#5F5E5E]">{desc}</p>
+                  <p className="mt-1 text-sm text-[#5c4037]">{desc}</p>
                 </div>
               </div>
             ))}

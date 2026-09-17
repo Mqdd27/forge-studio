@@ -28,7 +28,7 @@ export function FilterGrid({
       </div>
       <div className={className} aria-live="polite">
         {active !== "All" && !items.some((item) => item.category === active) && (
-          <div className="col-span-full border border-dashed border-[#111111]/40 bg-[#F6F3EC]/50 p-12 text-center text-sm text-[#5F5E5E]">
+          <div className="col-span-full border border-dashed border-[#1c1c18]/40 bg-[#f6f3ec]/50 p-12 text-center text-sm text-[#5c4037]">
             <p>{locale === "id" ? "Belum ada proyek dalam kategori ini." : "No projects in this category yet."}</p>
           </div>
         )}

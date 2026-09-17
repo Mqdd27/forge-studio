@@ -21,7 +21,7 @@ const blocks = [
       "Technical SEO foundation",
       "Domain & hosting setup",
     ],
-    metric: "Sub-0.8s render performance with optimal Core Web Vitals scores.",
+    metric: "Performance, responsiveness, and technical SEO are considered from the start.",
     cta: "Start this website",
   },
   {
@@ -64,7 +64,7 @@ const blocks = [
     n: "04",
     tag: "Support",
     title: "Maintenance & Deployment",
-    ideal: "24/7 uptime monitoring, automatic SSL certificate renewal, offsite data backup, and routine security patches.",
+    ideal: "Deployment, backups, SSL, monitoring, and routine maintenance based on project needs.",
     desc: "RisenDev also stays with you after the app is finished — guaranteeing server infrastructure stability, emergency incident handling, and periodic care so the system is never neglected as your business grows.",
     items: [
       "Deployment pipeline",
@@ -82,58 +82,49 @@ const blocks = [
 export function ServicesDesign() {
   return (
     <PageShell>
-      <section className="border-b border-[#111111] px-5 pt-12 pb-14 md:px-12 md:pt-20 md:pb-20">
-        <p data-hero-reveal className="eyebrow text-[#A93100]">
-          <T>{"[ 03 // Service index ]"}</T>
-        </p>
-        <h1
-          data-hero-reveal
-          className="mt-3 max-w-[16ch] font-[family-name:var(--font-geist-sans)] text-4xl leading-[0.95] font-semibold tracking-tight uppercase md:text-7xl"
-        >
-          <T>{"RisenDev engineering"}</T>
-        </h1>
-        <p data-hero-reveal className="mt-5 max-w-[60ch] text-base leading-relaxed text-[#5C4037] md:text-lg">
-          <T>
-            {
-              "Websites & apps built to your business needs. From simple websites to more complex operational systems. Without fictional complications."
-            }
-          </T>
-        </p>
+      <section className="w-full bg-primary px-margin py-space-lg text-on-surface md:px-margin-tablet md:py-space-xl lg:px-margin-desktop">
+        <div className="mx-auto flex max-w-7xl flex-col gap-space-md">
+          <div className="flex items-center justify-between border-b border-on-surface/20 pb-space-sm">
+            <span className="font-label-sm uppercase tracking-widest font-semibold"><T>{"[03 // INDEX LAYANAN]"}</T></span>
+            <span className="font-label-sm uppercase tracking-widest font-semibold">RISENDEV ENGINEERING</span>
+          </div>
+          <div className="grid grid-cols-1 items-end gap-gutter-desktop pt-4 lg:grid-cols-12">
+            <div className="lg:col-span-9"><h1 className="font-display-lg-mobile text-display-lg-mobile font-semibold leading-[.95] tracking-tight uppercase md:font-display-lg md:text-display-lg"><T>{"Website & aplikasi yang dibuat sesuai kebutuhan bisnis Anda."}</T></h1></div>
+            <div className="pb-2 lg:col-span-3"><p className="font-body-lg text-body-lg font-medium leading-relaxed"><T>{"Mulai dari website sederhana sampai sistem operasional yang lebih kompleks. Tanpa komplikasi fiktif."}</T></p></div>
+          </div>
+        </div>
       </section>
 
       {blocks.map((b) => (
-        <section key={b.n} className="border-b border-[#111111] px-5 py-14 last:border-b-0 md:px-12 md:py-20">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+        <section key={b.n} className="w-full bg-surface px-margin md:px-margin-tablet lg:px-margin-desktop">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-gutter-desktop border-t border-on-surface py-12 lg:grid-cols-12">
             <div className="md:col-span-4">
-              <p className="font-[family-name:var(--font-geist-sans)] text-6xl font-semibold tracking-tight text-[#111111] md:text-7xl">
-                {b.n}
-              </p>
-              <p className="eyebrow mt-2 text-[#A93100]">{b.tag}</p>
+              <p className="font-label-md text-primary font-semibold tracking-widest uppercase">{b.n} / {b.tag}</p>
               <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-2xl font-medium tracking-tight uppercase md:text-3xl">
                 <T>{b.title}</T>
               </h2>
             </div>
             <div className="md:col-span-8">
-              <div className="border border-[#111111] bg-[#FFFDF7] p-5 md:p-6">
-                <p className="eyebrow text-[#5F5E5E]">
+              <div className="border border-[#1c1c18] bg-white p-5 md:p-6">
+                <p className="eyebrow text-[#5c4037]">
                   <T>{"Ideal for"}</T>
                 </p>
                 <p className="mt-2 text-[15px] leading-relaxed">
                   <T>{b.ideal}</T>
                 </p>
               </div>
-              <p className="mt-5 max-w-[65ch] text-[15px] leading-relaxed text-[#5F5E5E]">
+              <p className="mt-5 max-w-[65ch] text-[15px] leading-relaxed text-[#5c4037]">
                 <T>{b.desc}</T>
               </p>
-              <ul className="mt-6 grid list-none grid-cols-1 gap-px border border-[#111111] bg-[#111111] p-0 sm:grid-cols-2">
+              <ul className="mt-6 grid list-none grid-cols-1 gap-px border border-[#1c1c18] bg-[#31312c] p-0 sm:grid-cols-2">
                 {b.items.map((item) => (
-                  <li key={item} className="bg-[#F6F3EC] px-4 py-3 text-sm font-medium">
+                  <li key={item} className="bg-[#f6f3ec] px-4 py-3 text-sm font-medium">
                     <T>{item}</T>
                   </li>
                 ))}
               </ul>
-              <div className="mt-5 flex flex-col gap-4 border-t border-[#111111] pt-5 sm:flex-row sm:items-center sm:justify-between">
-                <p className="eyebrow text-[#5F5E5E]">
+              <div className="mt-5 flex flex-col gap-4 border-t border-[#1c1c18] pt-5 sm:flex-row sm:items-center sm:justify-between">
+                <p className="eyebrow text-[#5c4037]">
                   <T>{"// Metric"}</T> — <T>{b.metric}</T>
                 </p>
                 <Link href="/start-a-project" className="btn-forge shrink-0">
@@ -145,7 +136,7 @@ export function ServicesDesign() {
         </section>
       ))}
 
-      <section className="border-t border-[#111111] bg-[#111111] px-5 py-14 text-[#F3F0E9] md:px-12 md:py-20">
+      <section className="border-t border-[#1c1c18] bg-[#31312c] px-5 py-14 text-[#f3f0e9] md:px-12 md:py-20">
         <p className="eyebrow text-[#FF4F00]">
           <T>{"[ Delivery principles ]"}</T>
         </p>
@@ -156,9 +147,9 @@ export function ServicesDesign() {
           {[
             ["Clear scope", "What gets built, why it matters, and how it supports daily work — written down before code."],
             ["Maintainable apps", "Modular structure, readable data relations, and handover docs your team can actually use."],
-            ["Deployment & support", "Production setup, backups, monitoring, and a 30-day hypercare window after launch."],
+            ["Deployment & support", "Production setup, backups, monitoring, and post-launch support based on the agreed scope."],
           ].map(([title, desc]) => (
-            <div key={title} className="bg-[#111111] p-6">
+            <div key={title} className="bg-[#31312c] p-6">
               <h3 className="font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight">
                 <T>{title}</T>
               </h3>
@@ -183,19 +174,19 @@ export function ServiceCards() {
     ["04", "Maintenance & Deployment", "Monitoring, SSL, backups, and security patches after launch."],
   ] as const;
   return (
-    <div className="mt-8 grid grid-cols-1 gap-px border border-[#111111] bg-[#111111] min-[540px]:grid-cols-2 lg:grid-cols-4">
+    <div className="mt-8 grid grid-cols-1 gap-px border border-[#1c1c18] bg-[#31312c] min-[540px]:grid-cols-2 lg:grid-cols-4">
       {cards.map(([n, title, desc]) => (
-        <article key={n} className="flex flex-col bg-[#FFFDF7] p-6">
-          <span className="eyebrow text-[#A93100]">[ {n} ]</span>
+        <article key={n} className="flex flex-col bg-white p-6">
+          <span className="eyebrow text-[#a93100]">[ {n} ]</span>
           <h3 className="mt-3 font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight">
             <T>{title}</T>
           </h3>
-          <p className="mt-2 mb-5 text-sm leading-relaxed text-[#5F5E5E]">
+          <p className="mt-2 mb-5 text-sm leading-relaxed text-[#5c4037]">
             <T>{desc}</T>
           </p>
           <Link
             href="/services"
-            className="mt-auto inline-flex min-h-11 items-center gap-2 text-xs font-semibold tracking-[0.06em] text-[#A93100] uppercase"
+            className="mt-auto inline-flex min-h-11 items-center gap-2 text-xs font-semibold tracking-[0.06em] text-[#a93100] uppercase"
           >
             <T>{"Learn more"}</T> <span aria-hidden="true">→</span>
           </Link>

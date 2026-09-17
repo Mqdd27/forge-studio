@@ -1,186 +1,50 @@
 "use client";
-
-import { useEffect, useRef, useState } from "react";
+import {useEffect,useState} from "react";
 import Image from "next/image";
-import { useLocale } from "next-intl";
-import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import {useLocale} from "next-intl";
+import {Link,usePathname,useRouter} from "@/i18n/navigation";
 
-export function SiteHeader() {
-  const locale = useLocale();
-  const id = locale === "id";
-  const pathname = usePathname();
-  const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const menuButton = useRef<HTMLButtonElement>(null);
-  const header = useRef<HTMLElement>(null);
-
-  const links = [
-    { label: id ? "Overview" : "Overview", href: "/", index: "01" },
-    { label: id ? "Hasil Kerja" : "Work", href: "/work", index: "02" },
-    { label: id ? "Layanan" : "Services", href: "/services", index: "03" },
-    { label: id ? "Studio" : "Studio", href: "/about", index: "04" },
-  ] as const;
-
-  useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 24);
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
-  }, []);
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-  useEffect(() => {
-    if (!open) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = prev;
-    };
-  }, [open]);
-  useEffect(() => {
-    const close = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && open) {
-        setOpen(false);
-        menuButton.current?.focus();
-      }
-    };
-    window.addEventListener("keydown", close);
-    return () => window.removeEventListener("keydown", close);
-  }, [open]);
-
-  const isActive = (href: string) => (href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`));
-
-  return (
-    <>
-      <a
-        href="#main-content"
-        className="fixed top-4 left-4 z-[100] -translate-y-24 bg-[#111111] px-4 py-3 text-xs font-semibold tracking-widest text-[#FFFDF7] uppercase focus:translate-y-0"
-      >
-        {id ? "Langsung ke konten" : "Skip to content"}
-      </a>
-      <header
-        ref={header}
-        className={`fixed inset-x-0 top-0 z-50 border-b border-[#111111] bg-[#FCF9F2]/95 backdrop-blur-md ${scrolled ? "shadow-none" : ""}`}
-      >
-        <div className="flex h-16 w-full items-center justify-between px-5 md:h-20 md:px-12">
-          <div className="flex items-center gap-4">
-            <Link href="/" aria-label="RisenDev" className="group flex items-center gap-2">
-              <Image src="/img/logo.png" alt="" width={32} height={32} priority className="h-8 w-auto object-contain mix-blend-multiply" />
-              <span className="text-xs font-semibold tracking-[0.08em] uppercase transition-colors group-hover:text-[#A93100]">
-                RisenDev
-              </span>
-            </Link>
-            {/* <span className="hidden text-[11px] font-medium tracking-[0.08em] text-[#5F5E5E] uppercase xl:inline-block">
-              [Edisi Rekayasa Sistem 2026]
-            </span> */}
-          </div>
-
-          <nav aria-label={id ? "Navigasi utama" : "Main navigation"} className="hidden items-center gap-8 lg:flex">
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                aria-current={isActive(l.href) ? "page" : undefined}
-                className={`text-xs font-semibold tracking-[0.06em] uppercase transition-colors ${
-                  isActive(l.href) ? "text-[#A93100]" : "text-[#5C4037] hover:text-[#111111]"
-                }`}
-              >
-                {l.label}
-              </Link>
-            ))}
-            <Link
-              href="/start-a-project"
-              className={`text-xs font-semibold tracking-[0.06em] uppercase transition-colors ${
-                isActive("/start-a-project") ? "text-[#A93100]" : "text-[#5C4037] hover:text-[#111111]"
-              }`}
-            >
-              {id ? "Start a Project" : "Start a Project"}
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            {/* <div className="hidden items-center gap-2 bg-[#F1EEE7] px-3 py-1.5 sm:flex" aria-label="Availability">
-              <span className="h-2 w-2 animate-pulse bg-emerald-500" aria-hidden="true" />
-              <span className="text-[11px] font-medium tracking-[0.08em] uppercase">{id ? "Beroperasi penuh" : "Available"}</span>
-            </div> */}
-            <div className="flex border border-[#E5E2DB] bg-white p-0.5 text-[11px] font-semibold" aria-label="Language">
-              {(["en", "id"] as const).map((lang) => (
-                <button
-                  key={lang}
-                  type="button"
-                  aria-pressed={locale === lang}
-                  onClick={() => router.replace(pathname, { locale: lang })}
-                  className={`min-h-9 min-w-8 cursor-pointer px-1 uppercase transition-colors ${
-                    locale === lang ? "bg-[#111111] text-white" : "text-[#67594f] hover:bg-stone-100"
-                  }`}
-                >
-                  {lang}
-                </button>
-              ))}
-            </div>
-            <Link href="/start-a-project" className="btn-forge hidden py-2.5! md:inline-flex">
-              {id ? "Mulai Project" : "Start a Project"}
-              <span aria-hidden="true">↗</span>
-            </Link>
-            <button
-              ref={menuButton}
-              type="button"
-              aria-label={id ? (open ? "Tutup menu" : "Buka menu") : open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              aria-controls="mobile-navigation"
-              onClick={() => setOpen(!open)}
-              className="grid size-10 cursor-pointer place-items-center border border-[#111111] bg-[#F6F3EC] text-[#111111] lg:hidden"
-            >
-              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d={open ? "m5 5 14 14M5 19 19 5" : "M3 6h18M3 12h18M3 18h18"} />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <nav
-          id="mobile-navigation"
-          aria-label={id ? "Navigasi seluler" : "Mobile navigation"}
-          aria-hidden={!open}
-          className={`absolute inset-x-0 top-full max-h-[calc(100dvh-64px)] overflow-y-auto border-b border-[#111111] bg-[#FCF9F2] transition-[opacity,transform,visibility] duration-200 lg:hidden ${
-            open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-2 opacity-0"
-          }`}
-        >
-          <p className="eyebrow px-5 pt-5 text-[#5F5E5E]">{"// Indeks Navigasi"}</p>
-          {[...links, { label: id ? "Start a Project" : "Start a Project", href: "/start-a-project", index: "05" }].map((l) => (
-            <Link
-              tabIndex={open ? 0 : -1}
-              key={l.href + l.label}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              aria-current={isActive(l.href) ? "page" : undefined}
-              className={`flex items-center justify-between border-t border-[#E5E2DB] px-5 py-4 text-2xl font-medium tracking-tight ${
-                isActive(l.href) ? "text-[#A93100]" : "text-[#111111]"
-              }`}
-            >
-              <span>
-                <span className="mr-3 align-middle text-[11px] font-semibold tracking-[0.08em] text-[#5F5E5E]">[{l.index}]</span>
-                {l.label}
-              </span>
-              <span aria-hidden="true">↗</span>
-            </Link>
-          ))}
-          <div className="border-t border-[#E5E2DB] px-5 py-4">
-            <p className="text-[11px] tracking-[0.08em] text-[#5F5E5E] uppercase">Indonesia — Available for remote projects.</p>
-            <Link
-              tabIndex={open ? 0 : -1}
-              href="/start-a-project"
-              onClick={() => setOpen(false)}
-              className="btn-forge mt-3 w-full justify-center"
-            >
-              {id ? "Mulai Project" : "Start a Project"} <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
-        </nav>
-      </header>
-      <div aria-hidden="true" className="h-16 md:h-20" />
-    </>
-  );
+export function SiteHeader(){
+ const locale=useLocale(); const id=locale==="id"; const pathname=usePathname(); const router=useRouter();
+ const [open,setOpen]=useState(false); const [scrolled,setScrolled]=useState(false);
+ const links=[
+  {label:"Overview",href:"/",n:"01"},
+  {label:"Work",href:"/work",n:"02"},
+  {label:"Services",href:"/services",n:"03"},
+  {label:"Studio",href:"/studio",n:"04"},
+  {label:"Start a Project",href:"/start-a-project",n:"05"},
+ ] as const;
+ useEffect(()=>{const fn=()=>setScrolled(window.scrollY>36);fn();window.addEventListener("scroll",fn,{passive:true});return()=>window.removeEventListener("scroll",fn)},[]);
+ useEffect(()=>setOpen(false),[pathname]);
+ useEffect(()=>{document.body.style.overflow=open?"hidden":"";return()=>{document.body.style.overflow=""}},[open]);
+ const active=(h:string)=>h==="/"?pathname==="/":pathname===h||pathname.startsWith(h+"/");
+ return <>
+  <a href="#main-content" className="fixed left-4 top-4 z-[100] -translate-y-24 bg-inverse-surface px-4 py-3 text-xs font-semibold uppercase tracking-widest text-inverse-on-surface focus:translate-y-0">{id?"Langsung ke konten":"Skip to content"}</a>
+  <header className={`fixed z-50 transition-all duration-[420ms] ease-out ${scrolled?"left-3 right-3 top-3 md:left-8 md:right-8 lg:left-16 lg:right-16":"inset-x-0 top-0"}`}>
+   <div className={`mx-auto transition-all duration-[420ms] ${scrolled?"max-w-7xl border border-on-surface/10 bg-surface/92 px-4 shadow-[0_12px_40px_rgba(28,28,24,.10)] backdrop-blur-xl md:px-6":"max-w-none bg-surface px-margin md:px-margin-tablet lg:px-margin-desktop"}`}>
+    <div className={`flex items-center justify-between transition-all duration-[420ms] ${scrolled?"h-16":"h-20"}`}>
+     <Link href="/" aria-label="RisenDev" className="group flex min-w-0 items-center gap-2" data-cursor="RISENDEV">
+      <Image src="/img/logo.png" alt="RisenDev Logo" width={32} height={32} priority className={`w-auto object-contain mix-blend-multiply transition-all duration-300 ${scrolled?"h-7":"h-8"}`}/>
+      <span className="hidden text-[13px] font-semibold tracking-[.08em] uppercase min-[430px]:inline sm:text-sm"><span className="mr-1 text-primary">[</span>RISEN DEV<span className="ml-1 text-primary">]</span></span>
+     </Link>
+     <nav className="hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+      {links.map(l=><Link key={l.href} href={l.href} aria-current={active(l.href)?"page":undefined} className={`group relative px-3 py-2 text-[11px] font-semibold uppercase tracking-[.08em] transition-colors ${active(l.href)?"text-on-surface":"text-on-surface-variant hover:text-on-surface"}`}>
+       <span>{l.label}</span><span className={`absolute inset-x-3 bottom-0 h-[2px] origin-left bg-primary transition-transform duration-300 ${active(l.href)?"scale-x-100":"scale-x-0 group-hover:scale-x-100"}`}/>
+      </Link>)}
+     </nav>
+     <div className="flex items-center gap-2 sm:gap-3">
+      <div className="hidden items-center gap-1 bg-surface-container p-1 sm:flex">{(["en","id"] as const).map(lang=><button key={lang} onClick={()=>router.replace(pathname,{locale:lang})} className={`h-7 min-w-8 cursor-pointer text-[10px] font-semibold uppercase transition-colors ${locale===lang?"bg-inverse-surface text-inverse-on-surface":"text-on-surface-variant hover:bg-surface-container-high"}`}>{lang}</button>)}</div>
+      <Link href="/start-a-project" className="group hidden items-center gap-2 bg-primary px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[.07em] text-on-primary transition-all hover:bg-inverse-surface sm:inline-flex"><span>{id?"Mulai Project":"Start Project"}</span><span className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span></Link>
+      <button onClick={()=>setOpen(true)} aria-label="Open menu" className="group grid size-10 place-items-center lg:hidden"><span className="flex w-5 flex-col gap-1.5"><i className="block h-px w-full bg-on-surface transition-transform group-hover:translate-x-1"/><i className="block h-px w-full bg-on-surface transition-transform group-hover:-translate-x-1"/></span></button>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div className={`fixed inset-0 z-[70] flex flex-col bg-inverse-surface p-margin text-inverse-on-surface transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] lg:hidden ${open?"translate-x-0":"translate-x-full"}`}>
+   <div className="flex items-center justify-between border-b border-white/15 pb-5"><span className="text-sm font-semibold tracking-[.08em]"><span className="text-primary-fixed">[</span>RISEN DEV<span className="text-primary-fixed">]</span></span><button onClick={()=>setOpen(false)} className="grid size-10 place-items-center text-3xl font-light" aria-label="Close menu">×</button></div>
+   <div className="my-auto flex flex-col"><span className="mb-6 text-[10px] font-semibold uppercase tracking-[.12em] text-surface-dim">// Navigation index</span>{links.map(l=><Link key={l.href} href={l.href} className={`group flex items-center justify-between border-t border-white/15 py-4 text-[clamp(1.8rem,8vw,3.5rem)] font-semibold leading-none tracking-[-.04em] transition-colors last:border-b ${active(l.href)?"text-primary-fixed":"hover:text-primary-fixed"}`}><span>[{l.n}] {l.label}</span><span className="text-xl opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100">↗</span></Link>)}</div>
+   <div className="border-t border-white/15 pt-5"><div className="flex items-center gap-2 text-xs text-surface-dim"><span className="size-2 rounded-full bg-emerald-500"/><span>Indonesia / Available for remote projects.</span></div><Link href="/start-a-project" className="mt-4 flex w-full items-center justify-between bg-primary px-5 py-4 text-xs font-semibold uppercase tracking-wider text-on-primary"><span>{id?"Mulai Project":"Start Project"}</span><span>↗</span></Link></div>
+  </div>
+  <div className="h-20" aria-hidden="true"/>
+ </>;
 }
