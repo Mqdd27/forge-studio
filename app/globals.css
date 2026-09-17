@@ -44,7 +44,10 @@
   }
   * {
     box-sizing: border-box;
-    border-radius: 0 !important;
+    border-radius: var(--radius-sm) !important;
+  }
+  .rounded-full {
+    border-radius: 9999px !important;
   }
   h1,
   h2,
@@ -372,7 +375,7 @@ a {
   --glass-shadow: 0 18px 55px rgba(28, 28, 24, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.72);
 }
 * {
-  border-radius: initial !important;
+  border-radius: var(--radius-sm) !important;
 }
 button,
 input,
@@ -403,7 +406,7 @@ section.bg-primary,
 section.bg-inverse-surface,
 section.bg-surface,
 section.bg-surface-container-low {
-  border-radius: 0 !important;
+  border-radius: var(--radius-md) !important;
 }
 img {
   border-radius: var(--radius-sm) !important;
