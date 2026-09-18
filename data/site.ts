@@ -8,7 +8,12 @@ export const cases = [
     slug: "idx-stocks-dashboard",
     status: "active",
 
-    images: [],
+    images: [
+      "/img/portofolio/idx-stocks/main.png",
+      "/img/portofolio/idx-stocks/auto-trade.png",
+      "/img/portofolio/idx-stocks/foreign-flow.png",
+      "/img/portofolio/idx-stocks/calendar.png",
+    ],
 
     stack: [
       "Next.js 15",
@@ -62,7 +67,10 @@ export const cases = [
     slug: "ai-summarizer",
     status: "completed",
 
-    images: [],
+    images: [
+      "/img/portofolio/summarizer/1.png",
+      "/img/portofolio/summarizer/2.png",
+    ],
 
     stack: ["Flask", "FastAPI", "Python 3.12+", "SQLite"],
 
@@ -74,7 +82,10 @@ export const cases = [
     slug: "odoo-wage-overtime-module",
     status: "completed",
 
-    images: [],
+    images: [
+      "/img/portofolio/odoo-wage/1.png",
+      "/img/portofolio/odoo-wage/2.png",
+    ],
 
     stack: ["Odoo 14", "PostgreSQL"],
 
@@ -86,7 +97,12 @@ export const cases = [
     slug: "stock-opname-application",
     status: "completed",
 
-    images: [],
+    images: [
+      "/img/portofolio/stock-opname/1.png",
+      "/img/portofolio/stock-opname/2.png",
+      "/img/portofolio/stock-opname/3.png",
+      "/img/portofolio/stock-opname/4.png",
+    ],
 
     stack: ["Laravel 11", "PostgreSQL", "Odoo 14"],
 
