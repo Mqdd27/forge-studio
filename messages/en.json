@@ -305,10 +305,61 @@
         "outcome": "Stock-opname activities are organized into a dedicated workflow that remains compatible with the existing inventory environment.",
 
         "role": "Full-Stack Development and Odoo Integration"
+      },
+      "board": {
+        "title": "Board Application",
+        "category": "Business System",
+        "summary": "Project management to help manage multiple projects",
+
+        "overview": "A digital board application that centralizes content, task, and team management in one place, making it easy to plan, share, and monitor activities in real time.",
+
+        "challengeTitle": "Team information was scattered across separate tools.",
+        "challenge": "Managing tasks, schedules, and announcements becomes harder when each activity lives in a different place and updates are not visible to everyone at the same time.",
+
+        "challengePoints": {
+          "0": {
+            "title": "Fragmented tools",
+            "description": "Different management activities were handled in separate, disconnected places."
+          },
+          "1": { "title": "Limited visibility", "description": "Team members needed a shared view of current work and important updates." }
+        },
+
+        "solutionTitle": "A single board for everyday team management.",
+        "solution": "The application brings multiple management tools into one digital board, giving the team a shared and up-to-date view of their activities.",
+
+        "solutionPoints": {
+          "0": { "title": "Organize", "description": "Group tasks, schedules, and information in one place." },
+          "1": { "title": "Update", "description": "Keep progress and announcements current for the whole team." },
+          "2": { "title": "Monitor", "description": "Review activity status at a glance." }
+        },
+
+        "capabilitiesTitle": "Everything needed for a centralized team board.",
+
+        "capabilities": {
+          "0": { "title": "Task Management", "description": "Create, assign, and track tasks through clear status stages." },
+          "1": {
+            "title": "Schedules & Announcements",
+            "description": "Share upcoming activities and important information with the team."
+          },
+          "2": { "title": "Board Dashboard", "description": "A unified overview of ongoing work and recent updates." }
+        },
+
+        "engineeringTitle": "Built as a modular board that can grow with the team.",
+        "engineering": "The application separates each management tool into its own module while keeping all data accessible from a single board.",
+
+        "engineeringPoints": {
+          "0": { "title": "Modular Tools", "description": "Each management feature is built as an independent module on the board." },
+          "1": { "title": "Role-Based Access", "description": "Users see and manage content according to their role in the team." },
+          "2": { "title": "Centralized Data", "description": "All board content is stored in one structured source for consistent review." }
+        },
+
+        "outcomeTitle": "A clearer, shared view of team activities.",
+        "outcome": "Daily management activities are organized into one digital board that keeps the whole team aligned on current work and updates.",
+
+        "role": "Full-Stack Development"
       }
     }
   },
-
   "WorkPage": {
     "metadata": {
       "title": "Selected Work",

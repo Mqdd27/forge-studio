@@ -5,12 +5,9 @@
         "title": "Dashboard Saham IDX",
         "category": "Aplikasi Web",
         "summary": "Ruang kerja terfokus untuk mengeksplorasi, memantau, dan menganalisis pasar saham Indonesia.",
-
         "overview": "IDX Stocks Dashboard menyatukan pergerakan pasar, grafik, fundamental perusahaan, alat riset, dan insight otomatis dalam satu ruang kerja yang terstruktur.",
-
         "challengeTitle": "Data pasar lebih berguna ketika konteksnya tetap terhubung.",
         "challenge": "Riset saham sering membutuhkan perpindahan antara data pasar, grafik, laporan keuangan, berita, dan berbagai alat analisis.",
-
         "challengePoints": {
           "0": {
             "title": "Informasi tersebar",
@@ -25,19 +22,15 @@
             "description": "Sinyal lebih mudah dipahami ketika data teknikal dan fundamental dapat dilihat bersama."
           }
         },
-
         "solutionTitle": "Satu ruang kerja untuk riset pasar.",
         "solution": "Dashboard mengatur informasi pasar dalam alur yang konsisten, mulai dari melihat kondisi pasar hingga menganalisis perusahaan lebih dalam.",
-
         "solutionPoints": {
           "0": { "title": "Temukan", "description": "Lihat pergerakan pasar dan saham aktif." },
           "1": { "title": "Analisis", "description": "Pelajari grafik dan indikator teknikal." },
           "2": { "title": "Riset", "description": "Tinjau laporan keuangan, rasio, dan berita." },
           "3": { "title": "Pantau", "description": "Ikuti perusahaan pilihan dan insight otomatis." }
         },
-
         "capabilitiesTitle": "Fitur riset yang dibangun dalam satu alur pasar.",
-
         "capabilities": {
           "0": { "title": "Terminal Pasar", "description": "IHSG, saham naik, saham turun, dan saham teraktif." },
           "1": { "title": "Analisis Teknikal", "description": "Grafik candlestick dengan indikator umum dan analisis volume." },
@@ -46,10 +39,8 @@
           "4": { "title": "Riset AI", "description": "Workflow berbantuan AI dan pendekatan kuantitatif untuk analisis pasar." },
           "5": { "title": "Ringkasan Otomatis", "description": "Ringkasan pasar dan pemantauan terjadwal melalui Telegram." }
         },
-
         "engineeringTitle": "Dirancang untuk data yang kompleks tanpa membuat pengalaman terasa berat.",
         "engineering": "Sistem menggabungkan antarmuka web, layanan data, otomatisasi, dan dukungan desktop dengan alur riset yang tetap mudah dibaca.",
-
         "engineeringPoints": {
           "0": { "title": "Cakupan IDX", "description": "Mendukung workflow data untuk lebih dari 840 perusahaan yang tercatat di IDX." },
           "1": { "title": "Web & Desktop", "description": "Dirancang untuk penggunaan melalui browser dan aplikasi desktop." },
@@ -60,23 +51,17 @@
           },
           "4": { "title": "Aliran Data", "description": "Antarmuka berkomunikasi dengan FastAPI melalui HTTP dan Server-Sent Events." }
         },
-
         "outcomeTitle": "Cara yang lebih terarah untuk memahami pasar Indonesia.",
         "outcome": "Pergerakan pasar, riset perusahaan, analisis, dan pemantauan berada dalam satu ruang kerja yang terfokus.",
-
         "role": "Full-Stack Development, System Design, dan Data Integration"
       },
-
       "growpos": {
         "title": "GrowPOS",
         "category": "Sistem Bisnis",
         "summary": "Platform multi-tenant yang menghubungkan penjualan, inventaris, kas, pelanggan, tim, dan laporan bisnis.",
-
         "overview": "GrowPOS menyatukan operasional bisnis sehari-hari dalam satu platform untuk retail, grocery, kuliner, jasa, dan bisnis campuran.",
-
         "challengeTitle": "Sebuah penjualan memengaruhi lebih dari sekadar checkout.",
         "challenge": "Inventaris, kas, data pelanggan, aktivitas tim, dan laporan ikut berubah ketika transaksi terjadi.",
-
         "challengePoints": {
           "0": {
             "title": "Operasional terpisah",
@@ -91,10 +76,8 @@
             "description": "Pembayaran, perubahan stok, retur, refund, dan pergerakan kas perlu tetap sinkron."
           }
         },
-
         "solutionTitle": "Satu platform, operasional yang saling terhubung.",
         "solution": "GrowPOS menghubungkan transaksi dengan data operasional di sekitarnya sehingga checkout tidak berdiri sebagai proses terpisah.",
-
         "solutionPoints": {
           "0": { "title": "Jual", "description": "Proses transaksi pelanggan." },
           "1": { "title": "Perbarui", "description": "Sesuaikan perubahan inventaris." },
@@ -102,9 +85,7 @@
           "3": { "title": "Operasikan", "description": "Lanjutkan ke workflow dapur atau pekerjaan jasa." },
           "4": { "title": "Laporkan", "description": "Ubah aktivitas menjadi informasi bisnis." }
         },
-
         "capabilitiesTitle": "Fitur utama untuk menjalankan operasional sehari-hari.",
-
         "capabilities": {
           "0": { "title": "Point of Sale", "description": "Checkout, tunai, pembayaran sebagian, dan pembayaran digital." },
           "1": { "title": "Inventaris", "description": "Produk, varian, bahan baku, supplier, dan pergerakan stok." },
@@ -114,10 +95,8 @@
           "5": { "title": "Tim & Akses", "description": "Karyawan, role, permission, dan akses tingkat tenant." },
           "6": { "title": "Laporan & Administrasi", "description": "Dashboard, laporan, ekspor, activity log, subscription, dan billing." }
         },
-
         "engineeringTitle": "Dibangun dengan fokus pada konsistensi, isolasi data, dan operasional yang dapat ditelusuri.",
         "engineering": "Workflow bisnis penting disusun agar stok, pembayaran, aktivitas kas, dan data tenant tetap terkontrol ketika sistem berkembang.",
-
         "engineeringPoints": {
           "0": {
             "title": "Arsitektur Multi-Tenant",
@@ -144,70 +123,52 @@
             "description": "Aktivitas, kas, stok, dan transaksi memiliki catatan yang dapat ditelusuri."
           }
         },
-
         "outcomeTitle": "Dari alat transaksi menjadi operasional bisnis yang terhubung.",
         "outcome": "GrowPOS berkembang menjadi platform yang menyatukan penjualan, inventaris, kas, pelanggan, workflow operasional, dan laporan.",
-
         "role": "Full-Stack Development, System Architecture, dan UI/UX Design"
       },
-
       "aiSummarizer": {
         "title": "AI Summarizer",
         "category": "Aplikasi Web",
         "summary": "Aplikasi terfokus untuk mengubah konten panjang menjadi ringkasan berbantuan AI yang lebih singkat dan jelas.",
-
         "overview": "AI Summarizer menyediakan alur sederhana untuk memasukkan konten dan mendapatkan versi yang lebih singkat dengan fokus pada informasi utama.",
-
         "challengeTitle": "Konten panjang membutuhkan waktu untuk dipahami.",
         "challenge": "Pengguna terkadang hanya membutuhkan inti informasi tetapi tetap harus membaca keseluruhan konten untuk menemukannya.",
-
         "challengePoints": {
           "0": { "title": "Informasi terlalu banyak", "description": "Poin penting dapat sulit ditemukan di dalam konten yang panjang." },
           "1": { "title": "Waktu membaca", "description": "Membaca seluruh konten kurang efisien ketika hanya membutuhkan gambaran utama." }
         },
-
         "solutionTitle": "Dari konten panjang menuju poin yang penting.",
         "solution": "Aplikasi menjaga proses tetap sederhana: masukkan konten, proses melalui model AI, lalu tampilkan ringkasan yang mudah dibaca.",
-
         "solutionPoints": {
           "0": { "title": "Masukkan", "description": "Berikan konten yang ingin diringkas." },
           "1": { "title": "Proses", "description": "Konten diproses melalui workflow AI." },
           "2": { "title": "Baca", "description": "Dapatkan hasil yang lebih singkat dan jelas." }
         },
-
         "capabilitiesTitle": "Fitur sederhana yang fokus pada satu kebutuhan.",
-
         "capabilities": {
           "0": { "title": "Input Konten", "description": "Antarmuka terfokus untuk memasukkan sumber konten." },
           "1": { "title": "AI Summarization", "description": "Konten diproses melalui model AI yang didukung." },
           "2": { "title": "Hasil Ringkas", "description": "Hasil ditampilkan sebagai ringkasan yang mudah ditinjau." }
         },
-
         "engineeringTitle": "Sederhana digunakan, fleksibel di belakangnya.",
         "engineering": "Alur pengguna dipisahkan dari integrasi model sehingga penyedia AI dapat berubah tanpa membuat pengalaman penggunaan menjadi rumit.",
-
         "engineeringPoints": {
           "0": { "title": "Self-Hosted", "description": "Dirancang untuk berjalan di lingkungan yang dikelola sendiri." },
           "1": { "title": "Beberapa Penyedia AI", "description": "Mendukung akses model melalui 9Router." },
           "2": { "title": "Model Lokal", "description": "Kompatibel dengan model lokal melalui Ollama." }
         },
-
         "outcomeTitle": "Lebih cepat menemukan inti informasi.",
         "outcome": "Aplikasi mengubah konten yang diberikan menjadi ringkasan melalui alur yang langsung dan terfokus.",
-
         "role": "Full-Stack Development dan AI Integration"
       },
-
       "odooWageOvertime": {
         "title": "Odoo Wage & Overtime",
         "category": "Sistem yang Ada",
         "summary": "Modul Odoo custom untuk mendukung workflow gaji dan lembur di dalam lingkungan ERP yang sudah digunakan.",
-
         "overview": "Proyek ini memperluas Odoo dengan fungsi khusus untuk proses gaji dan lembur tanpa menambahkan sistem terpisah.",
-
         "challengeTitle": "Workflow ERP standar tidak selalu sesuai dengan operasional.",
         "challenge": "Aturan gaji dan lembur yang sudah digunakan perlu tetap berjalan di dalam proses ERP yang ada.",
-
         "challengePoints": {
           "0": {
             "title": "Aturan bisnis yang sudah ada",
@@ -218,27 +179,21 @@
             "description": "Solusi perlu menyatu dengan Odoo tanpa membuat aplikasi lain yang terpisah."
           }
         },
-
         "solutionTitle": "Kembangkan sistem yang ada, bukan kompleksitasnya.",
         "solution": "Modul Odoo custom menambahkan workflow yang dibutuhkan langsung ke dalam lingkungan ERP yang sudah digunakan.",
-
         "solutionPoints": {
           "0": { "title": "Sesuaikan", "description": "Terjemahkan aturan operasional ke dalam workflow modul." },
           "1": { "title": "Integrasikan", "description": "Pertahankan proses di dalam lingkungan Odoo." },
           "2": { "title": "Jalankan", "description": "Kelola aktivitas gaji dan lembur melalui alur khusus." }
         },
-
         "capabilitiesTitle": "Kustomisasi ERP yang fokus pada workflow yang dibutuhkan.",
-
         "capabilities": {
           "0": { "title": "Modul Odoo Custom", "description": "Fungsi khusus yang dibangun di dalam Odoo 14." },
           "1": { "title": "Workflow Gaji", "description": "Dukungan untuk pemantauan dan proses gaji yang terstruktur." },
           "2": { "title": "Workflow Lembur", "description": "Dukungan untuk pencatatan dan persetujuan lembur." }
         },
-
         "engineeringTitle": "Dibangun di dalam sistem yang sudah digunakan tim.",
         "engineering": "Implementasi memperluas Odoo sehingga pengguna tidak perlu berpindah ke aplikasi atau workflow lain.",
-
         "engineeringPoints": {
           "0": { "title": "Ekstensi Native", "description": "Fungsi diimplementasikan sebagai modul custom Odoo." },
           "1": { "title": "Workflow Sesuai Kebutuhan", "description": "Modul mengikuti proses gaji dan lembur yang dibutuhkan." },
@@ -247,23 +202,17 @@
             "description": "Kustomisasi tetap berada di lingkungan Odoo dan PostgreSQL yang sudah digunakan."
           }
         },
-
         "outcomeTitle": "Workflow khusus di dalam ERP yang sudah ada.",
         "outcome": "Proses gaji dan lembur dapat dijalankan di dalam Odoo melalui workflow yang disesuaikan dengan kebutuhan operasional.",
-
         "role": "Odoo Module Development dan Workflow Implementation"
       },
-
       "stockOpname": {
         "title": "Aplikasi Stock Opname",
         "category": "Sistem Bisnis",
         "summary": "Aplikasi terstruktur untuk mencatat, meninjau, dan menyiapkan hasil penghitungan stok fisik.",
-
         "overview": "Aplikasi menyediakan workflow khusus untuk aktivitas stock opname sekaligus mendukung pertukaran data dengan inventaris Odoo yang sudah digunakan.",
-
         "challengeTitle": "Penghitungan stok fisik membutuhkan proses yang jelas.",
         "challenge": "Pencatatan dan pemeriksaan stok menjadi lebih sulit ketika workflow tidak konsisten atau terpisah dari data inventaris yang ada.",
-
         "challengePoints": {
           "0": { "title": "Proses penghitungan", "description": "Stok fisik membutuhkan cara pencatatan dan pemeriksaan yang konsisten." },
           "1": {
@@ -271,27 +220,21 @@
             "description": "Workflow perlu tetap kompatibel dengan proses inventaris Odoo."
           }
         },
-
         "solutionTitle": "Workflow khusus untuk verifikasi stok.",
         "solution": "Aplikasi menyusun proses stock opname menjadi lebih jelas sekaligus mendukung import dan export data inventaris Odoo.",
-
         "solutionPoints": {
           "0": { "title": "Import", "description": "Siapkan data inventaris untuk proses penghitungan." },
           "1": { "title": "Hitung", "description": "Catat hasil stok fisik." },
           "2": { "title": "Tinjau", "description": "Siapkan hasil untuk pemeriksaan dan proses selanjutnya." }
         },
-
         "capabilitiesTitle": "Fitur utama untuk workflow penghitungan stok.",
-
         "capabilities": {
           "0": { "title": "Penghitungan Stok", "description": "Pencatatan stok fisik melalui workflow yang terstruktur." },
           "1": { "title": "Data Inventaris", "description": "Data stok yang tersusun untuk kebutuhan pemeriksaan operasional." },
           "2": { "title": "Pertukaran Data Odoo", "description": "Dukungan import dan export untuk workflow inventaris Odoo." }
         },
-
         "engineeringTitle": "Dirancang untuk bekerja bersama sistem inventaris yang sudah ada.",
         "engineering": "Aplikasi berfokus pada alur operasional yang jelas sekaligus menjaga data stok tetap kompatibel dengan Odoo 14.",
-
         "engineeringPoints": {
           "0": {
             "title": "Integrasi Odoo",
@@ -303,28 +246,72 @@
           },
           "2": { "title": "Data Terstruktur", "description": "Hasil penghitungan disusun agar mudah diperiksa secara konsisten." }
         },
-
         "outcomeTitle": "Alur yang lebih jelas dari penghitungan hingga pemeriksaan stok.",
         "outcome": "Aktivitas stock opname memiliki workflow khusus yang tetap terhubung dengan lingkungan inventaris yang sudah digunakan.",
-
         "role": "Full-Stack Development dan Odoo Integration"
+      },
+      "board": {
+        "title": "Aplikasi Board",
+        "category": "Sistem Bisnis",
+        "summary": "Manajemen proyek untuk membantu mengelola beberapa proyek",
+        "overview": "Aplikasi board digital yang memusatkan pengelolaan konten, tugas, dan tim dalam satu tempat, sehingga memudahkan perencanaan, berbagi informasi, dan pemantauan aktivitas secara real-time.",
+        "challengeTitle": "Informasi tim tersebar di berbagai tools yang terpisah.",
+        "challenge": "Pengelolaan tugas, jadwal, dan pengumuman menjadi lebih sulit ketika setiap aktivitas berada di tempat yang berbeda dan pembaruan tidak dapat dilihat oleh seluruh anggota tim secara bersamaan.",
+        "challengePoints": {
+          "0": {
+            "title": "Tools yang Terpisah",
+            "description": "Berbagai aktivitas pengelolaan dilakukan di tempat yang berbeda dan tidak saling terhubung."
+          },
+          "1": {
+            "title": "Visibilitas Terbatas",
+            "description": "Anggota tim membutuhkan tampilan bersama untuk melihat pekerjaan yang sedang berjalan dan pembaruan penting."
+          }
+        },
+        "solutionTitle": "Satu board untuk pengelolaan aktivitas tim sehari-hari.",
+        "solution": "Aplikasi ini menggabungkan berbagai tools pengelolaan ke dalam satu board digital, sehingga tim memiliki tampilan bersama yang selalu diperbarui mengenai seluruh aktivitas mereka.",
+        "solutionPoints": {
+          "0": { "title": "Mengatur", "description": "Kelompokkan tugas, jadwal, dan informasi dalam satu tempat." },
+          "1": { "title": "Memperbarui", "description": "Pastikan progres dan pengumuman selalu diperbarui untuk seluruh tim." },
+          "2": { "title": "Memantau", "description": "Lihat status aktivitas secara cepat dalam satu tampilan." }
+        },
+        "capabilitiesTitle": "Semua yang dibutuhkan untuk sebuah board tim yang terpusat.",
+        "capabilities": {
+          "0": { "title": "Manajemen Tugas", "description": "Buat, tetapkan, dan pantau tugas melalui tahapan status yang jelas." },
+          "1": { "title": "Jadwal & Pengumuman", "description": "Bagikan aktivitas mendatang dan informasi penting kepada seluruh tim." },
+          "2": {
+            "title": "Dashboard Board",
+            "description": "Tampilan terpadu untuk melihat pekerjaan yang sedang berlangsung dan pembaruan terbaru."
+          }
+        },
+        "engineeringTitle": "Dibangun sebagai board modular yang dapat berkembang bersama tim.",
+        "engineering": "Aplikasi ini memisahkan setiap fitur pengelolaan ke dalam modulnya masing-masing, sekaligus menjaga seluruh data tetap dapat diakses dari satu board.",
+        "engineeringPoints": {
+          "0": { "title": "Tools Modular", "description": "Setiap fitur pengelolaan dibangun sebagai modul independen di dalam board." },
+          "1": {
+            "title": "Akses Berbasis Peran",
+            "description": "Pengguna dapat melihat dan mengelola konten sesuai dengan peran mereka di dalam tim."
+          },
+          "2": {
+            "title": "Data Terpusat",
+            "description": "Seluruh konten board disimpan dalam satu sumber data terstruktur untuk menjaga konsistensi informasi."
+          }
+        },
+        "outcomeTitle": "Tampilan aktivitas tim yang lebih jelas dan terintegrasi.",
+        "outcome": "Aktivitas pengelolaan sehari-hari diorganisir ke dalam satu board digital yang membantu seluruh tim tetap selaras dengan pekerjaan dan pembaruan terkini.",
+        "role": "Pengembangan Full-Stack"
       }
     }
   },
-
   "WorkPage": {
     "metadata": { "title": "Portofolio", "description": "Aplikasi web dan sistem untuk kebutuhan bisnis dan operasional nyata." },
-
     "filters": { "all": "Semua", "webApplication": "Aplikasi Web", "businessSystem": "Sistem Bisnis", "existingSystem": "Sistem yang Ada" }
   },
-
   "Home": {
     "metadata": {
       "title": "Aplikasi Web untuk Kebutuhan Bisnis",
       "description": "Studio pengembangan web independen untuk membangun, meningkatkan, dan memelihara aplikasi web dan sistem bisnis."
     }
   },
-
   "ServicesPage": {
     "metadata": {
       "title": "Layanan Pengembangan Web",

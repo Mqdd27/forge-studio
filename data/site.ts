@@ -108,6 +108,23 @@ export const cases = [
 
     contentCount: { challenges: 2, solutions: 3, capabilities: 3, engineering: 3 },
   },
+
+  {
+    key: "board",
+    slug: "board-application",
+    status: "completed",
+
+    images: [
+      "/img/portofolio/board/1.png",
+      "/img/portofolio/board/2.png",
+      "/img/portofolio/board/3.png",
+      "/img/portofolio/board/4.png",
+    ],
+
+    stack: ["NextJs 16", "React", "Taiwind CSS", "TypeScript", "Postgresql"],
+
+    contentCount: { challenges: 2, solutions: 3, capabilities: 3, engineering: 3 },
+  },
 ] as const;
 
 export type PortfolioCase = (typeof cases)[number];
