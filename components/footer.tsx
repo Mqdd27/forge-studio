@@ -11,13 +11,17 @@ export function Footer() {
   return (
     <footer className="relative overflow-hidden border-t border-[#1c1c18] bg-[#f1eee7] pt-16 pb-6 md:pt-28">
       <div aria-hidden="true" className="pointer-events-none absolute right-0 -bottom-6 left-0 overflow-hidden opacity-[0.06]">
-        <span className="giant-word block text-center text-[16vw] whitespace-nowrap text-[#1c1c18]">RISENDEV</span>
+        <span className="block text-center text-[16vw] leading-[0.9] font-semibold tracking-[-0.04em] whitespace-nowrap text-[#1c1c18] select-none">
+          RISENDEV
+        </span>
       </div>
       <div className="relative z-10 w-full px-5 md:px-12 lg:px-20">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           <div className="md:col-span-6">
-            <p className="eyebrow mb-4 text-[#a93100]">{id ? "[Manifesto Studio]" : "[Studio Manifesto]"}</p>
-            <p className="max-w-xl font-[family-name:var(--font-geist-sans)] text-2xl font-medium tracking-tight md:text-4xl">
+            <p className="mb-4 font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#a93100] uppercase">
+              {id ? "[Manifesto Studio]" : "[Studio Manifesto]"}
+            </p>
+            <p className="max-w-xl font-sans text-2xl font-medium tracking-tight md:text-4xl">
               {id ? "Software yang dibuat untuk menyelesaikan masalah nyata." : "Software built to solve real problems."}
             </p>
             <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-[#5c4037]">
@@ -27,11 +31,15 @@ export function Footer() {
             </p>
             <div className="mt-6 flex items-center gap-3">
               <span className="h-2.5 w-2.5 bg-emerald-500" aria-hidden="true" />
-              <span className="eyebrow">{id ? "Terbuka untuk diskusi project baru" : "Open for new project discussions"}</span>
+              <span className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] uppercase">
+                {id ? "Terbuka untuk diskusi project baru" : "Open for new project discussions"}
+              </span>
             </div>
           </div>
           <div className="md:col-span-3">
-            <p className="eyebrow mb-4 text-[#5c4037]">{id ? "[Index Halaman]" : "[Page Index]"}</p>
+            <p className="mb-4 font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#5c4037] uppercase">
+              {id ? "[Index Halaman]" : "[Page Index]"}
+            </p>
             <ul className="space-y-1">
               {siteNav.map((item) => (
                 <li key={item.index}>
@@ -58,7 +66,9 @@ export function Footer() {
             </ul>
           </div>
           <div className="md:col-span-3">
-            <p className="eyebrow mb-4 text-[#5c4037]">[Studio]</p>
+            <p className="mb-4 font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#5c4037] uppercase">
+              [Studio]
+            </p>
             <Image
               src="/img/font.png"
               alt="RisenDev — Build, Develop, Grow"
@@ -72,10 +82,15 @@ export function Footer() {
               <br />
               {id ? "Tersedia untuk proyek remote." : "Available for remote projects."}
             </p>
-            <Link href="/start-a-project" className="btn-forge mt-5">
+            <Link
+              href="/start-a-project"
+              className="mt-5 inline-flex items-center justify-center gap-[0.6rem] border-0 bg-primary px-6 py-4 text-xs leading-4 font-semibold tracking-[0.06em] text-white uppercase transition-colors duration-200 hover:-translate-y-px hover:bg-inverse-surface hover:text-inverse-on-surface"
+            >
               {id ? "Mulai Diskusi" : "Start a Project"} <span aria-hidden="true">↗</span>
             </Link>
-            <p className="eyebrow mt-4 text-[#5c4037]">{id ? "Ceritakan kebutuhan Anda" : "Tell us what you need"}</p>
+            <p className="mt-4 font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#5c4037] uppercase">
+              {id ? "Ceritakan kebutuhan Anda" : "Tell us what you need"}
+            </p>
           </div>
         </div>
         <p className="mt-12 border-t border-[#1c1c18] pt-5 text-[11px] tracking-[0.06em] text-[#5c4037] uppercase">

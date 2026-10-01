@@ -24,17 +24,19 @@ export function HomeDesign() {
       ];
   return (
     <main className="w-full bg-surface">
-      <section className="hero-grid min-h-[calc(100svh-5rem)] bg-primary-container px-margin py-8 text-on-surface md:px-margin-tablet lg:px-margin-desktop lg:py-12">
+      <section className="min-h-[calc(100svh-5rem)] bg-primary-container bg-[linear-gradient(rgba(28,28,24,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(28,28,24,0.055)_1px,transparent_1px)] bg-size-[clamp(48px,7vw,88px)_clamp(48px,7vw,88px)] px-margin py-8 text-on-surface md:px-margin-tablet lg:px-margin-desktop lg:py-12">
         <div className="mx-auto flex min-h-[calc(100svh-9rem)] max-w-7xl flex-col justify-between">
           <div className="flex flex-wrap items-center justify-between gap-3 border-b border-on-surface/20 pb-4">
-            <span className="eyebrow flex items-center gap-2">
+            <span className="flex items-center gap-2 font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] uppercase">
               <i className="size-2 bg-on-surface" />
               RISENDEV // DIGITAL STUDIO
             </span>
-            <span className="eyebrow">INDONESIA / REMOTE</span>
+            <span className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] uppercase">
+              INDONESIA / REMOTE
+            </span>
           </div>
           <div className="max-w-6xl py-14" data-hero-reveal>
-            <p className="eyebrow mb-6 inline-flex bg-on-surface px-3 py-2 text-surface">
+            <p className="mb-6 inline-flex bg-on-surface px-3 py-2 font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-surface uppercase">
               {id ? "DESIGN + ENGINEERING" : "DESIGN + ENGINEERING"}
             </p>
             <h1 className="text-[clamp(3.25rem,8.6vw,7.4rem)] leading-[.88] font-semibold tracking-[-.065em] uppercase">
@@ -56,10 +58,16 @@ export function HomeDesign() {
                 : "We turn manual workflows and digital ideas into websites and applications people can understand and use—without unnecessary features."}
             </p>
             <div className="flex flex-wrap gap-3 lg:col-span-5 lg:justify-end">
-              <Link href="/work" className="btn-ghost">
+              <Link
+                href="/work"
+                className="inline-flex items-center justify-center gap-[0.6rem] border border-on-surface bg-transparent px-6 py-4 text-xs leading-4 font-semibold tracking-[0.06em] text-on-surface uppercase transition-colors duration-200 hover:-translate-y-px hover:bg-inverse-surface hover:text-inverse-on-surface"
+              >
                 {id ? "Lihat hasil kerja" : "View work"} ↘
               </Link>
-              <Link href="/start-a-project" className="btn-ink">
+              <Link
+                href="/start-a-project"
+                className="inline-flex items-center justify-center gap-[0.6rem] border-0 bg-inverse-surface px-6 py-4 text-xs leading-4 font-semibold tracking-[0.06em] text-inverse-on-surface uppercase transition-colors duration-200 hover:-translate-y-px hover:bg-primary hover:text-white"
+              >
                 {id ? "Ceritakan project" : "Tell us your project"} ↗
               </Link>
             </div>
@@ -70,7 +78,9 @@ export function HomeDesign() {
       <section className="px-margin py-24 md:px-margin-tablet md:py-36 lg:px-margin-desktop">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="eyebrow text-primary">[01 / {id ? "APA YANG KAMI BANGUN" : "WHAT WE BUILD"}]</p>
+            <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-primary uppercase">
+              [01 / {id ? "APA YANG KAMI BANGUN" : "WHAT WE BUILD"}]
+            </p>
           </div>
           <div className="lg:col-span-8">
             <h2 className="max-w-4xl text-[clamp(2.2rem,5vw,4.5rem)] leading-[.98] font-medium tracking-[-.05em]">
@@ -97,7 +107,9 @@ export function HomeDesign() {
       <section className="bg-inverse-surface px-margin py-24 text-inverse-on-surface md:px-margin-tablet md:py-36 lg:px-margin-desktop">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 lg:grid-cols-12">
-            <p className="eyebrow text-primary-fixed lg:col-span-4">[02 / {id ? "CARA KERJA" : "HOW IT WORKS"}]</p>
+            <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-primary-fixed uppercase lg:col-span-4">
+              [02 / {id ? "CARA KERJA" : "HOW IT WORKS"}]
+            </p>
             <h2 className="text-[clamp(2.2rem,5vw,4.2rem)] leading-none font-medium tracking-[-.05em] lg:col-span-8">
               {id
                 ? "Dari masalah ke sistem yang siap digunakan, dalam empat tahap yang jelas."
@@ -120,7 +132,9 @@ export function HomeDesign() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-12 grid gap-6 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="eyebrow text-primary">[03 / {id ? "PORTOFOLIO" : "SELECTED WORK"}]</p>
+              <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-primary uppercase">
+                [03 / {id ? "PORTOFOLIO" : "SELECTED WORK"}]
+              </p>
               <h2 className="mt-4 text-[clamp(2.5rem,6vw,5.5rem)] leading-[.92] font-semibold tracking-[-.06em] uppercase">
                 {id ? "Dibangun untuk kebutuhan nyata." : "Built for real needs."}
               </h2>
@@ -143,7 +157,9 @@ export function HomeDesign() {
                   <h3 className="text-2xl font-medium tracking-[-.035em] md:text-3xl">{t(`${c.key}.title`)}</h3>
                   <p className="mt-1 max-w-xl text-sm text-on-surface-variant">{t(`${c.key}.summary`)}</p>
                 </div>
-                <span className="eyebrow text-on-surface-variant md:col-span-3">{t(`${c.key}.category`)}</span>
+                <span className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-on-surface-variant uppercase md:col-span-3">
+                  {t(`${c.key}.category`)}
+                </span>
                 <span className="justify-self-end text-2xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 md:col-span-2">
                   ↗
                 </span>
@@ -151,7 +167,10 @@ export function HomeDesign() {
             ))}
           </div>
           <div className="mt-8">
-            <Link href="/work" className="btn-ghost">
+            <Link
+              href="/work"
+              className="inline-flex items-center justify-center gap-[0.6rem] border border-on-surface bg-transparent px-6 py-4 text-xs leading-4 font-semibold tracking-[0.06em] text-on-surface uppercase transition-colors duration-200 hover:-translate-y-px hover:bg-inverse-surface hover:text-inverse-on-surface"
+            >
               {id ? "Semua portofolio" : "All work"} ↗
             </Link>
           </div>
@@ -160,7 +179,9 @@ export function HomeDesign() {
 
       <section className="bg-surface-container-low px-margin py-24 md:px-margin-tablet lg:px-margin-desktop">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12">
-          <p className="eyebrow text-primary lg:col-span-4">[04 / RISENDEV]</p>
+          <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-primary uppercase lg:col-span-4">
+            [04 / RISENDEV]
+          </p>
           <div className="lg:col-span-8">
             <h2 className="text-[clamp(2.1rem,4.5vw,4rem)] leading-none font-medium tracking-[-.05em]">
               {id
@@ -185,7 +206,9 @@ export function HomeDesign() {
       <section className="bg-primary px-margin py-24 text-on-primary md:px-margin-tablet md:py-32 lg:px-margin-desktop">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-8">
-            <p className="eyebrow mb-5">[05 / {id ? "MULAI" : "START"}]</p>
+            <p className="mb-5 font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] uppercase">
+              [05 / {id ? "MULAI" : "START"}]
+            </p>
             <h2 className="text-[clamp(3rem,7vw,6.5rem)] leading-[.9] font-semibold tracking-[-.06em] uppercase">
               {id ? "Punya ide atau proses yang ingin dirapikan?" : "Have an idea or workflow to improve?"}
             </h2>
@@ -196,7 +219,10 @@ export function HomeDesign() {
                 ? "Ceritakan masalahnya. Kami bantu menentukan langkah yang masuk akal."
                 : "Tell us the problem. We’ll help define a practical next step."}
             </p>
-            <Link href="/start-a-project" className="btn-ink">
+            <Link
+              href="/start-a-project"
+              className="inline-flex items-center justify-center gap-[0.6rem] border-0 bg-inverse-surface px-6 py-4 text-xs leading-4 font-semibold tracking-[0.06em] text-inverse-on-surface uppercase transition-colors duration-200 hover:-translate-y-px hover:bg-primary hover:text-white"
+            >
               {id ? "Mulai diskusi" : "Start a conversation"} ↗
             </Link>
           </div>

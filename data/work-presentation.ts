@@ -7,6 +7,7 @@ export type WorkPresentation = {
 };
 export const workPresentation: Record<(typeof cases)[number]["key"], WorkPresentation> = {
   idxStocks: { category: "webApplication", tags: ["Market monitoring", "Reporting", "Research"], screenshots: [] },
+  growpos: { category: "businessSystem", tags: ["Sales", "Inventory", "Reporting"], screenshots: [] },
   aiSummarizer: { category: "webApplication", tags: ["AI summaries", "Content workflow"], screenshots: [] },
   odooWageOvertime: { category: "existingSystem", tags: ["ERP customization", "Wage workflows", "Overtime"], screenshots: [] },
   stockOpname: { category: "businessSystem", tags: ["Inventory", "Stock counts", "Review workflow"], screenshots: [] },

@@ -39,12 +39,12 @@ export function ProjectCarousel({ images, title, locale = "en", className = "", 
 
     window.addEventListener("keydown", handleKeyDown);
 
-    document.body.style.overflow = "hidden";
+    document.body.classList.add("overflow-hidden");
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
 
-      document.body.style.overflow = "";
+      document.body.classList.remove("overflow-hidden");
     };
   }, [fullscreen, next, previous]);
 

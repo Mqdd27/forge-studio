@@ -6,7 +6,8 @@ import { FormEvent, useState } from "react";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 
-const fieldClass = "field-sharp";
+const fieldClass =
+  "w-full border border-on-surface bg-surface-container-lowest px-4 py-[0.8rem] text-base text-on-surface outline-none placeholder:text-[#8a8784] focus:border-2 focus:border-primary focus:px-[calc(1rem-1px)] focus:py-[calc(0.8rem-1px)]";
 
 // Values must stay in sync with the accepted set in app/api/inquiries/route.ts.
 const projectTypes = [
@@ -109,22 +110,24 @@ export function ContactDesign() {
           <div className="flex flex-col gap-space-sm lg:col-span-10">
             <div className="flex items-center gap-3">
               <span className="inline-block size-2.5 bg-primary" />
-              <span className="font-label-sm tracking-widest text-on-surface-variant uppercase">
+              <span className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-on-surface-variant uppercase">
                 {id ? "// 04. INISIASI PROTOKOL" : "// 04. PROJECT INITIATION"}
               </span>
             </div>
-            <h1 className="text-display-lg-mobile md:text-display-lg max-w-4xl font-display-lg-mobile font-semibold tracking-tight uppercase md:font-display-lg">
+            <h1 className="max-w-4xl font-sans text-4xl leading-[2.35rem] font-semibold tracking-[-0.03em] uppercase md:text-[4rem] md:leading-[3.85rem] md:font-semibold md:tracking-[-0.035em]">
               {id ? "Ceritakan apa yang ingin Anda buat." : "Tell us what you want to build."}
             </h1>
-            <p className="text-body-lg max-w-2xl pt-2 font-body-lg text-on-surface-variant">
+            <p className="max-w-2xl pt-2 font-sans text-lg leading-7 font-normal tracking-[-0.01em] text-on-surface-variant">
               {id
                 ? "Tidak perlu punya spesifikasi teknis. Ceritakan saja bisnis Anda, masalahnya, atau sistem seperti apa yang ingin dibuat."
                 : "No technical spec needed. Just tell us your business, the problem, or what kind of system you want."}
             </p>
           </div>
           <div className="hidden flex-col items-end justify-end pb-2 lg:col-span-2 lg:flex">
-            <span className="font-label-md tracking-widest text-primary uppercase">[RISENDEV FORM_V2]</span>
-            <span className="font-label-sm text-secondary">{id ? "DISKUSI LANGSUNG" : "DIRECT DISCUSSION"}</span>
+            <span className="font-sans text-xs leading-4 font-semibold tracking-[0.06em] text-primary uppercase">[RISENDEV FORM_V2]</span>
+            <span className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-secondary">
+              {id ? "DISKUSI LANGSUNG" : "DIRECT DISCUSSION"}
+            </span>
           </div>
         </div>
       </section>
@@ -134,10 +137,10 @@ export function ContactDesign() {
           <div className="bg-surface-container-lowest p-space-md md:p-space-lg lg:order-2 lg:col-span-8">
             {status === "success" ? (
               <section role="status" className="border border-[#1c1c18] bg-white p-8 md:p-10">
-                <p className="eyebrow text-emerald-700">
+                <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-emerald-700 uppercase">
                   ✓ {id ? "Data terkirim ke pipeline RisenDev" : "Data sent to the RisenDev pipeline"}
                 </p>
-                <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-2xl font-semibold tracking-tight md:text-3xl">
+                <h2 className="mt-3 font-sans text-2xl font-semibold tracking-tight md:text-3xl">
                   {id ? "Terima kasih telah menghubungi kami." : "Thanks for reaching out."}
                 </h2>
                 <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-[#5c4037]">
@@ -145,15 +148,23 @@ export function ContactDesign() {
                     ? "Kami akan membaca kebutuhan Anda dan menghubungi melalui kontak yang diberikan."
                     : "We will review your needs and contact you using the details provided."}
                 </p>
-                <button type="button" className="btn-ghost mt-6" onClick={() => setStatus("idle")}>
+                <button
+                  type="button"
+                  className="mt-6 inline-flex items-center justify-center gap-[0.6rem] border border-on-surface bg-transparent px-6 py-4 text-xs leading-4 font-semibold tracking-[0.06em] text-on-surface uppercase transition-colors duration-200 hover:-translate-y-px hover:bg-inverse-surface hover:text-inverse-on-surface"
+                  onClick={() => setStatus("idle")}
+                >
                   {id ? "Kirim inquiry lain" : "Send another inquiry"}
                 </button>
               </section>
             ) : (
               <form onSubmit={submit} aria-busy={status === "loading"} className="border border-[#1c1c18] bg-white">
                 <div className="flex items-center justify-between border-b border-[#1c1c18] px-5 py-3">
-                  <p className="eyebrow">[RisenDev Form_v2]</p>
-                  <p className="eyebrow text-[#a93100]">{id ? "Inquiry proyek" : "Project inquiry"}</p>
+                  <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] uppercase">
+                    [RisenDev Form_v2]
+                  </p>
+                  <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#a93100] uppercase">
+                    {id ? "Inquiry proyek" : "Project inquiry"}
+                  </p>
                 </div>
                 <div className="grid gap-6 p-5 md:p-8">
                   <div className="grid gap-6 sm:grid-cols-2">
@@ -206,7 +217,12 @@ export function ContactDesign() {
                           key={value}
                           className="flex cursor-pointer items-center gap-3 border border-[#1c1c18] bg-[#f6f3ec] px-4 py-3 text-sm font-medium has-checked:bg-[#31312c] has-checked:text-[#FFFDF7]"
                         >
-                          <input type="checkbox" name="projectType" value={value} className="check-sharp" />
+                          <input
+                            type="checkbox"
+                            name="projectType"
+                            value={value}
+                            className="inline-grid size-[1.1rem] shrink-0 cursor-pointer appearance-none place-items-center border border-on-surface bg-white checked:bg-on-surface checked:after:size-[0.45rem] checked:after:bg-primary-fixed checked:after:content-['']"
+                          />
                           {id ? ind : en}
                         </label>
                       ))}
@@ -238,7 +254,13 @@ export function ContactDesign() {
                       </legend>
                       {budgets.map((b) => (
                         <label key={b} className="flex cursor-pointer items-center gap-3 text-sm">
-                          <input type="radio" name="budget" value={b} className="check-sharp" /> {b}
+                          <input
+                            type="radio"
+                            name="budget"
+                            value={b}
+                            className="inline-grid size-[1.1rem] shrink-0 cursor-pointer appearance-none place-items-center border border-on-surface bg-white checked:bg-on-surface checked:after:size-[0.45rem] checked:after:bg-primary-fixed checked:after:content-['']"
+                          />{" "}
+                          {b}
                         </label>
                       ))}
                     </fieldset>
@@ -248,7 +270,13 @@ export function ContactDesign() {
                       </legend>
                       {timelines.map(([value, indonesian]) => (
                         <label key={value} className="flex cursor-pointer items-center gap-3 text-sm">
-                          <input type="radio" name="timeline" value={value} className="check-sharp" /> {id ? indonesian : value}
+                          <input
+                            type="radio"
+                            name="timeline"
+                            value={value}
+                            className="inline-grid size-[1.1rem] shrink-0 cursor-pointer appearance-none place-items-center border border-on-surface bg-white checked:bg-on-surface checked:after:size-[0.45rem] checked:after:bg-primary-fixed checked:after:content-['']"
+                          />{" "}
+                          {id ? indonesian : value}
                         </label>
                       ))}
                     </fieldset>
@@ -270,7 +298,11 @@ export function ContactDesign() {
                   <p id="inquiry-error" role="alert" className={error ? "text-sm font-medium text-[#B3261E]" : "sr-only"}>
                     {error}
                   </p>
-                  <button disabled={status === "loading"} type="submit" className="btn-forge justify-center px-8! py-4! text-sm!">
+                  <button
+                    disabled={status === "loading"}
+                    type="submit"
+                    className="inline-flex items-center justify-center gap-[0.6rem] border-0 bg-primary px-6 px-8! py-4 py-4! text-sm! text-xs leading-4 font-semibold tracking-[0.06em] text-white uppercase transition-colors duration-200 hover:-translate-y-px hover:bg-inverse-surface hover:text-inverse-on-surface"
+                  >
                     {status === "loading" ? (
                       id ? (
                         "Mengirim…"
@@ -289,8 +321,10 @@ export function ContactDesign() {
           </div>
           <aside className="grid gap-px border border-[#1c1c18] bg-[#31312c] lg:order-1 lg:col-span-4">
             <div className="bg-[#31312c] p-6 text-[#f3f0e9]">
-              <p className="eyebrow text-[#FF4F00]">{id ? "// Protokol setelah pengiriman" : "// Post-submit protocol"}</p>
-              <h2 className="mt-2 font-[family-name:var(--font-geist-sans)] text-xl font-medium tracking-tight">
+              <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#FF4F00] uppercase">
+                {id ? "// Protokol setelah pengiriman" : "// Post-submit protocol"}
+              </p>
+              <h2 className="mt-2 font-sans text-xl font-medium tracking-tight">
                 {id ? "Setelah dikirim, apa berikutnya?" : "What happens after you send?"}
               </h2>
             </div>
@@ -321,7 +355,7 @@ export function ContactDesign() {
               ],
             ].map(([title, desc], i) => (
               <div key={title} className="flex gap-4 bg-[#f6f3ec] p-5">
-                <span className="font-[family-name:var(--font-geist-sans)] text-xl font-semibold text-[#a93100]">0{i + 1}</span>
+                <span className="font-sans text-xl font-semibold text-[#a93100]">0{i + 1}</span>
                 <div>
                   <h3 className="text-sm font-semibold tracking-[0.04em] uppercase">{title}</h3>
                   <p className="mt-1 text-sm text-[#5c4037]">{desc}</p>

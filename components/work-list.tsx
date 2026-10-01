@@ -261,7 +261,8 @@ function ProjectVisual({ item, locale, title, index }: { item: ProjectItem; loca
 
       <div>
         <span className="text-[9px] font-semibold tracking-[0.16em] text-[#FF4F00] uppercase">
-          // {id ? "Project Preview" : "Project Preview"}
+          {"// "}
+          {id ? "Project Preview" : "Project Preview"}
         </span>
 
         <p className="mt-5 max-w-lg text-[clamp(2.5rem,5vw,5rem)] leading-[0.88] font-semibold tracking-[-0.06em] uppercase">{title}</p>
