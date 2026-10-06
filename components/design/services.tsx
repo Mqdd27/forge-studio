@@ -85,19 +85,21 @@ export function ServicesDesign() {
       <section className="w-full bg-primary px-margin py-space-lg text-on-primary md:px-margin-tablet md:py-space-xl lg:px-margin-desktop">
         <div className="mx-auto flex max-w-7xl flex-col gap-space-md">
           <div className="flex items-center justify-between border-b border-on-surface/20 pb-space-sm">
-            <span className="font-label-sm font-semibold tracking-widest uppercase">
+            <span className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] uppercase">
               <T>{"[03 // SERVICES INDEX]"}</T>
             </span>
-            <span className="font-label-sm font-semibold tracking-widest uppercase">RISENDEV ENGINEERING</span>
+            <span className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] uppercase">
+              RISENDEV ENGINEERING
+            </span>
           </div>
           <div className="grid grid-cols-1 items-end gap-gutter-desktop pt-4 lg:grid-cols-12">
             <div className="lg:col-span-9">
-              <h1 className="text-display-lg-mobile md:text-display-lg font-display-lg-mobile leading-[.95] font-semibold tracking-tight uppercase md:font-display-lg">
+              <h1 className="font-sans text-4xl leading-[2.35rem] font-semibold tracking-[-0.03em] uppercase md:text-[4rem] md:leading-[3.85rem] md:font-semibold md:tracking-[-0.035em]">
                 <T>{"Websites and applications built around what your business actually needs."}</T>
               </h1>
             </div>
             <div className="pb-2 lg:col-span-3">
-              <p className="text-body-lg font-body-lg leading-relaxed font-medium">
+              <p className="font-sans text-lg leading-7 font-normal tracking-[-0.01em]">
                 <T>{"From a simple website to a more complex operational system. No invented complexity."}</T>
               </p>
             </div>
@@ -109,16 +111,16 @@ export function ServicesDesign() {
         <section key={b.n} className="w-full bg-surface px-margin md:px-margin-tablet lg:px-margin-desktop">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-gutter-desktop border-t border-on-surface py-12 lg:grid-cols-12">
             <div className="md:col-span-4">
-              <p className="font-label-md font-semibold tracking-widest text-primary uppercase">
+              <p className="font-sans text-xs leading-4 font-semibold tracking-[0.06em] text-primary uppercase">
                 {b.n} / {b.tag}
               </p>
-              <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-2xl font-medium tracking-tight uppercase md:text-3xl">
+              <h2 className="mt-3 font-sans text-2xl font-medium tracking-tight uppercase md:text-3xl">
                 <T>{b.title}</T>
               </h2>
             </div>
             <div className="md:col-span-8">
               <div className="border border-[#1c1c18] bg-white p-5 md:p-6">
-                <p className="eyebrow text-[#5c4037]">
+                <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#5c4037] uppercase">
                   <T>{"Ideal for"}</T>
                 </p>
                 <p className="mt-2 text-[15px] leading-relaxed">
@@ -136,10 +138,13 @@ export function ServicesDesign() {
                 ))}
               </ul>
               <div className="mt-5 flex flex-col gap-4 border-t border-[#1c1c18] pt-5 sm:flex-row sm:items-center sm:justify-between">
-                <p className="eyebrow text-[#5c4037]">
+                <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#5c4037] uppercase">
                   <T>{"// Metric"}</T> — <T>{b.metric}</T>
                 </p>
-                <Link href="/start-a-project" className="btn-forge shrink-0">
+                <Link
+                  href="/start-a-project"
+                  className="inline-flex shrink-0 items-center justify-center gap-[0.6rem] border-0 bg-primary px-6 py-4 text-xs leading-4 font-semibold tracking-[0.06em] text-white uppercase transition-colors duration-200 hover:-translate-y-px hover:bg-inverse-surface hover:text-inverse-on-surface"
+                >
                   <T>{b.cta}</T> <span aria-hidden="true">↗</span>
                 </Link>
               </div>
@@ -149,10 +154,10 @@ export function ServicesDesign() {
       ))}
 
       <section className="border-t border-[#1c1c18] bg-[#31312c] px-5 py-14 text-[#f3f0e9] md:px-12 md:py-20">
-        <p className="eyebrow text-[#FF4F00]">
+        <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#FF4F00] uppercase">
           <T>{"[ Delivery principles ]"}</T>
         </p>
-        <h2 className="mt-3 font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:text-4xl">
+        <h2 className="mt-3 font-sans text-3xl font-medium tracking-tight uppercase md:text-4xl">
           <T>{"Built with care."}</T>
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-px border border-[#F3F0E9] bg-[#F3F0E9] sm:grid-cols-3">
@@ -162,7 +167,7 @@ export function ServicesDesign() {
             ["Deployment & support", "Production setup, backups, monitoring, and post-launch support based on the agreed scope."],
           ].map(([title, desc]) => (
             <div key={title} className="bg-[#31312c] p-6">
-              <h3 className="font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight">
+              <h3 className="font-sans text-lg font-medium tracking-tight">
                 <T>{title}</T>
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#B9B5AE]">

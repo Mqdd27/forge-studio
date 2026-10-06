@@ -63,16 +63,16 @@ export function AboutDesign() {
       <section className="border-b border-[#1c1c18] px-5 pt-20 pb-24 md:px-12 md:pt-28 md:pb-32 lg:px-20 lg:pt-36 lg:pb-44">
         <div className="inline-flex items-center gap-2 bg-[#f1eee7] px-3 py-1.5">
           <span className="h-2 w-2 bg-[#A93100]" aria-hidden="true" />
-          <span className="eyebrow">
+          <span className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] uppercase">
             <T>{"Technology & business-system development partner"}</T>
           </span>
         </div>
-        <h1 className="mt-6 max-w-[20ch] font-[family-name:var(--font-geist-sans)] text-4xl leading-[0.95] font-semibold tracking-tight uppercase md:text-7xl">
+        <h1 className="mt-6 max-w-[20ch] font-sans text-4xl leading-[0.95] font-semibold tracking-tight uppercase md:text-7xl">
           <T>{"We build software the honest, simple, and durable way."}</T>
         </h1>
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-12">
           <div className="bg-[#f1eee7] p-5 md:col-span-4">
-            <p className="eyebrow text-[#a93100]">
+            <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#a93100] uppercase">
               <T>{"[ Our approach ]"}</T>
             </p>
             <p className="mt-2 text-xs font-semibold tracking-[0.06em] uppercase">
@@ -114,11 +114,11 @@ export function AboutDesign() {
 
       {/* COLLABORATION METHOD */}
       <section className="border-b border-[#1c1c18] bg-[#f6f3ec] px-5 py-20 md:px-12 md:py-28 lg:px-20 lg:py-44">
-        <p className="eyebrow text-[#a93100]">
+        <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#a93100] uppercase">
           <T>{"[ Collaboration method ]"}</T>
         </p>
         <div className="mt-3 grid grid-cols-1 items-end gap-6 md:grid-cols-12">
-          <h2 className="font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:col-span-7 md:text-4xl">
+          <h2 className="font-sans text-3xl font-medium tracking-tight uppercase md:col-span-7 md:text-4xl">
             <T>{"How we work: direct, fast & clear"}</T>
           </h2>
           <p className="text-[15px] leading-relaxed text-[#5c4037] md:col-span-5">
@@ -127,10 +127,10 @@ export function AboutDesign() {
         </div>
         <div className="mt-8 border border-[#1c1c18] bg-white p-5 opacity-70 md:p-6">
           <div className="flex flex-col justify-between gap-2 sm:flex-row">
-            <p className="eyebrow text-[#5c4037]">
+            <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#5c4037] uppercase">
               <T>{"[ Old model / generic agency ]"}</T>
             </p>
-            <p className="eyebrow text-[#B3261E]">
+            <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#B3261E] uppercase">
               <T>{"Bloated costs & frequent miscommunication"}</T>
             </p>
           </div>
@@ -143,7 +143,7 @@ export function AboutDesign() {
               "Bugs & delays",
             ].map((s, i) => (
               <div key={s} className="bg-[#f6f3ec] p-3">
-                <p className="eyebrow text-[#5c4037]">
+                <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#5c4037] uppercase">
                   <T>{"Layer"}</T> {i}
                 </p>
                 <p className="mt-1 text-xs font-semibold">
@@ -156,7 +156,7 @@ export function AboutDesign() {
         <div className="mt-4 border border-[#1c1c18] bg-[#31312c] p-5 text-[#f3f0e9] md:p-6">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 bg-[#FF4F00]" aria-hidden="true" />
-            <p className="eyebrow">
+            <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] uppercase">
               <T>{"[ RisenDev direct model // result-focused ]"}</T>
             </p>
           </div>
@@ -164,7 +164,9 @@ export function AboutDesign() {
             {["Understand the real problem", "Design the precise system", "Build & verify together", "Deploy, train & support"].map(
               (s, i) => (
                 <li key={s} className="border border-[#F3F0E9]/25 p-3">
-                  <p className="eyebrow text-[#FF4F00]">0{i + 1}</p>
+                  <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#FF4F00] uppercase">
+                    0{i + 1}
+                  </p>
                   <p className="mt-1 text-xs font-semibold">
                     <T>{s}</T>
                   </p>
@@ -181,10 +183,10 @@ export function AboutDesign() {
             ["100% ownership", "Full control in your hands", "All systems, databases, and account access handed over fully."],
           ].map(([k, v, d]) => (
             <div key={k} className="bg-white p-5">
-              <p className="eyebrow text-[#5c4037]">
+              <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#5c4037] uppercase">
                 [<T>{k}</T>]
               </p>
-              <p className="mt-2 font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight">
+              <p className="mt-2 font-sans text-lg font-medium tracking-tight">
                 <T>{v}</T>
               </p>
               <p className="mt-1 text-sm text-[#5c4037]">
@@ -197,22 +199,24 @@ export function AboutDesign() {
 
       {/* DARK PRINCIPLES */}
       <section className="border-b border-[#1c1c18] bg-[#31312c] px-5 py-14 text-[#f3f0e9] md:px-12 md:py-20">
-        <p className="eyebrow text-[#FF4F00]">
+        <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#FF4F00] uppercase">
           <T>{"Our commitment to your business"}</T>
         </p>
-        <h2 className="mt-3 max-w-[18ch] font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:text-5xl">
+        <h2 className="mt-3 max-w-[18ch] font-sans text-3xl font-medium tracking-tight uppercase md:text-5xl">
           <T>{"Working principles that guarantee your peace of mind."}</T>
         </h2>
         <div className="mt-10 grid grid-cols-1 gap-px border border-[#F3F0E9]/25 bg-[#F3F0E9]/25 md:grid-cols-2">
           {principles.map(([n, tag, title, desc]) => (
             <div key={n} className="flex flex-col bg-[#31312c] p-6 md:p-8">
               <div className="flex items-center justify-between">
-                <span className="eyebrow text-[#FF4F00]">[ {n} ]</span>
-                <span className="eyebrow text-[#B9B5AE]">
+                <span className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#FF4F00] uppercase">
+                  [ {n} ]
+                </span>
+                <span className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#B9B5AE] uppercase">
                   <T>{tag}</T>
                 </span>
               </div>
-              <h3 className="mt-4 font-[family-name:var(--font-geist-sans)] text-xl font-medium tracking-tight uppercase md:text-2xl">
+              <h3 className="mt-4 font-sans text-xl font-medium tracking-tight uppercase md:text-2xl">
                 <T>{title}</T>
               </h3>
               <p className="mt-3 text-[15px] leading-relaxed text-[#B9B5AE]">
@@ -225,11 +229,11 @@ export function AboutDesign() {
 
       {/* TEAM */}
       <section className="border-b border-[#1c1c18] px-5 py-20 md:px-12 md:py-28 lg:px-20 lg:py-44">
-        <p className="eyebrow text-[#a93100]">
+        <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#a93100] uppercase">
           <T>{"[ Dedicated core team ]"}</T>
         </p>
         <div className="mt-3 grid grid-cols-1 items-end gap-6 md:grid-cols-12">
-          <h2 className="font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:col-span-8 md:text-4xl">
+          <h2 className="font-sans text-3xl font-medium tracking-tight uppercase md:col-span-8 md:text-4xl">
             <T>{"The core team guarding your system's success"}</T>
           </h2>
           <p className="text-[15px] text-[#5c4037] md:col-span-4">
@@ -239,10 +243,10 @@ export function AboutDesign() {
         <div className="mt-8 grid grid-cols-1 gap-px border border-[#1c1c18] bg-[#31312c] lg:grid-cols-3">
           {roles.map(([role, title, desc, points]) => (
             <div key={role} className="flex flex-col bg-[#f1eee7] p-6 md:p-8">
-              <p className="eyebrow text-[#a93100]">
+              <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#a93100] uppercase">
                 <T>{role}</T>
               </p>
-              <h3 className="mt-3 font-[family-name:var(--font-geist-sans)] text-xl font-medium tracking-tight">
+              <h3 className="mt-3 font-sans text-xl font-medium tracking-tight">
                 <T>{title}</T>
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-[#5c4037]">
@@ -262,10 +266,10 @@ export function AboutDesign() {
 
       {/* HANDOVER & GUARANTEE */}
       <section className="border-b border-[#1c1c18] bg-[#f6f3ec] px-5 py-20 md:px-12 md:py-28 lg:px-20 lg:py-44">
-        <p className="eyebrow text-[#a93100]">
+        <p className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-[#a93100] uppercase">
           <T>{"[ Post-release support ]"}</T>
         </p>
-        <h2 className="mt-3 max-w-[20ch] font-[family-name:var(--font-geist-sans)] text-3xl font-medium tracking-tight uppercase md:text-4xl">
+        <h2 className="mt-3 max-w-[20ch] font-sans text-3xl font-medium tracking-tight uppercase md:text-4xl">
           <T>{"Peace-of-mind guarantee & full post-release support"}</T>
         </h2>
         <div className="mt-8 space-y-px border border-[#1c1c18] bg-[#31312c]">
@@ -291,9 +295,9 @@ export function AboutDesign() {
           ].map(([n, title, desc, badge]) => (
             <div key={n} className="grid grid-cols-1 gap-4 bg-white p-5 md:grid-cols-12 md:items-center md:p-6">
               <div className="flex items-start gap-4 md:col-span-9">
-                <span className="font-[family-name:var(--font-geist-sans)] text-2xl font-semibold text-[#a93100]">{n}</span>
+                <span className="font-sans text-2xl font-semibold text-[#a93100]">{n}</span>
                 <div>
-                  <h3 className="font-[family-name:var(--font-geist-sans)] text-lg font-medium tracking-tight uppercase">
+                  <h3 className="font-sans text-lg font-medium tracking-tight uppercase">
                     <T>{title}</T>
                   </h3>
                   <p className="mt-1 max-w-2xl text-sm leading-relaxed text-[#5c4037]">
@@ -321,7 +325,10 @@ export function AboutDesign() {
               <T>{"Practical thinking. Careful engineering. Clear communication."}</T>
             </p>
           </div>
-          <Link href="/start-a-project" className="btn-forge md:ml-auto">
+          <Link
+            href="/start-a-project"
+            className="inline-flex items-center justify-center gap-[0.6rem] border-0 bg-primary px-6 py-4 text-xs leading-4 font-semibold tracking-[0.06em] text-white uppercase transition-colors duration-200 hover:-translate-y-px hover:bg-inverse-surface hover:text-inverse-on-surface md:ml-auto"
+          >
             <T>{"Start a Project"}</T> <span aria-hidden="true">→</span>
           </Link>
         </div>

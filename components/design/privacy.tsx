@@ -51,7 +51,7 @@ export async function PrivacyDesign() {
   return (
     <PageShell className="mx-auto max-w-[900px] px-6 py-12 md:py-20">
       <header>
-        <h1 className="font-[family-name:var(--font-geist-sans)] font-bold">{id ? "Kebijakan Privasi" : "Privacy Policy"}</h1>
+        <h1 className="font-sans font-bold">{id ? "Kebijakan Privasi" : "Privacy Policy"}</h1>
         <p className="mt-5 text-lg text-[#595959]">
           {id
             ? "Cara website RisenDev menangani informasi inquiry proyek."
@@ -61,7 +61,7 @@ export async function PrivacyDesign() {
       <div className="mt-10 space-y-8">
         {sections.map(([title, description]) => (
           <section key={title}>
-            <h2 className="font-[family-name:var(--font-geist-sans)] font-semibold">{title}</h2>
+            <h2 className="font-sans font-semibold">{title}</h2>
             <p className="mt-4 leading-relaxed text-[#595959]">{description}</p>
           </section>
         ))}

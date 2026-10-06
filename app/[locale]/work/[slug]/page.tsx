@@ -187,7 +187,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
             <p className="mt-7 max-w-2xl text-base leading-[1.7] text-black/70 md:text-lg">{t(`${item.key}.solution`)}</p>
 
             <div className="mt-14 border-t border-black/25">
-              <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))" }}>
+              <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))]">
                 {Array.from({ length: item.contentCount.solutions }).map((_, index) => (
                   <SolutionItem
                     key={index}
@@ -235,7 +235,8 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
           <div className="lg:col-span-9">
             <p className="text-[10px] font-semibold tracking-[0.18em] text-[#FF4F00] uppercase">
-              // {id ? "Di balik sistem" : "Behind the system"}
+              {"// "}
+              {id ? "Di balik sistem" : "Behind the system"}
             </p>
 
             <h2 className="mt-5 max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:text-6xl">
@@ -260,7 +261,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
             {/* stack */}
 
             <div className="mt-16">
-              <p className="text-[10px] font-semibold tracking-[0.18em] text-white/35 uppercase">// Technology</p>
+              <p className="text-[10px] font-semibold tracking-[0.18em] text-white/35 uppercase">{"// Technology"}</p>
 
               <div className="mt-5 flex flex-wrap gap-2">
                 {item.stack.map((technology) => (
@@ -348,7 +349,10 @@ function SectionMarker({ number, label, dark = false }: { number: string; label:
 
 function SectionEyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <p className={`text-[10px] font-semibold tracking-[0.18em] uppercase ${dark ? "text-black/65" : "text-primary"}`}>// {children}</p>
+    <p className={`text-[10px] font-semibold tracking-[0.18em] uppercase ${dark ? "text-black/65" : "text-primary"}`}>
+      {"// "}
+      {children}
+    </p>
   );
 }
 

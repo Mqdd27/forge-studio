@@ -19,11 +19,12 @@ export function WorkDesign() {
 
       <section className="bg-[#F6F3EC] px-5 pt-12 pb-16 text-[#1C1C18] md:px-10 md:pt-16 md:pb-20 lg:px-16 lg:pt-20 lg:pb-24">
         <div className="mx-auto max-w-[1440px]">
-          {/* eyebrow */}
+          {/* Eyebrow */}
 
           <div className="flex items-center justify-between border-b border-black/15 pb-4">
             <span className="text-[10px] font-semibold tracking-[0.18em] text-primary uppercase">
-              // {id ? "Portofolio" : "Selected Work"}
+              {"// "}
+              {id ? "Portofolio" : "Selected Work"}
             </span>
 
             <span className="text-[10px] font-semibold tracking-[0.14em] text-black/35 uppercase">

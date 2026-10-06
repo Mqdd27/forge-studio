@@ -21,9 +21,9 @@ export function SiteHeader() {
   }, []);
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
+    document.body.classList.toggle("overflow-hidden", open);
     return () => {
-      document.body.style.overflow = "";
+      document.body.classList.remove("overflow-hidden");
     };
   }, [open]);
   const active = (h: string) => (h === "/" ? pathname === "/" : pathname === h || pathname.startsWith(h + "/"));
@@ -39,7 +39,7 @@ export function SiteHeader() {
         className={`fixed z-50 transition-all duration-[420ms] ease-out ${scrolled ? "top-3 right-3 left-3 md:right-8 md:left-8 lg:right-16 lg:left-16" : "inset-x-0 top-0"}`}
       >
         <div
-          className={`mx-auto transition-all duration-[420ms] ${scrolled ? "liquid-glass max-w-7xl rounded-[1.35rem]! px-4 md:px-6" : "max-w-none bg-surface/95 px-margin md:px-margin-tablet lg:px-margin-desktop"}`}
+          className={`mx-auto transition-all duration-[420ms] ${scrolled ? "relative max-w-7xl overflow-hidden rounded-[1.35rem]! border! border-white/72! bg-[linear-gradient(135deg,rgba(255,255,255,0.76),rgba(255,253,247,0.54))]! px-4 shadow-[0_18px_55px_rgba(28,28,24,0.1),inset_0_1px_0_rgba(255,255,255,0.72)] backdrop-blur-[16px] backdrop-saturate-[135%] before:pointer-events-none before:absolute before:inset-0 before:bg-[linear-gradient(120deg,rgba(255,255,255,0.55),transparent_32%,transparent_68%,rgba(255,181,158,0.14))] before:opacity-75 before:content-[''] md:px-6 md:backdrop-blur-[22px] md:backdrop-saturate-[145%]" : "max-w-none bg-surface/95 px-margin md:px-margin-tablet lg:px-margin-desktop"}`}
         >
           <div className={`flex items-center justify-between transition-all duration-[420ms] ${scrolled ? "h-16" : "h-20"}`}>
             <Link href="/" aria-label="RisenDev" className="group flex min-w-0 items-center gap-2" data-cursor="RISENDEV">
@@ -71,7 +71,7 @@ export function SiteHeader() {
               ))}
             </nav>
             <div className="flex items-center gap-2 sm:gap-3">
-              <div className="glass-pill hidden items-center gap-1 p-1 sm:flex">
+              <div className="hidden items-center gap-1 border! border-white/68! bg-white/58! p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.72)] backdrop-blur-[14px] sm:flex">
                 {(["en", "id"] as const).map((lang) => (
                   <button
                     key={lang}
