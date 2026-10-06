@@ -132,9 +132,23 @@ export function SiteHeader() {
           ))}
         </div>
         <div className="border-t border-white/15 pt-5">
-          <div className="flex items-center gap-2 text-xs text-surface-dim">
-            <span className="size-2 rounded-full bg-emerald-500" />
-            <span>{id ? "Indonesia / Tersedia untuk proyek remote." : "Indonesia / Available for remote projects."}</span>
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2 text-xs text-surface-dim">
+              <span className="size-2 shrink-0 rounded-full bg-emerald-500" />
+              <span>{id ? "Indonesia / Tersedia untuk proyek remote." : "Indonesia / Available for remote projects."}</span>
+            </div>
+            <div className="flex shrink-0 gap-1 border border-white/15 p-1" role="group" aria-label={id ? "Bahasa" : "Language"}>
+              {(["en", "id"] as const).map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => router.replace(pathname, { locale: lang })}
+                  aria-pressed={locale === lang}
+                  className={`h-8 min-w-10 cursor-pointer text-[11px] font-semibold uppercase transition-colors ${locale === lang ? "bg-inverse-on-surface text-inverse-surface" : "text-surface-dim hover:text-inverse-on-surface"}`}
+                >
+                  {lang}
+                </button>
+              ))}
+            </div>
           </div>
           <Link
             href="/start-a-project"
