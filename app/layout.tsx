@@ -8,7 +8,7 @@ const sans = GeistSans;
 const mono = GeistMono;
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://risendev.dev"),
+  metadataBase: new URL("https://risencode.dev"),
 
   title: { default: "RisenDev", template: "%s | RisenDev" },
 

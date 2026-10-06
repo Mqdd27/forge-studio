@@ -1,10 +1,10 @@
 # Prompt: initialize forge-cms (Payload v3)
 
-Paste everything below into a fresh agent session started in an empty folder (e.g. `~/Documents/projects/forge-cms`).
+Paste everything below into a fresh agent session started in `/Users/macbook/Documents/projects/forge-cms` (create the empty folder first).
 
 ---
 
-Build `forge-cms`, a standalone Payload CMS v3 app that serves content to the website `forge-studio` (Next.js 14 + next-intl, locales `en` / `id`, located at `../forge-studio`). This is a separate repo and a separate deployment. Do not modify `forge-studio` except where step 6 says so.
+Build `forge-cms`, a standalone Payload CMS v3 app that serves content to the website `forge-studio` (Next.js 14 + next-intl, locales `en` / `id`, located at `/Users/macbook/Documents/projects/forge-studio`, prod `https://risencode.dev`). The CMS itself goes live at `https://cms.risencode.dev`. This is a separate repo and a separate deployment. Do not modify `forge-studio` except where step 6 says so.
 
 ## Stack
 
@@ -15,7 +15,7 @@ Build `forge-cms`, a standalone Payload CMS v3 app that serves content to the we
 
 ## Schema
 
-The draft schema already exists. Copy these files from `../forge-studio/docs/cms/` and use them as the source of truth. Adjust them only to fix API errors against the installed Payload version:
+The draft schema already exists. Copy these files from `/Users/macbook/Documents/projects/forge-studio/docs/cms/` (including `AGENTS.md` → repo root; read it first and follow it) and use them as the source of truth. Adjust them only to fix API errors against the installed Payload version:
 
 - `payload.config.ts` (`users` auth, `localization` en/id with fallback, postgres)
 - `collections/Works.ts` (portfolio cases, drafts enabled, public read = published only)
@@ -30,22 +30,22 @@ Run `npm run generate:types` and make sure `payload-types.ts` is generated.
 DATABASE_URI=postgres://postgres:postgres@localhost:5432/forge_cms
 PAYLOAD_SECRET=
 INQUIRY_WEBHOOK_TOKEN=          # must equal forge-studio's INQUIRY_WEBHOOK_TOKEN
-FORGE_REVALIDATE_URL=           # e.g. https://risendev.dev/api/revalidate
+FORGE_REVALIDATE_URL=           # e.g. https://risencode.dev/api/revalidate
 FORGE_REVALIDATE_SECRET=        # must equal forge-studio's REVALIDATE_SECRET
-CORS_ORIGINS=http://localhost:3000,https://risendev.dev
+CORS_ORIGINS=http://localhost:3000,https://risencode.dev
 ```
 
 Wire `CORS_ORIGINS` into `cors` and `csrf` in `payload.config.ts`.
 
 ## Tasks
 
-1. **Scaffold** the app, add docker-compose, copy the schema, and get `npm run dev` working with the admin panel at `/admin`.
+1. **Scaffold** the app, add docker-compose, copy the schema, and get `npm run dev` working on port 3001 (`next dev -p 3001`, forge-studio uses 3000) with the admin panel at `/admin`.
 2. **Revalidation hook.** In `Works` (and `Media`), add `afterChange` + `afterDelete` hooks that `POST` to `FORGE_REVALIDATE_URL` with header `x-revalidate-secret: FORGE_REVALIDATE_SECRET` and body `{ "tag": "works" }`. If the env var is missing, skip the call. Failures must only `req.payload.logger.error` and never throw (a CMS save must not fail just because the site is down). For drafts, fire only when `doc._status === "published"`.
-3. **Seed script** `src/seed.ts` (run with `npm run seed`, idempotent: upsert by `slug`) that imports the current content from `../forge-studio`:
+3. **Seed script** `src/seed.ts` (run with `npm run seed`, idempotent: upsert by `slug`) that imports the current content from `/Users/macbook/Documents/projects/forge-studio`:
    - `data/site.ts` → `cases` (key, slug, status, images, stack; array order becomes `order`)
    - `data/work-presentation.ts` → `category`, `tags` (en)
    - `messages/en.json` and `messages/id.json` → `Site.cases.<key>.*` for the `en` and `id` locales (title, summary, overview, role, challengeTitle/challenge/challengePoints, solutionTitle/solution/solutionPoints, capabilitiesTitle/capabilities, engineeringTitle/engineering/engineeringPoints, outcomeTitle/outcome). Ignore the `category` string there; it is derived from the select.
-   - Upload each image from `../forge-studio/public/img/portofolio/...` into `media` with alt = `<title> screenshot <n>`, then link the uploads to the work.
+   - Upload each image from `/Users/macbook/Documents/projects/forge-studio/public/img/portofolio/...` into `media` with alt = `<title> screenshot <n>`, then link the uploads to the work.
    - Save each work as `_status: "published"`. Write `en` first, then update with `locale: "id"`.
    - Locale-aware arrays (points) are localized as a whole, so write the full `id` array in the `id` update.
 4. **Inquiries endpoint check.** forge-studio's `INQUIRY_WEBHOOK_URL` will point at `https://<cms-domain>/api/inquiries`. It sends `POST` JSON `{ name, contact, projectType, description }` with `Authorization: Bearer <INQUIRY_WEBHOOK_TOKEN>` and treats any 2xx as success. Verify with curl: correct token → 201, wrong or missing token → 403, invalid `projectType` → 400.
