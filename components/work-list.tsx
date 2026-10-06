@@ -39,7 +39,7 @@ export function WorkList() {
     return cases.filter((item) => workPresentation[item.key]?.category === active);
   }, [active]);
 
- (
+  return (
     <>
       {/* =====================================================
           FILTER

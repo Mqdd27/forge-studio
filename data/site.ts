@@ -67,10 +67,7 @@ export const cases = [
     slug: "ai-summarizer",
     status: "completed",
 
-    images: [
-      "/img/portofolio/summarizer/1.png",
-      "/img/portofolio/summarizer/2.png",
-    ],
+    images: ["/img/portofolio/summarizer/1.png", "/img/portofolio/summarizer/2.png"],
 
     stack: ["Flask", "FastAPI", "Python 3.12+", "SQLite"],
 
@@ -82,10 +79,7 @@ export const cases = [
     slug: "odoo-wage-overtime-module",
     status: "completed",
 
-    images: [
-      "/img/portofolio/odoo-wage/1.png",
-      "/img/portofolio/odoo-wage/2.png",
-    ],
+    images: ["/img/portofolio/odoo-wage/1.png", "/img/portofolio/odoo-wage/2.png"],
 
     stack: ["Odoo 14", "PostgreSQL"],
 
@@ -114,12 +108,7 @@ export const cases = [
     slug: "board-application",
     status: "completed",
 
-    images: [
-      "/img/portofolio/board/1.png",
-      "/img/portofolio/board/2.png",
-      "/img/portofolio/board/3.png",
-      "/img/portofolio/board/4.png",
-    ],
+    images: ["/img/portofolio/board/1.png", "/img/portofolio/board/2.png", "/img/portofolio/board/3.png", "/img/portofolio/board/4.png"],
 
     stack: ["NextJs 16", "React", "Taiwind CSS", "TypeScript", "Postgresql"],
 
