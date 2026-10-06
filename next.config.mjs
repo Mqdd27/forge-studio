@@ -23,6 +23,12 @@ const nextConfig = (phase) => ({
       { source: "/insights/:path*", destination: "/en", permanent: true },
     ];
   },
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "cms.risencode.dev", pathname: "/api/media/file/**" },
+      { protocol: "http", hostname: "localhost", port: "3001", pathname: "/api/media/file/**" },
+    ],
+  },
   // Keep production builds from overwriting an active development server's chunks.
   distDir: phase === PHASE_DEVELOPMENT_SERVER ? process.env.FORGE_DEV_DIST_DIR || ".next-dev" : ".next",
 });

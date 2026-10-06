@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 import { WorkDesign } from "@/components/design/work";
+import { getWorks, workCard } from "@/lib/cms";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -43,5 +44,7 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
   setRequestLocale(locale);
 
-  return <WorkDesign />;
+  const works = (await getWorks(locale)).map(workCard);
+
+  return <WorkDesign works={works} />;
 }

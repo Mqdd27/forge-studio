@@ -1,11 +1,11 @@
 "use client";
 import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { cases } from "@/data/site";
+import type { WorkCard } from "@/lib/cms";
 
-export function HomeDesign() {
+export function HomeDesign({ works }: { works: WorkCard[] }) {
   const id = useLocale() === "id";
-  const t = useTranslations("Site.cases");
+  const tFilters = useTranslations("WorkPage.filters");
   const services = id
     ? ["Website bisnis", "Sistem internal", "Pengembangan sistem", "Pemeliharaan & deployment"]
     : ["Business websites", "Internal systems", "System development", "Maintenance & deployment"];
@@ -146,19 +146,19 @@ export function HomeDesign() {
             </p>
           </div>
           <div className="border-t border-on-surface">
-            {cases.slice(0, 4).map((c, i) => (
+            {works.slice(0, 4).map((c, i) => (
               <Link
                 href={`/work/${c.slug}`}
-                key={c.key}
+                key={c.slug}
                 className="group grid gap-4 border-b border-on-surface py-7 transition-all hover:bg-surface-container-low md:grid-cols-12 md:items-center md:px-4"
               >
                 <span className="text-3xl font-semibold tracking-[-.05em] text-primary md:col-span-1">0{i + 1}</span>
                 <div className="md:col-span-6">
-                  <h3 className="text-2xl font-medium tracking-[-.035em] md:text-3xl">{t(`${c.key}.title`)}</h3>
-                  <p className="mt-1 max-w-xl text-sm text-on-surface-variant">{t(`${c.key}.summary`)}</p>
+                  <h3 className="text-2xl font-medium tracking-[-.035em] md:text-3xl">{c.title}</h3>
+                  <p className="mt-1 max-w-xl text-sm text-on-surface-variant">{c.summary}</p>
                 </div>
                 <span className="font-sans text-[0.6875rem] leading-[0.875rem] font-medium tracking-[0.08em] text-on-surface-variant uppercase md:col-span-3">
-                  {t(`${c.key}.category`)}
+                  {tFilters(c.category)}
                 </span>
                 <span className="justify-self-end text-2xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 md:col-span-2">
                   ↗

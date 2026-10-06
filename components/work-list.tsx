@@ -6,25 +6,23 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 
-import { cases } from "@/data/site";
-import { workPresentation } from "@/data/work-presentation";
+import type { WorkCard } from "@/lib/cms";
 
 import { ProjectCarousel } from "@/components/design/project-carousel";
 
-const filters = ["all", "webApplication", "businessSystem", "existingSystem"] as const;
+const filters = ["all", "webApplication", "businessSystem", "existingSystem", "internalTool"] as const;
 
 type Filter = (typeof filters)[number];
 
-type ProjectItem = (typeof cases)[number];
+type ProjectItem = WorkCard;
 
 /* ============================================================
    WORK LIST
 ============================================================ */
 
-export function WorkList() {
+export function WorkList({ works }: { works: WorkCard[] }) {
   const locale = useLocale();
 
-  const tCases = useTranslations("Site.cases");
   const tFilters = useTranslations("WorkPage.filters");
 
   const id = locale === "id";
@@ -33,11 +31,11 @@ export function WorkList() {
 
   const visible = useMemo(() => {
     if (active === "all") {
-      return cases;
+      return works;
     }
 
-    return cases.filter((item) => workPresentation[item.key]?.category === active);
-  }, [active]);
+    return works.filter((item) => item.category === active);
+  }, [active, works]);
 
   return (
     <>
@@ -53,8 +51,7 @@ export function WorkList() {
 
               const label = filter === "all" ? tFilters("all") : tFilters(filter);
 
-              const count =
-                filter === "all" ? cases.length : cases.filter((item) => workPresentation[item.key]?.category === filter).length;
+              const count = filter === "all" ? works.length : works.filter((item) => item.category === filter).length;
 
               return (
                 <button
@@ -86,18 +83,18 @@ export function WorkList() {
       <section className="bg-[#FAF8F2] px-5 text-[#1C1C18] md:px-10 lg:px-16">
         <div className="mx-auto max-w-[1440px]">
           {visible.map((item) => {
-            const index = cases.findIndex((project) => project.key === item.key) + 1;
+            const index = works.findIndex((project) => project.slug === item.slug) + 1;
 
             return (
               <ProjectRow
-                key={item.key}
+                key={item.slug}
                 item={item}
                 index={index}
                 locale={locale}
                 id={id}
-                title={tCases(`${item.key}.title`)}
-                category={tCases(`${item.key}.category`)}
-                summary={tCases(`${item.key}.summary`)}
+                title={item.title}
+                category={tFilters(item.category)}
+                summary={item.summary}
               />
             );
           })}

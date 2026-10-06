@@ -6,25 +6,23 @@ import { PageShell } from "@/components/ui/page-shell";
 import { ProjectCTA } from "@/components/design/project-cta";
 import { ProjectCarousel } from "@/components/design/project-carousel";
 
-import { cases } from "@/data/site";
+import { getWorks } from "@/lib/cms";
 import { Link } from "@/i18n/navigation";
 
-export function generateStaticParams() {
-  return cases.map(({ slug }) => ({ slug }));
+export async function generateStaticParams() {
+  return (await getWorks("en")).map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string; locale: string }> }): Promise<Metadata> {
   const { slug, locale } = await params;
 
-  const item = cases.find((project) => project.slug === slug);
+  const item = (await getWorks(locale)).find((project) => project.slug === slug);
 
   if (!item) return {};
 
-  const t = await getTranslations({ locale, namespace: "Site.cases" });
-
   return {
-    title: t(`${item.key}.title`),
-    description: t(`${item.key}.summary`),
+    title: item.title,
+    description: item.summary,
 
     alternates: {
       canonical: `/${locale}/work/${item.slug}`,
@@ -39,15 +37,17 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
   setRequestLocale(locale);
 
-  const item = cases.find((project) => project.slug === slug);
+  const works = await getWorks(locale);
+
+  const projectIndex = works.findIndex((project) => project.slug === slug) + 1;
+
+  const item = works[projectIndex - 1];
 
   if (!item) notFound();
 
-  const t = await getTranslations({ locale, namespace: "Site.cases" });
+  const tFilters = await getTranslations({ locale, namespace: "WorkPage.filters" });
 
   const id = locale === "id";
-
-  const projectIndex = cases.findIndex((project) => project.slug === item.slug) + 1;
 
   const code = `F-${String(projectIndex).padStart(2, "0")}`;
 
@@ -86,18 +86,18 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
           <div className="grid gap-10 py-12 lg:grid-cols-12 lg:items-end lg:py-16">
             <div className="lg:col-span-8">
-              <p className="mb-5 text-[10px] font-semibold tracking-[0.2em] text-primary uppercase">{t(`${item.key}.category`)}</p>
+              <p className="mb-5 text-[10px] font-semibold tracking-[0.2em] text-primary uppercase">{tFilters(item.category)}</p>
 
               <h1 className="max-w-[1000px] text-[clamp(3.8rem,8vw,7.5rem)] leading-[0.85] font-semibold tracking-[-0.065em] uppercase">
-                {t(`${item.key}.title`)}
+                {item.title}
               </h1>
             </div>
 
             <div className="lg:col-span-4">
-              <p className="max-w-md text-lg leading-[1.45] font-medium tracking-[-0.025em] md:text-xl">{t(`${item.key}.summary`)}</p>
+              <p className="max-w-md text-lg leading-[1.45] font-medium tracking-[-0.025em] md:text-xl">{item.summary}</p>
 
               <div className="mt-7 flex flex-wrap gap-x-4 gap-y-2 text-[9px] font-semibold tracking-[0.14em] text-black/45 uppercase">
-                <span>{item.stack[0]}</span>
+                <span>{item.stack?.[0]}</span>
 
                 <span>/</span>
 
@@ -112,8 +112,14 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
           {/* imagery */}
 
-          {item.images.length > 0 && (
-            <ProjectCarousel images={item.images} title={t(`${item.key}.title`)} locale={locale} priority className="w-full" />
+          {item.images && item.images.length > 0 && (
+            <ProjectCarousel
+              images={item.images.map((image) => image.url)}
+              title={item.title}
+              locale={locale}
+              priority
+              className="w-full"
+            />
           )}
         </div>
       </section>
@@ -128,17 +134,17 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
             <SectionEyebrow>{id ? "Tentang proyek" : "About the project"}</SectionEyebrow>
 
             <p className="mt-5 max-w-4xl text-3xl leading-[1.12] font-medium tracking-[-0.035em] md:text-4xl lg:text-5xl">
-              {t(`${item.key}.overview`)}
+              {item.overview}
             </p>
           </div>
 
           <div className="flex flex-col justify-end lg:col-span-4">
             <div className="border-t border-black/15 pt-5">
-              <MetaRow label={id ? "Kategori" : "Category"} value={t(`${item.key}.category`)} />
+              <MetaRow label={id ? "Kategori" : "Category"} value={tFilters(item.category)} />
 
               <MetaRow label={id ? "Status" : "Status"} value={statusLabel} />
 
-              <MetaRow label={id ? "Peran" : "Role"} value={t(`${item.key}.role`)} last />
+              <MetaRow label={id ? "Peran" : "Role"} value={item.role ?? ""} last />
             </div>
           </div>
         </div>
@@ -152,19 +158,14 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         <SectionEyebrow>{id ? "Masalah utama" : "The problem"}</SectionEyebrow>
 
         <h2 className="mt-5 max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:text-6xl">
-          {t(`${item.key}.challengeTitle`)}
+          {item.challengeTitle}
         </h2>
 
-        <p className="mt-7 max-w-2xl text-base leading-[1.7] text-black/60 md:text-lg">{t(`${item.key}.challenge`)}</p>
+        <p className="mt-7 max-w-2xl text-base leading-[1.7] text-black/60 md:text-lg">{item.challenge}</p>
 
         <div className="mt-14 border-t border-black/15">
-          {Array.from({ length: item.contentCount.challenges }).map((_, index) => (
-            <ContentRow
-              key={index}
-              number={index + 1}
-              title={t(`${item.key}.challengePoints.${index}.title`)}
-              description={t(`${item.key}.challengePoints.${index}.description`)}
-            />
+          {item.challengePoints?.map((point, index) => (
+            <ContentRow key={index} number={index + 1} title={point.title} description={point.description} />
           ))}
         </div>
       </Section>
@@ -181,20 +182,15 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
             <SectionEyebrow dark>{id ? "Pendekatan" : "Approach"}</SectionEyebrow>
 
             <h2 className="mt-5 max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:text-6xl">
-              {t(`${item.key}.solutionTitle`)}
+              {item.solutionTitle}
             </h2>
 
-            <p className="mt-7 max-w-2xl text-base leading-[1.7] text-black/70 md:text-lg">{t(`${item.key}.solution`)}</p>
+            <p className="mt-7 max-w-2xl text-base leading-[1.7] text-black/70 md:text-lg">{item.solution}</p>
 
             <div className="mt-14 border-t border-black/25">
               <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))]">
-                {Array.from({ length: item.contentCount.solutions }).map((_, index) => (
-                  <SolutionItem
-                    key={index}
-                    number={index + 1}
-                    title={t(`${item.key}.solutionPoints.${index}.title`)}
-                    description={t(`${item.key}.solutionPoints.${index}.description`)}
-                  />
+                {item.solutionPoints?.map((point, index) => (
+                  <SolutionItem key={index} number={index + 1} title={point.title} description={point.description} />
                 ))}
               </div>
             </div>
@@ -209,18 +205,11 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
       <Section number="04" label={id ? "Kapabilitas" : "Capabilities"}>
         <SectionEyebrow>{id ? "Yang dibangun" : "What was built"}</SectionEyebrow>
 
-        <h2 className="mt-5 max-w-3xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl">
-          {t(`${item.key}.capabilitiesTitle`)}
-        </h2>
+        <h2 className="mt-5 max-w-3xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl">{item.capabilitiesTitle}</h2>
 
         <div className="mt-14 border-t border-black/15">
-          {Array.from({ length: item.contentCount.capabilities }).map((_, index) => (
-            <ContentRow
-              key={index}
-              number={index + 1}
-              title={t(`${item.key}.capabilities.${index}.title`)}
-              description={t(`${item.key}.capabilities.${index}.description`)}
-            />
+          {item.capabilities?.map((point, index) => (
+            <ContentRow key={index} number={index + 1} title={point.title} description={point.description} />
           ))}
         </div>
       </Section>
@@ -240,21 +229,16 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
             </p>
 
             <h2 className="mt-5 max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:text-6xl">
-              {t(`${item.key}.engineeringTitle`)}
+              {item.engineeringTitle}
             </h2>
 
-            <p className="mt-7 max-w-2xl text-base leading-[1.7] text-white/55 md:text-lg">{t(`${item.key}.engineering`)}</p>
+            <p className="mt-7 max-w-2xl text-base leading-[1.7] text-white/55 md:text-lg">{item.engineering}</p>
 
             {/* engineering points */}
 
             <div className="mt-14 border-t border-white/15">
-              {Array.from({ length: item.contentCount.engineering }).map((_, index) => (
-                <EngineeringRow
-                  key={index}
-                  number={index + 1}
-                  title={t(`${item.key}.engineeringPoints.${index}.title`)}
-                  description={t(`${item.key}.engineeringPoints.${index}.description`)}
-                />
+              {item.engineeringPoints?.map((point, index) => (
+                <EngineeringRow key={index} number={index + 1} title={point.title} description={point.description} />
               ))}
             </div>
 
@@ -264,7 +248,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
               <p className="text-[10px] font-semibold tracking-[0.18em] text-white/35 uppercase">{"// Technology"}</p>
 
               <div className="mt-5 flex flex-wrap gap-2">
-                {item.stack.map((technology) => (
+                {item.stack?.map((technology) => (
                   <span
                     key={technology}
                     className="border border-white/15 px-3 py-2 text-[11px] font-medium tracking-[0.02em] text-white/65"
@@ -287,11 +271,11 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
         <div className="mt-5 grid gap-10 lg:grid-cols-12">
           <h2 className="max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:col-span-7">
-            {t(`${item.key}.outcomeTitle`)}
+            {item.outcomeTitle}
           </h2>
 
           <div className="lg:col-span-5 lg:pt-1">
-            <p className="max-w-xl text-base leading-[1.75] text-black/60 md:text-lg">{t(`${item.key}.outcome`)}</p>
+            <p className="max-w-xl text-base leading-[1.75] text-black/60 md:text-lg">{item.outcome}</p>
 
             <div className="mt-8 flex items-center gap-3">
               <span className="h-2 w-2 bg-primary" />

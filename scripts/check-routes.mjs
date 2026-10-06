@@ -1,9 +1,6 @@
-import { readFile } from "node:fs/promises";
-
 const base = process.env.AUDIT_BASE_URL || "http://localhost:3000";
-const site = await readFile(new URL("../data/site.ts", import.meta.url), "utf8");
-const caseSection = site.split("export const cases = [")[1].split("] as const;")[0];
-const work = [...caseSection.matchAll(/slug: "([^"]+)"/g)].map((match) => match[1]);
+const cms = process.env.CMS_URL || "http://localhost:3001";
+const work = (await (await fetch(`${cms}/api/works?depth=0&limit=100`)).json()).docs.map((doc) => doc.slug);
 const routes = [
   "/",
   ...["en", "id"].flatMap((locale) =>

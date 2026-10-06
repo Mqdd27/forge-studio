@@ -6,9 +6,9 @@ import { PageShell } from "@/components/ui/page-shell";
 import { WorkList } from "@/components/work-list";
 import { ProjectCTA } from "@/components/design/project-cta";
 
-import { cases } from "@/data/site";
+import type { WorkCard } from "@/lib/cms";
 
-export function WorkDesign() {
+export function WorkDesign({ works }: { works: WorkCard[] }) {
   const id = useLocale() === "id";
 
   return (
@@ -28,7 +28,7 @@ export function WorkDesign() {
             </span>
 
             <span className="text-[10px] font-semibold tracking-[0.14em] text-black/35 uppercase">
-              {String(cases.length).padStart(2, "0")} {id ? "Proyek" : "Projects"}
+              {String(works.length).padStart(2, "0")} {id ? "Proyek" : "Projects"}
             </span>
           </div>
 
@@ -76,7 +76,7 @@ export function WorkDesign() {
           PROJECT LIST
       ====================================================== */}
 
-      <WorkList />
+      <WorkList works={works} />
 
       {/* =====================================================
           CTA

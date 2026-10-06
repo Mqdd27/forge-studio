@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { HomeDesign } from "@/components/design/home";
+import { getWorks, workCard } from "@/lib/cms";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: "Home.metadata" });
@@ -45,7 +46,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   };
 }
 
-export default function Page({ params }: { params: { locale: string } }) {
+export default async function Page({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);
-  return <HomeDesign />;
+  const works = (await getWorks(params.locale)).slice(0, 4).map(workCard);
+  return <HomeDesign works={works} />;
 }
