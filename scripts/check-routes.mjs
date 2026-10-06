@@ -55,9 +55,8 @@ for (const link of links) {
   if (!response.ok) failures.push(`Internal link ${link}: ${response.status}`);
 }
 for (const path of ["/en/work/does-not-exist", "/id/work/does-not-exist", "/fr/contact"]) {
-  const { response, text } = await request(path);
-  if (response.status !== 404 && !text.includes("NEXT_NOT_FOUND"))
-    failures.push(`Missing route ${path}: expected 404, got ${response.status}`);
+  const { response } = await request(path);
+  if (response.status !== 404) failures.push(`Missing route ${path}: expected 404, got ${response.status}`);
 }
 for (const [path, destination] of [
   ["/id/contact", "/id/start-a-project"],
