@@ -60,6 +60,17 @@ function request(data = valid, headers = {}) {
     ).status,
     502,
   );
+  let email;
+  const mail = handler({ RESEND_API_KEY: "re_test" }, async (url, options) => {
+    email = { url, auth: options.headers.Authorization, ...JSON.parse(options.body) };
+    return new Response(null, { status: 200 });
+  });
+  assert.equal((await mail(request())).status, 200);
+  assert.equal(email.url, "https://api.resend.com/emails");
+  assert.equal(email.auth, "Bearer re_test");
+  assert.equal(email.to, "risendcode@gmail.com");
+  assert.equal(email.reply_to, valid.contact);
+  assert.ok(email.text.includes(valid.description));
   const limited = handler({ INQUIRY_TRUSTED_IP_HEADER: "x-client-ip" });
   for (let i = 0; i < 5; i++) assert.equal((await limited(request())).status, 503);
   assert.equal((await limited(request())).status, 429);

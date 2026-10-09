@@ -58,17 +58,28 @@ export async function POST(request: NextRequest) {
     description.length > 6000
   )
     return reply("invalid", 400);
-  const destination = process.env.INQUIRY_WEBHOOK_URL;
+  const inquiry = { name, contact, projectType: data.projectType, description };
+  // Resend (email) takes precedence; otherwise forward to the generic webhook.
+  const resendKey = process.env.RESEND_API_KEY;
+  const destination = resendKey ? "https://api.resend.com/emails" : process.env.INQUIRY_WEBHOOK_URL;
+  const token = resendKey || process.env.INQUIRY_WEBHOOK_TOKEN;
   if (!destination) return reply("unavailable", 503);
   try {
     if (new URL(destination).protocol !== "https:") return reply("unavailable", 503);
     const response = await fetch(destination, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...(process.env.INQUIRY_WEBHOOK_TOKEN ? { Authorization: `Bearer ${process.env.INQUIRY_WEBHOOK_TOKEN}` } : {}),
-      },
-      body: JSON.stringify({ name, contact, projectType: data.projectType, description }),
+      headers: { "Content-Type": "application/json", ...(token ? { Authorization: `Bearer ${token}` } : {}) },
+      body: JSON.stringify(
+        resendKey
+          ? {
+              from: process.env.INQUIRY_EMAIL_FROM || "RisenDev <onboarding@resend.dev>",
+              to: process.env.INQUIRY_EMAIL_TO || "risendcode@gmail.com",
+              ...(contact.includes("@") ? { reply_to: contact } : {}),
+              subject: `New inquiry: ${name.replace(/\s+/g, " ")} (${data.projectType})`,
+              text: `Name: ${name}\nContact: ${contact}\nProject type: ${data.projectType}\n\n${description}`,
+            }
+          : inquiry,
+      ),
       signal: AbortSignal.timeout(10000),
       redirect: "error",
     });
