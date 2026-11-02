@@ -53,7 +53,7 @@
         },
         "outcomeTitle": "Cara yang lebih terarah untuk memahami pasar Indonesia.",
         "outcome": "Pergerakan pasar, riset perusahaan, analisis, dan pemantauan berada dalam satu ruang kerja yang terfokus.",
-        "role": "Full-Stack Development, System Design, dan Data Integration"
+        "role": "Pengembangan Full-Stack, Desain Sistem, dan Integrasi Data"
       },
       "growpos": {
         "title": "GrowPOS",
@@ -125,7 +125,7 @@
         },
         "outcomeTitle": "Dari alat transaksi menjadi operasional bisnis yang terhubung.",
         "outcome": "GrowPOS berkembang menjadi platform yang menyatukan penjualan, inventaris, kas, pelanggan, workflow operasional, dan laporan.",
-        "role": "Full-Stack Development, System Architecture, dan UI/UX Design"
+        "role": "Pengembangan Full-Stack, Arsitektur Sistem, dan Desain UI/UX"
       },
       "aiSummarizer": {
         "title": "AI Summarizer",
@@ -160,7 +160,7 @@
         },
         "outcomeTitle": "Lebih cepat menemukan inti informasi.",
         "outcome": "Aplikasi mengubah konten yang diberikan menjadi ringkasan melalui alur yang langsung dan terfokus.",
-        "role": "Full-Stack Development dan AI Integration"
+        "role": "Pengembangan Full-Stack dan Integrasi AI"
       },
       "odooWageOvertime": {
         "title": "Odoo Wage & Overtime",
@@ -204,7 +204,7 @@
         },
         "outcomeTitle": "Workflow khusus di dalam ERP yang sudah ada.",
         "outcome": "Proses gaji dan lembur dapat dijalankan di dalam Odoo melalui workflow yang disesuaikan dengan kebutuhan operasional.",
-        "role": "Odoo Module Development dan Workflow Implementation"
+        "role": "Pengembangan Modul Odoo dan Implementasi Workflow"
       },
       "stockOpname": {
         "title": "Aplikasi Stock Opname",
@@ -248,7 +248,7 @@
         },
         "outcomeTitle": "Alur yang lebih jelas dari penghitungan hingga pemeriksaan stok.",
         "outcome": "Aktivitas stock opname memiliki workflow khusus yang tetap terhubung dengan lingkungan inventaris yang sudah digunakan.",
-        "role": "Full-Stack Development dan Odoo Integration"
+        "role": "Pengembangan Full-Stack dan Integrasi Odoo"
       },
       "board": {
         "title": "Aplikasi Board",

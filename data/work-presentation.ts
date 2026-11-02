@@ -14,5 +14,5 @@ export const workPresentation: Record<(typeof cases)[number]["key"], WorkPresent
   odooWageOvertime: { category: "existingSystem", tags: ["ERP customization", "Wage workflows", "Overtime"], screenshots: [] },
   stockOpname: { category: "businessSystem", tags: ["Inventory", "Stock counts", "Review workflow"], screenshots: [] },
   // Tambahkan entri board di bawah ini:
-  board: { category: "internalTool", tags: [], screenshots: [] },
+  board: { category: "businessSystem", tags: [], screenshots: [] },
 };

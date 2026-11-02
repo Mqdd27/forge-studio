@@ -141,8 +141,8 @@ export function HomeDesign() {
             </div>
             <p className="max-w-md text-on-surface-variant lg:col-span-4">
               {id
-                ? "Beberapa aplikasi dan sistem dari data portofolio RisenDev. Tanpa angka atau klaim yang dibuat-buat."
-                : "A selection of applications and systems from the RisenDev portfolio. No invented metrics or claims."}
+                ? "Beberapa aplikasi dan sistem dari portofolio RisenDev."
+                : "A selection of applications and systems from the RisenDev portfolio."}
             </p>
           </div>
           <div className="border-t border-on-surface">

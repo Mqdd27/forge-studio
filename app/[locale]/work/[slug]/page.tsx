@@ -45,9 +45,7 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
   const id = locale === "id";
 
-  const projectIndex = cases.findIndex((project) => project.slug === item.slug) + 1;
-
-  const code = `F-${String(projectIndex).padStart(2, "0")}`;
+  const nextCase = cases[(cases.findIndex((project) => project.slug === item.slug) + 1) % cases.length];
 
   const statusLabel =
     item.status === "development"
@@ -61,6 +59,12 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         : id
           ? "Selesai"
           : "Completed";
+
+  const points = (group: string, count: number) =>
+    Array.from({ length: count }, (_, index) => ({
+      title: t(`${item.key}.${group}.${index}.title`),
+      description: t(`${item.key}.${group}.${index}.description`),
+    }));
 
   return (
     <PageShell>
@@ -77,342 +81,162 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
         }}
       />
 
-      {/* =====================================================
-          HERO
-      ====================================================== */}
-
+      {/* Header: what it is and the key facts, readable without scrolling. */}
       <section className="bg-[#F6F3EC] px-5 pt-8 pb-12 text-[#1C1C18] md:px-10 md:pt-12 md:pb-16 lg:px-16">
-        <div className="mx-auto max-w-[1440px]">
-          {/* top meta */}
+        <div className="mx-auto max-w-[1120px]">
+          <Link href="/work" className="text-sm font-medium text-black/70 transition-colors hover:text-primary">
+            ← {id ? "Semua proyek" : "All work"}
+          </Link>
 
-          <div className="flex items-center justify-between border-b border-black/15 pb-4">
-            <Link href="/work" className="text-[10px] font-semibold tracking-[0.16em] uppercase transition-opacity hover:opacity-50">
-              ← {id ? "Portofolio" : "Work"}
-            </Link>
+          <h1 className="mt-10 max-w-4xl text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.02] font-semibold tracking-[-0.04em]">
+            {t(`${item.key}.title`)}
+          </h1>
 
-            <span className="text-[10px] font-semibold tracking-[0.16em] text-black/40 uppercase">{code}</span>
-          </div>
+          <p className="mt-6 max-w-2xl text-xl leading-[1.5] text-black/75 md:text-2xl">{t(`${item.key}.summary`)}</p>
 
-          {/* title */}
+          <dl className="mt-10 grid gap-x-8 gap-y-5 border-y border-black/15 py-6 sm:grid-cols-2 lg:grid-cols-4">
+            <Fact label={id ? "Jenis proyek" : "Project type"} value={t(`${item.key}.category`)} />
+            <Fact label="Status" value={statusLabel} />
+            <Fact label={id ? "Peran kami" : "Our role"} value={t(`${item.key}.role`)} />
+            <Fact label={id ? "Teknologi utama" : "Main technology"} value={item.stack.slice(0, 3).join(", ")} />
+          </dl>
 
-          <div className="grid gap-10 py-12 lg:grid-cols-12 lg:items-end lg:py-16">
-            <div className="lg:col-span-8">
-              <p className="mb-5 text-[10px] font-semibold tracking-[0.2em] text-primary uppercase">{t(`${item.key}.category`)}</p>
-
-              <h1 className="max-w-[1000px] text-[clamp(3.8rem,8vw,7.5rem)] leading-[0.85] font-semibold tracking-[-0.065em] uppercase">
-                {t(`${item.key}.title`)}
-              </h1>
-            </div>
-
-            <div className="lg:col-span-4">
-              <p className="max-w-md text-lg leading-[1.45] font-medium tracking-[-0.025em] md:text-xl">{t(`${item.key}.summary`)}</p>
-
-              <div className="mt-7 flex flex-wrap gap-x-4 gap-y-2 text-[9px] font-semibold tracking-[0.14em] text-black/45 uppercase">
-                <span>{item.stack[0]}</span>
-
-                <span>/</span>
-
-                <span>{statusLabel}</span>
-
-                <span>/</span>
-
-                <span>{code}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* imagery */}
-
-          {item.images.length > 0 && (
-            <ProjectCarousel images={item.images} title={t(`${item.key}.title`)} locale={locale} priority className="w-full" />
-          )}
+          <ProjectCarousel images={item.images} title={t(`${item.key}.title`)} locale={locale} priority className="mt-10 w-full" />
         </div>
       </section>
 
-      {/* =====================================================
-          OVERVIEW
-      ====================================================== */}
-
-      <Section number="01" label={id ? "Gambaran" : "Overview"}>
-        <div className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-8">
-            <SectionEyebrow>{id ? "Tentang proyek" : "About the project"}</SectionEyebrow>
-
-            <p className="mt-5 max-w-4xl text-3xl leading-[1.12] font-medium tracking-[-0.035em] md:text-4xl lg:text-5xl">
-              {t(`${item.key}.overview`)}
-            </p>
-          </div>
-
-          <div className="flex flex-col justify-end lg:col-span-4">
-            <div className="border-t border-black/15 pt-5">
-              <MetaRow label={id ? "Kategori" : "Category"} value={t(`${item.key}.category`)} />
-
-              <MetaRow label={id ? "Status" : "Status"} value={statusLabel} />
-
-              <MetaRow label={id ? "Peran" : "Role"} value={t(`${item.key}.role`)} last />
-            </div>
-          </div>
-        </div>
+      <Section label={id ? "Tantangan" : "The challenge"} title={t(`${item.key}.challengeTitle`)}>
+        <Lead>{t(`${item.key}.challenge`)}</Lead>
+        <PointList items={points("challengePoints", item.contentCount.challenges)} />
       </Section>
 
-      {/* =====================================================
-          CHALLENGE
-      ====================================================== */}
+      <Section label={id ? "Pendekatan kami" : "Our approach"} title={t(`${item.key}.solutionTitle`)}>
+        <Lead>{t(`${item.key}.solution`)}</Lead>
+        <PointList items={points("solutionPoints", item.contentCount.solutions)} />
+      </Section>
 
-      <Section number="02" label={id ? "Tantangan" : "Challenge"} muted>
-        <SectionEyebrow>{id ? "Masalah utama" : "The problem"}</SectionEyebrow>
-
-        <h2 className="mt-5 max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:text-6xl">
-          {t(`${item.key}.challengeTitle`)}
-        </h2>
-
-        <p className="mt-7 max-w-2xl text-base leading-[1.7] text-black/60 md:text-lg">{t(`${item.key}.challenge`)}</p>
-
-        <div className="mt-14 border-t border-black/15">
-          {Array.from({ length: item.contentCount.challenges }).map((_, index) => (
-            <ContentRow
-              key={index}
-              number={index + 1}
-              title={t(`${item.key}.challengePoints.${index}.title`)}
-              description={t(`${item.key}.challengePoints.${index}.description`)}
-            />
+      <Section label={id ? "Yang kami bangun" : "What we built"} title={t(`${item.key}.capabilitiesTitle`)}>
+        <ul className="mt-8 grid gap-px border border-black/15 bg-black/15 sm:grid-cols-2">
+          {points("capabilities", item.contentCount.capabilities).map((capability) => (
+            <li key={capability.title} className="bg-[#FAF8F2] p-6 sm:last:odd:col-span-2">
+              <h3 className="text-lg leading-[1.25] font-semibold tracking-[-0.015em]">{capability.title}</h3>
+              <p className="mt-2 text-base leading-[1.6] text-black/70">{capability.description}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </Section>
 
-      {/* =====================================================
-          SOLUTION
-      ====================================================== */}
-
-      <section className="bg-[#FF4F00] px-5 py-20 text-[#1C1C18] md:px-10 md:py-24 lg:px-16">
-        <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-12">
-          <SectionMarker number="03" label={id ? "Solusi" : "Solution"} />
+      {/* The one high-contrast block, so the result stands out while scrolling. */}
+      <section className="bg-[#1C1C18] px-5 py-16 text-[#F6F3EC] md:px-10 md:py-20 lg:px-16">
+        <div className="mx-auto grid max-w-[1120px] gap-4 lg:grid-cols-12 lg:gap-10">
+          <SectionLabel dark>{id ? "Hasil" : "The result"}</SectionLabel>
 
           <div className="lg:col-span-9">
-            <SectionEyebrow dark>{id ? "Pendekatan" : "Approach"}</SectionEyebrow>
-
-            <h2 className="mt-5 max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:text-6xl">
-              {t(`${item.key}.solutionTitle`)}
+            <h2 className="max-w-3xl text-3xl leading-[1.1] font-semibold tracking-[-0.03em] md:text-4xl">
+              {t(`${item.key}.outcomeTitle`)}
             </h2>
-
-            <p className="mt-7 max-w-2xl text-base leading-[1.7] text-black/70 md:text-lg">{t(`${item.key}.solution`)}</p>
-
-            <div className="mt-14 border-t border-black/25">
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))]">
-                {Array.from({ length: item.contentCount.solutions }).map((_, index) => (
-                  <SolutionItem
-                    key={index}
-                    number={index + 1}
-                    title={t(`${item.key}.solutionPoints.${index}.title`)}
-                    description={t(`${item.key}.solutionPoints.${index}.description`)}
-                  />
-                ))}
-              </div>
-            </div>
+            <p className="mt-5 max-w-[65ch] text-lg leading-[1.65] text-white/80">{t(`${item.key}.outcome`)}</p>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
-          CAPABILITIES
-      ====================================================== */}
+      {/* Technical detail is opt-in: useful to engineers, noise for most business readers. */}
+      <section className="bg-[#FAF8F2] px-5 text-[#1C1C18] md:px-10 lg:px-16">
+        <details className="group mx-auto max-w-[1120px] border-b border-black/15">
+          <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-8 [&::-webkit-details-marker]:hidden">
+            <h2 className="text-xl font-semibold tracking-[-0.02em] md:text-2xl">{id ? "Detail teknis" : "Technical details"}</h2>
+            <span aria-hidden="true" className="text-2xl leading-none text-primary transition-transform group-open:rotate-45">
+              +
+            </span>
+          </summary>
 
-      <Section number="04" label={id ? "Kapabilitas" : "Capabilities"}>
-        <SectionEyebrow>{id ? "Yang dibangun" : "What was built"}</SectionEyebrow>
+          <div className="grid gap-4 pb-12 lg:grid-cols-12 lg:gap-10">
+            <div className="lg:col-span-9 lg:col-start-4">
+              <p className="text-xl leading-[1.3] font-semibold tracking-[-0.02em]">{t(`${item.key}.engineeringTitle`)}</p>
+              <Lead>{t(`${item.key}.engineering`)}</Lead>
+              <PointList items={points("engineeringPoints", item.contentCount.engineering)} />
 
-        <h2 className="mt-5 max-w-3xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl">
-          {t(`${item.key}.capabilitiesTitle`)}
-        </h2>
-
-        <div className="mt-14 border-t border-black/15">
-          {Array.from({ length: item.contentCount.capabilities }).map((_, index) => (
-            <ContentRow
-              key={index}
-              number={index + 1}
-              title={t(`${item.key}.capabilities.${index}.title`)}
-              description={t(`${item.key}.capabilities.${index}.description`)}
-            />
-          ))}
-        </div>
-      </Section>
-
-      {/* =====================================================
-          ENGINEERING
-      ====================================================== */}
-
-      <section className="bg-[#1C1C18] px-5 py-20 text-[#F6F3EC] md:px-10 md:py-24 lg:px-16">
-        <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-12">
-          <SectionMarker number="05" label="Engineering" dark />
-
-          <div className="lg:col-span-9">
-            <p className="text-[10px] font-semibold tracking-[0.18em] text-[#FF4F00] uppercase">
-              {"// "}
-              {id ? "Di balik sistem" : "Behind the system"}
-            </p>
-
-            <h2 className="mt-5 max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:text-6xl">
-              {t(`${item.key}.engineeringTitle`)}
-            </h2>
-
-            <p className="mt-7 max-w-2xl text-base leading-[1.7] text-white/55 md:text-lg">{t(`${item.key}.engineering`)}</p>
-
-            {/* engineering points */}
-
-            <div className="mt-14 border-t border-white/15">
-              {Array.from({ length: item.contentCount.engineering }).map((_, index) => (
-                <EngineeringRow
-                  key={index}
-                  number={index + 1}
-                  title={t(`${item.key}.engineeringPoints.${index}.title`)}
-                  description={t(`${item.key}.engineeringPoints.${index}.description`)}
-                />
-              ))}
-            </div>
-
-            {/* stack */}
-
-            <div className="mt-16">
-              <p className="text-[10px] font-semibold tracking-[0.18em] text-white/35 uppercase">{"// Technology"}</p>
-
-              <div className="mt-5 flex flex-wrap gap-2">
+              <ul className="mt-8 flex flex-wrap gap-2">
                 {item.stack.map((technology) => (
-                  <span
-                    key={technology}
-                    className="border border-white/15 px-3 py-2 text-[11px] font-medium tracking-[0.02em] text-white/65"
-                  >
+                  <li key={technology} className="border border-black/20 px-3 py-1.5 text-sm text-black/75">
                     {technology}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
-        </div>
+        </details>
       </section>
 
-      {/* =====================================================
-          OUTCOME
-      ====================================================== */}
+      <section className="bg-[#FAF8F2] px-5 pt-14 text-[#1C1C18] md:px-10 lg:px-16">
+        <Link href={`/work/${nextCase.slug}`} className="group mx-auto grid max-w-[1120px] gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
+          <span>
+            <span className="block text-sm font-semibold text-primary">{id ? "Studi kasus berikutnya" : "Next case study"}</span>
+            <span className="mt-3 block text-3xl leading-[1.1] font-semibold tracking-[-0.03em] group-hover:text-primary md:text-4xl">
+              {t(`${nextCase.key}.title`)}
+            </span>
+            <span className="mt-3 block max-w-[65ch] text-base leading-[1.6] text-black/70">{t(`${nextCase.key}.summary`)}</span>
+          </span>
+          <span aria-hidden="true" className="text-3xl text-primary transition-transform group-hover:translate-x-1">
+            →
+          </span>
+        </Link>
+      </section>
 
-      <Section number="06" label={id ? "Hasil" : "Outcome"} muted>
-        <SectionEyebrow>{id ? "Hasil proyek" : "Project outcome"}</SectionEyebrow>
-
-        <div className="mt-5 grid gap-10 lg:grid-cols-12">
-          <h2 className="max-w-4xl text-4xl leading-[1] font-semibold tracking-[-0.045em] md:text-5xl lg:col-span-7">
-            {t(`${item.key}.outcomeTitle`)}
-          </h2>
-
-          <div className="lg:col-span-5 lg:pt-1">
-            <p className="max-w-xl text-base leading-[1.75] text-black/60 md:text-lg">{t(`${item.key}.outcome`)}</p>
-
-            <div className="mt-8 flex items-center gap-3">
-              <span className="h-2 w-2 bg-primary" />
-
-              <span className="text-[9px] font-semibold tracking-[0.16em] text-black/40 uppercase">{code} / RisenDev</span>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      <ProjectCTA />
+      <ProjectCTA maxWidth="max-w-[1120px]" />
     </PageShell>
   );
 }
 
-/* ============================================================
-   COMPONENTS
-============================================================ */
-
-function Section({
-  number,
-  label,
-  muted = false,
-  children,
-}: {
-  number: string;
-  label: string;
-  muted?: boolean;
-  children: React.ReactNode;
-}) {
+function Section({ label, title, children }: { label: string; title: string; children: React.ReactNode }) {
   return (
-    <section className={`px-5 py-20 text-[#1C1C18] md:px-10 md:py-24 lg:px-16 ${muted ? "bg-[#EFEBE2]" : "bg-[#FAF8F2]"}`}>
-      <div className="mx-auto grid max-w-[1440px] gap-10 lg:grid-cols-12">
-        <SectionMarker number={number} label={label} />
+    <section className="bg-[#FAF8F2] px-5 text-[#1C1C18] md:px-10 lg:px-16">
+      <div className="mx-auto grid max-w-[1120px] gap-4 border-b border-black/15 py-14 md:py-20 lg:grid-cols-12 lg:gap-10">
+        <SectionLabel>{label}</SectionLabel>
 
-        <div className="lg:col-span-9">{children}</div>
+        <div className="lg:col-span-9">
+          <h2 className="max-w-3xl text-3xl leading-[1.1] font-semibold tracking-[-0.03em] md:text-4xl">{title}</h2>
+          {children}
+        </div>
       </div>
     </section>
   );
 }
 
-function SectionMarker({ number, label, dark = false }: { number: string; label: string; dark?: boolean }) {
+// Sticky on desktop so readers keep their place while scrolling through a long section.
+function SectionLabel({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
   return (
-    <div className="lg:col-span-3">
-      <div className="flex items-center gap-3">
-        <span className={`text-[10px] font-semibold tracking-[0.14em] ${dark ? "text-[#FF4F00]" : "text-primary"}`}>{number}</span>
-
-        <span className={`h-px w-8 ${dark ? "bg-white/20" : "bg-black/20"}`} />
-
-        <span className={`text-[10px] font-semibold tracking-[0.16em] uppercase ${dark ? "text-white/35" : "text-black/40"}`}>{label}</span>
-      </div>
-    </div>
-  );
-}
-
-function SectionEyebrow({ children, dark = false }: { children: React.ReactNode; dark?: boolean }) {
-  return (
-    <p className={`text-[10px] font-semibold tracking-[0.18em] uppercase ${dark ? "text-black/65" : "text-primary"}`}>
-      {"// "}
+    <p
+      className={`flex items-center gap-3 text-lg leading-[1.2] font-semibold tracking-[-0.02em] lg:sticky lg:top-28 lg:col-span-3 lg:self-start lg:pt-1.5 lg:text-xl ${dark ? "text-[#FF4F00]" : "text-primary"}`}
+    >
+      <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-[#FF4F00]" />
       {children}
     </p>
   );
 }
 
-function ContentRow({ number, title, description }: { number: number; title: string; description: string }) {
+function Lead({ children }: { children: React.ReactNode }) {
+  return <p className="mt-5 max-w-[65ch] text-lg leading-[1.65] text-black/75">{children}</p>;
+}
+
+function PointList({ items }: { items: { title: string; description: string }[] }) {
   return (
-    <div className="group grid gap-3 border-b border-black/15 py-6 md:grid-cols-12 md:items-start md:gap-6 md:py-7">
-      <span className="text-[10px] font-semibold tracking-[0.12em] text-primary md:col-span-1">{String(number).padStart(2, "0")}</span>
-
-      <h3 className="text-xl leading-[1.15] font-semibold tracking-[-0.025em] md:col-span-4 md:text-2xl">{title}</h3>
-
-      <p className="max-w-xl text-sm leading-[1.65] text-black/55 md:col-span-6 md:text-base">{description}</p>
-
-      <span className="hidden justify-self-end text-black/20 transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary md:block">
-        ↗
-      </span>
-    </div>
+    <ul className="mt-8 border-t border-black/15">
+      {items.map((point) => (
+        <li key={point.title} className="grid gap-1 border-b border-black/15 py-5 md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-6">
+          <h3 className="text-lg leading-[1.3] font-semibold tracking-[-0.015em]">{point.title}</h3>
+          <p className="text-base leading-[1.6] text-black/70">{point.description}</p>
+        </li>
+      ))}
+    </ul>
   );
 }
 
-function EngineeringRow({ number, title, description }: { number: number; title: string; description: string }) {
+function Fact({ label, value }: { label: string; value: string }) {
   return (
-    <div className="grid gap-3 border-b border-white/15 py-6 md:grid-cols-12 md:items-start md:gap-6 md:py-7">
-      <span className="text-[10px] font-semibold tracking-[0.12em] text-[#FF4F00] md:col-span-1">{String(number).padStart(2, "0")}</span>
-
-      <h3 className="text-xl leading-[1.15] font-semibold tracking-[-0.025em] text-white md:col-span-4 md:text-2xl">{title}</h3>
-
-      <p className="max-w-xl text-sm leading-[1.65] text-white/50 md:col-span-6 md:text-base">{description}</p>
-    </div>
-  );
-}
-
-function SolutionItem({ number, title, description }: { number: number; title: string; description: string }) {
-  return (
-    <div className="border-b border-black/25 py-6 md:border-r md:px-5">
-      <span className="text-[9px] font-semibold tracking-[0.14em] text-black/45">{String(number).padStart(2, "0")}</span>
-
-      <h3 className="mt-6 text-2xl font-semibold tracking-[-0.035em]">{title}</h3>
-
-      <p className="mt-2 max-w-[220px] text-sm leading-[1.55] text-black/60">{description}</p>
-    </div>
-  );
-}
-
-function MetaRow({ label, value, last = false }: { label: string; value: string; last?: boolean }) {
-  return (
-    <div className={`grid grid-cols-[90px_1fr] gap-5 py-3 ${!last ? "border-b border-black/10" : ""}`}>
-      <span className="text-[9px] font-semibold tracking-[0.14em] text-black/35 uppercase">{label}</span>
-
-      <span className="text-sm leading-[1.5] font-medium">{value}</span>
+    <div>
+      <dt className="text-sm text-black/60">{label}</dt>
+      <dd className="mt-1 text-base leading-[1.4] font-medium">{value}</dd>
     </div>
   );
 }

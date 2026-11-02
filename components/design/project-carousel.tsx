@@ -62,7 +62,7 @@ export function ProjectCarousel({ images, title, locale = "en", className = "", 
             fill
             priority={priority && activeIndex === 0}
             sizes="(max-width: 768px) 100vw, 1440px"
-            className="object-cover object-center"
+            className="object-contain object-center"
           />
         </div>
 
@@ -158,6 +158,7 @@ export function ProjectCarousel({ images, title, locale = "en", className = "", 
               <button
                 type="button"
                 onClick={previous}
+                aria-label={id ? "Gambar sebelumnya" : "Previous image"}
                 className="absolute top-1/2 left-5 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center bg-white text-black transition-colors hover:bg-[#FF4F00]"
               >
                 ←
@@ -166,6 +167,7 @@ export function ProjectCarousel({ images, title, locale = "en", className = "", 
               <button
                 type="button"
                 onClick={next}
+                aria-label={id ? "Gambar berikutnya" : "Next image"}
                 className="absolute top-1/2 right-5 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center bg-white text-black transition-colors hover:bg-[#FF4F00]"
               >
                 →

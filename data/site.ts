@@ -110,7 +110,7 @@ export const cases = [
 
     images: ["/img/portofolio/board/1.png", "/img/portofolio/board/2.png", "/img/portofolio/board/3.png", "/img/portofolio/board/4.png"],
 
-    stack: ["NextJs 16", "React", "Taiwind CSS", "TypeScript", "Postgresql"],
+    stack: ["Next.js 16", "React", "Tailwind CSS", "TypeScript", "PostgreSQL"],
 
     contentCount: { challenges: 2, solutions: 3, capabilities: 3, engineering: 3 },
   },
