@@ -1,17 +1,15 @@
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { PrivacyDesign } from "@/components/design/privacy";
+import { pageMetadata } from "@/lib/seo";
 export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
   const id = params.locale === "id";
-  const title = id ? "Kebijakan Privasi" : "Privacy Policy";
-  const description = id ? "Cara RisenDev menangani informasi inquiry proyek." : "How RisenDev handles project inquiry information.";
-  const path = `/${params.locale}/privacy-policy`;
-  return {
-    title,
-    description,
-    alternates: { canonical: path, languages: { en: "/en/privacy-policy", id: "/id/privacy-policy" } },
-    openGraph: { type: "website", title, description, url: path },
-  };
+  return pageMetadata({
+    locale: params.locale,
+    path: "/privacy-policy",
+    title: id ? "Kebijakan Privasi" : "Privacy Policy",
+    description: id ? "Cara RisenDev menangani informasi inquiry proyek." : "How RisenDev handles project inquiry information.",
+  });
 }
 export default function Page({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);

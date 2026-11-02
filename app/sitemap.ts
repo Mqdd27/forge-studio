@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${siteUrl}/${locale}${path}`,
       changeFrequency: "monthly" as const,
       priority: !path ? 1 : path === "/work" || path === "/services" ? 0.9 : 0.7,
-      alternates: { languages: { en: `${siteUrl}/en${path}`, id: `${siteUrl}/id${path}` } },
+      alternates: { languages: { en: `${siteUrl}/en${path}`, id: `${siteUrl}/id${path}`, "x-default": `${siteUrl}/en${path}` } },
     })),
   );
 }

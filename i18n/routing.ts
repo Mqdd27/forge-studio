@@ -1,3 +1,4 @@
 import { defineRouting } from "next-intl/routing";
 
-export const routing = defineRouting({ locales: ["en", "id"], defaultLocale: "en" });
+// hreflang lives in page metadata; the middleware's Link header emits http:// URLs behind the proxy.
+export const routing = defineRouting({ locales: ["en", "id"], defaultLocale: "en", alternateLinks: false });

@@ -2,50 +2,38 @@ import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { HomeDesign } from "@/components/design/home";
+import { siteUrl } from "@/data/site";
+import { JsonLd, pageMetadata } from "@/lib/seo";
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: "Home.metadata" });
-
-  const title = t("title");
-  const description = t("description");
-
-  return {
-    title,
-    description,
-
-    alternates: {
-      canonical: `/${params.locale}`,
-
-      languages: { en: "/en", id: "/id", "x-default": "/en" },
-    },
-
-    openGraph: {
-      type: "website",
-
-      title: `${title} | RisenDev`,
-
-      description,
-
-      url: `/${params.locale}`,
-
-      siteName: "RisenDev",
-
-      locale: params.locale === "id" ? "id_ID" : "en_US",
-
-      alternateLocale: params.locale === "id" ? ["en_US"] : ["id_ID"],
-    },
-
-    twitter: {
-      card: "summary_large_image",
-
-      title: `${title} | RisenDev`,
-
-      description,
-    },
-  };
+  return pageMetadata({ locale: params.locale, title: t("title"), description: t("description") });
 }
 
-export default function Page({ params }: { params: { locale: string } }) {
+export default async function Page({ params }: { params: { locale: string } }) {
   setRequestLocale(params.locale);
-  return <HomeDesign />;
+  const t = await getTranslations({ locale: params.locale, namespace: "Home.metadata" });
+  const url = `${siteUrl}/${params.locale}`;
+
+  return (
+    <>
+      <JsonLd
+        data={{
+          "@graph": [
+            { "@type": "WebSite", name: "RisenDev", url, inLanguage: params.locale },
+            {
+              "@type": "ProfessionalService",
+              name: "RisenDev",
+              url,
+              logo: `${siteUrl}/img/logo.png`,
+              image: `${siteUrl}/${params.locale}/opengraph-image`,
+              description: t("description"),
+              areaServed: { "@type": "Country", name: "Indonesia" },
+            },
+          ],
+        }}
+      />
+      <HomeDesign />
+    </>
+  );
 }

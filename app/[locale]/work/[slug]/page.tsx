@@ -6,8 +6,9 @@ import { PageShell } from "@/components/ui/page-shell";
 import { ProjectCTA } from "@/components/design/project-cta";
 import { ProjectCarousel } from "@/components/design/project-carousel";
 
-import { cases } from "@/data/site";
+import { cases, siteUrl } from "@/data/site";
 import { Link } from "@/i18n/navigation";
+import { JsonLd, pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return cases.map(({ slug }) => ({ slug }));
@@ -22,16 +23,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
   const t = await getTranslations({ locale, namespace: "Site.cases" });
 
-  return {
+  return pageMetadata({
+    locale,
+    path: `/work/${item.slug}`,
     title: t(`${item.key}.title`),
     description: t(`${item.key}.summary`),
-
-    alternates: {
-      canonical: `/${locale}/work/${item.slug}`,
-
-      languages: { en: `/en/work/${item.slug}`, id: `/id/work/${item.slug}` },
-    },
-  };
+    image: item.images[0],
+  });
 }
 
 export default async function CaseStudy({ params }: { params: Promise<{ slug: string; locale: string }> }) {
@@ -66,6 +64,19 @@ export default async function CaseStudy({ params }: { params: Promise<{ slug: st
 
   return (
     <PageShell>
+      <JsonLd
+        data={{
+          "@type": "CreativeWork",
+          name: t(`${item.key}.title`),
+          description: t(`${item.key}.summary`),
+          url: `${siteUrl}/${locale}/work/${item.slug}`,
+          image: `${siteUrl}${item.images[0]}`,
+          inLanguage: locale,
+          keywords: item.stack.join(", "),
+          creator: { "@type": "Organization", name: "RisenDev", url: `${siteUrl}/${locale}` },
+        }}
+      />
+
       {/* =====================================================
           HERO
       ====================================================== */}

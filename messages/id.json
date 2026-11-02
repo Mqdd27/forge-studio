@@ -303,19 +303,22 @@
     }
   },
   "WorkPage": {
-    "metadata": { "title": "Portofolio", "description": "Aplikasi web dan sistem untuk kebutuhan bisnis dan operasional nyata." },
+    "metadata": {
+      "title": "Portofolio Aplikasi Web & Sistem Bisnis",
+      "description": "Portofolio aplikasi web dan sistem bisnis yang dibangun RisenDev untuk kebutuhan bisnis dan operasional nyata."
+    },
     "filters": { "all": "Semua", "webApplication": "Aplikasi Web", "businessSystem": "Sistem Bisnis", "existingSystem": "Sistem yang Ada" }
   },
   "Home": {
     "metadata": {
-      "title": "Aplikasi Web untuk Kebutuhan Bisnis",
-      "description": "Studio pengembangan web independen untuk membangun, meningkatkan, dan memelihara aplikasi web dan sistem bisnis."
+      "title": "Jasa Pembuatan Website & Aplikasi Web untuk Bisnis",
+      "description": "RisenDev adalah studio pengembangan web independen di Indonesia: jasa pembuatan website, aplikasi web, dan sistem bisnis, termasuk pemeliharaannya."
     }
   },
   "ServicesPage": {
     "metadata": {
-      "title": "Layanan Pengembangan Web",
-      "description": "Pengembangan web custom, sistem bisnis, pengembangan sistem yang ada, serta pemeliharaan dan deployment."
+      "title": "Jasa Pembuatan Website & Sistem Bisnis",
+      "description": "Jasa pengembangan web custom, sistem bisnis, pengembangan sistem yang sudah ada, serta pemeliharaan dan deployment dari RisenDev."
     }
   }
 }

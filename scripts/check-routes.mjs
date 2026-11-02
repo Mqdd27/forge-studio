@@ -29,6 +29,13 @@ for (const path of routes) {
       const asset = match[2].replaceAll("&amp;", "&");
       if (asset.startsWith("/_next/") || asset.startsWith("/img/")) assets.add(asset);
     }
+    const locale = path.match(/^\/(en|id)(?:\/|$)/)?.[1];
+    if (locale && !path.endsWith("/about")) {
+      if (!text.includes(`<html lang="${locale}"`)) failures.push(`Wrong html lang on ${path}`);
+      if (!new RegExp(`<link rel="canonical" href="https?://[^"/]+${path}"`).test(text)) failures.push(`Wrong canonical on ${path}`);
+      if (!text.includes('hrefLang="x-default"')) failures.push(`Missing x-default on ${path}`);
+      if (!text.includes('property="og:image"')) failures.push(`Missing og:image on ${path}`);
+    }
     if (text.includes("Mqdd27") || text.includes("hello@forgestudio.dev"))
       failures.push(`Unconfirmed or personal contact exposed on ${path}`);
     for (const match of text.matchAll(/<a\b[^>]*href="(\/(?!\/)[^"]*)"/g)) {

@@ -1,6 +1,6 @@
 // data/site.ts
 
-export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://risendev.dev";
+export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://risencode.dev";
 
 export const cases = [
   {
